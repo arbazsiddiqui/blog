@@ -4,11 +4,8 @@ import GitHubButton from 'react-github-btn'
 import { graphql, Link } from 'gatsby'
 import Layout from '../layout'
 import PostListing from '../components/PostListing'
-import ProjectListing from '../components/ProjectListing'
-import SimpleListing from '../components/SimpleListing'
 import SEO from '../components/SEO'
 import config from '../../data/SiteConfig'
-import projects from '../../data/projects'
 import arbaz from '../../content/images/profile.jpg'
 
 export default class Index extends Component {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'gatsby'
-// import netlify from '../../content/images/netlify.png'
+import netlify from '../../content/thumbnails/netlify.png'
 import gatsby from '../../content/thumbnails/gatsby.png'
 import github from '../../content/thumbnails/github.png'
 
@@ -23,15 +23,15 @@ export default class Footer extends Component {
               alt="GitHub"
             />
           </a>
-          {/*<a href="https://www.netlify.com/" title="Hosted by Netlify">*/}
-          {/*  <img*/}
-          {/*    src={netlify}*/}
-          {/*    target="_blank"*/}
-          {/*    rel="noopener noreferrer"*/}
-          {/*    className="footer-img"*/}
-          {/*    alt="GitHub"*/}
-          {/*  />*/}
-          {/*</a>*/}
+          <a href="https://www.netlify.com/" title="Hosted with ❤ on Netlify">
+            <img
+              src={netlify}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-img"
+              alt="GitHub"
+            />
+          </a>
           <a href="https://www.gatsbyjs.org/" title="Built with Gatsby">
             <img
               src={gatsby}
