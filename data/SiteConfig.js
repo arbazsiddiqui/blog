@@ -9,7 +9,7 @@ const config = {
   dateFromFormat: 'YYYY-MM-DD',
   dateFormat: 'MMMM Do, YYYY',
   siteDescription:
-    'Arbaz Siddiqui is a full stack software developer specializing in system design and distributing computing',
+    'Arbaz Siddiqui is a full stack software developer specializing in system design and distributing computing.',
   siteRss: '/rss.xml',
   googleAnalyticsID: 'UA-79508594-2',
   postDefaultCategoryID: 'Tech',

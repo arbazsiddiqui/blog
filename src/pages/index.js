@@ -11,7 +11,6 @@ import arbaz from '../../content/images/profile.jpg'
 export default class Index extends Component {
   render() {
     const { data } = this.props
-	  console.log(data)
 
     const latestPostEdges = data.latest.edges
 
@@ -24,7 +23,7 @@ export default class Index extends Component {
             <div className="elevator">
               <h1>Hey, I'm Arbaz</h1>
               <p>
-                I am a full stack software developer with keen interest in system design and distributed computing. I create <a href="https://github.com/arbazsiddiqui" target="_blank" rel="noopener noreferrer">open source</a> projects and also <Link to="/blog">write</Link> about software development.
+	              I am a full stack software developer with keen interest in system design and distributed computing. I create <Link to="/projects">open source</Link> projects and also <Link to="/blog">write</Link> about software development.
               </p>
               <div className="social-buttons">
                 <GitHubButton
