@@ -34,7 +34,7 @@ Traps are methods that will intercept the call to target when a property or meth
 
 ### Handler
 
-Handler is an placeholder object where all traps live. You can think of it as an object with key beings traps and values being functions implementing those traps.
+Handler is a placeholder object where all traps live. You can think of it as an object with key beings traps and values being functions implementing those traps.
 
 Lets look at a basic example :
 
@@ -83,9 +83,10 @@ John Travolta
 Uma Thurman
 ```
 
-In the above example our target object was `movie` object, we implemented a handler with a `get` and a `set` trap. We added a logic that if we are accessing `director` key, we should return the string `God` instead of the actual value. Similarly we added a `set` trap which will intercept all the writes to target object and change the value to `John Travolta` if the key is `actor`.
+In the above example our target object was `movie`, we implemented a handler with a `get` and a `set` trap. We added a logic that if we are accessing `director` key, we should return the string `God` instead of the actual value. Similarly we added a `set` trap which will intercept all the writes to target object and change the value to `John Travolta` if the key is `actor`.
 
 ![possibilities are endless](../images/possibilities.jpg)
+
 ## Real world use cases
 
 Although it is not as well known as other ES2015 features, Proxy has many uses few of which like default values for all properties of target might be obvious now. Lets take a look at more real world scenarios where we can use proxies.
