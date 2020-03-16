@@ -21,6 +21,7 @@ export default class PostTemplate extends Component {
     const { slug } = this.props.pageContext
     const postNode = this.props.data.markdownRemark
     const post = postNode.frontmatter
+	  const {readingTime} = postNode.fields;
     let thumbnail
 
     if (!post.id) {
@@ -52,7 +53,7 @@ export default class PostTemplate extends Component {
             <div className="flex">
               <h1>{post.title}</h1>
               <div className="post-meta">
-                <time className="date">{date}</time>/
+                <time className="date">{date}</time> / <span className="date">{readingTime.text}</span>/
                 <a
                   className="twitter-link"
                   href={twitterShare}
@@ -98,6 +99,9 @@ export const pageQuery = graphql`
       fields {
         slug
         date
+        readingTime {
+          text
+        }
       }
     }
   }
