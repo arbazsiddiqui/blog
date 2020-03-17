@@ -155,7 +155,7 @@ The execution of above code will result in following output :
 sending email after task completion
 ```
 
-Here we are intercepting writes to property `status` and if the `status` is complete we are triggering a side effect function. On really cool implementation of this is in [Sindre Sorhus](https://github.com/sindresorhus)'s [on-change](https://github.com/sindresorhus/on-change) package.
+Here we are intercepting writes to property `status` and if the `status` is complete we are triggering a side effect function. One really cool implementation of this is in [Sindre Sorhus](https://github.com/sindresorhus)'s [on-change](https://github.com/sindresorhus/on-change) package.
 
 ### Caching
 As we can intercept the access to object properties, we can build in memory caches to only return values for an object if it isn't expired. Lets look at an example :
@@ -190,7 +190,7 @@ Here we create a function which returns a proxy and the handler for that proxy f
 
 ### Drawbacks
 
-While proxies are fairly magical but there few drawbacks with promises which we need to be careful about. 
+While proxies are fairly magical but there few drawbacks with proxies which we need to be careful about. 
 1. Performance can take a [drastic](http://thecodebarbarian.com/thoughts-on-es6-proxies-performance) hit when using proxies and hence should be avoided when writing a performance critical code.
 2. Given an object there is no way of knowing if this is an proxy object or target object.
 3. Lastly, proxies do not necessarily lead to very clean and easily understandable code.
