@@ -14,7 +14,7 @@ tags:
 
 ## Introduction
 
-Postman has become a default option to make and test API requests. Although we might be familiar with making basic http requests with postman, it gives us a lot more power in terms of programming things around an API request. In real world scenarios there are three ways we handle params and process them further.
+Postman has become the default option to make and test API requests. Although we might be familiar with making basic http requests with postman, it gives us a lot more power in terms of programming things around an API request. In real world scenarios there are three ways we handle params and process them further.
 
 First is when the params are just user inputs and you can plainly use for further processing like fetching from DB.
 
@@ -69,7 +69,7 @@ As the postman console shows, we were able to generate a signature using pre-req
 
 Sometimes to perform an operation we need to chain few api requests, i.e. response from first API call is used as request params for the second API call. Instead of making two API call and copying over data we can use pre-request script for the same. Lets look at an example 
 
-We have to make a POST API call to http://www.mocky.io/v2/5e75d1d72f00006900985f1e which will only succeed if we have a the request has a header `app-token`. We get this `app-token` by making another GET call to `http://www.mocky.io/v2/5e75f1ac2f00006b00985f62`. We can automate the whole flow like this :
+We have to make a POST API call to `http://www.mocky.io/v2/5e75d1d72f00006900985f1e` which will only succeed if we have a the request has a header `app-token`. We get this `app-token` by making another GET call to `http://www.mocky.io/v2/5e75f1ac2f00006b00985f62`. We can automate the whole flow like this :
 
 * Make a basic request with `http://www.mocky.io/v2/5e75d1d72f00006900985f1e` as url and method as `POST`.
 * Add a header with `app-token` as key and `{{token}}` as value. This `token` is a dynamic value and will be fetched using pre request script.
@@ -101,5 +101,3 @@ Postman provides us with a javaScript execution environment called Postman Sandb
 
 ### Conclusion
 We learned how to automate using dynamic params either by generating them or by fetching them via another API call. This comes in really handy especially with authenticated calls where the auth tokens are very short lived.
-
-
