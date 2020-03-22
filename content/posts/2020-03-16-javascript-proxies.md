@@ -11,7 +11,7 @@ tags:
   - proxy
 ---
 
-## Introduction To Proxy
+## Introduction to Proxy
 
 In programming terms, proxy is any entity that acts on behalf of some other entity. A proxy server sits in between a client and server and acts a client for server and vice versa. The job of any proxy is to intercept incoming requests/calls and forward it upstream. This interception allows proxy to add logic and change behavior of incoming and outgoing requests.
 
