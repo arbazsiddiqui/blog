@@ -1,6 +1,6 @@
 ---
 date: 2020-03-16
-title: 'Javascript Proxies : Real world use cases'
+title: 'Javascript Proxies : Real World Use Cases'
 template: post
 thumbnail: '../thumbnails/js.png'
 slug: javascript-proxies-real-world-use-cases
