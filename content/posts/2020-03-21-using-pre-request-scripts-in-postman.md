@@ -1,6 +1,6 @@
 ---
 date: 2020-03-21
-title: 'Using Pre Request Script In Postman'
+title: 'Using Pre Request Script in Postman'
 template: post
 thumbnail: '../thumbnails/postman.png'
 slug: using-pre-request-script-in-postman
