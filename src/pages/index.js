@@ -42,7 +42,7 @@ export default class Index extends Component {
 			          <p>
 				          Subscribe to get an update when something new comes out!
 			          </p>
-			          <a className="button" href="https://arbazsiddiqui.substack.com" target="_blank">
+			          <a className="button" href="https://arbazsiddiqui.substack.com" target="_blank" rel="noopener noreferrer">
 				          Subscribe
 			          </a>
 		          </div>
