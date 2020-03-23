@@ -787,7 +787,7 @@ blockquote {
     border-radius: $border-radius;
     padding: 1.5rem;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
 
@@ -812,9 +812,6 @@ blockquote {
 
 @include small-breakpoint {
   .note {
-    .note-container {
-      flex-direction: row;
-    }
 
     .flex-author {
       display: flex;
@@ -843,7 +840,7 @@ blockquote {
 
 @include small-breakpoint {
   .note {
-    padding: 4rem 0;
+    padding: 1rem 0;
     margin: 3rem 0;
 
     .note-container {
@@ -1090,15 +1087,59 @@ button[disabled] {
   }
 }
 
-.newsletter-avatar {
+.newsletter-section {
   display: none;
-  margin-top: 0.5rem;
-  border-radius: 50%;
-  width: 150px;
+  align-items: center;
+  flex-direction: column;
+  border-radius: $border-radius;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  text-align: center;
+  background: radial-gradient(circle at 20% 20%, #5183f5 25%, #4640ff 100%);
+  box-shadow: 0.5rem 1.25rem 1.75rem 0 rgba(100, 110, 140, 0.4);
+  color: rgba(255, 255, 255, 0.9);
+
+  .newsletter-avatar {
+    margin-top: 0.5rem;
+    border-radius: 50%;
+    width: 85px;
+  }
+
+  p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8) !important;
+  }
+
+  h3 {
+    margin: 0 0 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white !important;
+  }
+
+  a.button {
+    font-size: 1.2rem;
+    padding: 1rem 1.5rem;
+    border: none !important;
+    background: darken($primary-color, 35%);
+    color: white !important;
+    &:hover,
+    &:active,
+    &:focus {
+      border: none;
+      background: #111;
+    }
+  }
+
   @include small-breakpoint {
     display: flex;
   }
+
+  @include large-breakpoint {
+    margin: 0;
+  }
 }
+
 
 .no-comments {
   margin-top: 3rem;

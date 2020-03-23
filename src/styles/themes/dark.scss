@@ -118,7 +118,7 @@ $dark-border: darken($background, 3%);
 
   .note {
     .note-container {
-      background: linear-gradient(to bottom right, #0b41bc, #051f5b);
+      background: linear-gradient(to bottom right, #333333, #1f1f1f);
       box-shadow: 0.5rem 1.25rem 1.75rem 0 rgba(0, 0, 0, 0.6);
       p,
       button,
@@ -387,6 +387,20 @@ $dark-border: darken($background, 3%);
     &::before {
       background: $accent;
       color: #888;
+    }
+  }
+
+  .newsletter-section {
+    background: linear-gradient(to bottom right, #333333, #1f1f1f);
+    box-shadow: 0.5rem 1.25rem 1.75rem 0 rgba(0, 0, 0, 0.6);
+    a.button {
+      background: darken($primary-color, 25%) !important;
+      color: white !important;
+      &:hover,
+      &:focus,
+      &:active {
+        background: #111 !important;
+      }
     }
   }
 

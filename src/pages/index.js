@@ -35,9 +35,18 @@ export default class Index extends Component {
                 </GitHubButton>
               </div>
             </div>
-	            <div>
-		            <img src={arbaz} className="newsletter-avatar" alt="Arbaz" />
-            </div>
+	          <div className="newsletter-section">
+		          <img src={arbaz} className="newsletter-avatar" alt="Arbaz" />
+		          <div>
+			          <h3>Email Newsletter</h3>
+			          <p>
+				          Subscribe to get an update when something new comes out!
+			          </p>
+			          <a className="button" href="https://arbazsiddiqui.substack.com" target="_blank">
+				          Subscribe
+			          </a>
+		          </div>
+	          </div>
           </div>
         </div>
 

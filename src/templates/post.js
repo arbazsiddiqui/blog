@@ -5,6 +5,7 @@ import Img from 'gatsby-image'
 import Layout from '../layout'
 import PostTags from '../components/PostTags'
 import SEO from '../components/SEO'
+import UserInfo from '../components/UserInfo'
 import config from '../../data/SiteConfig'
 import { formatDate } from '../utils/global'
 
@@ -69,6 +70,7 @@ export default class PostTemplate extends Component {
 
           <div className="post" dangerouslySetInnerHTML={{ __html: postNode.html }} />
         </article>
+	      <UserInfo config={config} />
       </Layout>
     )
   }

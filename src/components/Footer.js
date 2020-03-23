@@ -9,6 +9,7 @@ export default class Footer extends Component {
     return (
       <footer className="footer container">
         <div>
+	        <a href="https://arbazsiddiqui.substack.com" target="_blank">Newsletter</a>
           <a href="https://www.arbazsiddiqui.me/rss.xml" target="_blank" rel="noopener noreferrer">
             RSS
           </a>

@@ -9,6 +9,8 @@ I have a keen interest in distributed computing and like to build systems for sc
 
 I am a history buff and during my free time I love to consume Internet.
 
+[Subscribe](https://arbazsiddiqui.substack.com) my newsletter to get an update when something new comes out!
+
 ## Contact :
 
 - **Email**: [arbaz00@gmail.com](mailto:arbaz00@gmail.com)
@@ -17,4 +19,5 @@ I am a history buff and during my free time I love to consume Internet.
 - **LinkedIn**: [arbazsiddiqui](https://www.linkedin.com/in/arbazsiddiqui)
 - **Twitter**: [arbazsiddiqui_](https://twitter.com/arbazsiddiqui_)
 - **Resume**: [PDF](../images/resume.pdf)
+- **Newsletter**: [arbazsiddiqui](https://arbazsiddiqui.substack.com)
 - **Feed**: [RSS](https://www.arbazsiddiqui.me/rss.xml)
