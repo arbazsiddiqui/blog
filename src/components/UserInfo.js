@@ -10,7 +10,7 @@ export default class UserInfo extends Component {
 						Subscribe to get an update when something new comes out!
 						No promotion, No spam.
 					</p>
-					<iframe width="400" height="120" src="https://arbazsiddiqui.substack.com/embed" frameBorder="0" scrolling="no"></iframe>
+					<iframe width="400" height="80" src="https://arbazsiddiqui.substack.com/embed" frameBorder="0" scrolling="no"></iframe>
 
 				</div>
 			</aside>
