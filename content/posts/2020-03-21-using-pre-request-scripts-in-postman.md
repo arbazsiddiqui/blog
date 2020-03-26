@@ -39,24 +39,24 @@ We have to make a POST API call to `http://www.mocky.io/v2/5e75d1d72f00006900985
 
 * Pre-request scripts allows you to write javascript and hence we can write js code to implement the singing function. In the `Pre-request Script` add the following code snippet: 
    
-  ```js
-  const crypto = require('crypto-js');
-  const token = "myLongLivedToken"
-  const secret = "iKillFascists"
+```js
+const crypto = require('crypto-js');
+const token = "myLongLivedToken"
+const secret = "iKillFascists"
 
-  const signToken = () => {
-      const dateTime = (new Date).getTime().toString()
-      const stringToSign = `${token}-${dateTime}`;
-      const hash = crypto.HmacSHA256(stringToSign, secret)
-      return crypto.enc.Base64.stringify(hash);
-  }
+const signToken = () => {
+    const dateTime = (new Date).getTime().toString()
+    const stringToSign = `${token}-${dateTime}`;
+    const hash = crypto.HmacSHA256(stringToSign, secret)
+    return crypto.enc.Base64.stringify(hash);
+}
 
-  const signedToken = signToken()
+const signedToken = signToken()
 
-  console.log(`successfully generated token : ${signedToken}`)
+console.log(`successfully generated token : ${signedToken}`)
 
-  pm.globals.set("auth", signedToken);
-  ```
+pm.globals.set("auth", signedToken);
+```
 * Its a simple script to generate a HmacSHA256 hash using crypto-js which is inbuilt in postman sandbox. Notice how the string which we are signing with secret contains timestamp and hence will always be different. The only piece which is specific to postman is `pm.globals.set("auth", signedToken);` . Here we are assigning the `signedToken` to a variable `auth`. This auth can now be used in post params, headers, body or even the url.
 
 * Now we can go ahead and make the api call. It should now use the signed token in `hmacToken` header. To verify this we will use another very handy thing which postman provides, Postman Console. This console will show us all the console logs in our script as well as the request response details. Use `cmd+alt+c` (`ctrl+alt+c` on windows) to open up the console and `Send` the api request.
@@ -75,19 +75,19 @@ We have to make a POST API call to `http://www.mocky.io/v2/5e75d1d72f00006900985
 * Add a header with `app-token` as key and `{{token}}` as value. This `token` is a dynamic value and will be fetched using pre request script.
 * In the `Pre-request Script` add the following code snippet: 
 
-  ```js
-  const reqObject = {
-    url: 'http://www.mocky.io/v2/5e75f1ac2f00006b00985f62',
-    method: 'GET',
-    header: 'Content-Type:application/json'
-  };
+```js
+const reqObject = {
+  url: 'http://www.mocky.io/v2/5e75f1ac2f00006b00985f62',
+  method: 'GET',
+  header: 'Content-Type:application/json'
+};
 
-  pm.sendRequest(reqObject, (err, res) => {
-      const {token} = res.json()
-      console.log(`fetched token ${token}`)
-      pm.globals.set("token", token);
-  });
-  ```
+pm.sendRequest(reqObject, (err, res) => {
+    const {token} = res.json()
+    console.log(`fetched token ${token}`)
+    pm.globals.set("token", token);
+});
+```
 * We are using `pm.sendRequest` to make an API request and then assigning the response to variable `token` which is dynamic header value.
 * Now we can go ahead and make the api call. It should now use the fetched token in `app-token` header. We will again use postman console to confirm this.
 
