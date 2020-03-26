@@ -81,7 +81,6 @@ module.exports = {
 		        },
 	        },
           'gatsby-remark-copy-linked-files',
-	        `gatsby-remark-reading-time`,
           {
             resolve: `gatsby-remark-autolink-headers`,
             options: {

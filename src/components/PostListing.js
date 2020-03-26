@@ -44,7 +44,7 @@ export default class PostListing extends Component {
                 {thumbnail ? <Img fixed={thumbnail} /> : <div />}
                 <div className="each-list-item">
                   <h2>{post.title}</h2>
-                  {!simple && <div className="excerpt">{date}</div>}
+                  {!simple && <div className="excerpt">{date} • {post.timeToRead} min read</div>}
                 </div>
                 {newest && (
                   <div className="alert">
