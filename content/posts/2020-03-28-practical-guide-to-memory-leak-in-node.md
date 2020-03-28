@@ -79,7 +79,7 @@ To fix this issue we are going to debug this in production, i.e. we will allow o
 
 #### Heapdump
 
-To understand what a heapdump is we first need to understand what a heap is. Too put in extremely simple terms heap is the place everything gets thrown at and it’s stays there until GC removes what’s supposed to be junk. A heap dump is a snapshot of your current heap. It will contain all the internal and user defined variable and allocations which are currently present in Heap. 
+To understand what a heapdump is we first need to understand what a heap is. To put in extremely simple terms heap is the place everything gets thrown at and it’s stays there until GC removes what’s supposed to be junk. A heap dump is a snapshot of your current heap. It will contain all the internal and user defined variable and allocations which are currently present in Heap. 
 
 So if we can somehow compare heapdump of a fresh server vs heapdump of a long running bloated server which should be able to identify the objects that are not being picked up GC by looking at the diff. 
 
