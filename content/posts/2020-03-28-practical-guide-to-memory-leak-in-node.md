@@ -46,7 +46,7 @@ We now know enough theory about memory leaks and garbage collection to dive into
 
 #### Introducing a Leaky Code
 
-For the sake of demo, I have a built a express server which has a leaky route in it. We will use this API server for debugging. 
+For the sake of demo, I have a built an express server which has a leaky route in it. We will use this API server for debugging. 
 
 ```javascript
 const express = require('express')
