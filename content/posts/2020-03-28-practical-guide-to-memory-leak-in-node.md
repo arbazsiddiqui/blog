@@ -131,7 +131,7 @@ We have used the package to take a heapdump as soon as the server starts and wri
 
 #### Identifying the Leak
 
-So now our server is deployed and has been running for days now. Its being hit by a number of request (only one in our case) and we have observed that the memory consumption of our server has spiked (you can do so using monitoring tools like [Express Status Monitor](https://github.com/RafalWilinski/express-status-monitor), [Clinic](https://clinicjs.org/), [Prometheus](https://prometheus.io/)). We will now make the API call to take a heapdump. This heapdump will contains all the objects which GC wasn't able to collect.
+So now our server is deployed and has been running for days. Its being hit by a number of request (only one in our case) and we have observed that the memory consumption of our server has spiked (you can do so using monitoring tools like [Express Status Monitor](https://github.com/RafalWilinski/express-status-monitor), [Clinic](https://clinicjs.org/), [Prometheus](https://prometheus.io/)). We will now make the API call to take a heapdump. This heapdump will contains all the objects which GC wasn't able to collect.
 
 ```terminal
 curl --location --request GET 'http://localhost:3000/heapdump'
