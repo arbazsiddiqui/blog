@@ -159,7 +159,7 @@ We can now pin point to `leaks` array as the cause of high memory consumption.
 
 #### Fixing the Leak
 
-Now that we know array `leaks` is causing the trouble, we can look at the code and pretty easily debug that its because it outside the scope of request cycle and hence its reference is never deleted. We can fix it fairly easily by doing :
+Now that we know array `leaks` is causing the trouble, we can look at the code and pretty easily debug that its because the array is outside the scope of request cycle and hence its reference is never deleted. We can fix it fairly easily by doing :
 
 ```js
 app.get('/bloatMyServer', (req, res) => {
