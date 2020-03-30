@@ -29,7 +29,7 @@ const config = {
 		  link: '/projects/',
 	  }
   ],
-  themeColor: '#3F80FF', // Used for setting manifest and progress theme colors.
+  themeColor: '#1f1f1f', // Used for setting manifest and progress theme colors.
   backgroundColor: '#ffffff',
 }
 
