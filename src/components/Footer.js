@@ -33,7 +33,7 @@ export default class Footer extends Component {
               alt="GitHub"
             />
           </a>
-          <a className="no-right-margin" href="https://www.gatsbyjs.org/" title="Built with Gatsby">
+          <a href="https://www.gatsbyjs.org/" title="Built with Gatsby">
             <img
               src={gatsby}
               target="_blank"
