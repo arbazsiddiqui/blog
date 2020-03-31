@@ -112,10 +112,14 @@ exports.createPages = ({ graphql, actions }) => {
       graphql(
         `
           {
-            allMarkdownRemark {
+            allMarkdownRemark (
+              sort: { order: ASC, fields: [frontmatter___date] }
+              limit: 1000
+            ){
               edges {
                 node {
                   frontmatter {
+                    title
                     tags
                     categories
                     template
@@ -137,7 +141,8 @@ exports.createPages = ({ graphql, actions }) => {
         const tagSet = new Set()
         const categorySet = new Set()
 
-        result.data.allMarkdownRemark.edges.forEach(edge => {
+	      const edges = result.data.allMarkdownRemark.edges
+	      edges.forEach((edge, index) => {
           if (edge.node.frontmatter.tags) {
             edge.node.frontmatter.tags.forEach(tag => {
               tagSet.add(tag)
@@ -151,10 +156,14 @@ exports.createPages = ({ graphql, actions }) => {
           }
 
           if (edge.node.frontmatter.template === 'post') {
+	          const prev = index === 0 ? false : edges[index - 1].node
+	          const next = index === edges.length - 1 ? false : edges[index + 1].node
             createPage({
               path: edge.node.fields.slug,
               component: postPage,
               context: {
+	              prev,
+	              next,
                 slug: edge.node.fields.slug,
               },
             })

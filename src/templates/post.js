@@ -8,6 +8,7 @@ import SEO from '../components/SEO'
 import UserInfo from '../components/UserInfo'
 import config from '../../data/SiteConfig'
 import { formatDate } from '../utils/global'
+import {Link} from "@reach/router";
 
 export default class PostTemplate extends Component {
   constructor(props) {
@@ -20,6 +21,23 @@ export default class PostTemplate extends Component {
 
   render() {
     const { slug } = this.props.pageContext;
+  	let {prev, next} = this.props.pageContext;
+  	let nextObj, prevObj;
+  	if(next){
+		  nextObj = {
+			  nextSlug : next.fields.slug,
+			  nextTitle : next.frontmatter.title
+		  };
+	  }
+  	if(nextObj.nextSlug === '/me/'){
+		  next = false
+	  }
+  	if(prev) {
+		  prevObj = {
+			  nextSlug : prev.fields.slug,
+			  nextTitle : prev.frontmatter.title
+		  };
+	  }
     const postNode = this.props.data.markdownRemark;
 	  const {timeToRead} = postNode;
     const post = postNode.frontmatter;
@@ -68,8 +86,15 @@ export default class PostTemplate extends Component {
           </header>
 
           <div className="post" dangerouslySetInnerHTML={{ __html: postNode.html }} />
+          <div>
+          </div>
         </article>
 	      <UserInfo config={config} />
+	      <div className="more container">
+		      <div>{prev && <Link to={prevObj.nextSlug}> ←{prevObj.nextTitle} </Link>}</div>
+		      <div>{next && <Link to={nextObj.nextSlug}> {nextObj.nextTitle}→ </Link>}</div>
+	      </div>
+
       </Layout>
     )
   }

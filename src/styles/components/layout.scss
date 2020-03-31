@@ -224,6 +224,14 @@
   display: flex;
 }
 
+.more {
+  margin: 60px auto;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .posts {
   a {
     display: block;
@@ -971,6 +979,10 @@ blockquote {
     display: flex;
     align-items: center;
     padding-bottom: 1.5rem;
+  }
+
+  .no-right-margin {
+    margin-right: 0rem;
   }
 
   strong {
