@@ -225,11 +225,37 @@
 }
 
 .more {
-  margin: 60px auto;
+  flex-wrap: wrap;
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
+  list-style: none;
+
+  li {
+    &.task-list-item {
+      padding-left: 0;
+      margin-left: 0;
+      &:before {
+        content: '';
+      }
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      color: lighten($font-color, 30%);
+      font-size: 22px;
+      line-height: 1.1;
+    }
+
+    position: relative;
+    list-style-type: none;
+    margin-bottom: 0.3rem;
+    padding-left: 0;
+    margin-left: 0;
+  }
 }
 
 .posts {

@@ -90,10 +90,10 @@ export default class PostTemplate extends Component {
           </div>
         </article>
 	      <UserInfo config={config} />
-	      <div className="more container">
-		      <div>{prev && <Link to={prevObj.nextSlug}> ←{prevObj.nextTitle} </Link>}</div>
-		      <div>{next && <Link to={nextObj.nextSlug}> {nextObj.nextTitle}→ </Link>}</div>
-	      </div>
+	      <ul className="more container">
+		      <li>{prev && <Link to={prevObj.nextSlug}> ←{prevObj.nextTitle} </Link>}</li>
+		      <li>{next && <Link to={nextObj.nextSlug}> {nextObj.nextTitle}→ </Link>}</li>
+	      </ul>
 
       </Layout>
     )
