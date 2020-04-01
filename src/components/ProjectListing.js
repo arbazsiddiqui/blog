@@ -4,6 +4,11 @@ import GitHubButton from 'react-github-btn'
 export default class ProjectListing extends Component {
   render() {
     const { projects } = this.props
+	  const colormap = {
+    	'javascript' : '#f1e05a',
+		  'golang' : '#00ADD8',
+		  'python' : '#3572A5'
+	  };
 
     return (
       <section className="projects">
@@ -15,6 +20,7 @@ export default class ProjectListing extends Component {
                 href={project.source}
                 target="_blank"
                 rel="noopener noreferrer"
+                style={{color : colormap[project.language] }}
               >
                 <div className="project-title">{project.title}</div>
               </a>
