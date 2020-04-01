@@ -15,7 +15,7 @@ export default class Footer extends Component {
           </a>
         </div>
         <div>
-          <a href="https://github.com/arbazsiddiqui" title="Open-source on GitHub">
+          <a href="https://github.com/arbazsiddiqui" title="Open-source on GitHub" target="_blank" rel="noopener noreferrer">
             <img
               src={github}
               target="_blank"
@@ -24,7 +24,7 @@ export default class Footer extends Component {
               alt="GitHub"
             />
           </a>
-          <a href="https://www.netlify.com/" title="Hosted with ❤ on Netlify">
+          <a href="https://www.netlify.com/" title="Hosted with ❤ on Netlify" target="_blank" rel="noopener noreferrer">
             <img
               src={netlify}
               target="_blank"
@@ -33,7 +33,7 @@ export default class Footer extends Component {
               alt="GitHub"
             />
           </a>
-          <a href="https://www.gatsbyjs.org/" title="Built with Gatsby">
+          <a href="https://www.gatsbyjs.org/" title="Built with Gatsby" target="_blank" rel="noopener noreferrer">
             <img
               src={gatsby}
               target="_blank"
