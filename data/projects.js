@@ -16,7 +16,7 @@ export default [
     title: 'rSlashVideos',
     path: 'http://arbazsiddiqui.github.io/rSlashVideos',
     source: 'https://github.com/arbazsiddiqui/rSlashVideos',
-    description: '"Watch" any subreddit. Fetches videos from any subreddit and includes filters like hot, top of all time, top of year.',
+    description: '"Watch" any subreddit.',
 	  language : 'javascript'
   },
   {
