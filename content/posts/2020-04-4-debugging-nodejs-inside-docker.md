@@ -13,7 +13,9 @@ tags:
 
 ## Introduction
 
-With the rise of microservice architecture, the tooling around it has grown tremendously with docker becoming the defacto choice for containerization. A docker container is much lighter that a full fledged virtual machine and allows you to run your applications inside a sandbox environment which is completely isolated from the host machine. These application can then be packaged for easy sharing across multiple platforms. As your services are encapsulated inside a container, we don't have as much liberty to debug them in real time, as we do when running our service locally without docker. The container OS is running in isolation from your local machine OS. As a result of this we wont be able to make changes to our code and have them reflect in real time and also we wont be able to make request to our servers from outside the containers. In this article we will look at how to dockerize your Node.js application and then debug them in real time when running inside docker containers. 
+With the rise of microservice architecture, the tooling around it has grown tremendously with docker becoming the defacto choice for containerization. A docker container is much lighter than a full fledged virtual machine and allows you to run your applications inside a sandbox environment which is completely isolated from the host machine. These application can then be packaged for easy sharing across multiple platforms.
+
+As your services are encapsulated inside a container, we don't have as much liberty to debug them in real time, as we do when running our service locally without docker. The container OS is running in isolation from your local machine OS. As a result of this we wont be able to make changes to our code and have them reflect in real time and also we wont be able to make request to our servers from outside the containers. In this article we will look at how to dockerize your Node.js application and then debug them in real time when running inside docker containers. 
 
 
 ## Setup 
@@ -32,7 +34,6 @@ app.get('/', async (req, res) => {
 		const variableToDebug = "docker rules";
 
 		res.status(200).send({message: "Success", data : variableToDebug})
-
 	} catch (err) {
 
 		console.log(err);
@@ -48,7 +49,7 @@ This is `app.js` of our node server and can run be using `node app.js`.
 
 ## Dockerizing your app
 
-We will now dockerize our express server. We can do so just by using `docker-cli` which is a utility docker provides which can be used to interact with docker using shell. However it will a huge command with alot of flags and hence we will use `Dockerfile` for the same. A `Dockerfile` is config file which can used to configure the steps involved in building a docker image. This way we can share our server and somebody else can use our Dockerfile to build images. Create a new file with name `Dockerfile` and paste the following.
+We will now dockerize our express server. We can do so just by using `docker-cli` which is a utility docker provides that can be used to interact with docker using shell. However it will a long command with lots of flags so we will use `Dockerfile` for the same. A `Dockerfile` is config file which can used to configure the steps involved in building a docker image. This way we can share our server and somebody else can use our Dockerfile to build images. Create a new file with name `Dockerfile` and paste the following.
 
 ```bash
 FROM node:latest
@@ -66,15 +67,17 @@ CMD node app.js
 EXPOSE 3000
 ```
 
-`FROM` specifies the container base image: node:latest. This image will contain the latest node and npm installed on it.
+`FROM` specifies the container base image: node:latest. This image will contain the latest node and npm installed on it. We can specify the version of the node image as well here.
 
-`WORKDIR` defines the folder which will contain our code inside the container.
+`WORKDIR` defines your working directory. All our run commands will execute in this directory. We will also use this directory as base directory for our code.
 
-`COPY` is used to copy files from your local file to container directory. Docker builds each line of a Dockerfile individually. This forms the 'layers' of the Docker image. As an image is built, Docker caches each layer. Hence when we copy package.json and package-lock.json to our directory and `RUN` `npm install` before doing the `COPY` of complete codebase, it allows us to take adavantage of caching. As a result of above order, docker will cache for `node_modules` and wont install again unless you change `package.json`.
+`COPY` is used to copy files from your local directory to container directory. Docker builds each line of a Dockerfile individually. This forms the 'layers' of the Docker image. As an image is built, Docker caches each layer. Hence when we copy package.json and package-lock.json to our directory and `RUN` `npm install` before doing the `COPY` of complete codebase, it allows us to take advantage of caching. As a result of above order, docker will cache for `node_modules` and wont install again unless you change `package.json`.
 
-`CMD` is used to fire shell commands which be executed inside the container. We use this to start our server.
+`CMD` is used to fire shell commands which will be executed when the container starts. We will use this to start our server.
 
 `EXPOSE` does not publish the port, but instead functions as a way of documenting which ports on the container will be published at runtime. We will open the ports while running the image.
+
+> While RUN and CMD both are used to execute commands insider container, RUN lets you execute commands inside of your Docker image. These commands get executed once at build time and get written into your Docker image as a new layer. CMD lets you define a default command to run when your container starts.
 
 Use this command to build the image of our application :
 
@@ -92,13 +95,13 @@ node-docker         latest              0567f36cdb70        About a minute ago  
 node                latest              c31fbeb964cc        About a minute ago   943 MB
 ```
 
-We have build the image and we will use this image to run a container. Think of image as a recipes and container as a cake. You can make (run) as many cakes (running instance of image) from the recipe (image). Use this command to start the container : 
+We have built the image and now we will use this image to run a container. Think of image as a recipe and container as a cake. You can make (run) as many cakes (running instance of image) from the recipe (image). Use this command to start the container : 
 
 ```terminal
 docker run --rm -it --name node-docker -p 3000:3000 node-docker
 ```
 
-The `--rm` flag automatically stops and removes the container once the container exits. The `-i` and `-t` flag combined allows you to work with interactive processes like shell. The `-p` flag maps a local port 3000 to a container port 3000. This is our gateway into container. We can ping `localhost:3000` which will hit the local 3000 port and then the container will forward that request to our server running on 3000 inside it. This will start up your server as well and you can verify by : 
+The `--rm` flag automatically stops and removes the container once the container exits. The `-i` and `-t` flag combined allows you to work with interactive processes like shell. The `-p` flag maps a local port 3000 to a container port 3000. This is our gateway into container. We can ping `localhost:3000` which will hit the local 3000 port and then the container will forward that request to our server running on port 3000 inside it. This will start up your server as well and you can verify by : 
 
 ```terminal
 curl --location --request GET 'http://localhost:3000'
@@ -106,22 +109,22 @@ curl --location --request GET 'http://localhost:3000'
 {"message":"Success","data":"docker rules"}
 ```
 
-## Interacting with docker 
-We have fully dockerized our server and now its running inside an isolated container. Two things to note from the above setup is :
+## Interacting with Docker 
+We have fully dockerized our server and now its running inside an isolated container. Two things to note from the above setup are :
 
-1) We have configured dockerfile to `COPY` the code from our local directory into the `/app` directory of container. This means that any changes you make post building the image wont be reflected and you will have to build the image again in order to incorporate those changes.
+1) We have configured dockerfile to `COPY` the code from our local directory to the `/app` directory inside the container. This means that any changes you make post building the image wont be reflected and you will have to build the image again in order to incorporate those changes.
 
 2) We have to open ports on a container and map it to any internal ports if we want to access. So if we have some other process running on some port we can open it and access it outside our container. 
 
-We will solve first one by configuring the docker to use our local directory for code and not copy it at the time of building. We will use the second one to start some debug processes which we can attach to our debuggers. 
+We will solve first one by configuring the docker to use our local directory for code and not copy it at the time of building image. We will use the second one to start some debug processes which we can attach to our debuggers. 
 
-## Debugging inside docker
+## Debugging Inside Docker
 
-### Console.log aka caveman debugging 
+### Console.log aka Caveman Debugging 
 
-Caveman debugging is a way of logging variables and strings inside your code so that you can see the statements when that code path triggers. While it is frowned upon we have all been guilty of it and it might actually be helpful in case of naive usecases. Useful or not, knowing how to do so using docker will still help us. 
+Caveman debugging is a way of logging variables and strings inside your code so that you can see the statements when that code path triggers. While it is frowned upon we have all been guilty of it and it might actually be helpful in case of simple usecases. Useful or not, knowing how to do so using docker will still help us. 
 
-As mentioned that docker copies over the code from your directory while building the image so our dynamic `console.log` wont reflect in the code base. To do so, we will have to use [bind mount](https://docs.docker.com/storage/bind-mounts/) to mount our local directory as the code directory inside container. To do we just have to remove the copying and installing step from our dockerfile. So our new `Dockerfile` looks like this :
+As mentioned above that docker copies over the code from your directory while building the image so our dynamic `console.log` wont reflect in the code base. To do so, we will have to use [bind mount](https://docs.docker.com/storage/bind-mounts/) to mount our local directory as the code directory inside the container. To do we just have to remove the copying and installing step from our dockerfile. So our new `Dockerfile` looks like this :
 
 ```bash
 FROM node:latest
@@ -139,7 +142,7 @@ We will build the image again using `docker build -t node-docker .` Now while ru
 docker run --rm -it --name node-docker -v $PWD:/app -p 3000:3000 node-docker
 ```
 
-The `-v` flag mounts a local folder into a container folder using this mapping as its arguments `<local relative path>:<container absolute path>`. As our `WORKDIR` is `/app` we use `/app` for container directory and `pwd` to for our current code. This will spawn our server using code on our local machine instead of creating a copy of it inside the container. 
+The `-v` flag mounts a local folder into a container folder, using this mapping as its arguments `<local relative path>:<container absolute path>`. As our `WORKDIR` is `/app` we use `/app` for container directory and `PWD` to pick the code from local machine. This will spawn our server using code on our local machine instead of creating a copy of it inside the container. 
 
 But there is still a problem, even when you are running a server without docker, a code change is not reflected on you server untill you restart your server. This where `nodemon` comes in. [Nodemon](https://www.npmjs.com/package/nodemon) is a neat tool to restart your server automatically as soon as a code change happens. It basically watches all the files inside a directory and triggers a restart when something changes. 
 
@@ -169,7 +172,7 @@ EXPOSE 3000
 
 Run the container using same command : `docker run --rm -it --name node-docker -v $PWD:/app -p 3000:3000 node-docker`.
 
-Now our container will use nodemon to start the server and nodemon will restart the server inside the container if any code change occurs. Since the nodemon will be watching the code on local machine we can make changes and it will reflect in real time! Lets verify this by making the change to response of our api and hitting it the api again. We don't need to build image or even restart the container.
+Now our container will use nodemon to start the server and nodemon will restart the server inside the container if any code change occurs. Since the nodemon will be watching the code on local machine we can make changes and it will reflect in real time! Lets verify this by making the change to response of our api and hitting it again. We don't need to build image or even restart the container.
 
 ```js
 try {
@@ -188,9 +191,9 @@ curl --location --request GET 'http://localhost:3000'
 
 ### Using Debuggers
 
-For more sophisticated folks who have evolved from caveman to civilized people we will want to use debugger to debug our application. Debuggers allow you to set breakpoints inside your code and allows you see variable values at that particular point in execution.
+For more sophisticated folks who have evolved from caveman to civilized people we will want to use debugger to debug our application. Debuggers allow you to set breakpoints inside your code and see variable values at that particular point in execution.
 
-Before using a debugger inside docker, first lets see how does a debugger works. When you start your node server with `--inspect` flag, a Node.js process starts and starts listening on a port. Any inspector client can attach itself to this process, be it an IDE debugger or Chrome DevTools. 
+Before using a debugger inside docker, first lets see how does a it work. When you start your node server with `--inspect` flag, a Node.js process is spawned listening on a particular port. Any inspector client can attach itself to this process, be it an IDE debugger or Chrome DevTools. 
 
 So debugger is just another process running on some port. If we had been debugging without docker we would just attach our debugging client on 9229 (default port) and things will work. As we can expose port from container to local machine we will use this trick to expose debug process as well. 
 
