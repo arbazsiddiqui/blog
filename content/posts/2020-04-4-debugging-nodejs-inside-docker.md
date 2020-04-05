@@ -138,7 +138,7 @@ EXPOSE 3000
 
 We will build the image again using `docker build -t node-docker .` Now while running the container we will specify the mount point and location to mount inside the container. Our run command now becomes :
 
-```
+```terminal
 docker run --rm -it --name node-docker -v $PWD:/app -p 3000:3000 node-docker
 ```
 

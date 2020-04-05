@@ -95,7 +95,7 @@ pm.sendRequest(reqObject, (err, res) => {
 
 We were successfully able to chain reqeust and save us manual work of making an extra API call. This is a one time effort of writing the script but will save you tons of pain and time.
 
-### How does this works?
+### How does this work?
 
 Postman provides us with a javaScript execution environment called Postman Sandbox. This sandbox is available to us in pre-request scripts and hence allows us to run javascript. Apart from `pm.globals` and `pm.sendRequest` we have used in this article postman sandbox provides us with a ton of more sandbox [API](https://learning.postman.com/docs/postman/scripts/postman-sandbox-api-reference/) to help us implement complex logic in script.
 
