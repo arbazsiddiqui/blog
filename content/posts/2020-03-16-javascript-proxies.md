@@ -6,6 +6,7 @@ thumbnail: '../thumbnails/js.png'
 slug: javascript-proxies-real-world-use-cases
 categories:
   - Code
+  - Popular
 tags:
   - javascript
   - proxy

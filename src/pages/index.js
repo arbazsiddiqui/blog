@@ -13,6 +13,7 @@ export default class Index extends Component {
     const { data } = this.props
 
     const latestPostEdges = data.latest.edges
+	  const popularPostEdges = data.popular.edges
 
     return (
       <Layout>
@@ -60,6 +61,16 @@ export default class Index extends Component {
             </h2>
             <PostListing simple postEdges={latestPostEdges} />
           </section>
+
+	        <section className="section">
+		        <h2>
+			        Most Popular
+			        <Link to="/categories/popular" className="view-all">
+				        View all
+			        </Link>
+		        </h2>
+		        <PostListing simple postEdges={popularPostEdges} />
+	        </section>
         </div>
       </Layout>
     )
@@ -69,7 +80,7 @@ export default class Index extends Component {
 export const pageQuery = graphql`
   query IndexQuery {
     latest: allMarkdownRemark(
-      limit: 6
+      limit: 3
       sort: { fields: [fields___date], order: DESC }
       filter: { frontmatter: { template: { eq: "post" } } }
     ) {
