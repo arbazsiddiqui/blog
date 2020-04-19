@@ -6,7 +6,7 @@ import Layout from '../layout'
 import PostListing from '../components/PostListing'
 import SEO from '../components/SEO'
 import config from '../../data/SiteConfig'
-import arbaz from '../../content/images/profile.jpg'
+import arbaz from '../../content/images/profile.jpeg'
 
 export default class Index extends Component {
   render() {
