@@ -81,7 +81,7 @@ A DNS spoofing attack is performed by injecting a fake entry into the local cach
 There are other MITM attacks that can be carried out over the internet like [BGP hijacking](https://en.wikipedia.org/wiki/BGP_hijacking) but are extremely complicated and require a lot of resources to carry out.
 
 ## Eavesdropping 
-Now that an attacker has intercepted the data being passed, he/she needs to extract valuable information from it. There are measures in place to stop an attacker from doing so and hence an attacker must over come them. Below are few methods an attacker can use to eavesdrop. 
+Now that an attacker has intercepted the data being passed, step three is that he/she needs to extract valuable information from it. There are measures in place to stop an attacker from doing so and hence an attacker must over come them. Below are few methods an attacker can use to eavesdrop. 
 
 #### SSL Striping 
 
