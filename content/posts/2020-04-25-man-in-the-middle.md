@@ -53,7 +53,7 @@ There are multiple ways of carrying out a MITM attack and be broadly classified 
 First being attacks that need to be executed on the same network. These attacks can be only carried out if your network is compromised by attacker or in the other words if the attacker is on your wifi or lan. 
 Second being the attacks which doesn't require attackers to be on same network and be carried out over the public internet. 
 
-#### Network attacks
+### Network attacks
 We discussed in [Gaining network access](#gaining-network-access) section how an attacker can breach your wifi and become a legit part of your network. The reason they want to gain access to your network is in order to launch the actual MITM attack so they can intercept all the data thats being sent and received by you. Below are techniques an attacker can use in order to do so.
 
 #### ARP Spoofing (ARP Cache Poisoning)
