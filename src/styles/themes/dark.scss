@@ -2,13 +2,14 @@ $background: #202020;
 $foreground: #b3b9c5;
 $accent: #303030;
 $dark-border: darken($background, 3%);
+$dark-primary: $tag;
 
 .dark {
   background: $background;
   color: $foreground;
 
   a {
-    color: lighten($primary-color, 10%);
+    color: $dark-primary;
 
     &:hover,
     &:active,
@@ -394,12 +395,13 @@ $dark-border: darken($background, 3%);
     background: linear-gradient(to bottom right, #333333, #1f1f1f);
     box-shadow: 0.5rem 1.25rem 1.75rem 0 rgba(0, 0, 0, 0.6);
     a.button {
-      background: darken($primary-color, 25%) !important;
-      color: white !important;
+      background: #111 !important;
+      color: $dark-primary !important;
       &:hover,
       &:focus,
       &:active {
-        background: #111 !important;
+        background: #080808 !important;
+        color: lighten($dark-primary, 10%) !important;
       }
     }
   }
