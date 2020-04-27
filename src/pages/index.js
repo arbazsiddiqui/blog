@@ -41,7 +41,7 @@ export default class Index extends Component {
 		          <div>
 			          <h3>Email Newsletter</h3>
 			          <p>
-				          Subscribe to get an update when something new comes out!
+				          Get an update when something new comes out by signing up below!
 			          </p>
 			          <a className="button" href="https://arbazsiddiqui.substack.com" target="_blank" rel="noopener noreferrer">
 				          Subscribe
