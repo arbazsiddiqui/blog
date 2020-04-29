@@ -17,16 +17,16 @@ const config = {
   userTwitter: 'arbazsiddiqui_',
   menuLinks: [
     {
-      name: 'About me',
-      link: '/me/',
-    },
-    {
       name: 'Articles',
       link: '/blog/',
     },
 	  {
 		  name: 'Projects',
 		  link: '/projects/',
+	  },
+	  {
+		  name: 'About me',
+		  link: '/me/',
 	  }
   ],
   themeColor: '#1f1f1f', // Used for setting manifest and progress theme colors.
