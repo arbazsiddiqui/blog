@@ -10,11 +10,14 @@ export default class SEO extends Component {
     let title
     let description
     let image = ''
+	  let date;
     let postURL
+	  console.log(postNode)
 
     if (postSEO) {
       const postMeta = postNode.frontmatter
-      title = postMeta.title
+      title = postMeta.title;
+	    date = postMeta.date;
       description = postMeta.description ? postMeta.description : postNode.excerpt
       if (postMeta.thumbnail) {
         image = postMeta.thumbnail.childImageSharp.fixed.src
@@ -66,6 +69,24 @@ export default class SEO extends Component {
             '@type': 'ImageObject',
             url: image,
           },
+	        author: {
+		        '@type': "Person",
+		        "name": "Arbaz Siddiqui"
+	        },
+	        datePublished : date,
+	        dateModified : date,
+	        mainEntityOfPage : {
+		        "@type": "WebPage",
+		        "@id": config.siteUrl
+	        },
+	        publisher: {
+		        "@type": "Person",
+		        "name": "Arbaz Siddiqui",
+		        "logo": {
+			        "@type": "ImageObject",
+			        "url": urljoin(config.siteUrl, config.siteLogo)
+		        }
+	        },
           description,
         }
       )
