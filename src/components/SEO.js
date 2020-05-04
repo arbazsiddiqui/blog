@@ -12,7 +12,6 @@ export default class SEO extends Component {
     let image = ''
 	  let date;
     let postURL
-	  console.log(postNode)
 
     if (postSEO) {
       const postMeta = postNode.frontmatter
@@ -80,7 +79,7 @@ export default class SEO extends Component {
 		        "@id": config.siteUrl
 	        },
 	        publisher: {
-		        "@type": "Person",
+		        "@type": "Organization",
 		        "name": "Arbaz Siddiqui",
 		        "logo": {
 			        "@type": "ImageObject",
