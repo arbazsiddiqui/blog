@@ -6,6 +6,7 @@ thumbnail: '../thumbnails/nodejs.png'
 slug: a-practical-guide-to-memory-leaks-in-nodejs
 categories:
   - Tutorial
+  - Popular
 tags:
   - node
   - memory
