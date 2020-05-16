@@ -24,11 +24,11 @@ Second will be demonstrating interaction with web pages and hence fetching IMDb 
 
 ![IMDb ratings on Rotten Tomatoes](../images/rottenFinal.gif)
 
-You can find the complete code [here](https://github.com/arbazsiddiqui/IMDB-Lookup-Extension).
-
 Notice how all movie titles are appended with `({imdbRating})` after we click on extension icon.
 
 The reason for the dual purpose is to demonstrate how to build background extensions (background scripts), extensions which interact with active web page (content scripts) and how to communicate between the two (message passing).
+
+You can find the complete code [here](https://github.com/arbazsiddiqui/IMDB-Lookup-Extension).
 
 ### Setup
 Every chrome extension requires a `manifest.json` file. Think of it as configuration file which will tell chrome how to treat this extension. Lets just create a basic manifest file with : 
