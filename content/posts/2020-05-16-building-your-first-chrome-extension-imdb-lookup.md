@@ -14,7 +14,7 @@ tags:
 ---
 
 ## Introduction
-Browser extensions are programs which can modify and enhance your browsing experience. From small UI enhancements to automations, extensions can be used and built for a wide array of use cases. In this article we will look at a step by step guide to build a chrome extension.
+Browser extensions are programs which can modify and enhance your browsing experience. From small UI enhancements to automation, extensions can be used and built for a wide array of use cases. In this article we will look at a step by step guide to build a chrome extension.
 
 What are we building? Well our extension will have two jobs, first will be to fetch [IMDb](https://www.imdb.com/) details of any movie from the context menu (right click menu), like this :
 
@@ -48,7 +48,7 @@ Every chrome extension requires a `manifest.json` file. Think of it as configura
 }
 ```
 
-`name` and `description` are self descriptive and will be same on the chrome web store when you publish your app. 
+`name` and `description` are self descriptive and will be same on the chrome web store when you publish your extension. 
 
 Background scripts are the javascript files which will be running in the background across all pages. They don't have access to current web page and hence can't access DOM for reading or manipulations but they do have access to all [chrome APIs](https://developer.chrome.com/extensions/api_index). As we need to create a new entry in the [context menu](https://developer.chrome.com/extensions/contextMenus) of chrome, we will be using a background script.
 
@@ -102,7 +102,7 @@ Reload your extension and test it out!
 
 ![Get the highlighted text](../images/contextHighlight.gif)
 
-So we are now able to get the highlighted text to our event handler and now are free to make API calls. We are going to use [OMDb API](https://www.omdbapi.com/) for fetching IMDd details. Make the following changes to your `background.js` :
+So we are now able to get the highlighted text to our event handler and now are free to make API calls. We are going to use [OMDb API](https://www.omdbapi.com/) for fetching IMDb details. Make the following changes to your `background.js` :
 
 ```js
 //create a context menu
@@ -140,7 +140,7 @@ chrome.contextMenus.create({
 });
 ```
 
-> I am putting my own OMDb's API here so that you can follow the tutorial with least friction. However if this breaks the internet 🤞and this api key usage reaches the limit, you can claim your free api key from [here](https://www.omdbapi.com/apikey.aspx).
+> I am putting my own OMDb's api key here so that you can follow the tutorial with least friction. However if this breaks the internet 🤞and this api key usage reaches the limit, you can claim your free api key from [here](https://www.omdbapi.com/apikey.aspx).
 
 
 We are making a simple GET call using fetch and then displaying the result. Lets try this out. 
@@ -150,7 +150,7 @@ We are making a simple GET call using fetch and then displaying the result. Lets
 Thats it. We have successfully completed the first part of the tutorial.
 
 ### Interacting with webpages
-Lets look at our next use case, i.e. displaying IMBd rating next to movie titles on homepage of [Rotten Tomatoes](https://www.rottentomatoes.com/). We wont be able to do this inside our `background.js` file as it doesn't have access to active webpage and hence its DOM. To do this we will have to write [content scripts](https://developer.chrome.com/extensions/content_scripts). Content scripts are files that run in the context of web pages. They will have access to DOM and can read and manipulate it. Add the following to your `manifest.json`
+Lets look at our next use case, i.e. displaying IMDb rating next to movie titles on homepage of [Rotten Tomatoes](https://www.rottentomatoes.com/). We wont be able to do this inside our `background.js` file as it doesn't have access to active webpage and hence its DOM. To do this we will have to write [content scripts](https://developer.chrome.com/extensions/content_scripts). Content scripts are files that run in the context of web pages. They will have access to DOM and can read and manipulate it. Add the following to your `manifest.json`
 
 ```js
 "content_scripts": [{
@@ -163,7 +163,7 @@ Lets look at our next use case, i.e. displaying IMBd rating next to movie titles
 
 This piece of configuration tells chrome to load `content.js` file into the webpage whenever the current webpage's URL matches `https://www.rottentomatoes.com/*`. As a result of this we will have access to webpage's DOM inside our `content.js` file. 
 
-Create a `content.js` file, add the following lines and lets test our setup. 
+Create a `content.js` file and add the following lines :
 
 ```js
 //content.js
@@ -223,7 +223,7 @@ Voila! We are now able to see IMDb rating on Rotten Tomatoes.
 
 But wait, this is not what we wanted. The DOM was supposed to be manipulated only when we click on our extension's icon on the toolbar and NOT by default. 
 
-We have a problem now. Clicking on extension's icon is a Chrome event and hence our `content.js` wont have access to it and hence wont be able to trigger the `fetchRatings` functions. Our `background.js` file will have access to the chrome event but it doesn't have access to DOM and hence cant manipulate it. 
+We have a problem now. Clicking on extension's icon is a Chrome event and hence our `content.js` wont have access to it and hence wont be able to trigger the `fetchRatings` function. Our `background.js` file will have access to the chrome event but it doesn't have access to DOM and hence cant manipulate it. 
 
 If we can find some way to trigger `content.js` from `background.js` we will be able to achieve the desired behavior.
 
