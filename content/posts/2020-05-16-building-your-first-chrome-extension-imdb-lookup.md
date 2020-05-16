@@ -249,7 +249,7 @@ chrome.browserAction.onClicked.addListener(function (tab) {
 });
 ```
 
-We listening to `browserAction.onClicked` and then firing a payload to active tab where our `content.js` is running. Lets add an event listener to our `content.js`
+We listening to `browserAction.onClicked` and then firing a payload to active tab where our `content.js` is running. Lets replace `content.js` with an event listener :
 
 ```js
 chrome.runtime.onMessage.addListener(
