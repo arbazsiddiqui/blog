@@ -102,7 +102,7 @@ Reload your extension and test it out!
 
 ![Get the highlighted text](../images/contextHighlight.gif)
 
-So we are now able to get the highlighted text to our event handler and now are free to make API calls. We are going to use [OMDb API](https://www.omdbapi.com/) for fetching IMDb details. Make the following changes to your `background.js` :
+So we are now able to get the highlighted text to our event handler and are free to make API calls. We are going to use [OMDb API](https://www.omdbapi.com/) for fetching IMDb details. Make the following changes to your `background.js` :
 
 ```js
 //create a context menu
@@ -207,15 +207,15 @@ const fetchRatings = () => {
     $(".media-lists__td-title").map(async function () {
         const name = this.innerText;
         const response = await fetch(`https://www.omdbapi.com/?t=${name}&apikey=e48e70b4`)
-        const data = await response.json()
-        this.innerText = `${name} (${data.imdbRating})`
+        const {imdbRating} = await response.json()
+        this.innerText = `${name} (${imdbRating})`
     })
 }
 
 fetchRatings();
 ```
 
-It some jQuery magic and the same OMDb API call to fetch rating. Lets test this out. 
+Its some jQuery magic and the same OMDb API call to fetch rating. Lets test this out. 
 
 ![IMDb ratings on reload](../images/rottenReload.gif)
 
@@ -279,8 +279,8 @@ const fetchRatings = () => {
     $(".media-lists__td-title").map(async function () {
         const name = this.innerText;
         const response = await fetch(`https://www.omdbapi.com/?t=${name}&apikey=e48e70b4`)
-        const data = await response.json()
-        this.innerText = `${name} (${data.imdbRating})`
+        const {imdbRating} = await response.json()
+        this.innerText = `${name} (${imdbRating})`
     })
 }
 ```
