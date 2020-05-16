@@ -140,7 +140,7 @@ chrome.contextMenus.create({
 });
 ```
 
-> I am putting my own OMDb's API here so that you can follow it with least friction. However if this breaks the internet 🤞and this api key usage reaches the limit, you can claim your free api key from [here](https://www.omdbapi.com/apikey.aspx).
+> I am putting my own OMDb's API here so that you can follow the tutorial with least friction. However if this breaks the internet 🤞and this api key usage reaches the limit, you can claim your free api key from [here](https://www.omdbapi.com/apikey.aspx).
 
 
 We are making a simple GET call using fetch and then displaying the result. Lets try this out. 
