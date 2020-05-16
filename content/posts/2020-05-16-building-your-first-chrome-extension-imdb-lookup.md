@@ -265,7 +265,7 @@ Reload the extension and test it out.
 
 ![Message received](../images/messageReceived.gif)
 
-Message received ! So we have found way to pass on trigger from background to foreground. The final flow becomes *chrome event> backgorund.js > content.js*. Finally we can incorporate our logic inside the event handler so our **final** content.js becomes :
+Message received ! So we have found way to pass on trigger from background to foreground. The final flow becomes *chrome event> background.js > content.js*. Finally we can incorporate our logic inside the event handler so our **final** content.js becomes :
 
 ```js
 chrome.runtime.onMessage.addListener(
