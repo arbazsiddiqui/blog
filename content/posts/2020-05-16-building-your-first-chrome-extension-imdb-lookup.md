@@ -14,7 +14,7 @@ tags:
 ---
 
 ## Introduction
-Browser extension are programs which can modify and enhance your browsing experience. From small UI enhancements to automations, extensions can be used and built for a wide array of use cases. In this article we will look at a step by step guide to build a chrome extension.
+Browser extensions are programs which can modify and enhance your browsing experience. From small UI enhancements to automations, extensions can be used and built for a wide array of use cases. In this article we will look at a step by step guide to build a chrome extension.
 
 What are we building? Well our extension will have two jobs, first will be to fetch [IMDb](https://www.imdb.com/) details of any movie from the context menu (right click menu), like this :
 
@@ -48,7 +48,8 @@ Every chrome extension requires a `manifest.json` file. Think of it as configura
 }
 ```
 
-`name` and `description` are self descriptive will be same on the chrome web store when you publish your app. 
+`name` and `description` are self descriptive and will be same on the chrome web store when you publish your app. 
+
 Background scripts are the javascript files which will be running in the background across all pages. They don't have access to current web page and hence can't access DOM for reading or manipulations but they do have access to all [chrome APIs](https://developer.chrome.com/extensions/api_index). As we need to create a new entry in the [context menu](https://developer.chrome.com/extensions/contextMenus) of chrome, we will be using a background script.
 
 `browser_action` is used to put icons in the main Google Chrome toolbar, to the right of the address bar. You will have to add some `icon.png` file to your working directory.
