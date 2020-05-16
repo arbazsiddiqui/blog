@@ -107,11 +107,11 @@ So we are now able to get the highlighted text to our event handler and now are 
 ```js
 //create a context menu
 chrome.contextMenus.create({
-    //string to display on menu
-    'title': 'Search IMDB for "%s"',
-    //contexts here is selection as we want to extract the highlighted text.
-    'contexts': ['selection'],
-    //the event handler
+	//string to display on menu
+	'title': 'Search IMDB for "%s"',
+	//contexts here is selection as we want to extract the highlighted text.
+	'contexts': ['selection'],
+	//the event handler
 	'onclick': async (context) => {
 		const name = context.selectionText;
 		const response = await fetch(`https://www.omdbapi.com/?t=${name}&apikey=e48e70b4`)
