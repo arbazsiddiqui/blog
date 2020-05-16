@@ -293,4 +293,4 @@ This is it. We have built the extension we wanted.
 
 ### Conclusion
 
-Browser extensions are extremely powerful and can change the way we browse internet. Some really successfully companies today started out as an extension. In this article we learnt how to build a  pure background extension, how to build a pure foreground extension and how to build hybrid extension by communicating between the two. The complete code can be found [here](https://github.com/arbazsiddiqui/IMDB-Lookup-Extension).
+Browser extensions are extremely powerful and can change the way we browse internet. Some really successfully companies today started out as an extension. In this article we learnt how to build a  background extension, how to build an extension which manipulates UI and how to build hybrid extension by communicating between the two. The complete code can be found [here](https://github.com/arbazsiddiqui/IMDB-Lookup-Extension).
