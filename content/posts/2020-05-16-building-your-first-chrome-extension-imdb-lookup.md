@@ -202,6 +202,7 @@ As we need to manipulate DOM, we might as well use [jQuery](https://jquery.com/)
 ```
 
 Now we can do the following in our `content.js` 
+
 ```js
 const fetchRatings = () => {
     $(".media-lists__td-title").map(async function () {
