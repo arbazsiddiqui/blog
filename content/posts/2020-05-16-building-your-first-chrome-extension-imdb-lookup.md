@@ -38,13 +38,13 @@ Every chrome extension requires a `manifest.json` file. Think of it as configura
   "name": "IMDb Lookup",
   "description": "Display IMDb rating from context menu and on rotten tomatoes",
   "version": "0.1",
-  "manifest_version": 2
+  "manifest_version": 2,
   "background": {
     "scripts": ["background.js"]
   },
   "browser_action": {
     "default_icon": "icon.png"
-  },
+  }
 }
 ```
 
