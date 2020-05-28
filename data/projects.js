@@ -20,9 +20,9 @@ export default [
 	  language : 'javascript'
   },
   {
-    title: 'MEAN Skeleton',
-    source: 'https://github.com/arbazsiddiqui/MEAN-skeleton/',
-    description: 'A MVC skeleton for quick starting neat MEAN web apps.',
+    title: 'Node Skeleton',
+    source: 'https://github.com/arbazsiddiqui/node-skeleton',
+    description: 'A Node skeleton for quick starting neat MEAN web apps.',
 	  language : 'javascript'
   },
   {
