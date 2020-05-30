@@ -1,4 +1,0 @@
-This is a Brave Rewards publisher verification file.
-
-Domain: arbazsiddiqui.me
-Token: 5f381e79328c33b77d4932def11f6d820b61c1d23d2f8b6ff4663e0aa70d72cd

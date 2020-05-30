@@ -118,8 +118,8 @@ $dark-primary: $tag;
 
   .note {
     .note-container {
-      background: linear-gradient(to bottom right, #333333, #1f1f1f);
-      box-shadow: 0.5rem 1.25rem 1.75rem 0 rgba(0, 0, 0, 0.6);
+      background: rgba(0,0,0,.2);
+      box-shadow: none;
       p,
       button,
       a {
@@ -391,8 +391,8 @@ $dark-primary: $tag;
   }
 
   .newsletter-section {
-    background: linear-gradient(to bottom right, #333333, #1f1f1f);
-    box-shadow: 0.5rem 1.25rem 1.75rem 0 rgba(0, 0, 0, 0.6);
+    background: rgba(0,0,0,.2);
+    box-shadow: none;
     a.button {
       background: #111 !important;
       color: $dark-primary !important;
