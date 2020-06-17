@@ -9,7 +9,7 @@ I have a keen interest in distributed computing and like to build systems for sc
 
 I am a history buff and during my free time I love to consume Internet.
 
-[Subscribe](https://arbazsiddiqui.substack.com) my newsletter to get an update when something new comes out!
+[Subscribe](https://arbazsiddiqui.substack.com) to my newsletter to get an update when something new comes out!
 
 ## Contact :
 
