@@ -7,7 +7,6 @@ slug: building-your-first-chrome-extension-imdb-lookup
 categories:
   - Tutorial
   - Code
-  - Popular
 tags:
   - javascript
   - extensions
