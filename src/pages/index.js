@@ -30,6 +30,7 @@ export default class Index extends Component {
                 <GitHubButton
                   href="https://github.com/arbazsiddiqui"
                   data-size="large"
+                  data-show-count="true"
                 >
                   arbazsiddiqui
                 </GitHubButton>
