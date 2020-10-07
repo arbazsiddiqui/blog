@@ -10,15 +10,17 @@ const ThemeContext = React.createContext(defaultState)
 
 class ThemeProvider extends Component {
   state = {
-    dark: true,
     notFound: false,
   }
 
   componentDidMount() {
-    const lsDark = JSON.parse(localStorage.getItem('dark'))
+    let isDark = JSON.parse(localStorage.getItem('dark'))
+    if (isDark == null) {
+      isDark = true
+    }
 
-    if (lsDark) {
-      this.setState({ dark: lsDark })
+    if (isDark) {
+      this.setState({ dark: isDark })
     }
   }
 
