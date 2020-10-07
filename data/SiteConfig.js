@@ -17,7 +17,7 @@ const config = {
   userTwitter: 'arbazsiddiqui_',
   menuLinks: [
     {
-      name: 'Articles',
+      name: 'Blog',
       link: '/blog/',
     },
 	  {
