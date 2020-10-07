@@ -4,7 +4,7 @@ slug: me
 template: page
 ---
 
-I am Arbaz Siddiqui, full stack stack web developer currently building [Insider](https://insider.in/).
+I am Arbaz Siddiqui, full stack stack web developer currently building [Multi](https://multi.io).
 I have a keen interest in distributed computing and like to build systems for scale.
 
 I am a history buff and during my free time I love to consume Internet.
