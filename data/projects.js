@@ -7,17 +7,17 @@ export default [
 	  language : 'javascript'
   },
   {
-    title: 'Anabranch',
-    source: 'https://github.com/arbazsiddiqui/anabranch',
-    description: 'A HTTP load balancer and reverse proxy written in Go.',
-	  language : 'golang'
-  },
-  {
     title: 'rSlashVideos',
     path: 'http://arbazsiddiqui.github.io/rSlashVideos',
     source: 'https://github.com/arbazsiddiqui/rSlashVideos',
     description: '"Watch" any subreddit.',
-	  language : 'javascript'
+    language : 'javascript'
+  },
+  {
+    title: 'Anabranch',
+    source: 'https://github.com/arbazsiddiqui/anabranch',
+    description: 'A HTTP load balancer and reverse proxy written in Go.',
+	  language : 'golang'
   },
   {
     title: 'Node Skeleton',
