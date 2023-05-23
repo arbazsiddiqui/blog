@@ -39,7 +39,7 @@
     "url-join": "^4.0.1"
   },
   "resolutions": {
-    "sharp": "^0.24.1"
+    "sharp": "^0.32.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
