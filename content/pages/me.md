@@ -15,6 +15,8 @@ I am a history buff and during my free time I love to consume Internet.
 
 - **Email**: [arbaz00@gmail.com](mailto:arbaz00@gmail.com)
 - **GitHub**: [arbazsiddiqui](https://github.com/arbazsiddiqui)
+- **LinkedIn**: [arbazsiddiqui](https://www.linkedin.com/in/arbazsiddiqui)
 - **Stack Overflow**: [arbazsiddiqui](https://stackoverflow.com/users/5182824/arbaz-siddiqui)
 - **Newsletter**: [arbazsiddiqui](https://arbazsiddiqui.substack.com)
 - **Feed**: [RSS](https://www.arbazsiddiqui.me/rss.xml)
+- **Resume**: [PDF](../images/ArbazSiddiquiResume.pdf)
