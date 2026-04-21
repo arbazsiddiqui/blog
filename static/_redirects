@@ -7,3 +7,9 @@
 /articles/               /blog/
 /thoughts/               /blog/
 /search/                 /
+
+# iOS app pages — canonical location
+/ios/iris/privacy        /ios/iris/privacy.html     301
+/ios/iris/support        /ios/iris/support.html     301
+/ios/mercuro/privacy     /ios/mercuro/privacy.html  301
+/ios/mercuro/support     /ios/mercuro/support.html  301
