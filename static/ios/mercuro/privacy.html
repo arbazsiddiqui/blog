@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mercuro — Privacy Policy</title>
-  <meta name="description" content="Mercuro privacy policy. Puzzle progress stored locally, no accounts required.">
+  <meta name="description" content="Mercuro privacy policy. Puzzle progress is stored locally, optional Apple sync uses iCloud, and ads can be removed permanently.">
   <link rel="stylesheet" href="../style.css">
   <style> :root { --accent: #E5363A; --accent-bg: #FDF2F2; } </style>
 </head>
@@ -19,42 +19,52 @@
     <a href="./">Home</a>
     <a href="privacy.html" class="active">Privacy</a>
     <a href="support.html">Support</a>
+    <a href="terms.html">Terms</a>
   </nav>
 
   <main>
     <h1>Privacy Policy</h1>
-    <p class="page-sub">Mercuro: Thermometer Logic Puzzles · Last updated: April 2026</p>
+    <p class="page-sub">Mercuro: Thermometer Logic Puzzles · Last updated: May 2026</p>
 
     <div class="highlight-box">
-      <strong>The short version:</strong> Mercuro requires no account and collects no personal data. Your progress lives on your device. The free version shows ads — one-time purchase removes them permanently.
+      <strong>The short version:</strong> Mercuro can be used without an account. Your active puzzle state lives on your device. Optional Apple sync uses your personal iCloud account. The free version can show ads — one-time purchase removes them permanently.
     </div>
 
     <h2>Data We Store (On Your Device)</h2>
-    <p>Mercuro stores your puzzle progress, solve history, streaks, and settings locally in your device's Application Support directory. This data is backed up as part of your standard iCloud Backup but is not shared across devices via iCloud Drive.</p>
-    <p>No data is ever transmitted to our servers.</p>
+    <p>Mercuro stores your current puzzle state, solved puzzle history, solve times, streaks, settings, purchases, and unlock state locally in your device's Application Support directory.</p>
+    <p>Current in-progress puzzle grids are local-only. If you delete the app, local-only in-progress grids are removed.</p>
+    <p>Mercuro does not operate a server for your game progress.</p>
 
-    <h2>No Account Required</h2>
-    <p>Mercuro does not require you to create an account, sign in, or provide any personal information. The app is fully functional without any login.</p>
+    <h2>Sign in with Apple and iCloud Sync</h2>
+    <p>Sign in with Apple is optional. If you connect Apple ID, Mercuro stores your Apple user identifier locally and uses Apple's iCloud Key-Value Store to sync recoverable progress: solved puzzles, solve times, streaks, purchases, hints-used counters, and unlock state.</p>
+    <p>Mercuro does not receive your Apple ID password. Apple may provide your name or email during sign-in if you choose to share it; Mercuro stores that locally only to show account state in Settings.</p>
+    <p>You can disconnect Apple ID inside Mercuro Settings. You can remove iCloud app data from iOS Settings → [Your Name] → iCloud → Manage Account Storage → Mercuro → Delete Data.</p>
 
     <h2>Daily Puzzle Generation</h2>
     <p>Daily puzzles are generated on your device using a date-based seed — the same date produces the same puzzles for all players globally. No network request is made to generate or retrieve puzzles.</p>
 
     <h2>Advertising</h2>
-    <p>The free version of Mercuro displays ads served by Google AdMob. Before the ad SDK is initialised, Mercuro presents Apple's App Tracking Transparency (ATT) prompt. If you decline tracking, only contextual (non-personalised) ads are shown.</p>
-    <p>AdMob may collect device identifiers and coarse location for ad serving. Your puzzle progress and game data are never used for ad targeting.</p>
+    <p>The free version of Mercuro can display ads served by Google AdMob. Before ad tracking is used, Mercuro presents Apple's App Tracking Transparency prompt. If you decline tracking, only contextual or non-personalized ads are shown where supported.</p>
+    <p>AdMob may collect device identifiers, coarse location, and ad interaction information for ad serving and fraud prevention. Your puzzle progress, solve history, and grid state are never sent to Mercuro servers for ad targeting.</p>
     <p>You can remove all ads permanently with a one-time in-app purchase.</p>
 
     <h2>In-App Purchases</h2>
-    <p>Mercuro offers in-app purchases (remove ads, hint packs) processed entirely by Apple through the App Store. We do not receive or store your payment information.</p>
+    <p>Mercuro offers a one-time Go Ad-Free purchase processed entirely by Apple through the App Store. We do not receive or store your payment information.</p>
 
     <h2>Apple Game Center</h2>
-    <p>Mercuro integrates with Apple Game Center for leaderboards and achievements. Game Center is governed by Apple's own Privacy Policy. Participation is optional and can be disabled in your iOS Settings.</p>
+    <p>Mercuro integrates with Apple Game Center for leaderboards and achievements. Game Center can receive leaderboard scores and achievement progress such as solved puzzle counts, streaks, and completion milestones. Game Center is governed by Apple's own Privacy Policy and can be managed in iOS Settings.</p>
 
     <h2>Analytics</h2>
-    <p>Mercuro may use an analytics service (such as Mixpanel or Amplitude) to understand aggregate usage patterns — e.g., which puzzles are most often started or abandoned. If enabled, this collects only anonymised, non-personal event data. No puzzle content, solve times linked to identifiable users, or personal information is collected.</p>
+    <p>Mercuro does not currently include a third-party analytics SDK for product analytics.</p>
 
     <h2>Crash Reporting</h2>
-    <p>Mercuro may use a crash reporting service to capture stack traces when the app crashes. Crash reports contain device type, iOS version, and a stack trace. They do not contain personal information or puzzle data.</p>
+    <p>Mercuro does not currently include a third-party crash reporting SDK. Apple may provide developers with crash reports and diagnostics if you choose to share analytics with app developers in iOS Settings.</p>
+
+    <h2>Notifications</h2>
+    <p>If you enable Daily Reminder, Mercuro schedules a local notification on your device at 9:00 AM. Reminder scheduling does not send notification content to a Mercuro server.</p>
+
+    <h2>Data Deletion</h2>
+    <p>Deleting Mercuro removes local in-progress puzzle state and local settings from your device. Data synced through iCloud can be removed from iOS Settings → [Your Name] → iCloud → Manage Account Storage → Mercuro → Delete Data.</p>
 
     <h2>Children's Privacy</h2>
     <p>Mercuro is rated 4+ and is suitable for all ages. We do not knowingly collect personal information from children under 13. The App Tracking Transparency framework ensures compliant ad targeting for all users.</p>
@@ -71,6 +81,7 @@
     <div class="footer-links">
       <a href="./">Mercuro Home</a>
       <a href="support.html">Support</a>
+      <a href="terms.html">Terms</a>
       <a href="../">All Apps</a>
     </div>
   </footer>
