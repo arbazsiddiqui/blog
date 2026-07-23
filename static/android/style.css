@@ -1,0 +1,300 @@
+/* arbazsiddiqui.me/ios — shared stylesheet for all iOS app pages.
+   Override --accent in a <style> block on each app's pages. */
+
+:root {
+  --accent:      #4A4A4A;
+  --accent-bg:   #F4F0EC;
+  --bg:          #FAFAF8;
+  --text:        #1A1A1A;
+  --text-muted:  #666666;
+  --border:      #E2DDD5;
+  --max:         680px;
+  --nav-height:  52px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  padding: 0 20px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Header ──────────────────────────────────────────────────── */
+
+header {
+  max-width: var(--max);
+  margin: 56px auto 0;
+}
+
+.app-wordmark {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: -0.04em;
+  display: block;
+  line-height: 1;
+}
+
+.app-tagline {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+  letter-spacing: 0.01em;
+}
+
+/* ── Nav ─────────────────────────────────────────────────────── */
+
+nav {
+  max-width: var(--max);
+  margin: 20px auto 0;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border-top: 1.5px solid var(--text);
+  border-bottom: 1.5px solid var(--text);
+  height: var(--nav-height);
+}
+
+nav a {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  padding: 0 16px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid var(--border);
+  transition: color 0.12s, background 0.12s;
+}
+
+nav a:last-child { border-right: none; }
+
+nav a:hover  { color: var(--accent); background: var(--accent-bg); }
+nav a.active { color: var(--accent); }
+
+nav .nav-home {
+  font-size: 0.72rem;
+  color: var(--border);
+  padding: 0 14px 0 0;
+  border-right: 1px solid var(--border);
+}
+
+nav .nav-home:hover { color: var(--text-muted); background: none; }
+
+/* ── Main content ────────────────────────────────────────────── */
+
+main {
+  max-width: var(--max);
+  margin: 48px auto 80px;
+}
+
+/* Hero (index pages) */
+.hero {
+  margin-bottom: 48px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;
+  padding: 12px 24px;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hero-cta:hover { opacity: 0.88; }
+
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  margin-top: 24px;
+}
+
+.hero-links a {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hero-links a:hover { text-decoration: underline; }
+
+/* Privacy / legal pages */
+h1 {
+  font-size: 2.1rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.page-sub {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text);
+  margin: 36px 0 12px;
+}
+
+p { margin-bottom: 14px; color: #3A3A3A; font-size: 0.97rem; }
+p:last-child { margin-bottom: 0; }
+
+ul, ol { padding-left: 20px; margin-bottom: 14px; }
+li { font-size: 0.97rem; color: #3A3A3A; margin-bottom: 6px; }
+
+a { color: var(--accent); }
+a:hover { text-decoration: underline; }
+
+.highlight-box {
+  background: var(--accent-bg);
+  border-left: 3px solid var(--accent);
+  padding: 14px 18px;
+  margin-bottom: 32px;
+  font-size: 0.97rem;
+  color: var(--text);
+}
+
+.highlight-box strong { color: var(--accent); }
+
+/* Support page */
+.support-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 32px 0;
+}
+
+.support-card {
+  border: 1.5px solid var(--border);
+  padding: 20px;
+}
+
+.support-card h3 {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.support-card p { font-size: 0.92rem; margin-bottom: 10px; }
+
+.support-card a.cta-link {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.support-card a.cta-link:hover { text-decoration: underline; }
+
+/* iOS apps overview page */
+.app-list { margin-top: 40px; }
+
+.app-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+  text-decoration: none;
+  color: inherit;
+}
+
+.app-row:first-child { border-top: 1px solid var(--border); }
+
+.app-dot {
+  width: 48px;
+  height: 48px;
+  background: var(--app-color, #888);
+  flex-shrink: 0;
+}
+
+.app-row-info h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.app-row-info p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+.app-row-arrow {
+  margin-left: auto;
+  font-size: 0.85rem;
+  color: var(--border);
+}
+
+.app-row:hover .app-row-arrow { color: var(--text-muted); }
+
+/* ── Footer ──────────────────────────────────────────────────── */
+
+footer {
+  max-width: var(--max);
+  margin: 0 auto 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+footer p, footer a {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  margin-bottom: 0;
+}
+
+footer a:hover { color: var(--accent); }
+
+.footer-links { display: flex; gap: 20px; }
+
+/* ── Responsive ──────────────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .app-wordmark { font-size: 2rem; }
+  h1 { font-size: 1.7rem; }
+  .support-grid { grid-template-columns: 1fr; }
+  nav a { padding: 0 12px; }
+}
