@@ -1,0 +1,111 @@
+---
+import Base from '../layouts/Base.astro';
+import { Image } from 'astro:assets';
+import calendar from '../assets/iris/01_calendar.png';
+import partner from '../assets/iris/03_partner.png';
+import privacy from '../assets/iris/10_privacy.png';
+
+const shots = [
+  { img: calendar, alt: 'Iris calendar view with color-coded cycle phases' },
+  { img: partner, alt: 'Iris partner sharing, a read-only dashboard for a partner' },
+  { img: privacy, alt: 'Iris privacy screen, data stays on the phone' },
+];
+
+const jsonLdApp = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Iris: Period & Cycle Tracker',
+  operatingSystem: 'iOS',
+  applicationCategory: 'HealthApplication',
+  aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', ratingCount: '12' },
+  author: { '@type': 'Person', name: 'Arbaz Siddiqui' },
+  url: 'https://www.arbazsiddiqui.me/iris',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+};
+const jsonLd = [jsonLdApp, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.arbazsiddiqui.me/"}, {"@type": "ListItem", "position": 2, "name": "Projects", "item": "https://www.arbazsiddiqui.me/projects/"}, {"@type": "ListItem", "position": 3, "name": "Iris", "item": "https://www.arbazsiddiqui.me/iris/"}]}];
+---
+
+<Base
+  title="Iris, a privacy-first period tracker"
+  description="Every feature free, no subscription, no data sharing. Symptothermal-method fertility tracking, partner sharing, Apple Health sync, 12 languages. 4.9★ on the App Store."
+  jsonLd={jsonLd}
+  ogImage="/og/iris.jpg"
+>
+  <article class="narrow section">
+    <p class="kicker">iOS app · live · 4.9★</p>
+    <h1 class="page-title">Iris</h1>
+    <p class="lede">
+      A complete cycle-tracking suite built on a refusal. No subscription,
+      no locked features, and no health data leaving the phone. The category
+      leaders charge $60 a year and share data with third parties. Iris
+      charges nothing and can't share what it never collects.
+    </p>
+
+    <dl class="facts">
+      <dt>Platform</dt><dd>iPhone, iPad, Mac, Vision · <a href="https://apps.apple.com/app/id6761134901">App Store</a></dd>
+      <dt>Rating</dt><dd>4.9★ worldwide · 1,000+ downloads</dd>
+      <dt>Languages</dt><dd>12, from Japanese to Polish, 820 localized strings each</dd>
+      <dt>Model</dt><dd>Free forever · optional $2.99 one-time to remove ads</dd>
+      <dt>Data</dt><dd>On device; optional sync to the user's own iCloud. No servers, no accounts, no analytics SDKs</dd>
+      <dt>Stack</dt><dd>SwiftUI · Swift Charts · HealthKit · CloudKit · StoreKit 2 · ~57K lines, 98 test files</dd>
+    </dl>
+
+    <div class="shots">
+      {shots.map((s) => (
+        <Image src={s.img} alt={s.alt} width={420} widths={[280, 420, 640]} sizes="(max-width: 640px) 90vw, 280px" loading="lazy" />
+      ))}
+    </div>
+
+    <div class="prose">
+      <h2>Engineering notes</h2>
+      <p>
+        The prediction engine goes past calendar math. It learns each user's
+        luteal-phase length, shifts ovulation estimates when an LH test is
+        logged, and confirms ovulation from basal body temperature with a
+        proper coverline and three-reading thermal shift. That is the
+        symptothermal method, implemented honestly. There is a PCOS-friendly
+        irregular mode that gives ranges instead of false-confidence dates,
+        and contraceptive and postpartum modes that change the whole model
+        rather than hiding a few buttons.
+      </p>
+      <p>
+        The rest of the suite is included, not upsold. A colour-coded
+        calendar and fertile window, ovulation and PMS phases, fourteen
+        symptoms plus mood, discharge, sleep and weight logging, BBT charts,
+        pill and hydration reminders, postpartum milestones, two-way Apple
+        Health sync, partner sharing, PDF health reports for a doctor, and
+        twelve languages. Every one of those is free.
+      </p>
+      <p>
+        Partner sharing publishes a read-only snapshot through CloudKit,
+        with no account and no server of mine in the middle. Reports render to PDF for
+        doctors. Every feature works offline.
+      </p>
+      <h2>Growth, also automated</h2>
+      <p>
+        Iris markets itself. A content pipeline generates infographic
+        posters with an image model, gates every one against a written
+        creative contract (word caps, mobile-safe geometry, a diversity
+        ledger so no two posts repeat a topic or a look), and publishes
+        them as Instagram Reels, Stories, and Pinterest pins on a daily
+        schedule. The App Store listing runs localized ASO: screenshots and
+        metadata in eleven languages, produced by another pipeline. One
+        person ships the whole stack: product, engineering, distribution.
+        The full write-up is at <a href="/iris-pipeline">the Iris growth
+        pipeline</a>.
+      </p>
+      <h2>Links</h2>
+      <p>
+        <a href="https://apps.apple.com/app/id6761134901">App Store</a>
+      </p>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .page-title { margin-block: 0.35rem 0.8rem; }
+  .lede { margin-bottom: 1.6rem; }
+    .shots { display: flex; gap: 1rem; margin-bottom: 2.4rem; }
+  .shots img { border-radius: 14px; }
+  @media (max-width: 640px) { .shots { flex-direction: column; } }
+</style>

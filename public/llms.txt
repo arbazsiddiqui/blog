@@ -1,0 +1,47 @@
+# Arbaz Siddiqui
+
+> Software engineer. Nine years of distributed backends for consumer products, now
+> building AI infrastructure and shipping products with it: an open language model,
+> live iOS apps, and autonomous content pipelines. Based in India, works with US and
+> EU timezones.
+
+## Projects
+
+- [Ozan-12B](https://www.arbazsiddiqui.me/ozan): open creative-writing LLM fine-tuned
+  from Mistral-Nemo with QLoRA and anti-slop DPO on $40 of GPU. Lowest slop score of
+  any 12B on EQ-Bench Creative Writing v3, beats Gemma 27B. #1 trending on Hugging
+  Face for a week; 2.3K downloads in month one. Weights and full recipe are public.
+- [The Footnote](https://www.arbazsiddiqui.me/footnote): fully autonomous media
+  channel publishing short history stories twice a day to Instagram, YouTube, and
+  Facebook. 500K monthly views, no human in the loop. Python, Remotion, local TTS,
+  vision-model image judging, zero-cost archival image sourcing.
+- [Iris](https://www.arbazsiddiqui.me/iris): free period and cycle tracker for iOS.
+  4.9 stars, 12 languages, symptothermal method, PCOS support, partner sharing,
+  Apple Health sync. Health data never leaves the phone.
+- [Mercuro](https://www.arbazsiddiqui.me/mercuro): thermometer logic-puzzle game with
+  its own constraint solver and generator. 660 handcrafted puzzles. Native SwiftUI on
+  iOS and native Kotlin/Compose on Android.
+- [Animated Horror / Andheri Dastak](https://www.arbazsiddiqui.me/horror): pipeline
+  that turns a written premise into a finished animated Hindi horror film for under
+  $1, on rented GPUs. Krea 2 / Z-Image character sheets, Qwen-Image-Edit keyframes,
+  Wan 2.2 animation, LTX foley.
+- [Iris growth pipeline](https://www.arbazsiddiqui.me/iris-pipeline): automated
+  marketing for Iris. AI infographic posters gated by a written creative contract,
+  published daily to Instagram and Pinterest. 100K+ views driving installs.
+
+## Work
+
+- [About](https://www.arbazsiddiqui.me/about): Principal Software Engineer at Turnip
+  (2020-present; scaled backend to 25M users, built an agent platform where 10
+  non-engineers shipped 17 tools). Previously Lead Backend Engineer at Paytm Insider.
+
+## Writing
+
+- [Articles](https://www.arbazsiddiqui.me/blog): technical deep dives on Node.js,
+  networking, and web internals.
+
+## Contact
+
+- Email: arbaz00@gmail.com
+- GitHub: https://github.com/arbazsiddiqui
+- Hugging Face: https://huggingface.co/arbazsiddiqui

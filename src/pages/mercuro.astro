@@ -1,0 +1,94 @@
+---
+import Base from '../layouts/Base.astro';
+import { Image } from 'astro:assets';
+import hero from '../assets/mercuro/01_hero_clean.png';
+import daily from '../assets/mercuro/02_daily_clean.png';
+import themes from '../assets/mercuro/04_themes_clean.png';
+
+const shots = [
+  { img: hero, alt: 'Mercuro gameplay, filling mercury tubes against row and column clues' },
+  { img: daily, alt: 'Mercuro daily puzzles: Warm-Up, Daily, and Challenge' },
+  { img: themes, alt: 'Mercuro themes, nine visual styles' },
+];
+
+const jsonLdApp = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Mercuro: Thermometers Puzzle',
+  operatingSystem: 'iOS',
+  applicationCategory: 'GameApplication',
+  author: { '@type': 'Person', name: 'Arbaz Siddiqui' },
+  url: 'https://www.arbazsiddiqui.me/mercuro',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+};
+const jsonLd = [jsonLdApp, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.arbazsiddiqui.me/"}, {"@type": "ListItem", "position": 2, "name": "Projects", "item": "https://www.arbazsiddiqui.me/projects/"}, {"@type": "ListItem", "position": 3, "name": "Mercuro", "item": "https://www.arbazsiddiqui.me/mercuro/"}]}];
+---
+
+<Base
+  title="Mercuro, a calm thermometer logic puzzle"
+  description="A grid-deduction puzzle game with its own solver and generator: 660 curated puzzles, seeded dailies, nine themes. Native SwiftUI on iOS, native Kotlin/Compose on Android."
+  jsonLd={jsonLd}
+  ogImage="/og/mercuro.jpg"
+>
+  <article class="narrow section">
+    <p class="kicker">iOS + Android game · live on iOS</p>
+    <h1 class="page-title">Mercuro</h1>
+    <p class="lede">
+      Fill the thermometers to match the clues. A quiet, sudoku-adjacent
+      logic game: no timers screaming at you, no energy systems, and the
+      free game is complete.
+    </p>
+
+    <dl class="facts">
+      <dt>Platform</dt><dd>iPhone, iPad, Mac, Vision · <a href="https://apps.apple.com/app/id6762402072">App Store</a> · Android in closed testing</dd>
+      <dt>Reception</dt><dd>Featured in several gaming newsletters</dd>
+      <dt>Content</dt><dd>660 curated puzzles across 8 board sizes · 3 seeded daily puzzles · 40 achievements · 9 themes</dd>
+      <dt>Model</dt><dd>Free game, complete · $4.99 one-time Pro, $2.99 remove ads · no subscription</dd>
+      <dt>iOS stack</dt><dd>Pure SwiftUI (no game engine), Swift 6 strict concurrency, GameKit, StoreKit 2 · ~38K lines</dd>
+      <dt>Android stack</dt><dd>Native Kotlin + Jetpack Compose, pixel-parity port · ~40K lines, 73 test files</dd>
+    </dl>
+
+    <div class="shots">
+      {shots.map((s) => (
+        <Image src={s.img} alt={s.alt} width={420} widths={[280, 420, 640]} sizes="(max-width: 640px) 90vw, 280px" loading="lazy" />
+      ))}
+    </div>
+
+    <div class="prose">
+      <h2>Engineering notes</h2>
+      <p>
+        <strong>The game engine.</strong> Its own puzzle mathematics. A
+        constraint solver that proves every board has exactly one solution,
+        a generator that searches for boards with clean deduction chains,
+        and a seeded random core so the whole world gets the same three
+        dailies without a server round-trip.
+      </p>
+      <p>
+        <strong>The hint engine.</strong> It does not fill a cell for you.
+        It finds the next move that is provable from what is already on the
+        board and explains the deduction, so a stuck player learns the
+        technique instead of losing the puzzle.
+      </p>
+      <p>
+        <strong>The polish.</strong> Nine themes, custom sound design,
+        haptics on every commit, 40 achievements and a rank ladder, Game
+        Center leaderboards, and offline play with iCloud sync. Built
+        natively twice, SwiftUI on iOS and Kotlin with Compose on Android,
+        against one shared puzzle core down to pixel-parity screenshot
+        tests.
+      </p>
+      <h2>Links</h2>
+      <p>
+        <a href="https://apps.apple.com/app/id6762402072">App Store</a>
+      </p>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .page-title { margin-block: 0.35rem 0.8rem; }
+  .lede { margin-bottom: 1.6rem; }
+    .shots { display: flex; gap: 1rem; margin-bottom: 2.4rem; }
+  .shots img { border-radius: 14px; }
+  @media (max-width: 640px) { .shots { flex-direction: column; } }
+</style>

@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const jsonLd = {"@context": "https://schema.org", "@type": "Blog", "name": "Writing by Arbaz Siddiqui", "url": "https://www.arbazsiddiqui.me/blog/", "author": {"@type": "Person", "name": "Arbaz Siddiqui", "url": "https://www.arbazsiddiqui.me"}};
+---
+
+<Base
+  title="Writing"
+  description="Articles on Node.js, networking, and web internals by Arbaz Siddiqui, several featured in JavaScript newsletters."
+  jsonLd={jsonLd}
+>
+  <section class="narrow section">
+    <h1 class="page-title">Writing</h1>
+    <p class="soft intro">
+      Deep dives from my Node.js years: memory leaks, proxies, CORS, DNS.
+      Several were picked up by JavaScript newsletters and are still doing the
+      rounds. New writing about the AI-era projects is on the way; the
+      <a href="https://arbazsiddiqui.substack.com">newsletter</a> will carry it first.
+    </p>
+    <ul class="post-list">
+      {posts.map((post) => (
+        <li>
+          <a href={`/${post.data.slug}/`}>{post.data.title}</a>
+          <span class="mono soft">{post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' })}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+</Base>
+
+<style>
+  .page-title { margin-bottom: 0.8rem; }
+  .intro { max-width: 36rem; margin-bottom: 2.4rem; }
+  .post-list { list-style: none; padding: 0; }
+  .post-list li { display: flex; justify-content: space-between; gap: 1.5rem; align-items: baseline; padding-block: 0.8rem; border-bottom: 1px solid var(--line); }
+  .post-list a { text-decoration: none; font-size: 1.1rem; }
+  .post-list a:hover { text-decoration: underline; }
+  .post-list .mono { flex-shrink: 0; font-size: 0.75rem; }
+</style>

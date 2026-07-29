@@ -1,0 +1,91 @@
+---
+import Base from '../layouts/Base.astro';
+import Work from '../components/Work.astro';
+import { WORKS } from '../data/works';
+import { SITE } from '../data/site';
+import { getCollection } from 'astro:content';
+
+import ozanBanner from '../assets/ozan/ozan_banner.png';
+import footnoteBanner from '../assets/footnote/banner.png';
+import irisCard from '../assets/iris-card.png';
+import mercuroCard from '../assets/mercuro-card.png';
+import horrorCard from '../assets/horror-card.png';
+import irisPipelineCard from '../assets/iris-pipeline-card.png';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Arbaz Siddiqui',
+  url: SITE.url,
+  email: `mailto:${SITE.email}`,
+  jobTitle: 'Principal Software Engineer',
+  description: SITE.description,
+  sameAs: [SITE.github, SITE.huggingface, SITE.linkedin],
+};
+---
+
+<Base jsonLd={jsonLd}>
+  <div class="hall">
+    <header class="entry">
+      <h1 class="wall-title rise">Arbaz Siddiqui</h1>
+      <p class="walltext rise">
+        Software engineer. Nine years of backends for consumer products, and
+        at <a href="/about">Turnip</a> I built and scaled the platform to 25M
+        users. Now I work as an indie dev across the whole product lifecycle,
+        from idea to distribution and growth, mostly on open-weights models
+        squeezed for high-quality automation at the lowest cost. An open
+        language model, various apps, media channels that publish without me.
+      </p>
+      <p class="contact rise">
+        <a href={SITE.github}>GitHub</a>
+        <a href={SITE.huggingface}>Hugging Face</a>
+        <a href={`mailto:${SITE.email}`}>Email</a>
+      </p>
+    </header>
+
+    <section class="room">
+      <h2 class="room-label">Model training</h2>
+      <Work hero {...WORKS.ozan} img={ozanBanner} />
+    </section>
+
+    <section class="room">
+      <h2 class="room-label">Apps</h2>
+      <div class="works pair">
+        <Work {...WORKS.iris} img={irisCard} />
+        <Work {...WORKS.mercuro} img={mercuroCard} />
+      </div>
+    </section>
+
+    <section class="room">
+      <h2 class="room-label">Content creation automations</h2>
+      <div class="works trio">
+        <Work {...WORKS.footnote} img={footnoteBanner} />
+        <Work {...WORKS.irisPipeline} img={irisPipelineCard} />
+        <Work {...WORKS.horror} img={horrorCard} />
+      </div>
+    </section>
+
+    <section class="room">
+      <h2 class="room-label">Writing</h2>
+      <ul class="rows">
+        {posts.slice(0, 4).map((post) => (
+          <li class="post-row">
+            <a class="row-link" href={`/${post.data.slug}/`}>{post.data.title}</a>
+            <span class="row-meta">{post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' })}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="more"><a href="/blog">All posts →</a></p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .entry { padding-top: clamp(2rem, 4.5vw, 3.2rem); }
+  .entry .walltext { margin-top: 1.4rem; font-size: 1.16rem; line-height: 1.7; }
+  .contact { display: flex; gap: 1.5rem; margin-top: 1.7rem; font-size: 1.02rem; }
+</style>

@@ -1,0 +1,202 @@
+/* THE EXHIBITION — see DESIGN.md
+   Gallery-white world; works hang on one centered axis; placards carry the facts. */
+
+/* ---------- fonts ---------- */
+@font-face {
+  font-family: 'Hanken Grotesk Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('/fonts/hanken.woff2') format('woff2-variations');
+}
+@font-face {
+  font-family: 'Hanken Grotesk Variable';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('/fonts/hanken-italic.woff2') format('woff2-variations');
+}
+@font-face {
+  font-family: 'Fragment Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('/fonts/fragment-mono.woff2') format('woff2');
+}
+
+/* ---------- tokens ---------- */
+:root {
+  --bg: #ffffff;
+  --fg: #17181a;
+  --soft: #64696e;
+  --faint: #6f747a;
+  --link: #a63a2b;
+  --accent: #a63a2b;
+  --ink: #17181b;
+  --ink-fg: #f2efe7;
+  --ink-soft: #b6b1a5;
+  --accent-on-ink: #e08d6d;
+  --line: #e8e8e6;
+  --code-bg: #f6f6f4;
+  --sans: 'Hanken Grotesk Variable', ui-sans-serif, system-ui, sans-serif;
+  --mono: 'Fragment Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --hall: 54rem;
+  --measure: 54rem;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  color-scheme: light;
+}
+:root[data-theme='dark'] {
+  --bg: #0f1011;
+  --fg: #ececea;
+  --soft: #a2a7ab;
+  --faint: #8b9196;
+  --link: #d9836b;
+  --accent: #d9836b;
+  --ink: #0b0c0d;
+  --ink-fg: #f2efe7;
+  --ink-soft: #b6b1a5;
+  --accent-on-ink: #e08d6d;
+  --line: #232527;
+  --code-bg: #17191b;
+  color-scheme: dark;
+}
+
+/* ---------- reset ---------- */
+html { scrollbar-gutter: stable; }
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--sans);
+  font-size: 1.0925rem;
+  line-height: 1.66;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+img, video, svg { max-width: 100%; height: auto; display: block; }
+p { text-wrap: pretty; }
+a { color: var(--link); text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--link) 35%, transparent); text-underline-offset: 3px; }
+a:hover { text-decoration-color: currentColor; }
+nav a, footer a, .placard .w-title a, .row-link, .onview a, .more a { text-decoration: none; }
+.row-link:hover, .onview a:hover, .more a:hover { text-decoration: underline; text-underline-offset: 3px; }
+button { font: inherit; background: none; border: none; cursor: pointer; color: inherit; padding: 0; }
+::selection { background: color-mix(in srgb, var(--link) 22%, transparent); }
+
+/* ---------- layout: the hall ---------- */
+.hall { width: min(100% - clamp(2.4rem, 7vw, 5rem), var(--hall)); margin-inline: auto; }
+.walltext { max-width: none; }
+
+/* ---------- type ---------- */
+h1, h2, h3 { line-height: 1.18; letter-spacing: -0.018em; text-wrap: balance; }
+.wall-title { font-size: clamp(2.7rem, 2rem + 3vw, 3.8rem); font-weight: 750; letter-spacing: -0.028em; }
+.page-title { font-size: 2.35rem; font-weight: 690; margin-bottom: 0.4rem; }
+.kicker { font-style: italic; color: var(--soft); font-size: 1.02rem; }
+.mono { font-family: var(--mono); font-size: 0.82rem; }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.soft { color: var(--soft); }
+
+/* ---------- rooms ---------- */
+.room { margin-top: clamp(2.4rem, 4.5vw, 3.4rem); }
+.room-label {
+  display: flex; align-items: baseline; gap: 1.4rem;
+  font-size: clamp(1.6rem, 1.1rem + 1.8vw, 2.2rem); font-weight: 740; letter-spacing: -0.022em;
+  margin-bottom: clamp(1.2rem, 2vw, 1.7rem);
+}
+.room-label::after { content: ''; flex: 1; border-top: 2px solid var(--fg); opacity: 0.14; align-self: center; }
+
+/* ---------- works & placards ---------- */
+.works { display: grid; gap: clamp(1.9rem, 3.5vw, 2.6rem) 2rem; }
+@media (min-width: 720px) {
+  .works.pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .works.trio { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.9rem, 3.5vw, 2.6rem) 1.6rem; }
+}
+.work { display: flex; flex-direction: column; }
+.work .placard { display: flex; flex-direction: column; flex: 1; }
+.work .placard .onview { margin-top: 0.5rem; min-height: 3.2rem; }
+.work .placard:not(:has(.stat)) .onview { margin-top: auto; }
+.work .placard:not(:has(.onview))::after { content: ''; height: 3.7rem; }
+.frame {
+  display: block; overflow: hidden; border-radius: 4px;
+  outline: 1px solid oklch(0 0 0 / 0.08); outline-offset: -1px;
+  background: var(--code-bg);
+  transition: box-shadow 260ms var(--ease);
+}
+:root[data-theme='dark'] .frame { outline-color: oklch(1 0 0 / 0.12); }
+.frame img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 16 / 10; transition: transform 500ms var(--ease); }
+@media (min-width: 760px) {
+  .work-hero { display: grid; grid-template-columns: 1.45fr 1fr; gap: 2.2rem; align-items: center; }
+  .work-hero .placard { margin-top: 0; }
+  .work-hero .placard .sentence { max-width: none; }
+}
+a.frame:hover { box-shadow: 0 2px 8px oklch(0 0 0 / 0.07), 0 18px 44px -12px oklch(0 0 0 / 0.18); }
+a.frame:hover img { transform: scale(1.02); }
+
+.placard { margin-top: 1.05rem; }
+.placard .w-title { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.018em; }
+.placard .w-title a { color: inherit; }
+.placard .w-title a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.placard .medium { font-style: italic; color: var(--soft); font-size: 1rem; margin-top: 0.15rem; }
+.placard .sentence { margin-top: 0.5rem; font-size: 1.02rem; }
+.placard .stat { font-family: var(--mono); font-size: 0.84rem; color: var(--soft); margin-top: auto; padding-top: 0.65rem; font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.onview { display: flex; gap: 0.9rem; flex-wrap: wrap; font-size: 0.92rem; align-content: flex-start; }
+
+/* work settles in as it enters the viewport (progressive; no-op unsupported) */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .work { animation: settle both; animation-timeline: view(); animation-range: entry 0% entry 42%; }
+    @keyframes settle { from { opacity: 0.15; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+  }
+  .rise { opacity: 0; transform: translateY(8px); animation: rise 560ms var(--ease) forwards; }
+  .rise:nth-child(2) { animation-delay: 70ms; }
+  .rise:nth-child(3) { animation-delay: 140ms; }
+  .rise:nth-child(4) { animation-delay: 210ms; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+}
+
+/* ---------- lists (writing, oss) ---------- */
+.rows { list-style: none; padding: 0; }
+.rows > li { padding-block: 0.65rem; border-bottom: 1px solid var(--line); }
+.rows > li:first-child { border-top: 1px solid var(--line); }
+.row-link { color: var(--fg); font-weight: 600; }
+.row-desc { color: var(--soft); }
+.row-meta { font-family: var(--mono); font-size: 0.92rem; color: var(--soft); font-variant-numeric: tabular-nums; }
+.post-row { display: flex; justify-content: space-between; gap: 1.5rem; align-items: baseline; }
+.post-row .row-meta { flex-shrink: 0; white-space: nowrap; }
+.more { margin-top: 1rem; font-size: 0.98rem; }
+
+/* ---------- prose (posts, project pages) ---------- */
+.prose { max-width: none; }
+.prose > * + * { margin-top: 1em; }
+.prose h2 { font-size: 1.4rem; margin-top: 2.1em; font-weight: 670; }
+.prose h3 { font-size: 1.15rem; margin-top: 1.7em; }
+.prose ul, .prose ol { padding-left: 1.3rem; }
+.prose li + li { margin-top: 0.3em; }
+.prose blockquote { border-left: 1px solid var(--fg); padding-left: 1.2rem; color: var(--soft); font-style: italic; }
+.prose img { border-radius: 4px; margin-block: 1.7em; outline: 1px solid oklch(0 0 0 / 0.08); outline-offset: -1px; }
+:root[data-theme='dark'] .prose img { outline-color: oklch(1 0 0 / 0.12); }
+.prose code { font-family: var(--mono); font-size: 0.84em; background: var(--code-bg); padding: 0.1em 0.32em; border-radius: 4px; }
+.prose pre { background: var(--code-bg); border: 1px solid var(--line); padding: 1rem 1.1rem; border-radius: 6px; overflow-x: auto; font-size: 0.9rem; line-height: 1.6; }
+.prose pre code { background: none; padding: 0; font-size: inherit; }
+.prose hr { border: 0; border-top: 1px solid var(--line); margin-block: 2em; }
+.prose table { border-collapse: collapse; width: 100%; font-size: 0.92rem; }
+.prose th, .prose td { border: 1px solid var(--line); padding: 0.4rem 0.65rem; text-align: left; }
+
+/* ---------- object details (project pages) ---------- */
+.facts { display: grid; grid-template-columns: 10rem 1fr; font-size: 1rem; margin-block: 2rem; border-top: 1px solid var(--line); }
+.facts dt { font-style: italic; color: var(--soft); padding-block: 0.5rem; border-bottom: 1px solid var(--line); }
+.facts dd { margin: 0; padding-block: 0.5rem; border-bottom: 1px solid var(--line); }
+@media (max-width: 560px) {
+  .facts { grid-template-columns: 1fr; border-top: 0; }
+  .facts dt { padding-bottom: 0; border-bottom: 0; }
+  .facts dd { padding-top: 0.1rem; }
+}
+
+/* ---------- every container shares the hall rail ---------- */
+.wrap, .narrow, .col { width: min(100% - clamp(2.4rem, 7vw, 5rem), var(--hall)); margin-inline: auto; }
+.section { padding-block: clamp(1.8rem, 3.5vw, 2.6rem) 0; }
+.display { font-size: 2.35rem; font-weight: 690; letter-spacing: -0.02em; }
+.lede { color: var(--soft); }
+.h { font-size: 1.05rem; font-weight: 660; margin-bottom: 1.2rem; }

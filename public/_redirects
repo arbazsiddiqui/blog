@@ -1,0 +1,11 @@
+# Redirects from what the browser requests to what we serve
+/tutorials/              /blog/                     301
+/me/                     /about/                    301
+/aboutme/                /about/                    301
+/portfolio/              /projects/                 301
+/articles/               /blog/                     301
+/thoughts/               /blog/                     301
+/search/                 /                          301
+/categories/*            /blog/                     301
+/tags/*                  /blog/                     301
+

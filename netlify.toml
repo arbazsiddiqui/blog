@@ -1,2 +1,4 @@
-[build.environment]
-  NODE_VERSION = "18"
+# This site moved to Cloudflare Pages. Fail the build so Netlify keeps
+# serving the last Gatsby deploy until DNS cuts over, then goes dormant.
+[build]
+  command = "echo 'Site moved to Cloudflare Pages' && exit 1"

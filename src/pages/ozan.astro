@@ -1,0 +1,104 @@
+---
+import Base from '../layouts/Base.astro';
+import { Image } from 'astro:assets';
+import chart from '../assets/ozan/ozan_slop_chart.png';
+import banner from '../assets/ozan/ozan_banner.png';
+
+const jsonLdApp = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'Ozan-v1-12B',
+  applicationCategory: 'DeveloperApplication',
+  operatingSystem: 'Any',
+  author: { '@type': 'Person', name: 'Arbaz Siddiqui' },
+  url: 'https://www.arbazsiddiqui.me/ozan',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+};
+const jsonLd = [jsonLdApp, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.arbazsiddiqui.me/"}, {"@type": "ListItem", "position": 2, "name": "Projects", "item": "https://www.arbazsiddiqui.me/projects/"}, {"@type": "ListItem", "position": 3, "name": "Ozan-12B", "item": "https://www.arbazsiddiqui.me/ozan/"}]}];
+---
+
+<Base
+  title="Ozan-v1-12B, a low-slop creative-writing LLM"
+  description="A 12B fine-tune of Mistral-Nemo trained to write fiction that doesn't sound like an LLM. Lowest slop score of any 12B on EQ-Bench Creative Writing v3. 2.3K downloads in month one, on $40 of GPU."
+  jsonLd={jsonLd}
+  ogImage="/og/ozan.jpg"
+>
+  <article class="narrow section">
+    <p class="kicker">Open-weights LLM · June 2026</p>
+    <h1 class="page-title">Ozan-v1-12B</h1>
+    <p class="lede">
+      A language model tuned to write long-form fiction that doesn't read
+      like a machine wrote it. <em>Ozan</em> is Turkish for storyteller.
+    </p>
+
+    <dl class="facts">
+      <dt>Base</dt><dd>Mistral-Nemo-Instruct-2407 (12B)</dd>
+      <dt>Method</dt><dd>QLoRA SFT on 17K curated examples, then Gutenberg anti-slop DPO</dd>
+      <dt>Hardware</dt><dd>One spot A100 · ~$40 of GPU, total</dd>
+      <dt>Result</dt><dd>Lowest slop score of any 12B measured on EQ-Bench Creative Writing v3. Beats bigger models like Gemma 27B</dd>
+      <dt>Reception</dt><dd>#1 trending on Hugging Face for a week after launch · 2.3K downloads in month one</dd>
+      <dt>License</dt><dd>Apache-2.0, weights + full recipe public</dd>
+    </dl>
+
+    <Image
+      src={banner}
+      alt="Ozan the storyteller, a bard with an oud: the model's namesake artwork"
+      widths={[640, 1024, 1440]}
+      sizes="(max-width: 44rem) 100vw, 44rem"
+      loading="lazy"
+      class="banner"
+    />
+
+    <div class="prose">
+      <h2>The problem</h2>
+      <p>
+        Instruct models tell decent stories in a voice you can smell from
+        across the room: “barely above a whisper,” “a testament to,” the
+        reflexive “not just X, but Y.” The community calls it slop, and it
+        comes from training on synthetic data that already contained it. The
+        base model scores 9.47 on EQ-Bench's slop metric. Ozan scores
+        <strong>5.30</strong>, a 44% cut, with the cleanest repetition score
+        in the whole comparison field and zero degenerate outputs across 96
+        test generations.
+      </p>
+
+      <Image src={chart} alt="Slop scores across models: Ozan-v1-12B scores 5.30, lower than every other 12B tested and lower than gemma-3-27b" widths={[640, 960, 1280]} sizes="(max-width: 44rem) 100vw, 44rem" />
+
+      <h2>How it was made</h2>
+      <p>
+        Everything is public and reproducible. Six open datasets were reduced
+        from 305K records to 17K by semantic dedup, a slop-density filter,
+        and 13-gram decontamination against the benchmark prompts. Supervised
+        fine-tuning ran as 4-bit QLoRA with completion-only loss, stopped
+        early when the slop metric plateaued. Then a preference pass, DPO
+        toward real public-domain book prose over AI prose, chosen from a
+        measured checkpoint curve, because one checkpoint further and the
+        gains reversed. Merged, quantized to imatrix GGUFs, shipped.
+      </p>
+
+      <h2>Received</h2>
+      <p>
+        It launched to the #1 trending spot on Hugging Face and held it
+        there for a week.
+      </p>
+      <blockquote>
+        “A genuine improvement on both slop reduction &amp; writing quality.”
+        — Sam Paech, author of EQ-Bench, the benchmark it was measured on
+      </blockquote>
+
+      <h2>Try it</h2>
+      <pre><code>ollama run hf.co/arbazsiddiqui/Ozan-v1-12B-GGUF:Q4_K_M</code></pre>
+      <p>
+        Weights: <a href="https://huggingface.co/arbazsiddiqui/Ozan-v1-12B">Ozan-v1-12B</a> ·
+        quants: <a href="https://huggingface.co/arbazsiddiqui/Ozan-v1-12B-GGUF">GGUF</a> ·
+        recipe &amp; code: <a href="https://github.com/arbazsiddiqui/Ozan">github.com/arbazsiddiqui/Ozan</a>
+      </p>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .page-title { margin-block: 0.35rem 0.8rem; }
+  .lede { margin-bottom: 1.6rem; }
+    .banner { border-radius: 10px; margin-bottom: 2.2rem; }
+</style>

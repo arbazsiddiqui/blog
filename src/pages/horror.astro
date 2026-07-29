@@ -1,0 +1,74 @@
+---
+import Base from '../layouts/Base.astro';
+import { Image } from 'astro:assets';
+import titleCard from '../assets/horror-card.png';
+
+const jsonLd = [{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Andheri Dastak (Animated Horror)", "description": "A pipeline that turns a written premise into a finished animated Hindi horror film for under a dollar, on rented GPUs.", "author": {"@type": "Person", "name": "Arbaz Siddiqui", "url": "https://www.arbazsiddiqui.me"}, "url": "https://www.arbazsiddiqui.me/horror/", "sameAs": ["https://www.youtube.com/@AndheriDastak"]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.arbazsiddiqui.me/"}, {"@type": "ListItem", "position": 2, "name": "Projects", "item": "https://www.arbazsiddiqui.me/projects/"}, {"@type": "ListItem", "position": 3, "name": "Animated Horror", "item": "https://www.arbazsiddiqui.me/horror/"}]}];
+---
+
+<Base
+  title="Animated Horror, an AI video pipeline"
+  description="A pipeline that turns a written premise into a finished animated horror film for under a dollar. Krea character sheets, Qwen-Image-Edit keyframes, Wan 2.2 animation, LTX foley, all on rented GPUs."
+  jsonLd={jsonLd}
+  ogImage="/og/horror.jpg"
+>
+  <article class="narrow section">
+    <p class="kicker">Animated video pipeline</p>
+    <h1 class="page-title">Animated Horror</h1>
+    <p class="lede">
+      Hindi horror stories, fully animated, publishing as Andheri Dastak.
+      Give the pipeline a premise and get back a finished film. Twenty-five
+      shots, coherent characters, and it renders for under a dollar. The
+      channel is live on YouTube.
+    </p>
+
+    <Image src={titleCard} alt="Andheri Dastak: Hindi horror stories" widths={[640, 1024, 1440]} sizes="(max-width: 46rem) 100vw, 46rem" loading="lazy" class="banner" />
+
+    <dl class="facts">
+      <dt>Output</dt><dd>~2:30 animated shorts, 25 shots, Hindi narration (an English folk-horror variant is in progress)</dd>
+      <dt>Status</dt><dd>Live on <a href="https://www.youtube.com/@AndheriDastak">YouTube</a></dd>
+      <dt>Compute</dt><dd>Rented consumer GPUs (RTX 5090s on Salad), spun up per render, torn down after</dd>
+      <dt>Cost</dt><dd>Under $1 for a four-minute film</dd>
+    </dl>
+
+    <div class="prose">
+      <h2>How a story becomes a film</h2>
+      <ol class="stages">
+        <li><span class="st">Script</span> A local language model writes the screenplay. Beats, shots, camera notes, and a reference description for every character.</li>
+        <li><span class="st">Character sheets</span> Krea 2 or Z-Image generates the cast once, so every face stays the same across the whole film.</li>
+        <li><span class="st">Keyframes</span> Qwen-Image-Edit-2511 poses those character sheets into each of the 25 shots. Same person, new scene, every time.</li>
+        <li><span class="st">Animation</span> Wan 2.2, a 14-billion-parameter image-to-video model, brings each keyframe to life. It runs quantized with LightX2V LoRAs inside ComfyUI, on rented consumer 5090s that the pipeline spins up and destroys per render.</li>
+        <li><span class="st">Finish</span> Real-ESRGAN upscales the clips and RIFE interpolates them to a smooth 24fps.</li>
+        <li><span class="st">Sound</span> LTX 2.3 watches the video and generates matching foley. ElevenLabs makes the effects. Narration comes through Google's TTS API, and WhisperX aligns the subtitles word by word.</li>
+      </ol>
+      <h2>What it costs</h2>
+      <p>
+        A four-minute animated film renders for under a dollar. A studio
+        quotes thousands for the same minutes, and the cheap way to fake it
+        is to let quality collapse. So the cost is the engineering. Every
+        model in the chain is open weights running on rented consumer GPUs
+        that exist only for the length of a render, the expensive steps are
+        quantized and LoRA-accelerated instead of brute-forced, and the
+        pipeline resumes rather than re-renders when something fails. Under
+        a dollar is the number that makes a channel like this possible at
+        all.
+      </p>
+      <h2>Watch</h2>
+      <p>
+        YouTube, <a href="https://www.youtube.com/@AndheriDastak">@AndheriDastak</a>.
+        Same philosophy as <a href="/footnote">The Footnote</a>, the history
+        channel this grew out of, in a different genre.
+      </p>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .page-title { margin-block: 0.35rem 0.8rem; }
+  .lede { margin-bottom: 1.6rem; }
+  .banner { border-radius: 4px; outline: 1px solid oklch(0 0 0 / 0.08); outline-offset: -1px; }
+  .stages { list-style: none; padding: 0; }
+  .stages li { padding-block: 0.75rem; border-bottom: 1px solid var(--line); margin: 0; }
+  .stages li:first-child { border-top: 1px solid var(--line); }
+  .st { display: block; font-weight: 680; margin-bottom: 0.1rem; }
+</style>

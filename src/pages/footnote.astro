@@ -1,0 +1,133 @@
+---
+import Base from '../layouts/Base.astro';
+import { Image } from 'astro:assets';
+import banner from '../assets/footnote/banner.png';
+
+const stages = [
+  ['Find and scrape', 'Scrapes candidate stories from the open web and scores them. A model gate rejects weak ones outright.'],
+  ['Research', 'Builds a sourced brief so the script has facts, not vibes.'],
+  ['Write', 'A language model drafts the script and repairs it until it validates. A local model can do this job for free.'],
+  ['Voice', 'Narration through Chatterbox and Gemini TTS. faster-whisper then aligns every word so the captions land exactly on the voice.'],
+  ['Illustrate', 'Finds real archival images through a self-hosted SearXNG metasearch over museum collections and image indexes. Nothing is generated. Qwen3-VL, a vision model, judges every image against the script before it can appear.'],
+  ['Download', 'The hard part. The downloader impersonates a real browser with curl_cffi, walks past bot detection on Yandex and Bing, ranks sources by trust, retries through proxies when blocked, and caches everything. Free web-scale image sourcing with zero API bills.'],
+  ['Render and publish', 'Remotion composes captions, imagery, and audio into vertical video. It publishes twice a day to Instagram, YouTube, and Facebook, with receipt ledgers so nothing ever posts twice.'],
+];
+
+const jsonLd = [{"@context": "https://schema.org", "@type": "CreativeWork", "name": "The Footnote", "description": "A fully autonomous media channel publishing short history stories twice a day to Instagram, YouTube, and Facebook. 500K monthly views, no human in the loop.", "author": {"@type": "Person", "name": "Arbaz Siddiqui", "url": "https://www.arbazsiddiqui.me"}, "url": "https://www.arbazsiddiqui.me/footnote/", "sameAs": ["https://www.instagram.com/thefootnotemedia/", "https://www.youtube.com/@TheFootnoteMedia"]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.arbazsiddiqui.me/"}, {"@type": "ListItem", "position": 2, "name": "Projects", "item": "https://www.arbazsiddiqui.me/projects/"}, {"@type": "ListItem", "position": 3, "name": "The Footnote", "item": "https://www.arbazsiddiqui.me/footnote/"}]}];
+---
+
+<Base
+  title="The Footnote, a media channel that runs itself"
+  description="A fully autonomous content pipeline. Research, script, voice, visuals, render, publish. Two history shorts a day with nobody in the loop, at 500K monthly views."
+  jsonLd={jsonLd}
+  ogImage="/og/footnote.jpg"
+>
+  <article class="narrow section">
+    <p class="kicker">Autonomous pipeline · live since April 2026</p>
+    <h1 class="page-title">The Footnote</h1>
+    <p class="lede">
+      Short history stories where the entire newsroom is software. Every
+      part of every video, from idea to upload, happens without a person
+      touching it.
+    </p>
+
+    <Image
+      src={banner}
+      alt="The Footnote channel banner"
+      widths={[640, 1024, 1440]}
+      sizes="(max-width: 44rem) 100vw, 44rem"
+      loading="lazy"
+      class="banner"
+    />
+
+    <dl class="facts">
+      <dt>Output</dt><dd>Two short history stories a day, every day</dd>
+      <dt>Reach</dt><dd>500K monthly views · videos past 100K · 1.5K followers growing ~15% a week</dd>
+      <dt>Catalog</dt><dd>200+ published videos across Instagram and YouTube</dd>
+      <dt>Humans involved</dt><dd>Zero, per video</dd>
+      <dt>Running cost</dt><dd>Almost nothing. Free archival images, a local model can write, no paid APIs required</dd>
+    </dl>
+
+    <div class="prose">
+      <h2>The pipeline</h2>
+      <ol class="stages">
+        {stages.map(([name, desc]) => (
+          <li>
+            <span class="st">{name}</span>
+            <div>{desc}</div>
+          </li>
+        ))}
+      </ol>
+
+      <h2>Design choices that matter</h2>
+      <p>
+        <strong>Images are searched, not generated.</strong> For history
+        content a real 1943 photograph beats a plausible fake every time.
+        The pipeline runs its own metasearch across museum archives and
+        image indexes, then does the part everyone else pays an API for. It
+        impersonates a real browser at the TLS level, rotates fingerprints
+        and proxies, backs off when a captcha appears, and gets the
+        full-resolution file instead of a thumbnail. That is how the image
+        budget stays at zero.
+      </p>
+      <p>
+        <strong>Why it exists.</strong> The whole thing is a free engine for
+        branding and organic traffic. No ad spend, no licensing bills, no
+        creative team, and it compounds while I sleep.
+      </p>
+      <p>
+        <strong>Models are chosen per task, by cost.</strong> A strong model
+        writes scripts. Cheaper models gate stories and judge images. The
+        expensive call happens once per video and the cheap calls happen
+        dozens of times, which is why the whole thing runs on almost nothing.
+      </p>
+      <p>
+        <strong>Everything is resumable.</strong> Each stage writes its state
+        before moving on. A crashed run continues where it stopped, and a
+        published video can never be published twice.
+      </p>
+
+      <h2>The stack</h2>
+      <p>
+        Python end to end, structured as seven resumable stages over SQLite
+        state. Language models are assigned by task and price: a frontier
+        model writes scripts, cheaper models gate stories, judge images, and
+        pick thumbnails. Narration is Kokoro TTS running locally, aligned
+        word-by-word with faster-whisper for captions. Images come from a
+        self-hosted SearXNG metasearch over museum collections and image
+        indexes, ranked by source trust. Remotion (React) renders the
+        vertical video. Publishing goes through the YouTube Data API and
+        Instagram on a launchd schedule, with receipt ledgers so nothing
+        ever posts twice.
+      </p>
+
+      <h2>Same machinery, more channels</h2>
+      <p>
+        The pipeline is multi-tenant. It also runs
+        <a href="/iris-pipeline">Iris's entire marketing</a>: AI-generated
+        infographic posters, quality-gated against a written creative
+        contract, published daily as Instagram Reels, Stories, and Pinterest
+        pins. And it fed the
+        <a href="/horror">animated horror pipeline</a>, which pushes the same
+        idea from slideshows into fully generated film.
+      </p>
+
+      <h2>Watch</h2>
+      <p>
+        Instagram: <a href="https://www.instagram.com/thefootnotemedia/">@thefootnotemedia</a> ·
+        YouTube: <a href="https://www.youtube.com/@TheFootnoteMedia">@TheFootnoteMedia</a> ·
+        <a href="https://www.facebook.com/profile.php?id=61588938916197">Facebook</a>
+      </p>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .page-title { margin-block: 0.35rem 0.8rem; }
+  .lede { margin-bottom: 1.6rem; }
+    .banner { border-radius: 10px; margin-bottom: 2.2rem; }
+  .stages { list-style: none; padding: 0; }
+  .stages li { padding-block: 0.75rem; border-bottom: 1px solid var(--line); margin: 0; }
+  .stages li:first-child { border-top: 1px solid var(--line); }
+  .st { display: block; font-weight: 680; margin-bottom: 0.1rem; }
+</style>

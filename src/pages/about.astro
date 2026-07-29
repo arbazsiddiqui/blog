@@ -1,0 +1,129 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../data/site';
+
+const jsonLd = {"@context": "https://schema.org", "@type": "ProfilePage", "mainEntity": {"@type": "Person", "name": "Arbaz Siddiqui", "jobTitle": "Principal Software Engineer", "worksFor": {"@type": "Organization", "name": "Turnip", "url": "https://zaps.design/"}, "url": "https://www.arbazsiddiqui.me", "email": "mailto:arbaz00@gmail.com", "sameAs": ["https://github.com/arbazsiddiqui", "https://huggingface.co/arbazsiddiqui", "https://www.linkedin.com/in/arbazsiddiqui"], "knowsAbout": ["AI infrastructure", "distributed systems", "LLM fine-tuning", "RAG", "Kubernetes", "Go", "Node.js", "content automation"]}};
+---
+
+<Base
+  title="About"
+  description="Arbaz Siddiqui, software engineer. Nine years of distributed systems, now building AI infrastructure and shipping products end to end."
+  jsonLd={jsonLd}
+>
+  <section class="narrow section">
+    <h1 class="page-title">About</h1>
+
+    <div class="prose bio">
+      <p>
+        I'm Arbaz, a software engineer working remotely from India. For nine
+        years I've built the unglamorous parts of consumer products, the
+        streaming servers, the message queues, the payment flows, and the
+        Kubernetes clusters that hold it all up when traffic arrives.
+      </p>
+      <p>
+        Since 2024 most of my work has been around AI models. GPU inference
+        infrastructure, fine-tuning, and pipelines that run without people.
+        I test what I learn by shipping. As an indie dev this year I put out
+        a <a href="/ozan">language model</a>, an
+        <a href="/footnote">autonomous media channel</a>, and
+        <a href="/projects">apps</a>.
+      </p>
+    </div>
+
+    <h2 class="room-label worklog-head">Work</h2>
+
+    <div class="job">
+      <div class="job-head">
+        <h3><a href="https://zaps.design/" target="_blank" rel="noopener">Turnip</a></h3>
+        <p class="medium-line">Principal Software Engineer, 2020 to present</p>
+      </div>
+      <p class="prose">
+        One startup, four pivots: mobile-game streaming, Clubhouse-style
+        live audio, a creator social network, and now Zaps, an AI design
+        suite.
+      </p>
+      <ul class="jb">
+        <li>Built and scaled the backend to 25M users, alone for the first two years. A 21-service Kubernetes fleet behind Kong, Kafka everywhere.</li>
+        <li>Live media at real scale. 50K streams ingested a day at sub-5s latency, and a live-audio platform with 2M monthly users and 70M call minutes.</li>
+        <li>Cut GPU costs 80% by moving AI generation to distributed GPUs with 2s image delivery, and infra costs 70% with autoscaling and serverless.</li>
+        <li>Architected the social platform. A dynamic news feed with second-degree discovery on Neo4j, real-time content indexing on Elasticsearch, and an event-driven core on Kafka.</li>
+        <li>Built RAG-based semantic search across the template library, embedding every design, carousel, and AI template for vector retrieval.</li>
+        <li>Built the AI enhancement pipelines for the Zaps era. ComfyUI face swap and retouch, orchestrated with n8n on Kubernetes, which took a large share of async operations off people's hands.</li>
+        <li>Built an agent platform where ten product people shipped 17 internal tools without a single engineer commit.</li>
+        <li>Migrated core services to Go behind a byte-parity strangler rewrite held at 100% test coverage.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <h3><a href="https://www.linkedin.com/company/insiderdotin" target="_blank" rel="noopener">Paytm Insider</a></h3>
+        <p class="medium-line">Lead Backend Engineer, 2017 to 2020</p>
+      </div>
+      <ul class="jb">
+        <li>Led the team behind movie ticketing that held 500+ requests a second on sale nights without a glitch.</li>
+        <li>Designed the logistics architecture. Delivery opt-in, order tracking, and the internal tools for managing shipments.</li>
+        <li>Built the full e-commerce flow. Cart, payments, inventory, and taxation.</li>
+        <li>Ran it all as AWS microservices on Kubernetes, with serverless functions on Lambda and Kinesis carrying the on-demand work.</li>
+        <li>Led a team of 7 and interviewed 100+ engineers for backend and DevOps roles.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <h3><a href="https://www.linkedin.com/company/ithaka---experience-it-all/" target="_blank" rel="noopener">Ithaka</a></h3>
+        <p class="medium-line">Intern, 2016 to 2017</p>
+      </div>
+      <p class="prose">
+        A travel-planning startup, and my first real-time systems work:
+        built its omni-channel chat server bridging the app, Facebook
+        Messenger, and support agents over Socket.IO and Firebase, with
+        conversation handoff and Elasticsearch-backed search.
+      </p>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <h3><a href="https://provakil.com/" target="_blank" rel="noopener">Provakil</a></h3>
+        <p class="medium-line">Intern, 2016</p>
+      </div>
+      <p class="prose">
+        Legal-tech. Wrote scrapers and fetchers that pulled daily cause
+        lists from Indian courts, including the Delhi High Court and the
+        national consumer courts, into structured case data.
+      </p>
+    </div>
+
+    <h2 class="room-label worklog-head">Now</h2>
+    <div class="prose">
+      <p>
+        Right now I build as an indie dev. Not just the tech but the whole
+        product lifecycle, from idea to distribution and growth. Most of it
+        runs on open-weights models, squeezed to get high-quality automation
+        at the lowest possible cost. Most days go into building automation
+        pipelines, pushing current LLMs and diffusion models to find the
+        cheapest way to run something autonomously without losing quality.
+        RAG is one part of that work, with pgvector, local embeddings, and
+        multimodal ingestion. Nothing here is a demo. Every project has been validated
+        by real community response and real numbers. I work from India and
+        overlap comfortably with US mornings and European afternoons.
+      </p>
+    </div>
+
+  </section>
+</Base>
+
+<style>
+  .page-title { margin-bottom: 1.2rem; }
+  .bio { margin-bottom: 0.5rem; font-size: 1.12rem; }
+  .worklog-head { margin-top: 2.6rem; }
+  .job + .job { margin-top: 2.4rem; }
+  .job-head h3 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.018em; }
+  .job-head h3 a { color: inherit; text-decoration: none; }
+  .job-head h3 a:hover { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+  .medium-line { font-style: italic; color: var(--soft); margin-top: 0.15rem; }
+  .job-head { margin-bottom: 0.7rem; }
+  .jb { padding-left: 1.25rem; margin-top: 0.8rem; }
+  .jb li + li { margin-top: 0.55rem; }
+  .jb li::marker { color: var(--accent); }
+  .job .prose { font-size: 1.05rem; }
+</style>

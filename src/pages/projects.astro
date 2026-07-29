@@ -1,0 +1,102 @@
+---
+import Base from '../layouts/Base.astro';
+import Work from '../components/Work.astro';
+import { WORKS } from '../data/works';
+
+import ozanBanner from '../assets/ozan/ozan_banner.png';
+import footnoteBanner from '../assets/footnote/banner.png';
+import irisCard from '../assets/iris-card.png';
+import mercuroCard from '../assets/mercuro-card.png';
+import horrorCard from '../assets/horror-card.png';
+import irisPipelineCard from '../assets/iris-pipeline-card.png';
+
+const oss = [
+  { url: 'https://github.com/arbazsiddiqui/lru-cache-node', name: 'lru-cache-node', desc: 'an O(1) LRU cache for Node with expiry and stale reads, on npm', meta: '119★' },
+  { url: 'https://github.com/arbazsiddiqui/node-skeleton', name: 'node-skeleton', desc: 'an MVC skeleton for Node apps with social auth, tests, and logging', meta: '31★' },
+  { url: 'https://github.com/arbazsiddiqui/anabranch', name: 'anabranch', desc: 'an HTTP load balancer and reverse proxy in Go with pluggable algorithms', meta: '27★' },
+  { url: 'https://github.com/arbazsiddiqui/MEAN-skeleton', name: 'MEAN-skeleton', desc: 'a quick-start skeleton for MEAN-stack apps', meta: '26★' },
+  { url: 'https://github.com/arbazsiddiqui/rSlashVideos', name: 'rSlashVideos', desc: 'turns any subreddit into a video playlist', meta: '24★' },
+  { url: 'https://github.com/arbazsiddiqui/A-song-of-ice-and-fire-API', name: 'asoiaf-api', desc: 'a JavaScript wrapper for the A Song of Ice and Fire API, on npm', meta: '18★' },
+  { url: 'https://github.com/arbazsiddiqui/IMDb-Rating-Lookup', name: 'IMDb-Rating-Lookup', desc: 'check a film’s rating and cast without opening a browser tab', meta: '17★' },
+  { url: 'https://github.com/arbazsiddiqui/IMDB-Lookup-Extension', name: 'IMDb Lookup Extension', desc: 'a Chrome extension for IMDb ratings in place', meta: '10★' },
+  { url: 'https://github.com/arbazsiddiqui/Facebook-Messenger-Yoda-Bot', name: 'Yoda Bot', desc: 'a Messenger bot that echoes your words, but in Yoda’s order', meta: '9★' },
+  { url: 'https://github.com/arbazsiddiqui/Ozan', name: 'Ozan recipe', desc: 'the full reproducible pipeline behind Ozan-12B: data, training, evals', meta: 'Apache-2.0' },
+  { url: 'https://www.npmjs.com/package/mock-jay', name: 'mock-jay', desc: 'a mock data generator for real-world shapes, on npm', meta: 'npm' },
+];
+
+const jsonLd = {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Projects by Arbaz Siddiqui", "url": "https://www.arbazsiddiqui.me/projects/", "mainEntity": {"@type": "ItemList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Ozan-12B", "url": "https://www.arbazsiddiqui.me/ozan/"}, {"@type": "ListItem", "position": 2, "name": "Iris", "url": "https://www.arbazsiddiqui.me/iris/"}, {"@type": "ListItem", "position": 3, "name": "Mercuro", "url": "https://www.arbazsiddiqui.me/mercuro/"}, {"@type": "ListItem", "position": 4, "name": "The Footnote", "url": "https://www.arbazsiddiqui.me/footnote/"}, {"@type": "ListItem", "position": 5, "name": "Iris growth pipeline", "url": "https://www.arbazsiddiqui.me/iris-pipeline/"}, {"@type": "ListItem", "position": 6, "name": "Animated Horror", "url": "https://www.arbazsiddiqui.me/horror/"}]}};
+---
+
+<Base
+  title="Projects"
+  description="Shipped work by Arbaz Siddiqui. An open 12B language model, live apps, autonomous media pipelines at 500K monthly views, and a decade of open source."
+  jsonLd={jsonLd}
+>
+  <div class="hall section">
+    <h1 class="page-title">Projects</h1>
+    <p class="lede">
+      Everything here is shipped and live.
+    </p>
+
+    <section class="room">
+      <h2 class="room-label">Model training</h2>
+      <Work hero {...WORKS.ozan} img={ozanBanner} />
+    </section>
+
+    <section class="room">
+      <h2 class="room-label">Apps</h2>
+      <div class="works pair">
+        <Work {...WORKS.iris} img={irisCard} />
+        <Work {...WORKS.mercuro} img={mercuroCard} />
+      </div>
+    </section>
+
+    <section class="room">
+      <h2 class="room-label">Content creation automations</h2>
+      <div class="works trio">
+        <Work {...WORKS.footnote} img={footnoteBanner} />
+        <Work {...WORKS.irisPipeline} img={irisPipelineCard} />
+        <Work {...WORKS.horror} img={horrorCard} />
+      </div>
+    </section>
+
+    <section class="room">
+      <h2 class="room-label">Engineering platforms</h2>
+      <div class="platform">
+        <h3>Agent platform at Turnip</h3>
+        <p class="medium-line">Internal engineering platform, 2026</p>
+        <p class="platform-desc">
+          One repo where anyone can build software without knowing how to
+          harness a coding agent. Clone it and everything arrives
+          preconfigured. Global skills, a structured workflow that forces
+          brainstorming and plans before code, and per-project memory
+          through PROJECT.md and a wiki, so any person can pick up any
+          project where it was left. When the code is done, deployment goes
+          through Hermes, an MCP server I built and self-hosted. The agent
+          talks to it, Hermes pulls, builds, and ships behind guardrails,
+          and no one ever needs production access. Ten non-engineers have
+          shipped 17 internal tools this way without a single engineer
+          commit. Internal to Turnip, so there is no public link.
+        </p>
+      </div>
+    </section>
+
+    <section class="room">
+      <h2 class="room-label">Open source</h2>
+      <ul class="rows oss">
+        {oss.map((r) => (
+          <li>
+            <a class="row-link" href={r.url}>{r.name}</a><span class="row-desc">, {r.desc}</span><span class="row-meta"> · {r.meta}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .lede { margin-top: 0.5rem; }
+  .platform h3 { font-size: 1.35rem; font-weight: 680; }
+  .medium-line { font-style: italic; color: var(--soft); margin-top: 0.15rem; }
+  .platform-desc { margin-top: 0.55rem; }
+</style>

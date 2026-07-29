@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.data.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const dateStr = post.data.date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  datePublished: post.data.date.toISOString(),
+  author: { '@type': 'Person', name: 'Arbaz Siddiqui', url: 'https://www.arbazsiddiqui.me' },
+  url: `https://www.arbazsiddiqui.me/${post.data.slug}/`,
+};
+
+const description = `${post.data.title}, an article by Arbaz Siddiqui.`;
+---
+
+<Base
+  title={post.data.title}
+  description={description}
+  ogType="article"
+  ogImage={post.data.thumbnail ?? '/logos/logo-1024.png'}
+  jsonLd={jsonLd}
+>
+  <article class="narrow section">
+    <p class="kicker">{dateStr} · {post.data.tags.join(' · ')}</p>
+    <h1 class="page-title title">{post.data.title}</h1>
+    <div class="prose">
+      <Content />
+    </div>
+    <p class="fn">
+      Written in my Node.js era. <a href="/blog">More writing</a> ·
+      <a href="/">home</a>
+    </p>
+  </article>
+</Base>
+
+<style>
+  .title { margin-block: 0.5rem 2rem; }
+</style>
