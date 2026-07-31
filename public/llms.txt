@@ -32,8 +32,13 @@
 ## Work
 
 - [About](https://www.arbazsiddiqui.me/about): Principal Software Engineer at Turnip
-  (2020-present; scaled backend to 25M users, built an agent platform where 10
-  non-engineers shipped 17 tools). Previously Lead Backend Engineer at Paytm Insider.
+  (Jan 2021-present; scaled backend to 25M users, built an agent platform where 10
+  non-engineers shipped 17 tools). Before that, Senior Backend Engineer at Multi.io
+  (Apr 2020-Jan 2021), a centralized crypto exchange: exchange backend, a C matching
+  engine with HTTP/WebSocket access layers, multi-chain custody across Bitcoin,
+  Ethereum, EOS, Cosmos, ICON and Binance Chain, and a multi-chain DEX aggregator.
+  Earlier, Lead Backend Engineer at Paytm Insider (2017-Apr 2020), ticketing at 500+
+  rps for one of India's largest event platforms.
 
 ## Writing
 

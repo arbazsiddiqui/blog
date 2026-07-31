@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { SITE } from '../data/site';
 
-const jsonLd = {"@context": "https://schema.org", "@type": "ProfilePage", "mainEntity": {"@type": "Person", "name": "Arbaz Siddiqui", "jobTitle": "Principal Software Engineer", "worksFor": {"@type": "Organization", "name": "Turnip", "url": "https://zaps.design/"}, "url": "https://www.arbazsiddiqui.me", "email": "mailto:arbaz00@gmail.com", "sameAs": ["https://github.com/arbazsiddiqui", "https://huggingface.co/arbazsiddiqui", "https://www.linkedin.com/in/arbazsiddiqui"], "knowsAbout": ["AI infrastructure", "distributed systems", "LLM fine-tuning", "RAG", "Kubernetes", "Go", "Node.js", "content automation"]}};
+const jsonLd = {"@context": "https://schema.org", "@type": "ProfilePage", "mainEntity": {"@type": "Person", "name": "Arbaz Siddiqui", "jobTitle": "Principal Software Engineer", "worksFor": {"@type": "Organization", "name": "Turnip", "url": "https://zaps.design/"}, "url": "https://www.arbazsiddiqui.me", "email": "mailto:arbaz00@gmail.com", "sameAs": ["https://github.com/arbazsiddiqui", "https://huggingface.co/arbazsiddiqui", "https://www.linkedin.com/in/arbazsiddiqui"], "knowsAbout": ["AI infrastructure", "distributed systems", "LLM fine-tuning", "RAG", "Kubernetes", "Go", "Node.js", "content automation", "cryptocurrency exchanges", "blockchain", "trading engines", "DeFi"]}};
 ---
 
 <Base
@@ -18,7 +18,10 @@ const jsonLd = {"@context": "https://schema.org", "@type": "ProfilePage", "mainE
         I'm Arbaz, a software engineer working remotely from India. For nine
         years I've built the unglamorous parts of consumer products, the
         streaming servers, the message queues, the payment flows, and the
-        Kubernetes clusters that hold it all up when traffic arrives.
+        Kubernetes clusters that hold it all up when traffic arrives. A good
+        stretch of that was crypto, a centralized exchange with a
+        low-latency matching engine, multi-chain custody, and DEX
+        aggregation across several chains.
       </p>
       <p>
         Since 2024 most of my work has been around AI models. GPU inference
@@ -35,7 +38,7 @@ const jsonLd = {"@context": "https://schema.org", "@type": "ProfilePage", "mainE
     <div class="job">
       <div class="job-head">
         <h3><a href="https://zaps.design/" target="_blank" rel="noopener">Turnip</a></h3>
-        <p class="medium-line">Principal Software Engineer, 2020 to present</p>
+        <p class="medium-line">Principal Software Engineer, January 2021 to present</p>
       </div>
       <p class="prose">
         One startup, four pivots: mobile-game streaming, Clubhouse-style
@@ -56,8 +59,25 @@ const jsonLd = {"@context": "https://schema.org", "@type": "ProfilePage", "mainE
 
     <div class="job">
       <div class="job-head">
+        <h3>Multi.io</h3>
+        <p class="medium-line">Senior Backend Engineer, April 2020 to January 2021</p>
+      </div>
+      <p class="prose">
+        A centralized cryptocurrency exchange, and the crypto work around it.
+      </p>
+      <ul class="jb">
+        <li>Built the exchange backend. Accounts, KYC, sessions, markets, order flow, fee schedules, referral commissions, API keys with IP allowlists, and failover.</li>
+        <li>Worked on the low-latency core, a matching engine written in C with its own HTTP and WebSocket access layers, market price feeds, and trade history services.</li>
+        <li>Multi-chain custody. Deposits and withdrawals across Bitcoin, Ethereum, EOS, Cosmos, ICON, and Binance Chain.</li>
+        <li>Built a multi-chain DEX aggregator with price scrapers across BSC, ICON, and Moonbeam, plus a blockchain indexer for on-chain history.</li>
+        <li>Ran it on Kafka, MySQL, and Redis, load-tested with k6, shipped through CircleCI.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
         <h3><a href="https://www.linkedin.com/company/insiderdotin" target="_blank" rel="noopener">Paytm Insider</a></h3>
-        <p class="medium-line">Lead Backend Engineer, 2017 to 2020</p>
+        <p class="medium-line">Lead Backend Engineer, 2017 to April 2020</p>
       </div>
       <ul class="jb">
         <li>Led the team behind movie ticketing that held 500+ requests a second on sale nights without a glitch.</li>
