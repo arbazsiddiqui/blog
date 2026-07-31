@@ -45,6 +45,10 @@
 - [Articles](https://www.arbazsiddiqui.me/blog): technical deep dives on Node.js,
   networking, and web internals.
 
+## Resume
+
+One-page resume (PDF): https://www.arbazsiddiqui.me/arbaz-siddiqui-resume.pdf
+
 ## Stack
 
 Backend and distributed systems: Go, Node.js, TypeScript, Python, Kafka, Redis,

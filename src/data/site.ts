@@ -9,6 +9,7 @@ export const SITE = {
   linkedin: 'https://www.linkedin.com/in/arbazsiddiqui',
   twitter: 'https://twitter.com/arbazsiddiqui_',
   substack: 'https://arbazsiddiqui.substack.com',
+  resume: '/arbaz-siddiqui-resume.pdf',
   // GA4 measurement ID (G-XXXXXXXXXX). Empty means no analytics script is emitted.
   // The old UA-79508594-2 property stopped collecting on 2023-07-01 and cannot be used.
   gaId: '',
