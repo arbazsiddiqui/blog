@@ -76,6 +76,28 @@ const socialImageAlt =
       document.documentElement.dataset.theme = t;
     </script>
     {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+    {SITE.gaId && (
+      <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${SITE.gaId}`}></script>
+    )}
+    {SITE.gaId && (
+      <script is:inline define:vars={{ gaId: SITE.gaId }}>
+        // Client-side routing means gtag's own page_view fires only once, so it
+        // is turned off and one is sent per astro:page-load instead.
+        if (!window.__ga) {
+          window.__ga = true;
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function () { window.dataLayer.push(arguments); };
+          window.gtag('js', new Date());
+          window.gtag('config', gaId, { send_page_view: false });
+          document.addEventListener('astro:page-load', () => {
+            window.gtag('event', 'page_view', {
+              page_location: location.href,
+              page_title: document.title,
+            });
+          });
+        }
+      </script>
+    )}
     <ClientRouter />
   </head>
   <body>
