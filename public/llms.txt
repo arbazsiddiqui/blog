@@ -45,6 +45,16 @@
 - [Articles](https://www.arbazsiddiqui.me/blog): technical deep dives on Node.js,
   networking, and web internals.
 
+## Stack
+
+Backend and distributed systems: Go, Node.js, TypeScript, Python, Kafka, Redis,
+Postgres, MongoDB, Elasticsearch, Neo4j, Kubernetes, Docker, GCP, AWS, serverless.
+Real-time and media: MQTT, WebSockets, Agora, RTMP, FFmpeg, Firebase, Remotion.
+AI: fine-tuning (QLoRA, DPO), evals, llama.cpp, RAG with pgvector and local
+embeddings, diffusion pipelines (ComfyUI, Wan 2.2), agents (n8n, MCP, Claude Agent
+SDK). Crypto: exchange backends, C matching engines, multi-chain custody, DEX
+aggregation.
+
 ## Contact
 
 - Email: arbaz00@gmail.com

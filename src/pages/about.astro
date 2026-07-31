@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { SITE } from '../data/site';
 
-const jsonLd = {"@context": "https://schema.org", "@type": "ProfilePage", "mainEntity": {"@type": "Person", "name": "Arbaz Siddiqui", "jobTitle": "Principal Software Engineer", "worksFor": {"@type": "Organization", "name": "Turnip", "url": "https://zaps.design/"}, "url": "https://www.arbazsiddiqui.me", "email": "mailto:arbaz00@gmail.com", "sameAs": ["https://github.com/arbazsiddiqui", "https://huggingface.co/arbazsiddiqui", "https://www.linkedin.com/in/arbazsiddiqui"], "knowsAbout": ["AI infrastructure", "distributed systems", "LLM fine-tuning", "RAG", "Kubernetes", "Go", "Node.js", "content automation", "cryptocurrency exchanges", "blockchain", "trading engines", "DeFi"]}};
+const jsonLd = {"@context": "https://schema.org", "@type": "ProfilePage", "mainEntity": {"@type": "Person", "name": "Arbaz Siddiqui", "jobTitle": "Principal Software Engineer", "worksFor": {"@type": "Organization", "name": "Turnip", "url": "https://zaps.design/"}, "url": "https://www.arbazsiddiqui.me", "email": "mailto:arbaz00@gmail.com", "sameAs": ["https://github.com/arbazsiddiqui", "https://huggingface.co/arbazsiddiqui", "https://www.linkedin.com/in/arbazsiddiqui"], "knowsAbout": ["AI infrastructure", "distributed systems", "LLM fine-tuning", "RAG", "Kubernetes", "Go", "Node.js", "Kafka", "MQTT", "WebSockets", "RTMP", "FFmpeg", "live streaming", "real-time systems", "Redis", "Postgres", "Neo4j", "Elasticsearch", "Docker", "content automation", "cryptocurrency exchanges", "blockchain", "trading engines", "DeFi"]}};
 ---
 
 <Base
@@ -19,9 +19,8 @@ const jsonLd = {"@context": "https://schema.org", "@type": "ProfilePage", "mainE
         years I've built the unglamorous parts of consumer products, the
         streaming servers, the message queues, the payment flows, and the
         Kubernetes clusters that hold it all up when traffic arrives. A good
-        stretch of that was crypto, a centralized exchange with a
-        low-latency matching engine, multi-chain custody, and DEX
-        aggregation across several chains.
+        stretch of that was crypto, building an exchange and the systems
+        around it.
       </p>
       <p>
         Since 2024 most of my work has been around AI models. GPU inference
@@ -46,8 +45,8 @@ const jsonLd = {"@context": "https://schema.org", "@type": "ProfilePage", "mainE
         suite.
       </p>
       <ul class="jb">
-        <li>Built and scaled the backend to 25M users, alone for the first two years. A 21-service Kubernetes fleet behind Kong, Kafka everywhere.</li>
-        <li>Live media at real scale. 50K streams ingested a day at sub-5s latency, and a live-audio platform with 2M monthly users and 70M call minutes.</li>
+        <li>Built and scaled the backend to 25M users, alone for the first two years. A 21-service Kubernetes fleet behind Kong, Dockerised, with Kafka and Redis everywhere.</li>
+        <li>Live media at real scale. RTMP and FFmpeg ingest carrying 50K streams a day at sub-5s latency, and a live-audio platform on Agora with MQTT and Firebase holding real-time state for 2M monthly users across 70M call minutes.</li>
         <li>Cut GPU costs 80% by moving AI generation to distributed GPUs with 2s image delivery, and infra costs 70% with autoscaling and serverless.</li>
         <li>Architected the social platform. A dynamic news feed with second-degree discovery on Neo4j, real-time content indexing on Elasticsearch, and an event-driven core on Kafka.</li>
         <li>Built RAG-based semantic search across the template library, embedding every design, carousel, and AI template for vector retrieval.</li>
