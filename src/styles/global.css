@@ -108,18 +108,23 @@ h1, h2, h3 { line-height: 1.18; letter-spacing: -0.018em; text-wrap: balance; }
 .room-label::after { content: ''; flex: 1; border-top: 2px solid var(--fg); opacity: 0.14; align-self: center; }
 
 /* ---------- works & placards ---------- */
-.works { display: grid; gap: clamp(1.9rem, 3.5vw, 2.6rem) 2rem; }
+.works { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(1.9rem, 3.5vw, 2.6rem) 2rem; }
 @media (min-width: 720px) {
   .works.pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .works.trio { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.9rem, 3.5vw, 2.6rem) 1.6rem; }
 }
 .work { display: flex; flex-direction: column; }
 .work .placard { display: flex; flex-direction: column; flex: 1; }
-.work .placard .onview { margin-top: 0.5rem; min-height: 3.2rem; }
+.work .placard .onview { margin-top: 0.5rem; }
+@media (min-width: 720px) {
+  .work .placard .onview { min-height: 3.2rem; }
+}
 .work .placard:not(:has(.stat)) .onview { margin-top: auto; }
-.work .placard:not(:has(.onview))::after { content: ''; height: 3.7rem; }
+@media (min-width: 720px) {
+  .work .placard:not(:has(.onview))::after { content: ''; height: 3.7rem; }
+}
 .frame {
-  display: block; overflow: hidden; border-radius: 4px;
+  display: block; width: 100%; max-width: 100%; overflow: hidden; border-radius: 4px;
   outline: 1px solid oklch(0 0 0 / 0.08); outline-offset: -1px;
   background: var(--code-bg);
   transition: box-shadow 260ms var(--ease);
@@ -140,7 +145,10 @@ a.frame:hover img { transform: scale(1.02); }
 .placard .w-title a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .placard .medium { font-style: italic; color: var(--soft); font-size: 1rem; margin-top: 0.15rem; }
 .placard .sentence { margin-top: 0.5rem; font-size: 1.02rem; }
-.placard .stat { font-family: var(--mono); font-size: 0.84rem; color: var(--soft); margin-top: auto; padding-top: 0.65rem; font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.placard .stat { font-family: var(--mono); font-size: 0.84rem; color: var(--soft); margin-top: auto; padding-top: 0.65rem; font-variant-numeric: tabular-nums; }
+@media (min-width: 720px) {
+  .placard .stat { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+}
 .onview { display: flex; gap: 0.9rem; flex-wrap: wrap; font-size: 0.92rem; align-content: flex-start; }
 
 /* work settles in as it enters the viewport (progressive; no-op unsupported) */
