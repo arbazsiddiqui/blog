@@ -23,7 +23,8 @@ const { href, title, medium, sentence, stat, img, alt, hero = false, links = [] 
       alt={alt}
       widths={[520, 820, 1280, 1700]}
       sizes={hero ? '(max-width: 720px) 100vw, 62rem' : '(max-width: 720px) 100vw, 30rem'}
-      loading="lazy"
+      loading={hero ? 'eager' : 'lazy'}
+      fetchpriority={hero ? 'high' : undefined}
     />
   </a>
   <div class="placard">
