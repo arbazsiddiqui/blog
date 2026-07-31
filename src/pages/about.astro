@@ -47,13 +47,14 @@ const jsonLd = {"@context": "https://schema.org", "@type": "ProfilePage", "mainE
         suite.
       </p>
       <ul class="jb">
-        <li><strong>The platform, on my own.</strong> I was the only backend engineer for the first two years and grew it to 25M users. It became twenty-one services on Kubernetes behind Kong, with Kafka and Redis carrying the load.</li>
-        <li><strong>Live streaming, then live audio.</strong> Game streams came in over RTMP and FFmpeg, 50K a day at under five seconds of latency. The audio rooms that followed ran on Agora, with MQTT and Firebase keeping every listener's state in sync for 2M people a month and 70M minutes of calls.</li>
-        <li><strong>A feed that found people worth following.</strong> Second-degree discovery over a Neo4j graph, indexed in real time by Elasticsearch, on an event-driven Kafka core.</li>
-        <li><strong>AI photo editing inside the app.</strong> Face swap, retouch and background tools built on ComfyUI. I orchestrated the pipeline with LangGraph first, then moved it to n8n on Kubernetes, which took a large share of manual work off the team.</li>
-        <li><strong>Generation that costs 80% less.</strong> Moving image generation onto a distributed GPU network cut GPU spend by 80% and still returned images in about two seconds. Autoscaling and serverless took another 70% off infrastructure.</li>
-        <li><strong>Search that understands what people mean.</strong> RAG across the whole template library with LangChain, so every design, carousel and AI template is embedded and retrievable by intent instead of by tag.</li>
-        <li><strong>An engineering platform for non-engineers.</strong> Ten product people have shipped 17 internal tools through it without a single engineer commit.</li>
+        <li>Grew the backend from nothing to 25M users, twenty-one services on Kubernetes behind Kong, with Kafka and Redis carrying the load.</li>
+        <li>Built the game-streaming stack first, RTMP and FFmpeg ingest running 50K streams a day at under five seconds of latency.</li>
+        <li>Then the live audio rooms on Agora, where MQTT and Firebase kept every listener's state in sync for 2M people a month across 70M minutes of calls.</li>
+        <li>Gave the social app a feed that surfaced people worth following, second-degree discovery over a Neo4j graph, indexed in real time by Elasticsearch on an event-driven Kafka core.</li>
+        <li>Brought AI photo editing into the product, face swap, retouch and background tools on ComfyUI, orchestrated with LangGraph and later n8n on Kubernetes.</li>
+        <li>Cut GPU spend by 80% by moving generation onto a distributed GPU network while still returning images in about two seconds, and another 70% off infrastructure with autoscaling and serverless.</li>
+        <li>Made the template library searchable by meaning rather than by tag, RAG over every design and carousel with LangChain.</li>
+        <li>Built an engineering platform that let ten product people ship 17 internal tools without a single engineer commit.</li>
       </ul>
     </div>
 
@@ -141,7 +142,6 @@ const jsonLd = {"@context": "https://schema.org", "@type": "ProfilePage", "mainE
   .job-head { margin-bottom: 0.7rem; }
   .jb { padding-left: 1.25rem; margin-top: 0.8rem; }
   .jb li + li { margin-top: 0.7rem; }
-  .jb li strong { font-weight: 660; }
   .jb li::marker { color: var(--accent); }
   .job .prose { font-size: 1.05rem; }
 </style>

@@ -80,9 +80,6 @@ const ogImageAbs = new URL(ogImage, SITE.url).href;
         <p class="close-line">Building something serious with AI? <a href={`mailto:${SITE.email}`}>Write to me.</a></p>
       </div>
       <div class="hall foot">
-        <div class="foot-left">
-          <p>Arbaz Siddiqui</p>
-        </div>
         <div class="foot-right">
           <a href={SITE.github}>GitHub</a>
           <a href={SITE.huggingface}>Hugging&nbsp;Face</a>
@@ -126,13 +123,15 @@ const ogImageAbs = new URL(ogImage, SITE.url).href;
       .close-line { padding-block: 2.2rem 0.5rem; font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 700; letter-spacing: -0.02em; color: var(--fg); }
       .close-line a { color: var(--accent); text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent); text-underline-offset: 5px; }
       .close-line a:hover { text-decoration-color: currentColor; }
-      .foot { display: flex; justify-content: space-between; align-items: baseline; gap: 0.9rem 1.5rem; padding-block: 1.6rem 2.4rem; flex-wrap: wrap; }
-      .foot-right { display: flex; gap: 1.1rem 1.4rem; flex-wrap: wrap; align-items: baseline; }
+      .foot { display: flex; justify-content: flex-start; align-items: baseline; gap: 0.9rem 1.5rem; padding-block: 1.4rem 2.6rem; flex-wrap: wrap; }
+      .foot-right { display: flex; gap: 0.85rem 1.35rem; flex-wrap: wrap; align-items: baseline; }
       .foot-left p + p { margin-top: 0.2rem; }
       .foot a, .foot p { color: var(--soft); font-family: var(--sans); font-size: 0.95rem; transition: color 160ms var(--ease); }
       .foot a:hover { color: var(--fg); text-decoration: none; }
       @media (max-width: 560px) {
-        .foot { flex-direction: column; align-items: flex-start; gap: 1.1rem; }
+        .close-line { padding-block: 2.4rem 0.7rem; }
+        .foot a, .foot p { font-size: 0.88rem; }
+        .foot-right { gap: 0.8rem; }
       }
       @media (max-width: 460px) {
         .nav { gap: 0.75rem; }
