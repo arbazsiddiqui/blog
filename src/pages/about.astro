@@ -15,20 +15,22 @@ const jsonLd = {"@context": "https://schema.org", "@type": "ProfilePage", "mainE
 
     <div class="prose bio">
       <p>
-        I'm Arbaz, a software engineer working remotely from India. For nine
-        years I've built the unglamorous parts of consumer products, the
-        streaming servers, the message queues, the payment flows, and the
-        Kubernetes clusters that hold it all up when traffic arrives. A good
-        stretch of that was crypto, building an exchange and the systems
-        around it.
+        I'm Arbaz. I write backends, and for nine years the thing I've been
+        good at is the part users never see. Streams that stay under five
+        seconds, queues that don't drop, payments that reconcile, clusters
+        that hold when traffic triples overnight. At
+        <a href="/about">Turnip</a> I was the only backend engineer for two
+        years and took it to 25M users. Before that I built ticketing for one
+        of India's biggest event platforms, and a crypto exchange with a
+        matching engine and wallets across six chains.
       </p>
       <p>
-        Since 2024 most of my work has been around AI models. GPU inference
-        infrastructure, fine-tuning, and pipelines that run without people.
-        I test what I learn by shipping. As an indie dev this year I put out
-        a <a href="/ozan">language model</a>, an
-        <a href="/footnote">autonomous media channel</a>, and
-        <a href="/projects">apps</a>.
+        Since 2024 the work has moved to AI models and what surrounds them.
+        GPU inference, fine-tuning, retrieval, and pipelines that run with
+        nobody watching. I learn it by shipping it, so this year I released
+        <a href="/ozan">a language model</a>, built
+        <a href="/footnote">a media channel that runs itself</a>, and put
+        <a href="/projects">apps</a> on the App Store.
       </p>
     </div>
 
@@ -45,14 +47,13 @@ const jsonLd = {"@context": "https://schema.org", "@type": "ProfilePage", "mainE
         suite.
       </p>
       <ul class="jb">
-        <li>Built and scaled the backend to 25M users, alone for the first two years. A 21-service Kubernetes fleet behind Kong, Dockerised, with Kafka and Redis everywhere.</li>
-        <li>Live media at real scale. RTMP and FFmpeg ingest carrying 50K streams a day at sub-5s latency, and a live-audio platform on Agora with MQTT and Firebase holding real-time state for 2M monthly users across 70M call minutes.</li>
-        <li>Cut GPU costs 80% by moving AI generation to distributed GPUs with 2s image delivery, and infra costs 70% with autoscaling and serverless.</li>
-        <li>Architected the social platform. A dynamic news feed with second-degree discovery on Neo4j, real-time content indexing on Elasticsearch, and an event-driven core on Kafka.</li>
-        <li>Built RAG-based semantic search across the template library, embedding every design, carousel, and AI template for vector retrieval.</li>
-        <li>Built the AI enhancement pipelines for the Zaps era. ComfyUI face swap and retouch, orchestrated with n8n on Kubernetes, which took a large share of async operations off people's hands.</li>
-        <li>Built an agent platform where ten product people shipped 17 internal tools without a single engineer commit.</li>
-        <li>Migrated core services to Go behind a byte-parity strangler rewrite held at 100% test coverage.</li>
+        <li><strong>The platform, on my own.</strong> I was the only backend engineer for the first two years and grew it to 25M users. It became twenty-one services on Kubernetes behind Kong, with Kafka and Redis carrying the load.</li>
+        <li><strong>Live streaming, then live audio.</strong> Game streams came in over RTMP and FFmpeg, 50K a day at under five seconds of latency. The audio rooms that followed ran on Agora, with MQTT and Firebase keeping every listener's state in sync for 2M people a month and 70M minutes of calls.</li>
+        <li><strong>A feed that found people worth following.</strong> Second-degree discovery over a Neo4j graph, indexed in real time by Elasticsearch, on an event-driven Kafka core.</li>
+        <li><strong>AI photo editing inside the app.</strong> Face swap, retouch and background tools built on ComfyUI. I orchestrated the pipeline with LangGraph first, then moved it to n8n on Kubernetes, which took a large share of manual work off the team.</li>
+        <li><strong>Generation that costs 80% less.</strong> Moving image generation onto a distributed GPU network cut GPU spend by 80% and still returned images in about two seconds. Autoscaling and serverless took another 70% off infrastructure.</li>
+        <li><strong>Search that understands what people mean.</strong> RAG across the whole template library with LangChain, so every design, carousel and AI template is embedded and retrievable by intent instead of by tag.</li>
+        <li><strong>An engineering platform for non-engineers.</strong> Ten product people have shipped 17 internal tools through it without a single engineer commit.</li>
       </ul>
     </div>
 
@@ -122,8 +123,7 @@ const jsonLd = {"@context": "https://schema.org", "@type": "ProfilePage", "mainE
         cheapest way to run something autonomously without losing quality.
         RAG is one part of that work, with pgvector, local embeddings, and
         multimodal ingestion. Nothing here is a demo. Every project has been validated
-        by real community response and real numbers. I work from India and
-        overlap comfortably with US mornings and European afternoons.
+        by real community response and real numbers.
       </p>
     </div>
 
@@ -141,7 +141,8 @@ const jsonLd = {"@context": "https://schema.org", "@type": "ProfilePage", "mainE
   .medium-line { font-style: italic; color: var(--soft); margin-top: 0.15rem; }
   .job-head { margin-bottom: 0.7rem; }
   .jb { padding-left: 1.25rem; margin-top: 0.8rem; }
-  .jb li + li { margin-top: 0.55rem; }
+  .jb li + li { margin-top: 0.7rem; }
+  .jb li strong { font-weight: 660; }
   .jb li::marker { color: var(--accent); }
   .job .prose { font-size: 1.05rem; }
 </style>
