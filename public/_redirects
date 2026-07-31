@@ -1,4 +1,6 @@
 # Redirects from what the browser requests to what we serve
+# Astro emits sitemap-index.xml; /sitemap.xml is what crawlers and tools try first.
+/sitemap.xml             /sitemap-index.xml         301
 /tutorials/              /blog/                     301
 /me/                     /about/                    301
 /aboutme/                /about/                    301
