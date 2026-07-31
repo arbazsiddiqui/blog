@@ -33,7 +33,7 @@
 
 - [About](https://www.arbazsiddiqui.me/about): Principal Software Engineer at Turnip
   (Jan 2021-present; scaled backend to 25M users, built an agent platform where 10
-  non-engineers shipped 17 tools). Before that, Senior Backend Engineer at Multi.io
+  non-engineers shipped 17 tools). Before that, Senior Backend Engineer at MouseBelt
   (Apr 2020-Jan 2021), a centralized crypto exchange: exchange backend, a C matching
   engine with HTTP/WebSocket access layers, multi-chain custody across Bitcoin,
   Ethereum, EOS, Cosmos, ICON and Binance Chain, and a multi-chain DEX aggregator.
