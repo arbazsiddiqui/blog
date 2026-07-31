@@ -29,7 +29,7 @@ const jsonLd = {"@context": "https://schema.org", "@type": "CollectionPage", "na
 
 <Base
   title="Projects"
-  description="Shipped work by Arbaz Siddiqui. An open 12B language model, live apps, autonomous media pipelines at 500K monthly views, and a decade of open source."
+  description="Projects by Arbaz Siddiqui: an open 12B language model, live apps, autonomous media pipelines reaching 500K monthly views, and a decade of open-source work."
   jsonLd={jsonLd}
 >
   <div class="hall section">
@@ -86,7 +86,7 @@ const jsonLd = {"@context": "https://schema.org", "@type": "CollectionPage", "na
       <ul class="rows oss">
         {oss.map((r) => (
           <li>
-            <a class="row-link" href={r.url}>{r.name}</a><span class="row-desc">, {r.desc}</span><span class="row-meta"> · {r.meta}</span>
+            <a class="row-link" href={r.url} target="_blank" rel="noopener">{r.name}</a><span class="row-desc">, {r.desc}</span><span class="row-meta"> · {r.meta}</span>
           </li>
         ))}
       </ul>

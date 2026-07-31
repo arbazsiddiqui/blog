@@ -35,7 +35,6 @@ const description = `${post.data.title}, an article by Arbaz Siddiqui.`;
   title={post.data.title}
   description={description}
   ogType="article"
-  ogImage={post.data.thumbnail ?? '/logos/logo-1024.png'}
   jsonLd={jsonLd}
 >
   <article class="narrow section">
@@ -47,7 +46,7 @@ const description = `${post.data.title}, an article by Arbaz Siddiqui.`;
     <nav class="fn">
       <a class="fn-back" href="/blog">All writing</a>
       <span class="fn-sep" aria-hidden="true">·</span>
-      <a class="fn-sub" href={SITE.substack}>Get new posts by email</a>
+      <a class="fn-sub" href={SITE.substack} target="_blank" rel="noopener">Get new posts by email</a>
     </nav>
   </article>
 </Base>

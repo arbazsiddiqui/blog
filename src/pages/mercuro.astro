@@ -25,13 +25,14 @@ const jsonLd = [jsonLdApp, {"@context": "https://schema.org", "@type": "Breadcru
 ---
 
 <Base
-  title="Mercuro, a calm thermometer logic puzzle"
-  description="A grid-deduction puzzle game with its own solver and generator: 660 curated puzzles, seeded dailies, nine themes. Native SwiftUI on iOS, native Kotlin/Compose on Android."
-  jsonLd={jsonLd}
+  title="Mercuro: Thermometer Logic Puzzle"
+  description="A grid-deduction puzzle game with its own solver and generator, 660 curated puzzles, seeded daily challenges, and native apps for iOS and Android."
   ogImage="/og/mercuro.jpg"
+  ogImageAlt="Mercuro, a thermometer logic puzzle game for iOS and Android."
+  jsonLd={jsonLd}
 >
   <article class="narrow section">
-    <p class="kicker">iOS + Android game · live on iOS</p>
+    <p class="kicker">Featured in gaming newsletters</p>
     <h1 class="page-title">Mercuro</h1>
     <p class="lede">
       Fill the thermometers to match the clues. A quiet, sudoku-adjacent
@@ -40,8 +41,7 @@ const jsonLd = [jsonLdApp, {"@context": "https://schema.org", "@type": "Breadcru
     </p>
 
     <dl class="facts">
-      <dt>Platform</dt><dd>iPhone, iPad, Mac, Vision · <a href="https://apps.apple.com/app/id6762402072">App Store</a> · Android in closed testing</dd>
-      <dt>Reception</dt><dd>Featured in several gaming newsletters</dd>
+      <dt>Platform</dt><dd>iPhone, iPad, Mac, Vision · <a href="https://apps.apple.com/app/id6762402072" target="_blank" rel="noopener">App Store</a> · Android in closed testing</dd>
       <dt>Content</dt><dd>660 curated puzzles across 8 board sizes · 3 seeded daily puzzles · 40 achievements · 9 themes</dd>
       <dt>Model</dt><dd>Free game, complete · $4.99 one-time Pro, $2.99 remove ads · no subscription</dd>
       <dt>iOS stack</dt><dd>Pure SwiftUI (no game engine), Swift 6 strict concurrency, GameKit, StoreKit 2 · ~38K lines</dd>
@@ -55,7 +55,7 @@ const jsonLd = [jsonLdApp, {"@context": "https://schema.org", "@type": "Breadcru
     </div>
 
     <div class="prose">
-      <h2>Engineering notes</h2>
+      <h2>Gameplay and UX</h2>
       <p>
         <strong>The game engine.</strong> Its own puzzle mathematics. A
         constraint solver that proves every board has exactly one solution,
@@ -79,7 +79,7 @@ const jsonLd = [jsonLdApp, {"@context": "https://schema.org", "@type": "Breadcru
       </p>
       <h2>Links</h2>
       <p>
-        <a href="https://apps.apple.com/app/id6762402072">App Store</a>
+        <a href="https://apps.apple.com/app/id6762402072" target="_blank" rel="noopener">App Store</a>
       </p>
     </div>
   </article>

@@ -7,23 +7,30 @@ interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
+  ogImageAlt?: string;
   ogType?: string;
   jsonLd?: object;
+  noindex?: boolean;
 }
 
 const {
   title,
   description = SITE.description,
-  ogImage = '/og/home.jpg',
+  ogImage = '/og/arbaz-siddiqui.jpg',
+  ogImageAlt,
   ogType = 'website',
   jsonLd,
+  noindex = false,
 } = Astro.props;
 
-const pageTitle = title ? `${title} – Arbaz Siddiqui` : `Arbaz Siddiqui – Software Engineer`;
+const pageTitle = title ? `${title} | Arbaz Siddiqui` : 'Arbaz Siddiqui | AI Infrastructure & Distributed Systems';
 const canonical = new URL(Astro.url.pathname, SITE.url).href;
 const path = Astro.url.pathname;
 const active = (p: string) => (path.startsWith(p) ? 'active' : '');
-const ogImageAbs = new URL(ogImage, SITE.url).href;
+const socialImageAbs = new URL(ogImage, SITE.url).href;
+const socialImageAlt =
+  ogImageAlt ??
+  'Illustrated portrait of Arbaz Siddiqui with abstract signal lines resolving into engineered systems.';
 ---
 
 <!doctype html>
@@ -33,19 +40,37 @@ const ogImageAbs = new URL(ogImage, SITE.url).href;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
+    <meta name="author" content="Arbaz Siddiqui" />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'} />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f1011" media="(prefers-color-scheme: dark)" />
     <link rel="canonical" href={canonical} />
     <link rel="preload" href="/fonts/hanken.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="icon" href="/favicon.png" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <link rel="alternate" type="application/rss+xml" title="Arbaz Siddiqui" href="/rss.xml" />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={ogImageAbs} />
+    <meta property="og:image" content={socialImageAbs} />
+    <meta property="og:image:secure_url" content={socialImageAbs} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={socialImageAlt} />
     <meta property="og:site_name" content="Arbaz Siddiqui" />
-    {ogImage.startsWith('/og/') && <meta property="og:image:width" content="1200" />}
-    {ogImage.startsWith('/og/') && <meta property="og:image:height" content="630" />}
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@arbazsiddiqui_" />
+    <meta name="twitter:creator" content="@arbazsiddiqui_" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageAbs} />
+    <meta name="twitter:image:alt" content={socialImageAlt} />
     <script is:inline>
       const t = localStorage.getItem('theme') ?? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
       document.documentElement.dataset.theme = t;
@@ -82,10 +107,10 @@ const ogImageAbs = new URL(ogImage, SITE.url).href;
       <div class="hall foot">
         <p class="foot-brand">Arbaz Siddiqui</p>
         <div class="foot-right">
-          <a href={SITE.github}>GitHub</a>
-          <a href={SITE.huggingface}>Hugging&nbsp;Face</a>
-          <a href={SITE.linkedin}>LinkedIn</a>
-          <a href={SITE.substack}>Newsletter</a>
+          <a href={SITE.github} target="_blank" rel="noopener">GitHub</a>
+          <a href={SITE.huggingface} target="_blank" rel="noopener">Hugging&nbsp;Face</a>
+          <a href={SITE.linkedin} target="_blank" rel="noopener">LinkedIn</a>
+          <a href={SITE.substack} target="_blank" rel="noopener">Newsletter</a>
           <a href="/rss.xml">RSS</a>
         </div>
       </div>

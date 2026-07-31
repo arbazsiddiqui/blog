@@ -1,0 +1,21 @@
+{
+  "name": "Arbaz Siddiqui",
+  "short_name": "Arbaz",
+  "description": "Software engineer building AI infrastructure, distributed systems, and products around AI models.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
