@@ -22,11 +22,11 @@ const jsonLd = {"@context": "https://schema.org", "@type": "Blog", "name": "Writ
       rounds. New writing about the AI-era projects is on the way; the
       <a href="https://arbazsiddiqui.substack.com">newsletter</a> will carry it first.
     </p>
-    <ul class="post-list">
+    <ul class="rows">
       {posts.map((post) => (
-        <li>
-          <a href={`/${post.data.slug}/`}>{post.data.title}</a>
-          <span class="mono soft">{post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' })}</span>
+        <li class="post-row">
+          <a class="row-link" href={`/${post.data.slug}/`}>{post.data.title}</a>
+          <span class="row-meta">{post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short' })}</span>
         </li>
       ))}
     </ul>
@@ -35,10 +35,7 @@ const jsonLd = {"@context": "https://schema.org", "@type": "Blog", "name": "Writ
 
 <style>
   .page-title { margin-bottom: 0.8rem; }
-  .intro { max-width: 36rem; margin-bottom: 2.4rem; }
-  .post-list { list-style: none; padding: 0; }
-  .post-list li { display: flex; justify-content: space-between; gap: 1.5rem; align-items: baseline; padding-block: 0.8rem; border-bottom: 1px solid var(--line); }
-  .post-list a { text-decoration: none; font-size: 1.1rem; }
-  .post-list a:hover { text-decoration: underline; }
-  .post-list .mono { flex-shrink: 0; font-size: 0.75rem; }
+  .intro { margin-bottom: 2.4rem; }
+  .rows > li { padding-block: 0.8rem; }
+  .row-link { font-size: 1.1rem; }
 </style>

@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { getCollection, render } from 'astro:content';
+import { SITE } from '../data/site';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -43,12 +44,25 @@ const description = `${post.data.title}, an article by Arbaz Siddiqui.`;
     <div class="prose">
       <Content />
     </div>
-    <p class="fn">
-      <a href="/blog">More writing</a> · <a href="/">Home</a>
-    </p>
+    <nav class="fn">
+      <a class="fn-back" href="/blog">All writing</a>
+      <span class="fn-sep" aria-hidden="true">·</span>
+      <a class="fn-sub" href={SITE.substack}>Get new posts by email</a>
+    </nav>
   </article>
 </Base>
 
 <style>
   .title { margin-block: 0.5rem 2rem; }
+  .fn {
+    display: flex; align-items: baseline; gap: 0.7rem; flex-wrap: wrap;
+    margin-top: 3.4rem; padding-top: 1.4rem; border-top: 1px solid var(--line);
+    font-size: 1.05rem;
+  }
+  .fn a { text-decoration: none; }
+  .fn a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .fn-back { color: var(--fg); font-weight: 600; }
+  .fn-sep { color: var(--faint); }
+  .fn-sub { color: var(--soft); }
+  .fn-sub:hover { color: var(--fg); }
 </style>
