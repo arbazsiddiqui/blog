@@ -36,16 +36,16 @@ const jsonLd = [jsonLdApp, {"@context": "https://schema.org", "@type": "Breadcru
     <h1 class="page-title">Mercuro</h1>
     <p class="lede">
       Fill the thermometers to match the clues. A quiet, sudoku-adjacent
-      logic game: no timers screaming at you, no energy systems, and the
-      free game is complete.
+      logic game. No timers, no lives to wait for, and nothing behind a
+      paywall.
     </p>
 
     <dl class="facts">
       <dt>Platform</dt><dd>iPhone, iPad, Mac, Vision · <a href="https://apps.apple.com/app/id6762402072" target="_blank" rel="noopener">App Store</a> · Android in closed testing</dd>
-      <dt>Content</dt><dd>660 curated puzzles across 8 board sizes · 3 seeded daily puzzles · 40 achievements · 9 themes</dd>
+      <dt>Content</dt><dd>660 curated puzzles across 8 board sizes · 3 daily games · 40 achievements · 9 themes</dd>
       <dt>Model</dt><dd>Free game, complete · $4.99 one-time Pro, $2.99 remove ads · no subscription</dd>
-      <dt>iOS stack</dt><dd>Pure SwiftUI (no game engine), Swift 6 strict concurrency, GameKit, StoreKit 2 · ~38K lines</dd>
-      <dt>Android stack</dt><dd>Native Kotlin + Jetpack Compose, pixel-parity port · ~40K lines, 73 test files</dd>
+      <dt>iOS stack</dt><dd>Pure SwiftUI (no game engine), Swift 6 strict concurrency, GameKit, StoreKit 2</dd>
+      <dt>Android stack</dt><dd>Native Kotlin + Jetpack Compose, pixel-parity port</dd>
     </dl>
 
     <div class="shots">
@@ -61,13 +61,12 @@ const jsonLd = [jsonLdApp, {"@context": "https://schema.org", "@type": "Breadcru
         constraint solver that proves every board has exactly one solution,
         a generator that searches for boards with clean deduction chains,
         and a seeded random core so the whole world gets the same three
-        dailies without a server round-trip.
+        daily games without a server round-trip.
       </p>
       <p>
-        <strong>The hint engine.</strong> It does not fill a cell for you.
-        It finds the next move that is provable from what is already on the
-        board and explains the deduction, so a stuck player learns the
-        technique instead of losing the puzzle.
+        <strong>The hint system.</strong> It does not fill a cell for you. It
+        finds the next move that is provable from what is already on the board,
+        so a stuck player keeps going instead of losing the puzzle.
       </p>
       <p>
         <strong>The polish.</strong> Nine themes, custom sound design,
@@ -88,7 +87,26 @@ const jsonLd = [jsonLdApp, {"@context": "https://schema.org", "@type": "Breadcru
 <style>
   .page-title { margin-block: 0.35rem 0.8rem; }
   .lede { margin-bottom: 1.6rem; }
-    .shots { display: flex; gap: 1rem; margin-bottom: 2.4rem; }
-  .shots img { border-radius: 14px; }
-  @media (max-width: 640px) { .shots { flex-direction: column; } }
+  /* three across, tracks that cannot exceed the rail */
+  .shots {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 2.4rem;
+  }
+  .shots img { width: 100%; height: auto; border-radius: 14px; }
+  @media (max-width: 640px) {
+    /* swipe instead of a tall vertical stack */
+    .shots {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      margin-inline: calc(-1 * clamp(1.2rem, 3.5vw, 2.5rem));
+      padding-inline: clamp(1.2rem, 3.5vw, 2.5rem);
+    }
+    .shots::-webkit-scrollbar { display: none; }
+    .shots img { flex: 0 0 78%; scroll-snap-align: center; }
+  }
 </style>

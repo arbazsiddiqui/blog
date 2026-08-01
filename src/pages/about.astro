@@ -15,19 +15,19 @@ const jsonLd = {"@context": "https://schema.org", "@type": "ProfilePage", "mainE
 
     <div class="prose bio">
       <p>
-        I'm Arbaz. I write backends, and for nine years the thing I've been
-        good at is the part users never see. Streams that stay under five
-        seconds, queues that don't drop, payments that reconcile, clusters
-        that hold when traffic triples overnight. At
-        <a href="/about">Turnip</a> I was the only backend engineer for two
-        years and took it to 25M users. Before that I built ticketing for one
-        of India's biggest event platforms, and a crypto exchange with a
-        matching engine and wallets across six chains.
+        I'm Arbaz. For nine years I have been building distributed systems at
+        scale. Live streaming infrastructure with sub 5s latency, payments that
+        reconcile, clusters that hold when traffic triples overnight, and a
+        social network scaled to millions of users. As a founding engineer at
+        <a href="/about">Turnip</a> I scaled the infrastructure to 25M users.
+        Before that I built ticketing for one of India's biggest event
+        platforms, and a crypto exchange with a matching engine and wallets
+        across six chains.
       </p>
       <p>
         Since 2024 the work has moved to AI models and what surrounds them.
-        GPU inference, fine-tuning, retrieval, and pipelines that run with
-        nobody watching. I learn it by shipping it, so this year I released
+        GPU inference, fine-tuning, retrieval, and autonomous pipelines. I learn
+        it by shipping it, so this year I released
         <a href="/ozan">a language model</a>, built
         <a href="/footnote">a media channel that runs itself</a>, and put
         <a href="/projects">apps</a> on the App Store.
@@ -47,13 +47,13 @@ const jsonLd = {"@context": "https://schema.org", "@type": "ProfilePage", "mainE
         suite.
       </p>
       <ul class="jb">
-        <li>Grew the backend from nothing to 25M users, twenty-one services on Kubernetes behind Kong, with Kafka and Redis carrying the load.</li>
-        <li>Built the game-streaming stack first, RTMP and FFmpeg ingest running 50K streams a day at under five seconds of latency.</li>
-        <li>Then the live audio rooms on Agora, where MQTT and Firebase kept every listener's state in sync for 2M people a month across 70M minutes of calls.</li>
-        <li>Gave the social app a feed that surfaced people worth following, second-degree discovery over a Neo4j graph, indexed in real time by Elasticsearch on an event-driven Kafka core.</li>
-        <li>Brought AI photo editing into the product, face swap, retouch and background tools on ComfyUI, orchestrated with LangGraph and later n8n on Kubernetes.</li>
-        <li>Cut GPU spend by 80% by moving generation onto a distributed GPU network while still returning images in about two seconds, and another 70% off infrastructure with autoscaling and serverless.</li>
-        <li>Made the template library searchable by meaning rather than by tag, RAG over every design and carousel with LangChain.</li>
+        <li>Built and ran the backend behind 25M users. 20+ services on Kubernetes, written in Node and Go, fronted by Kong with Kafka and Redis carrying traffic.</li>
+        <li>Built the game-streaming stack, RTMP and FFmpeg ingest running 50K streams a day at sub 5s latency.</li>
+        <li>Built the live audio rooms, where MQTT and Firebase kept every listener's state in sync for 2M people a month across 70M minutes of calls.</li>
+        <li>Built the social app's newsfeed, with connections on a Neo4j graph for second-degree retrieval, indexed in real time by Elasticsearch on an event-driven Kafka core.</li>
+        <li>Shipped AI photo editing, face swap, retouch and background tools on ComfyUI, orchestrated with LangGraph and n8n on Kubernetes.</li>
+        <li>Cut GPU spend by 80% by moving generation onto a distributed GPU network while still returning images at sub 2s, and another 70% off infrastructure by moving to serverless.</li>
+        <li>Made the template library searchable by meaning rather than by tag, semantic search over embeddings retrieved by vector similarity.</li>
         <li>Built an engineering platform that let ten product people ship 17 internal tools without a single engineer commit.</li>
       </ul>
     </div>
@@ -68,7 +68,7 @@ const jsonLd = {"@context": "https://schema.org", "@type": "ProfilePage", "mainE
       </p>
       <ul class="jb">
         <li>Built the exchange backend. Accounts, KYC, sessions, markets, order flow, fee schedules, referral commissions, API keys with IP allowlists, and failover.</li>
-        <li>Worked on the low-latency core, a matching engine written in C with its own HTTP and WebSocket access layers, market price feeds, and trade history services.</li>
+        <li>Worked on the low-latency core, a matching engine written in C with its own gRPC and WebSocket access layers, market price feeds, and trade history services.</li>
         <li>Multi-chain custody. Deposits and withdrawals across Bitcoin, Ethereum, EOS, Cosmos, ICON, and Binance Chain.</li>
         <li>Built a multi-chain DEX aggregator with price scrapers across BSC, ICON, and Moonbeam, plus a blockchain indexer for on-chain history.</li>
       </ul>
@@ -80,7 +80,7 @@ const jsonLd = {"@context": "https://schema.org", "@type": "ProfilePage", "mainE
         <p class="medium-line">Lead Backend Engineer, 2017 to April 2020</p>
       </div>
       <ul class="jb">
-        <li>Led the team behind movie ticketing that held 500+ requests a second on sale nights without a glitch.</li>
+        <li>Led the team behind movie ticketing that held 500+ requests a second.</li>
         <li>Designed the logistics architecture. Delivery opt-in, order tracking, and the internal tools for managing shipments.</li>
         <li>Built the full e-commerce flow. Cart, payments, inventory, and taxation.</li>
         <li>Ran it all as AWS microservices on Kubernetes, with serverless functions on Lambda and Kinesis carrying the on-demand work.</li>
@@ -94,8 +94,8 @@ const jsonLd = {"@context": "https://schema.org", "@type": "ProfilePage", "mainE
         <p class="medium-line">Intern, 2016 to 2017</p>
       </div>
       <p class="prose">
-        A travel-planning startup, and my first real-time systems work:
-        built its omni-channel chat server bridging the app, Facebook
+        A travel-planning startup. Built its omni-channel chat server
+        bridging the app, Facebook
         Messenger, and support agents over Socket.IO and Firebase, with
         conversation handoff and Elasticsearch-backed search.
       </p>
@@ -116,12 +116,10 @@ const jsonLd = {"@context": "https://schema.org", "@type": "ProfilePage", "mainE
     <h2 class="room-label worklog-head">Now</h2>
     <div class="prose">
       <p>
-        Right now I build as an indie dev, which means the whole thing and
-        not just the code. Idea, product, distribution, growth. Day to day
-        the work is automation pipelines, pushing language, diffusion and
-        retrieval models to see how cheaply they can run unattended before
-        the quality gives out. None of it is a demo. Every project is live,
-        with real users and real numbers.
+        Right now I build as an indie dev. Idea, product, distribution, growth.
+        Day to day the work is automation pipelines, pushing language, diffusion
+        and retrieval models to see how cheaply they can run unattended before
+        the quality gives out.
       </p>
     </div>
 

@@ -48,7 +48,7 @@ const jsonLd = [jsonLdApp, {"@context": "https://schema.org", "@type": "Breadcru
       <dt>Languages</dt><dd>12, from Japanese to Polish, 820 localized strings each</dd>
       <dt>Model</dt><dd>Free forever · optional $2.99 one-time to remove ads</dd>
       <dt>Data</dt><dd>On device; optional sync to the user's own iCloud. No servers, no accounts, no analytics SDKs</dd>
-      <dt>Stack</dt><dd>SwiftUI · Swift Charts · HealthKit · CloudKit · StoreKit 2 · ~57K lines, 98 test files</dd>
+      <dt>Stack</dt><dd>SwiftUI · Swift Charts · HealthKit · CloudKit · StoreKit 2</dd>
     </dl>
 
     <div class="shots">
@@ -63,14 +63,14 @@ const jsonLd = [jsonLdApp, {"@context": "https://schema.org", "@type": "Breadcru
         The prediction engine goes past calendar math. It learns each user's
         luteal-phase length, shifts ovulation estimates when an LH test is
         logged, and confirms ovulation from basal body temperature with a
-        proper coverline and three-reading thermal shift. That is the
-        symptothermal method, implemented honestly. There is a PCOS-friendly
+        proper coverline and three-reading thermal shift, the same method a
+        clinic would use. There is a PCOS-friendly
         irregular mode that gives ranges instead of false-confidence dates,
         and contraceptive and postpartum modes that change the whole model
         rather than hiding a few buttons.
       </p>
       <p>
-        The rest of the suite is included, not upsold. A colour-coded
+        Everything else comes with it. A colour-coded
         calendar and fertile window, ovulation and PMS phases, fourteen
         symptoms plus mood, discharge, sleep and weight logging, BBT charts,
         pill and hydration reminders, postpartum milestones, two-way Apple
@@ -89,11 +89,9 @@ const jsonLd = [jsonLdApp, {"@context": "https://schema.org", "@type": "Breadcru
         creative contract (word caps, mobile-safe geometry, a diversity
         ledger so no two posts repeat a topic or a look), and publishes
         them as Instagram Reels, Stories, and Pinterest pins on a daily
-        schedule. The App Store listing runs localized ASO: screenshots and
-        metadata in eleven languages, produced by another pipeline. One
-        person ships the whole stack: product, engineering, distribution.
-        The full write-up is at <a href="/iris-pipeline">the Iris growth
-        pipeline</a>.
+        schedule. The App Store listing is localized to eleven languages by a
+        second pipeline. The full write-up is at
+        <a href="/iris-pipeline">the Iris growth pipeline</a>.
       </p>
       <h2>Links</h2>
       <p>
@@ -106,7 +104,26 @@ const jsonLd = [jsonLdApp, {"@context": "https://schema.org", "@type": "Breadcru
 <style>
   .page-title { margin-block: 0.35rem 0.8rem; }
   .lede { margin-bottom: 1.6rem; }
-    .shots { display: flex; gap: 1rem; margin-bottom: 2.4rem; }
-  .shots img { border-radius: 14px; }
-  @media (max-width: 640px) { .shots { flex-direction: column; } }
+  /* three across, tracks that cannot exceed the rail */
+  .shots {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 2.4rem;
+  }
+  .shots img { width: 100%; height: auto; border-radius: 14px; }
+  @media (max-width: 640px) {
+    /* swipe instead of a tall vertical stack */
+    .shots {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      margin-inline: calc(-1 * clamp(1.2rem, 3.5vw, 2.5rem));
+      padding-inline: clamp(1.2rem, 3.5vw, 2.5rem);
+    }
+    .shots::-webkit-scrollbar { display: none; }
+    .shots img { flex: 0 0 78%; scroll-snap-align: center; }
+  }
 </style>

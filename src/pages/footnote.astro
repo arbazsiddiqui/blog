@@ -6,19 +6,19 @@ import banner from '../assets/footnote/banner.png';
 const stages = [
   ['Find and scrape', 'Scrapes candidate stories from the open web and scores them. A model gate rejects weak ones outright.'],
   ['Research', 'Builds a sourced brief so the script has facts, not vibes.'],
-  ['Write', 'A language model drafts the script and repairs it until it validates. A local model can do this job for free.'],
+  ['Write', 'A language model drafts the script and repairs it until it validates.'],
   ['Voice', 'Narration through Chatterbox and Gemini TTS. faster-whisper then aligns every word so the captions land exactly on the voice.'],
-  ['Illustrate', 'Finds real archival images through a self-hosted SearXNG metasearch over museum collections and image indexes. Nothing is generated. Qwen3-VL, a vision model, judges every image against the script before it can appear.'],
+  ['Illustrate', 'Scrapes real archival images off the web through a self-hosted SearXNG metasearch over museum collections and image indexes. Nothing is generated. Qwen3-VL, a vision model, judges every image against the script before it can appear.'],
   ['Download', 'The hard part. The downloader impersonates a real browser with curl_cffi, walks past bot detection on Yandex and Bing, ranks sources by trust, retries through proxies when blocked, and caches everything. Free web-scale image sourcing with zero API bills.'],
-  ['Render and publish', 'Remotion composes captions, imagery, and audio into vertical video. It publishes twice a day to Instagram, YouTube, and Facebook, with receipt ledgers so nothing ever posts twice.'],
+  ['Render and publish', 'Remotion composes captions, imagery, and audio into vertical video. It publishes to Instagram, YouTube, and Facebook, with receipt ledgers so nothing ever posts twice.'],
 ];
 
-const jsonLd = [{"@context": "https://schema.org", "@type": "CreativeWork", "name": "The Footnote", "description": "A fully autonomous media channel publishing short history stories twice a day to Instagram, YouTube, and Facebook. 500K monthly views, no human in the loop.", "author": {"@type": "Person", "name": "Arbaz Siddiqui", "url": "https://www.arbazsiddiqui.me"}, "url": "https://www.arbazsiddiqui.me/footnote/", "sameAs": ["https://www.instagram.com/thefootnotemedia/", "https://www.youtube.com/@TheFootnoteMedia"]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.arbazsiddiqui.me/"}, {"@type": "ListItem", "position": 2, "name": "Projects", "item": "https://www.arbazsiddiqui.me/projects/"}, {"@type": "ListItem", "position": 3, "name": "The Footnote", "item": "https://www.arbazsiddiqui.me/footnote/"}]}];
+const jsonLd = [{"@context": "https://schema.org", "@type": "CreativeWork", "name": "The Footnote", "description": "A fully autonomous media channel publishing short history stories to Instagram, YouTube, and Facebook. 500K monthly views, no human in the loop.", "author": {"@type": "Person", "name": "Arbaz Siddiqui", "url": "https://www.arbazsiddiqui.me"}, "url": "https://www.arbazsiddiqui.me/footnote/", "sameAs": ["https://www.instagram.com/thefootnotemedia/", "https://www.youtube.com/@TheFootnoteMedia"]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.arbazsiddiqui.me/"}, {"@type": "ListItem", "position": 2, "name": "Projects", "item": "https://www.arbazsiddiqui.me/projects/"}, {"@type": "ListItem", "position": 3, "name": "The Footnote", "item": "https://www.arbazsiddiqui.me/footnote/"}]}];
 ---
 
 <Base
   title="The Footnote: Autonomous Media Pipeline"
-  description="A fully autonomous media pipeline that researches, scripts, voices, renders, and publishes two history shorts a day, reaching 500K monthly views."
+  description="A fully autonomous media pipeline that researches, scripts, voices, renders, and publishes history shorts, reaching 500K monthly views."
   ogImage="/og/footnote.jpg"
   ogImageAlt="The Footnote, an autonomous media channel publishing history shorts."
   jsonLd={jsonLd}
@@ -27,7 +27,7 @@ const jsonLd = [{"@context": "https://schema.org", "@type": "CreativeWork", "nam
     <p class="kicker">Autonomous pipeline · live since April 2026</p>
     <h1 class="page-title">The Footnote</h1>
     <p class="lede">
-      Short history stories where the entire newsroom is software. Every
+      Short history stories, made end to end by an automated pipeline. Every
       part of every video, from idea to upload, happens without a person
       touching it.
     </p>
@@ -43,10 +43,10 @@ const jsonLd = [{"@context": "https://schema.org", "@type": "CreativeWork", "nam
 
     <dl class="facts">
       <dt>Output</dt><dd>Two short history stories a day, every day</dd>
-      <dt>Reach</dt><dd>500K monthly views · videos past 100K · 1.5K followers growing ~15% a week</dd>
+      <dt>Reach</dt><dd>500K monthly views · 1.5K followers</dd>
       <dt>Catalog</dt><dd>200+ published videos across Instagram and YouTube</dd>
       <dt>Humans involved</dt><dd>Zero, per video</dd>
-      <dt>Running cost</dt><dd>Almost nothing. Free archival images, a local model can write, no paid APIs required</dd>
+      <dt>Running cost</dt><dd>Almost nothing. Free archival images, no paid APIs required</dd>
     </dl>
 
     <div class="prose">
@@ -93,7 +93,7 @@ const jsonLd = [{"@context": "https://schema.org", "@type": "CreativeWork", "nam
         Python end to end, structured as seven resumable stages over SQLite
         state. Language models are assigned by task and price: a frontier
         model writes scripts, cheaper models gate stories, judge images, and
-        pick thumbnails. Narration is Kokoro TTS running locally, aligned
+        pick thumbnails. Narration is Chatterbox TTS running locally, aligned
         word-by-word with faster-whisper for captions. Images come from a
         self-hosted SearXNG metasearch over museum collections and image
         indexes, ranked by source trust. Remotion (React) renders the

@@ -26,9 +26,9 @@ const jsonLd = [{"@context": "https://schema.org", "@type": "CreativeWork", "nam
     <Image src={titleCard} alt="Andheri Dastak: Hindi horror stories" widths={[640, 1024, 1440]} sizes="(max-width: 46rem) 100vw, 46rem" loading="lazy" class="banner" />
 
     <dl class="facts">
-      <dt>Output</dt><dd>~2:30 animated shorts, 25 shots, Hindi narration (an English folk-horror variant is in progress)</dd>
+      <dt>Output</dt><dd>~2:30 animated shorts, 25 shots, Hindi narration</dd>
       <dt>Status</dt><dd>Live on <a href="https://www.youtube.com/@AndheriDastak" target="_blank" rel="noopener">YouTube</a></dd>
-      <dt>Compute</dt><dd>Rented consumer GPUs (RTX 5090s on Salad), spun up per render, torn down after</dd>
+      <dt>Compute</dt><dd>Rented consumer GPUs (RTX 5090s on Salad), on demand per render, torn down after</dd>
       <dt>Cost</dt><dd>Under $1 for a four-minute film</dd>
     </dl>
 
@@ -38,7 +38,7 @@ const jsonLd = [{"@context": "https://schema.org", "@type": "CreativeWork", "nam
         <li><span class="st">Script</span> A local language model writes the screenplay. Beats, shots, camera notes, and a reference description for every character.</li>
         <li><span class="st">Character sheets</span> Krea 2 or Z-Image generates the cast once, so every face stays the same across the whole film.</li>
         <li><span class="st">Keyframes</span> Qwen-Image-Edit-2511 poses those character sheets into each of the 25 shots. Same person, new scene, every time.</li>
-        <li><span class="st">Animation</span> Wan 2.2, a 14-billion-parameter image-to-video model, brings each keyframe to life. It runs quantized with LightX2V LoRAs inside ComfyUI, on rented consumer 5090s that the pipeline spins up and destroys per render.</li>
+        <li><span class="st">Animation</span> Wan 2.2, a 14-billion-parameter image-to-video model, brings each keyframe to life. It runs quantized with LightX2V LoRAs inside ComfyUI, on rented consumer 5090s the pipeline takes on demand and destroys per render.</li>
         <li><span class="st">Finish</span> Real-ESRGAN upscales the clips and RIFE interpolates them to a smooth 24fps.</li>
         <li><span class="st">Sound</span> LTX 2.3 watches the video and generates matching foley. ElevenLabs makes the effects. Narration comes through Google's TTS API, and WhisperX aligns the subtitles word by word.</li>
       </ol>
@@ -50,9 +50,7 @@ const jsonLd = [{"@context": "https://schema.org", "@type": "CreativeWork", "nam
         model in the chain is open weights running on rented consumer GPUs
         that exist only for the length of a render, the expensive steps are
         quantized and LoRA-accelerated instead of brute-forced, and the
-        pipeline resumes rather than re-renders when something fails. Under
-        a dollar is the number that makes a channel like this possible at
-        all.
+        pipeline resumes rather than re-renders when something fails.
       </p>
       <h2>Watch</h2>
       <p>

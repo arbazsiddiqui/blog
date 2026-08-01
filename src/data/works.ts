@@ -18,7 +18,7 @@ export const WORKS = {
     title: 'Iris',
     medium: 'iOS app, 2026',
     sentence:
-      'A complete cycle-tracking suite. Predictions, the symptothermal method with BBT and LH tests, a PCOS-friendly irregular mode, partner sharing, and two-way Apple Health sync. Every feature is free, in twelve languages, and health data never leaves the phone.',
+      'A complete cycle-tracking suite. Predictions confirmed from BBT and LH tests the way a clinic would, a PCOS-friendly irregular mode, partner sharing, and two-way Apple Health sync. Every feature is free, in twelve languages, and health data never leaves the phone.',
     stat: '4.9★ · 12 languages · 1,000+ downloads',
     alt: 'Iris: Period and Cycle Tracker',
     links: [{ label: 'App Store', url: 'https://apps.apple.com/app/id6761134901' }],
@@ -28,7 +28,7 @@ export const WORKS = {
     title: 'Mercuro',
     medium: 'iOS and Android game, 2026',
     sentence:
-      'Calm thermometer logic puzzles. 660 handcrafted levels across eight board sizes, three seeded dailies, and hints that explain the logic, all on its own constraint solver and generator. Built natively twice, SwiftUI on iOS and Kotlin with Compose on Android.',
+      'Calm thermometer logic puzzles. 660 handcrafted levels across eight board sizes, three daily games, and a hint system, all on its own constraint solver and generator. Built natively twice, SwiftUI on iOS and Kotlin with Compose on Android.',
     stat: '5★ · 660 puzzles · featured in gaming newsletters',
     alt: 'Mercuro: fill the heat',
     links: [{ label: 'App Store', url: 'https://apps.apple.com/app/id6762402072' }],
@@ -38,7 +38,7 @@ export const WORKS = {
     title: 'The Footnote',
     medium: 'Autonomous media channel, 2026',
     sentence:
-      'Short history stories researched, scripted, voiced, illustrated, rendered, and published by software twice a day. Real archival images instead of AI art, with a vision model judging every frame. No human in the loop.',
+      'Short history stories researched, scripted, voiced, illustrated, rendered, and published by an automated pipeline. Real archival images scraped off the web instead of AI art, with a vision model judging every frame. No human in the loop.',
     stat: '500K monthly views',
     alt: 'The Footnote channel banner',
     links: [
