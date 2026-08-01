@@ -66,17 +66,18 @@ const jsonLd = {"@context": "https://schema.org", "@type": "CollectionPage", "na
         <h3>Agent platform at Turnip</h3>
         <p class="medium-line">Internal engineering platform, 2026</p>
         <p class="platform-desc">
-          One repo where anyone can build software without knowing how to
-          harness a coding agent. Clone it and everything arrives
-          preconfigured. Global skills, a structured workflow that forces
-          brainstorming and plans before code, and per-project memory
-          through PROJECT.md and a wiki, so any person can pick up any
-          project where it was left. When the code is done, deployment goes
-          through Hermes, an MCP server I built and self-hosted. The agent
-          talks to it, Hermes pulls, builds, and ships behind guardrails,
-          and no one ever needs production access. Ten non-engineers have
-          shipped 17 internal tools this way without a single engineer
-          commit. Internal to Turnip, so there is no public link.
+          One repo that lets anyone at the company build and ship software
+          without knowing how to drive a coding agent. Clone it and the
+          workflow, the skills and the project memory are already there.
+          Deploys go through an MCP server I built and self-host, behind
+          guardrails, so nobody needs production access.
+        </p>
+        <p class="platform-stack">
+          Claude Code · Hermes, a self-hosted MCP server · per-project memory
+          · guardrailed deploys
+        </p>
+        <p class="platform-stat">
+          10 non-engineers · 17 internal tools · zero engineer commits
         </p>
       </div>
     </section>
@@ -99,4 +100,7 @@ const jsonLd = {"@context": "https://schema.org", "@type": "CollectionPage", "na
   .platform h3 { font-size: 1.35rem; font-weight: 680; }
   .medium-line { font-style: italic; color: var(--soft); margin-top: 0.15rem; }
   .platform-desc { margin-top: 0.55rem; }
+  .platform-stack { margin-top: 0.5rem; color: var(--soft); font-size: 0.98rem; }
+  .platform-stat { font-family: var(--mono); font-size: 0.84rem; color: var(--soft);
+    margin-top: 0.4rem; font-variant-numeric: tabular-nums; }
 </style>
