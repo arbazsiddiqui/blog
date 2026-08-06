@@ -10,6 +10,7 @@ export const WORKS = {
     alt: "Ozan the storyteller, the model's namesake artwork",
     links: [
       { label: 'Hugging Face', url: 'https://huggingface.co/arbazsiddiqui/Ozan-v1-12B' },
+      { label: 'Featherless', url: 'https://featherless.ai/models/arbazsiddiqui/Ozan-v1-12B' },
       { label: 'Training recipe', url: 'https://github.com/arbazsiddiqui/Ozan' },
     ],
   },
