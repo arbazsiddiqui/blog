@@ -1,5 +1,7 @@
 # All crawlers welcome, including AI/LLM crawlers.
+# Content Signals (contentsignals.org): index it, quote it, train on it.
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
 
 User-agent: GPTBot
