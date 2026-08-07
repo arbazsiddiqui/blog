@@ -3,7 +3,7 @@ export const WORKS = {
   ozan: {
     href: '/ozan',
     title: 'Ozan-12B',
-    medium: 'Open-weights language model, 2026',
+    medium: 'Open-weights language model',
     sentence:
       'A creative-writing model fine-tuned from Mistral-Nemo with QLoRA and anti-slop DPO, on $40 of GPU. It has the lowest slop score of any 12B measured on EQ-Bench and beats bigger models like Gemma 27B. The weights, the quants, and the full training recipe are public.',
     stat: '#1 trending on Hugging Face · 2.3K downloads in month one',
@@ -17,7 +17,7 @@ export const WORKS = {
   iris: {
     href: '/iris',
     title: 'Iris',
-    medium: 'iOS app, 2026',
+    medium: 'iOS app',
     sentence:
       'A complete cycle-tracking suite. Predictions confirmed from BBT and LH tests the way a clinic would, a PCOS-friendly irregular mode, partner sharing, and two-way Apple Health sync. Every feature is free, in twelve languages, and health data never leaves the phone.',
     stat: '4.9★ · 12 languages · 1,000+ downloads',
@@ -27,7 +27,7 @@ export const WORKS = {
   mercuro: {
     href: '/mercuro',
     title: 'Mercuro',
-    medium: 'iOS and Android game, 2026',
+    medium: 'iOS and Android game',
     sentence:
       'Calm thermometer logic puzzles. 660 handcrafted levels across eight board sizes, three daily games, and a hint system, all on its own constraint solver and generator. Built natively twice, SwiftUI on iOS and Kotlin with Compose on Android.',
     stat: '5★ · 660 puzzles · featured in gaming newsletters',
@@ -37,7 +37,7 @@ export const WORKS = {
   footnote: {
     href: '/footnote',
     title: 'The Footnote',
-    medium: 'Autonomous media channel, 2026',
+    medium: 'Autonomous media channel',
     sentence:
       'Short history stories researched, scripted, voiced, illustrated, rendered, and published by an automated pipeline. Real archival images scraped off the web instead of AI art, with a vision model judging every frame. No human in the loop.',
     stat: '500K monthly views',
@@ -51,7 +51,7 @@ export const WORKS = {
   horror: {
     href: '/horror',
     title: 'Animated Horror',
-    medium: 'Animated video pipeline, 2026',
+    medium: 'Animated video pipeline',
     sentence:
       'Animated Hindi horror stories. A local model writes the screenplay, image models keep the cast consistent across 25 shots, and Wan 2.2 animates it on rented GPUs. A finished four-minute film costs under a dollar.',
     stat: 'animated films under $1 each',
@@ -61,7 +61,7 @@ export const WORKS = {
   irisPipeline: {
     href: '/iris-pipeline',
     title: 'Iris growth pipeline',
-    medium: 'Automated distribution, 2026',
+    medium: 'Automated distribution',
     sentence:
       'Iris markets itself. The pipeline designs infographic posters, checks each one against a written creative contract, and publishes daily to Instagram and Pinterest. Its App Store listing runs ASO in eleven languages.',
     stat: '100K+ views driving installs',
