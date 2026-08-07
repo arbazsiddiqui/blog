@@ -21,7 +21,7 @@ export const PROJECTS = [
     index: '01',
     name: 'Ozan-v1-12B',
     tagline: 'A 12B language model tuned to write fiction that does not sound like a machine.',
-    stat: '2.3K downloads in month one',
+    stat: '3K+ downloads',
     kind: 'Open-weights LLM',
   },
   {

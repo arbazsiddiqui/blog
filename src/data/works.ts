@@ -6,7 +6,7 @@ export const WORKS = {
     medium: 'Open-weights language model',
     sentence:
       'A creative-writing model fine-tuned from Mistral-Nemo with QLoRA and anti-slop DPO, on $40 of GPU. It has the lowest slop score of any 12B measured on EQ-Bench and beats bigger models like Gemma 27B. The weights, the quants, and the full training recipe are public.',
-    stat: '#1 trending on Hugging Face · 2.3K downloads in month one',
+    stat: '#1 trending on Hugging Face · 3K+ downloads',
     alt: "Ozan the storyteller, the model's namesake artwork",
     links: [
       { label: 'Hugging Face', url: 'https://huggingface.co/arbazsiddiqui/Ozan-v1-12B' },
