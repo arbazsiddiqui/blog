@@ -1,0 +1,76 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "arbazsiddiqui.me content API",
+    "version": "1.0.0",
+    "description": "Read-only, machine-readable resources of Arbaz Siddiqui's personal site. No authentication, GET only.",
+    "contact": {
+      "name": "Arbaz Siddiqui",
+      "email": "arbaz00@gmail.com",
+      "url": "https://www.arbazsiddiqui.me"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://www.arbazsiddiqui.me"
+    }
+  ],
+  "paths": {
+    "/llms.txt": {
+      "get": {
+        "operationId": "getLlmsTxt",
+        "summary": "Site summary for language models",
+        "responses": {
+          "200": {
+            "description": "Plain-text summary of who Arbaz is and what he has shipped",
+            "content": {
+              "text/plain": {}
+            }
+          }
+        }
+      }
+    },
+    "/arbaz-siddiqui-resume.pdf": {
+      "get": {
+        "operationId": "getResume",
+        "summary": "One-page resume (PDF)",
+        "responses": {
+          "200": {
+            "description": "Resume as PDF",
+            "content": {
+              "application/pdf": {}
+            }
+          }
+        }
+      }
+    },
+    "/sitemap-index.xml": {
+      "get": {
+        "operationId": "getSitemap",
+        "summary": "Sitemap index",
+        "responses": {
+          "200": {
+            "description": "XML sitemap index",
+            "content": {
+              "application/xml": {}
+            }
+          }
+        }
+      }
+    },
+    "/auth.md": {
+      "get": {
+        "operationId": "getAuthMd",
+        "summary": "Agent access and registration policy",
+        "responses": {
+          "200": {
+            "description": "Markdown policy document",
+            "content": {
+              "text/markdown": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}

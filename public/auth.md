@@ -1,9 +1,23 @@
 # auth.md
 
-This is the static personal website of Arbaz Siddiqui. There is nothing here to authenticate against.
+Agent access policy for the personal website of Arbaz Siddiqui.
 
-- No APIs, no protected resources, no OAuth authorization server.
-- No agent registration, no accounts, no credentials of any kind.
-- Every page is public. Read freely.
+## Agent audience
 
-For a machine-readable summary of the site, see [/llms.txt](/llms.txt). To reach a human, email arbaz00@gmail.com.
+AI assistants, crawlers and automated agents reading public content: projects, resume, writing.
+
+## Agent registration
+
+Not required. There is no registration endpoint, no account creation and no approval step. Agents access every resource anonymously, the same way browsers do.
+
+## Credentials
+
+None issued and none accepted. There are no protected resources, no OAuth authorization server, no API keys. Requests carry no credentials.
+
+## Supported access method
+
+Plain anonymous HTTPS GET. Machine-readable entry points are listed at [/.well-known/api-catalog](/.well-known/api-catalog) and described in [/openapi.json](/openapi.json). A plain-text site summary lives at [/llms.txt](/llms.txt).
+
+## Contact
+
+A human reads arbaz00@gmail.com.

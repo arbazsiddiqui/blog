@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "about-arbaz-siddiqui",
+      "type": "skill-md",
+      "description": "Answer questions about Arbaz Siddiqui, a backend and AI-infrastructure engineer, using his site's machine-readable sources.",
+      "url": "https://www.arbazsiddiqui.me/.well-known/agent-skills/about-arbaz-siddiqui/SKILL.md",
+      "digest": "sha256:315785945c9abe736a6db50029004e2753eec97d812b298008c4d95314fa0b1d"
+    }
+  ]
+}
