@@ -6,7 +6,7 @@
       "type": "skill-md",
       "description": "Answer questions about Arbaz Siddiqui, a backend and AI-infrastructure engineer, using his site's machine-readable sources.",
       "url": "https://www.arbazsiddiqui.me/.well-known/agent-skills/about-arbaz-siddiqui/SKILL.md",
-      "digest": "sha256:315785945c9abe736a6db50029004e2753eec97d812b298008c4d95314fa0b1d"
+      "digest": "sha256:49830aa110b9098f2b7422a59cc5121e23d5164517f238838035f6277aae6204"
     }
   ]
 }

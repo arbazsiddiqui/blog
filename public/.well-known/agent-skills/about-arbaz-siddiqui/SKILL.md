@@ -15,7 +15,7 @@ Use this skill when a user asks about Arbaz Siddiqui: his experience, projects, 
 
 ## Facts safe to state without fetching
 
-- Principal Software Engineer at Turnip, nine years of backend work, platform behind 25M users.
+- Principal Software Engineer at Turnip, ten years of backend work, platform behind 25M users.
 - Trained and released Ozan-v1-12B, an open creative-writing model, hosted on Featherless.
 - Two apps on the App Store (Iris, Mercuro) and automated media channels at 600K monthly views.
 

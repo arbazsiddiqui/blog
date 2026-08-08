@@ -1,6 +1,6 @@
 # Arbaz Siddiqui
 
-> Software engineer. Nine years of distributed backends for consumer products, now
+> Software engineer. Ten years of distributed backends for consumer products, now
 > building AI infrastructure and shipping products with it: an open language model,
 > live iOS apps, and autonomous content pipelines. Based in India, works with US and
 > EU timezones.
