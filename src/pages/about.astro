@@ -43,12 +43,12 @@ const jsonLd = {"@context": "https://schema.org", "@type": "ProfilePage", "mainE
         suite.
       </p>
       <ul class="jb">
-        <li>Built and ran the backend behind 25M users. 20+ services on Kubernetes, written in Node.js and Go, fronted by Kong with Kafka and Redis carrying traffic.</li>
-        <li>Wrote the game-streaming stack, RTMP and FFmpeg ingest running 50K streams a day at sub 5s latency.</li>
+        <li>Built and ran the backend serving 25M users. 20+ services on Kubernetes, written in Node.js and Go, fronted by Kong with Kafka and Redis carrying traffic.</li>
+        <li>Wrote the game-streaming stack, RTMP and FFmpeg ingest running 50K peak concurrent streams at sub 2s latency.</li>
         <li>Implemented live audio rooms, where MQTT and Firebase kept every listener's state in sync for 2M people a month across 70M minutes of calls.</li>
-        <li>Built a social network with a news feed, discovery, DMs and connections over Neo4j for second-degree retrieval, indexed in real time by Elasticsearch on an event-driven Kafka core.</li>
+        <li>Built a social network with a news feed, discovery, DMs and connections over Neo4j for second-degree retrieval, with per-user rankings cached and served at sub-100ms on an event-driven Kafka core.</li>
         <li>Shipped AI photo editing, face swap, retouch and background tools on ComfyUI, orchestrated with LangGraph and n8n on Kubernetes.</li>
-        <li>Cut GPU spend by 80% by moving generation onto a distributed GPU network while still returning images at sub 2s, and another 70% off infrastructure by moving to serverless.</li>
+        <li>Cut GPU spend by 80% by moving generation onto a distributed GPU network while still returning images at sub 2s.</li>
         <li>Made the template library searchable by meaning rather than by tag, semantic search over embeddings retrieved by vector similarity.</li>
         <li>Set up an engineering platform where ten product people shipped 17 internal tools without a single engineer commit.</li>
       </ul>
@@ -79,7 +79,7 @@ const jsonLd = {"@context": "https://schema.org", "@type": "ProfilePage", "mainE
         <li>Led the team behind movie ticketing that held 500+ requests a second.</li>
         <li>Designed the logistics architecture. Delivery opt-in, order tracking, and the internal tools for managing shipments.</li>
         <li>Built the full e-commerce flow. Cart, payments, inventory, and taxation.</li>
-        <li>Ran it all as AWS microservices on Kubernetes, with serverless functions on Lambda and Kinesis carrying the on-demand work.</li>
+        <li>Ran it all as AWS microservices on Kubernetes, with serverless functions on Lambda and Kinesis carrying the on-demand work, cutting cost by over 70%.</li>
         <li>Led a team of 7 and interviewed 100+ engineers for backend and DevOps roles.</li>
       </ul>
     </div>
