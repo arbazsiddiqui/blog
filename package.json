@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node scripts/external-links.mjs",
+    "build": "astro build && node scripts/external-links.mjs && node scripts/heading-anchors.mjs",
     "preview": "astro preview"
   },
   "dependencies": {

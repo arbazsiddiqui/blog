@@ -180,6 +180,8 @@ a.frame:hover img { transform: scale(1.02); }
 .prose > * + * { margin-top: 1em; }
 .prose h2 { font-size: 1.4rem; margin-top: 2.1em; font-weight: 670; }
 .prose h3 { font-size: 1.15rem; margin-top: 1.7em; }
+.prose h2 .anchor, .prose h3 .anchor { margin-left: 0.4em; color: var(--faint); text-decoration: none; font-weight: 400; opacity: 0.55; }
+.prose h2:hover .anchor, .prose h3:hover .anchor, .prose .anchor:focus { opacity: 1; color: var(--soft); }
 .prose ul, .prose ol { padding-left: 1.3rem; }
 .prose li + li { margin-top: 0.3em; }
 .prose blockquote { border-left: 1px solid var(--fg); padding-left: 1.2rem; color: var(--soft); font-style: italic; }
