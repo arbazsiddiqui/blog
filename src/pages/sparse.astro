@@ -18,7 +18,7 @@ const jsonLdApp = {
 const faq = [
   {
     q: 'Does sqlite-sparse need a model at query time?',
-    a: 'No. Documents are encoded once when they are inserted. A query is tokenized, each token looks up a weight stored in the database file, and scoring is an exact sum over posting lists. Searching needs no model, no server and no vector database.',
+    a: 'No. The encoder runs once, at INSERT. A query is tokenized, each token looks up a weight stored in the database file, and scoring is an exact sum over posting lists.',
   },
   {
     q: 'How fast is it?',
@@ -26,7 +26,7 @@ const faq = [
   },
   {
     q: 'Does the quantized encoder lose quality?',
-    a: 'Within 0.001 nDCG@10 of the model card on SciFact, NFCorpus, SCIDOCS and FiQA, using a Q8 encoder and one-byte weights.',
+    a: 'No. Within 0.001 nDCG@10 of the model card on SciFact, NFCorpus, SCIDOCS and FiQA, with a Q8 encoder and one-byte weights.',
   },
   {
     q: 'What are the trade-offs?',
@@ -64,7 +64,7 @@ const jsonLd = [jsonLdApp, {
 
     <dl class="facts">
       <dt>What it is</dt><dd>A SQLite virtual table that runs OpenSearch's inference-free neural-sparse encoders. Each document becomes 150 to 300 weighted vocabulary words, stored as posting lists that are ordinary rows in the file</dd>
-      <dt>Query path</dt><dd>WordPiece tokenization, a weight table stored in the file, and an exact scatter-add over posting lists. No model loads, no approximate index, no candidate stage</dd>
+      <dt>Query path</dt><dd>WordPiece tokenization, a weight table stored in the file, and an exact scatter-add over posting lists. No approximate index and no candidate stage</dd>
       <dt>Speed</dt><dd>3.1 ms per query across one million MS MARCO passages, in 28 MB of memory, 62 ms from a cold process to the first result</dd>
       <dt>Against</dt><dd>FTS5 BM25 at 582 ms and brute-force dense search at 735 ms on the same machine, each in a fresh process, no GPU</dd>
       <dt>Quality</dt><dd>Within 0.001 nDCG@10 of the model card on SciFact, NFCorpus, SCIDOCS and FiQA</dd>
@@ -110,7 +110,7 @@ const jsonLd = [jsonLdApp, {
         The index is four ordinary tables, so any language reads it with its
         SQLite driver. The Python package ships a reference implementation in
         numpy with no extension at all, and the C code is tested against it for
-        identical ranking in both directions. The extension in the browser demo is
+        identical ranking. The extension in the browser demo is
         the same C source with llama.cpp left out: it can search and write indexes
         but not encode text, and its rankings matched the native binary exactly.
       </p>
@@ -132,10 +132,9 @@ peak RAM on the query path       37 MB          527 MB            28 MB
 index size, bytes per document    540             807            1,092
 indexing, documents per second ~43,000             167             20.5</code></pre>
       <p>
-        The compiled extension, with a Q8 encoder, one-byte weights and 512-token
-        truncation, lands within about 0.001 of the model card's own nDCG@10 on
-        every BEIR set I ran. Storing weights as one byte instead of four moved the
-        score by less than 0.001.
+        Quantization did not cost quality. With a Q8 encoder, one-byte weights and
+        512-token truncation, the extension lands within 0.001 of the model card's
+        own nDCG@10 on every BEIR set I ran.
       </p>
 
       <h2>Questions</h2>
@@ -151,8 +150,7 @@ indexing, documents per second ~43,000             167             20.5</code></
         The <a href="/sqlite-sparse/#demo">writeup</a> has a live demo: 4,799 movie
         overviews indexed into a 10 MB SQLite file, searched by SQLite compiled to
         WebAssembly with the extension inside, entirely in your tab. Nothing is
-        sent anywhere and no model is downloaded, because the query path does not
-        need one. To run it yourself:
+        sent anywhere. To run it yourself:
       </p>
       <pre><code>pip install sqlite-sparse</code></pre>
       <pre><code>.load ./sparse0
