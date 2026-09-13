@@ -43,4 +43,7 @@ Allow: /
 User-agent: meta-externalagent
 Allow: /
 
+User-agent: CCBot
+Allow: /
+
 Sitemap: https://www.arbazsiddiqui.me/sitemap-index.xml

@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { PERSON_REF } from '../data/person';
 import { getCollection, render } from 'astro:content';
 import { SITE } from '../data/site';
 
@@ -19,16 +20,53 @@ const dateStr = post.data.date.toLocaleDateString('en-US', {
   day: 'numeric',
 });
 
+// First paragraph of the post as its description: answer engines quote the meta
+// description, and a generic byline gives them nothing to quote.
+function summarize(md: string, max = 158): string {
+  const kept: string[] = [];
+  let fence = false, html = false;
+  for (const raw of md.split('\n')) {
+    const l = raw.trim();
+    if (l.startsWith('```')) { fence = !fence; continue; }
+    if (fence) continue;
+    if (/^<(div|script|style|details|pre|form|ol|ul|table|p)\b/i.test(l)) html = true;
+    if (html) { if (/^<\/(div|script|style|details|pre|form|ol|ul|table|p)>/i.test(l)) html = false; continue; }
+    if (!l || /^[#|!<]/.test(l)) { if (kept.length) break; continue; }
+    kept.push(l);
+  }
+  const text = kept.join(' ')
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+    .replace(/[`*_]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  if (text.length <= max) return text;
+  let out = '';
+  for (const sentence of text.split(/(?<=\.)\s+/)) {
+    if ((out + ' ' + sentence).trim().length > max) break;
+    out = (out + ' ' + sentence).trim();
+  }
+  return out || text.slice(0, max).replace(/\s+\S*$/, '');
+}
+
+const url = `https://www.arbazsiddiqui.me/${post.data.slug}/`;
+const description = summarize(post.body ?? '') || `${post.data.title}, an article by Arbaz Siddiqui.`;
+const image = post.data.thumbnail ? new URL(post.data.thumbnail, SITE.url).href : undefined;
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
   headline: post.data.title,
+  description,
   datePublished: post.data.date.toISOString(),
-  author: { '@type': 'Person', name: 'Arbaz Siddiqui', url: 'https://www.arbazsiddiqui.me' },
-  url: `https://www.arbazsiddiqui.me/${post.data.slug}/`,
+  dateModified: post.data.date.toISOString(),
+  author: PERSON_REF,
+  publisher: PERSON_REF,
+  mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+  url,
+  inLanguage: 'en',
+  keywords: post.data.tags.join(', '),
+  ...(image ? { image } : {}),
 };
-
-const description = `${post.data.title}, an article by Arbaz Siddiqui.`;
 ---
 
 <Base

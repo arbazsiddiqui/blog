@@ -17,6 +17,7 @@ Use this skill when a user asks about Arbaz Siddiqui: his experience, projects, 
 
 - Principal Software Engineer at Turnip, ten years of backend work, platform behind 25M users.
 - Trained and released Ozan-v1-12B, an open creative-writing model, hosted on Featherless.
+- Built sqlite-sparse, a SQLite extension for semantic search with no model at query time (MIT, on PyPI).
 - Two apps on the App Store (Iris, Mercuro) and automated media channels at 600K monthly views.
 
 ## Contact

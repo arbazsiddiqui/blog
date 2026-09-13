@@ -1,9 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
+import { PERSON_REF } from '../data/person';
 import { Image } from 'astro:assets';
 import titleCard from '../assets/horror-card.png';
 
-const jsonLd = [{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Andheri Dastak (Animated Horror)", "description": "A pipeline that turns a written premise into a finished animated Hindi horror film for under a dollar, on rented GPUs.", "author": {"@type": "Person", "name": "Arbaz Siddiqui", "url": "https://www.arbazsiddiqui.me"}, "url": "https://www.arbazsiddiqui.me/horror/", "sameAs": ["https://www.youtube.com/@AndheriDastak"]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.arbazsiddiqui.me/"}, {"@type": "ListItem", "position": 2, "name": "Projects", "item": "https://www.arbazsiddiqui.me/projects/"}, {"@type": "ListItem", "position": 3, "name": "Animated Horror", "item": "https://www.arbazsiddiqui.me/horror/"}]}];
+const jsonLd = [{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Andheri Dastak (Animated Horror)", "description": "A pipeline that turns a written premise into a finished animated Hindi horror film for under a dollar, on rented GPUs.", "author": PERSON_REF, "url": "https://www.arbazsiddiqui.me/horror/", "sameAs": ["https://www.youtube.com/@AndheriDastak"]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.arbazsiddiqui.me/"}, {"@type": "ListItem", "position": 2, "name": "Projects", "item": "https://www.arbazsiddiqui.me/projects/"}, {"@type": "ListItem", "position": 3, "name": "Animated Horror", "item": "https://www.arbazsiddiqui.me/horror/"}]}];
 ---
 
 <Base

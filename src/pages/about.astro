@@ -1,8 +1,41 @@
 ---
 import Base from '../layouts/Base.astro';
 import { SITE } from '../data/site';
+import { PERSON_FULL } from '../data/person';
 
-const jsonLd = {"@context": "https://schema.org", "@type": "ProfilePage", "mainEntity": {"@type": "Person", "name": "Arbaz Siddiqui", "jobTitle": "Principal Software Engineer", "worksFor": {"@type": "Organization", "name": "Turnip", "url": "https://zaps.design/"}, "url": "https://www.arbazsiddiqui.me", "email": "mailto:arbaz00@gmail.com", "sameAs": ["https://github.com/arbazsiddiqui", "https://huggingface.co/arbazsiddiqui", "https://www.linkedin.com/in/arbazsiddiqui"], "knowsAbout": ["AI infrastructure", "distributed systems", "LLM fine-tuning", "RAG", "Kubernetes", "Go", "Node.js", "Kafka", "MQTT", "WebSockets", "RTMP", "FFmpeg", "live streaming", "real-time systems", "Redis", "Postgres", "Neo4j", "Elasticsearch", "Docker", "content automation", "cryptocurrency exchanges", "blockchain", "trading engines", "DeFi"]}};
+const faq = [
+  {
+    q: 'Who is Arbaz Siddiqui?',
+    a: 'A software engineer with ten years of building distributed backends for consumer products, and Principal Software Engineer at Turnip, where he scaled the platform to 25M users. Since 2024 he has worked on AI infrastructure and ships products with it. He is based in India and works with US and EU timezones.',
+  },
+  {
+    q: 'What has he built and shipped?',
+    a: 'Ozan-12B, an open creative-writing language model with the lowest slop score of any 12B measured on EQ-Bench. sqlite-sparse, a SQLite extension for semantic search that needs no model at query time. Iris and Mercuro on the App Store. The Footnote, an autonomous history channel at 500K monthly views.',
+  },
+  {
+    q: 'What kind of work is he open to?',
+    a: 'Senior engineering roles at small AI-native teams, remote, and consulting on content-automation pipelines. Email arbaz00@gmail.com. GitHub and Hugging Face are both at arbazsiddiqui.',
+  },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    dateCreated: '2026-07-30T00:00:17+05:30',
+    dateModified: '2026-09-13T10:38:34Z',
+    mainEntity: PERSON_FULL,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  },
+];
 ---
 
 <Base
@@ -119,6 +152,16 @@ const jsonLd = {"@context": "https://schema.org", "@type": "ProfilePage", "mainE
       </p>
     </div>
 
+    <h2 class="room-label worklog-head">Questions</h2>
+    <div class="prose faq">
+      {faq.map((f) => (
+        <>
+          <h3>{f.q}</h3>
+          <p>{f.a}</p>
+        </>
+      ))}
+    </div>
+
   </section>
 </Base>
 
@@ -136,4 +179,6 @@ const jsonLd = {"@context": "https://schema.org", "@type": "ProfilePage", "mainE
   .jb li + li { margin-top: 0.7rem; }
   .jb li::marker { color: var(--accent); }
   .job .prose { font-size: 1.05rem; }
+  .faq h3 { font-size: 1.15rem; font-weight: 650; margin-top: 1.4rem; }
+  .faq h3 + p { margin-top: 0.4rem; }
 </style>

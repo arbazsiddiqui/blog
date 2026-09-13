@@ -4,6 +4,7 @@ import Work from '../components/Work.astro';
 import { WORKS } from '../data/works';
 
 import ozanBanner from '../assets/ozan/ozan_banner.png';
+import sparseDiagram from '../assets/sparse/how-it-works.png';
 import footnoteBanner from '../assets/footnote/banner.png';
 import irisCard from '../assets/iris-card.png';
 import mercuroCard from '../assets/mercuro-card.png';
@@ -24,12 +25,12 @@ const oss = [
   { url: 'https://www.npmjs.com/package/mock-jay', name: 'mock-jay', desc: 'a mock data generator for real-world shapes, on npm', meta: 'npm' },
 ];
 
-const jsonLd = {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Projects by Arbaz Siddiqui", "url": "https://www.arbazsiddiqui.me/projects/", "mainEntity": {"@type": "ItemList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Ozan-12B", "url": "https://www.arbazsiddiqui.me/ozan/"}, {"@type": "ListItem", "position": 2, "name": "Iris", "url": "https://www.arbazsiddiqui.me/iris/"}, {"@type": "ListItem", "position": 3, "name": "Mercuro", "url": "https://www.arbazsiddiqui.me/mercuro/"}, {"@type": "ListItem", "position": 4, "name": "The Footnote", "url": "https://www.arbazsiddiqui.me/footnote/"}, {"@type": "ListItem", "position": 5, "name": "Iris growth pipeline", "url": "https://www.arbazsiddiqui.me/iris-pipeline/"}, {"@type": "ListItem", "position": 6, "name": "Animated Horror", "url": "https://www.arbazsiddiqui.me/horror/"}]}};
+const jsonLd = {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Projects by Arbaz Siddiqui", "url": "https://www.arbazsiddiqui.me/projects/", "mainEntity": {"@type": "ItemList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Ozan-12B", "url": "https://www.arbazsiddiqui.me/ozan/"}, {"@type": "ListItem", "position": 2, "name": "Iris", "url": "https://www.arbazsiddiqui.me/iris/"}, {"@type": "ListItem", "position": 3, "name": "Mercuro", "url": "https://www.arbazsiddiqui.me/mercuro/"}, {"@type": "ListItem", "position": 4, "name": "The Footnote", "url": "https://www.arbazsiddiqui.me/footnote/"}, {"@type": "ListItem", "position": 5, "name": "Iris growth pipeline", "url": "https://www.arbazsiddiqui.me/iris-pipeline/"}, {"@type": "ListItem", "position": 6, "name": "Animated Horror", "url": "https://www.arbazsiddiqui.me/horror/"}, {"@type": "ListItem", "position": 7, "name": "sqlite-sparse", "url": "https://www.arbazsiddiqui.me/sparse/"}]}};
 ---
 
 <Base
   title="Projects"
-  description="Projects by Arbaz Siddiqui: an open 12B language model, live apps, autonomous media pipelines reaching 600K monthly views, and a decade of open-source work."
+  description="Projects by Arbaz Siddiqui: an open 12B language model, a SQLite extension for semantic search, live apps, autonomous media pipelines reaching 600K monthly views, and a decade of open-source work."
   jsonLd={jsonLd}
 >
   <div class="hall section">
@@ -39,8 +40,11 @@ const jsonLd = {"@context": "https://schema.org", "@type": "CollectionPage", "na
     </p>
 
     <section class="room">
-      <h2 class="room-label">Model training</h2>
-      <Work hero {...WORKS.ozan} img={ozanBanner} />
+      <h2 class="room-label">Models and retrieval</h2>
+      <div class="works pair">
+        <Work eager {...WORKS.ozan} img={ozanBanner} />
+        <Work eager {...WORKS.sparse} img={sparseDiagram} />
+      </div>
     </section>
 
     <section class="room">

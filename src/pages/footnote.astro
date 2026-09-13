@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { PERSON_REF } from '../data/person';
 import { Image } from 'astro:assets';
 import banner from '../assets/footnote/banner.png';
 
@@ -13,7 +14,7 @@ const stages = [
   ['Render and publish', 'Remotion composes captions, imagery, and audio into vertical video. It publishes to Instagram, YouTube, and Facebook, with receipt ledgers so nothing ever posts twice.'],
 ];
 
-const jsonLd = [{"@context": "https://schema.org", "@type": "CreativeWork", "name": "The Footnote", "description": "A fully autonomous media channel publishing short history stories to Instagram, YouTube, and Facebook. 600K monthly views, no human in the loop.", "author": {"@type": "Person", "name": "Arbaz Siddiqui", "url": "https://www.arbazsiddiqui.me"}, "url": "https://www.arbazsiddiqui.me/footnote/", "sameAs": ["https://www.instagram.com/thefootnotemedia/", "https://www.youtube.com/@TheFootnoteMedia"]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.arbazsiddiqui.me/"}, {"@type": "ListItem", "position": 2, "name": "Projects", "item": "https://www.arbazsiddiqui.me/projects/"}, {"@type": "ListItem", "position": 3, "name": "The Footnote", "item": "https://www.arbazsiddiqui.me/footnote/"}]}];
+const jsonLd = [{"@context": "https://schema.org", "@type": "CreativeWork", "name": "The Footnote", "description": "A fully autonomous media channel publishing short history stories to Instagram, YouTube, and Facebook. 600K monthly views, no human in the loop.", "author": PERSON_REF, "url": "https://www.arbazsiddiqui.me/footnote/", "sameAs": ["https://www.instagram.com/thefootnotemedia/", "https://www.youtube.com/@TheFootnoteMedia"]}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.arbazsiddiqui.me/"}, {"@type": "ListItem", "position": 2, "name": "Projects", "item": "https://www.arbazsiddiqui.me/projects/"}, {"@type": "ListItem", "position": 3, "name": "The Footnote", "item": "https://www.arbazsiddiqui.me/footnote/"}]}];
 ---
 
 <Base

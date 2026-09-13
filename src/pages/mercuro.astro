@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { PERSON_REF } from '../data/person';
 import { Image } from 'astro:assets';
 import hero from '../assets/mercuro/01_hero_clean.png';
 import daily from '../assets/mercuro/02_daily_clean.png';
@@ -17,7 +18,7 @@ const jsonLdApp = {
   name: 'Mercuro: Thermometers Puzzle',
   operatingSystem: 'iOS',
   applicationCategory: 'GameApplication',
-  author: { '@type': 'Person', name: 'Arbaz Siddiqui' },
+  author: PERSON_REF,
   url: 'https://www.arbazsiddiqui.me/mercuro',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
 };

@@ -14,13 +14,27 @@ export const WORKS = {
       { label: 'Training recipe', url: 'https://github.com/arbazsiddiqui/Ozan' },
     ],
   },
+  sparse: {
+    href: '/sparse',
+    title: 'sqlite-sparse',
+    medium: 'SQLite extension',
+    sentence:
+      'Semantic search inside a SQLite file. A learned sparse encoder runs once when a document is inserted and stores weighted words as posting lists in the database, so searching needs no model, no server and no vector database. Copy the file anywhere SQLite runs, including a browser, and the same query works.',
+    stat: '3.1 ms at 1M documents · no model at query time',
+    alt: 'How sqlite-sparse works: INSERT runs the encoder once per document and stores weighted terms as posting lists; MATCH tokenizes the query, reads weights from the file and scatter-adds over posting lists with no model',
+    links: [
+      { label: 'Demo', url: '/sqlite-sparse/#demo' },
+      { label: 'GitHub', url: 'https://github.com/arbazsiddiqui/sqlite-sparse' },
+      { label: 'PyPI', url: 'https://pypi.org/project/sqlite-sparse/' },
+    ],
+  },
   iris: {
     href: '/iris',
     title: 'Iris',
     medium: 'iOS app',
     sentence:
       'A complete cycle-tracking suite. Predictions confirmed from BBT and LH tests the way a clinic would, a PCOS-friendly irregular mode, partner sharing, and two-way Apple Health sync. Every feature is free, in twelve languages, and health data never leaves the phone.',
-    stat: '4.9★ · 12 languages · 1,000+ downloads',
+    stat: '4.9★ · 12 languages · 4,000+ downloads',
     alt: 'Iris: Period and Cycle Tracker',
     links: [{ label: 'App Store', url: 'https://apps.apple.com/app/id6761134901' }],
   },

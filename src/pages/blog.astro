@@ -1,12 +1,13 @@
 ---
 import Base from '../layouts/Base.astro';
+import { PERSON_REF } from '../data/person';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
 
-const jsonLd = {"@context": "https://schema.org", "@type": "Blog", "name": "Writing by Arbaz Siddiqui", "url": "https://www.arbazsiddiqui.me/blog/", "author": {"@type": "Person", "name": "Arbaz Siddiqui", "url": "https://www.arbazsiddiqui.me"}};
+const jsonLd = {"@context": "https://schema.org", "@type": "Blog", "name": "Writing by Arbaz Siddiqui", "url": "https://www.arbazsiddiqui.me/blog/", "author": PERSON_REF};
 ---
 
 <Base

@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { PERSON_REF } from '../data/person';
 import { Image } from 'astro:assets';
 import calendar from '../assets/iris/01_calendar.png';
 import partner from '../assets/iris/03_partner.png';
@@ -17,8 +18,8 @@ const jsonLdApp = {
   name: 'Iris: Period & Cycle Tracker',
   operatingSystem: 'iOS',
   applicationCategory: 'HealthApplication',
-  aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', ratingCount: '12' },
-  author: { '@type': 'Person', name: 'Arbaz Siddiqui' },
+  aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', ratingCount: '30' },
+  author: PERSON_REF,
   url: 'https://www.arbazsiddiqui.me/iris',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
 };
@@ -44,7 +45,7 @@ const jsonLd = [jsonLdApp, {"@context": "https://schema.org", "@type": "Breadcru
 
     <dl class="facts">
       <dt>Platform</dt><dd>iPhone, iPad, Mac, Vision · <a href="https://apps.apple.com/app/id6761134901" target="_blank" rel="noopener">App Store</a></dd>
-      <dt>Rating</dt><dd>4.9★ worldwide · 1,000+ downloads</dd>
+      <dt>Rating</dt><dd>4.9★ worldwide · 4,000+ downloads</dd>
       <dt>Languages</dt><dd>12, from Japanese to Polish, 820 localized strings each</dd>
       <dt>Model</dt><dd>Free forever · optional $2.99 one-time to remove ads</dd>
       <dt>Data</dt><dd>On device; optional sync to the user's own iCloud. No servers, no accounts, no analytics SDKs</dd>

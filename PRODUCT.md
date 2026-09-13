@@ -21,9 +21,15 @@ whether this person is real; proof beats adjectives.
   ~$40 GPU total; 2.3K downloads month one; endorsed publicly by the benchmark's author.
 - The Footnote: 500K monthly views; 3 shorts/day; 100% automated; IG + YT + FB.
 - Andheri Dastak: animated Hindi horror; premise→finished film; launching.
-- Iris: 4.9★ App Store; 12 languages; free, on-device data. Iris growth pipeline:
+- Iris: 4.9★ App Store; 4,000+ downloads; 12 languages; free, on-device data. Iris growth pipeline:
   automated posters → IG Reels/Stories + Pinterest, gated by a written creative contract.
 - Mercuro: 660 puzzles; own solver/generator; native iOS live + native Android port.
+- sqlite-sparse: SQLite extension for learned sparse retrieval (OpenSearch inference-free
+  encoders via llama.cpp, MLM head kept in a .sprs sidecar); no model at query time.
+  Measured on 1M MS MARCO, c3-standard-8: 3.1 ms p50 / 7.2 ms p99, 28 MB RAM, 62 ms cold;
+  FTS5 BM25 582 ms, dense brute-force 735 ms. nDCG@10 within 0.001 of the model card.
+  Loses on index size (1,092 vs 540 B/doc) and indexing speed (20 docs/s CPU).
+  MIT, v1.1.0 on GitHub + PyPI (macOS arm64 + Linux x86-64 wheels), in-browser WASM demo.
 - Work: Turnip Jul 2020–present, built/scaled backend to 25M users; Paytm Insider
   2017–2020; internships: Ithaka, Provakil. (Sogni not shown publicly for now.)
 
@@ -31,7 +37,7 @@ whether this person is real; proof beats adjectives.
 - Mature, simple, black-and-white world; light + dark. NOT bland — committed minimal.
 - Pages: Home, Projects, Writing (8 legacy posts, exact URLs), About. Per-project pages.
 - Projects presented as visual cards with real brand art and live external links,
-  categorized: Model training / Apps / Content creation automations.
+  categorized: Models and retrieval (Ozan + sqlite-sparse) / Apps / Content creation automations.
 - No personal photo for now. No Twitter anywhere. No em-dash prose tics.
 - Old blog URLs, /ios/* and /android/* legal pages, app-ads.txt must keep working.
 - Performance floor: Lighthouse 100s (mobile emulation) on all categories.

@@ -3,9 +3,11 @@ import Base from '../layouts/Base.astro';
 import Work from '../components/Work.astro';
 import { WORKS } from '../data/works';
 import { SITE } from '../data/site';
+import { PERSON_FULL } from '../data/person';
 import { getCollection } from 'astro:content';
 
 import ozanBanner from '../assets/ozan/ozan_banner.png';
+import sparseDiagram from '../assets/sparse/how-it-works.png';
 import footnoteBanner from '../assets/footnote/banner.png';
 import irisCard from '../assets/iris-card.png';
 import mercuroCard from '../assets/mercuro-card.png';
@@ -16,16 +18,7 @@ const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: 'Arbaz Siddiqui',
-  url: SITE.url,
-  email: `mailto:${SITE.email}`,
-  jobTitle: 'Principal Software Engineer',
-  description: SITE.description,
-  sameAs: [SITE.github, SITE.huggingface, SITE.linkedin],
-};
+const jsonLd = { '@context': 'https://schema.org', ...PERSON_FULL };
 ---
 
 <Base jsonLd={jsonLd}>
@@ -51,8 +44,11 @@ const jsonLd = {
     </header>
 
     <section class="room">
-      <h2 class="room-label">Model training</h2>
-      <Work hero {...WORKS.ozan} img={ozanBanner} />
+      <h2 class="room-label">Models and retrieval</h2>
+      <div class="works pair">
+        <Work eager {...WORKS.ozan} img={ozanBanner} />
+        <Work eager {...WORKS.sparse} img={sparseDiagram} />
+      </div>
     </section>
 
     <section class="room">

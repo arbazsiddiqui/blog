@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { PERSON_REF } from '../data/person';
 import { Image } from 'astro:assets';
 import chart from '../assets/ozan/ozan_slop_chart.png';
 import banner from '../assets/ozan/ozan_banner.png';
@@ -10,7 +11,7 @@ const jsonLdApp = {
   name: 'Ozan-v1-12B',
   applicationCategory: 'DeveloperApplication',
   operatingSystem: 'Any',
-  author: { '@type': 'Person', name: 'Arbaz Siddiqui' },
+  author: PERSON_REF,
   url: 'https://www.arbazsiddiqui.me/ozan',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
 };

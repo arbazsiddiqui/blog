@@ -1,0 +1,176 @@
+---
+import Base from '../layouts/Base.astro';
+import { PERSON_REF } from '../data/person';
+import { Image } from 'astro:assets';
+import diagram from '../assets/sparse/how-it-works.png';
+
+const jsonLdApp = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'sqlite-sparse',
+  applicationCategory: 'DeveloperApplication',
+  operatingSystem: 'Linux, macOS, WebAssembly',
+  author: PERSON_REF,
+  url: 'https://www.arbazsiddiqui.me/sparse',
+  license: 'https://opensource.org/licenses/MIT',
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+};
+const faq = [
+  {
+    q: 'Does sqlite-sparse need a model at query time?',
+    a: 'No. Documents are encoded once when they are inserted. A query is tokenized, each token looks up a weight stored in the database file, and scoring is an exact sum over posting lists. Searching needs no model, no server and no vector database.',
+  },
+  {
+    q: 'How fast is it?',
+    a: '3.1 ms per query across one million MS MARCO passages, in 28 MB of memory, measured on 8 vCPUs with no GPU. On the same machine FTS5 BM25 took 582 ms and brute-force dense search took 735 ms.',
+  },
+  {
+    q: 'Does the quantized encoder lose quality?',
+    a: 'Within 0.001 nDCG@10 of the model card on SciFact, NFCorpus, SCIDOCS and FiQA, using a Q8 encoder and one-byte weights.',
+  },
+  {
+    q: 'What are the trade-offs?',
+    a: 'The index is about twice the size of an FTS5 index, and indexing runs at about 20 documents a second on CPU because the transformer runs once per document. Build the index where the hardware is and ship the file.',
+  },
+  {
+    q: 'How do I install it?',
+    a: 'pip install sqlite-sparse, or load the prebuilt sparse0 extension into any SQLite on Linux x86-64 or macOS arm64. It is MIT licensed, on GitHub and PyPI.',
+  },
+];
+
+const jsonLd = [jsonLdApp, {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.arbazsiddiqui.me/"}, {"@type": "ListItem", "position": 2, "name": "Projects", "item": "https://www.arbazsiddiqui.me/projects/"}, {"@type": "ListItem", "position": 3, "name": "sqlite-sparse", "item": "https://www.arbazsiddiqui.me/sparse/"}]}];
+---
+
+<Base
+  title="sqlite-sparse: Semantic Search in a SQLite File"
+  description="A SQLite extension for learned sparse retrieval. Documents are encoded once at insert; queries need no model and no server, and run in about 3 ms across a million passages."
+  ogImage="/og/sparse.jpg"
+  ogImageAlt="Diagram of sqlite-sparse: the model runs once at INSERT and never at MATCH."
+  jsonLd={jsonLd}
+>
+  <article class="narrow section">
+    <p class="kicker">SQLite extension · September 2026</p>
+    <h1 class="page-title">sqlite-sparse</h1>
+    <p class="lede">
+      Semantic search inside a SQLite file. Documents are encoded once when they
+      are inserted, and searching the file afterwards needs no model, no server and
+      no vector database. Copy the database anywhere SQLite runs, including a
+      browser tab, and the same query works.
+    </p>
+
+    <dl class="facts">
+      <dt>What it is</dt><dd>A SQLite virtual table that runs OpenSearch's inference-free neural-sparse encoders. Each document becomes 150 to 300 weighted vocabulary words, stored as posting lists that are ordinary rows in the file</dd>
+      <dt>Query path</dt><dd>WordPiece tokenization, a weight table stored in the file, and an exact scatter-add over posting lists. No model loads, no approximate index, no candidate stage</dd>
+      <dt>Speed</dt><dd>3.1 ms per query across one million MS MARCO passages, in 28 MB of memory, 62 ms from a cold process to the first result</dd>
+      <dt>Against</dt><dd>FTS5 BM25 at 582 ms and brute-force dense search at 735 ms on the same machine, each in a fresh process, no GPU</dd>
+      <dt>Quality</dt><dd>Within 0.001 nDCG@10 of the model card on SciFact, NFCorpus, SCIDOCS and FiQA</dd>
+      <dt>Runs</dt><dd>One C file plus llama.cpp · Linux x86-64 and macOS arm64 · <code>pip install sqlite-sparse</code> · also compiled into SQLite's WebAssembly build for the browser</dd>
+      <dt>License</dt><dd>MIT · v1.1.0 on <a href="https://github.com/arbazsiddiqui/sqlite-sparse" target="_blank" rel="noopener">GitHub</a> and <a href="https://pypi.org/project/sqlite-sparse/" target="_blank" rel="noopener">PyPI</a></dd>
+    </dl>
+
+    <Image
+      src={diagram}
+      alt="How sqlite-sparse works. Left, INSERT once per document: word pieces, the encoder from the GGUF via llama.cpp, the scoring head from the .sprs sidecar, 157 weighted terms, then posting lists in the database. Right, MATCH on every search with no model: word pieces, the query weight table in the file, a scatter-add over posting lists, then the top k."
+      widths={[640, 1024, 1600]}
+      sizes="(max-width: 44rem) 100vw, 44rem"
+      loading="lazy"
+      class="banner"
+    />
+
+    <div class="prose">
+      <h2>The problem</h2>
+      <p>
+        Most semantic search today is dense retrieval. An embedding model turns
+        each document into a vector, and at query time the same model turns the
+        query into a vector so the two can be compared. Every search needs the
+        model, so every place that searches needs the model too: the phone, the
+        laptop, the serverless function, the browser. A learned sparse encoder
+        moves all of that work to write time. A query is tokenized, each token
+        looks up a fixed weight the model ships with, and a document's score is a
+        sum of products. You can also read exactly which words matched and with
+        what weight, which a dense vector never tells you.
+      </p>
+
+      <h2>How it works</h2>
+      <p>
+        These encoders are BERT models with the masked-language-model head still
+        attached, the layer that scores every vocabulary word as a candidate for a
+        blank. Pointed at every token of a document, it gives a sentence about
+        heart attacks a weight on <code>cardiac</code> even though the word never
+        appears. llama.cpp drops that head when it converts BERT models, because it
+        only uses them for embeddings. sqlite-sparse copies the head into a small
+        sidecar file at conversion time and applies it itself, in C on ggml, after
+        llama.cpp has produced the token vectors.
+      </p>
+      <p>
+        The index is four ordinary tables, so any language reads it with its
+        SQLite driver. The Python package ships a reference implementation in
+        numpy with no extension at all, and the C code is tested against it for
+        identical ranking in both directions. The extension in the browser demo is
+        the same C source with llama.cpp left out: it can search and write indexes
+        but not encode text, and its rankings matched the native binary exactly.
+      </p>
+
+      <h2>What it costs</h2>
+      <p>
+        Two rows go the other way, and I would rather you see them here than find
+        them later. The index is about twice the size of FTS5's, because the model
+        writes 150 to 300 weighted terms per passage where FTS5 stores the words
+        that are actually there. Indexing is slow: the transformer runs once per
+        document, about 20 documents a second on this CPU, so a million-document
+        index is a half-day job. Build the index where the hardware is and ship
+        the file.
+      </p>
+      <pre><code>msmarco, 1M documents        FTS5 BM25   dense brute-force   sqlite-sparse
+query p50, warm                 582 ms          735 ms           3.1 ms
+query p99, warm               1,305 ms          739 ms           7.2 ms
+cold process to first result     88 ms        6,989 ms            62 ms
+peak RAM on the query path       37 MB          527 MB            28 MB
+index size, bytes per document    540             807            1,092
+indexing, documents per second ~43,000             167             20.5</code></pre>
+      <p>
+        The compiled extension, with a Q8 encoder, one-byte weights and 512-token
+        truncation, lands within about 0.001 of the model card's own nDCG@10 on
+        every BEIR set I ran. Storing weights as one byte instead of four moved the
+        score by less than 0.001.
+      </p>
+
+      <h2>Questions</h2>
+      {faq.map((f) => (
+        <>
+          <h3>{f.q}</h3>
+          <p>{f.a}</p>
+        </>
+      ))}
+
+      <h2>Try it</h2>
+      <p>
+        The <a href="/sqlite-sparse/#demo">writeup</a> has a live demo: 4,799 movie
+        overviews indexed into a 10 MB SQLite file, searched by SQLite compiled to
+        WebAssembly with the extension inside, entirely in your tab. Nothing is
+        sent anywhere and no model is downloaded, because the query path does not
+        need one. To run it yourself:
+      </p>
+      <pre><code>pip install sqlite-sparse</code></pre>
+      <pre><code>.load ./sparse0
+CREATE VIRTUAL TABLE notes USING sparse0(model='mini');
+INSERT INTO notes(rowid, text) VALUES (1, 'Aspirin lowers the risk of heart attack and stroke.');
+SELECT rowid, score FROM notes WHERE notes MATCH 'what prevents cardiac arrest' LIMIT 5;</code></pre>
+      <p>
+        Source and prebuilt binaries: <a href="https://github.com/arbazsiddiqui/sqlite-sparse" target="_blank" rel="noopener">github.com/arbazsiddiqui/sqlite-sparse</a> ·
+        package: <a href="https://pypi.org/project/sqlite-sparse/" target="_blank" rel="noopener">PyPI</a> ·
+        the full story with benchmarks: <a href="/sqlite-sparse/">the writeup</a>
+      </p>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .page-title { margin-block: 0.35rem 0.8rem; }
+  .lede { margin-bottom: 1.6rem; }
+  .banner { border-radius: 10px; margin-bottom: 2.2rem; }
+</style>
