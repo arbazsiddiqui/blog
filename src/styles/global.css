@@ -192,6 +192,7 @@ a.frame:hover img { transform: scale(1.02); }
 .prose pre code { background: none; padding: 0; font-size: inherit; }
 .prose hr { border: 0; border-top: 1px solid var(--line); margin-block: 2em; }
 .prose table { border-collapse: collapse; width: 100%; font-size: 0.92rem; }
+@media (max-width: 640px) { .prose table { display: block; overflow-x: auto; } }
 .prose th, .prose td { border: 1px solid var(--line); padding: 0.4rem 0.65rem; text-align: left; }
 
 /* ---------- object details (project pages) ---------- */

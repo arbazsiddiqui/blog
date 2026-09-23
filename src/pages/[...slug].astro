@@ -49,8 +49,9 @@ function summarize(md: string, max = 158): string {
 }
 
 const url = `https://www.arbazsiddiqui.me/${post.data.slug}/`;
-const description = summarize(post.body ?? '') || `${post.data.title}, an article by Arbaz Siddiqui.`;
-const image = post.data.thumbnail ? new URL(post.data.thumbnail, SITE.url).href : undefined;
+const description = post.data.description ?? (summarize(post.body ?? '') || `${post.data.title}, an article by Arbaz Siddiqui.`);
+const socialImage = post.data.ogImage ?? post.data.thumbnail;
+const image = socialImage ? new URL(socialImage, SITE.url).href : undefined;
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -72,6 +73,8 @@ const jsonLd = {
 <Base
   title={post.data.title}
   description={description}
+  ogImage={post.data.ogImage}
+  ogImageAlt={post.data.ogImageAlt}
   ogType="article"
   jsonLd={jsonLd}
 >
