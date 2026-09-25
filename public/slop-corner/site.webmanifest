@@ -1,0 +1,24 @@
+{
+  "id": "/slop-corner/kerb-appeal/",
+  "name": "Kerb Appeal",
+  "short_name": "Kerb Appeal",
+  "description": "Three small games about one British street: Tight Spot, Double Yellow and Lollipop.",
+  "lang": "en-GB",
+  "start_url": "/slop-corner/kerb-appeal/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#efe8da",
+  "theme_color": "#efe8da",
+  "categories": ["games"],
+  "icons": [
+    { "src": "/slop-corner/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/slop-corner/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/slop-corner/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ],
+  "shortcuts": [
+    { "name": "Tight Spot", "url": "/", "icons": [{ "src": "/slop-corner/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Double Yellow", "url": "/slop-corner/double-yellow/", "icons": [{ "src": "/slop-corner/icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Lollipop", "url": "/slop-corner/lollipop/", "icons": [{ "src": "/slop-corner/icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

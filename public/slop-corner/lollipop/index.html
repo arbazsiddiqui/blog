@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Lollipop · a school crossing patrol game</title>
+<meta name="description" content="Hold to step out and stop the traffic. Let go to let it flow. A school term of handmade crossings, three stars a day, one very round sign.">
+<meta name="theme-color" content="#efe8da">
+<link rel="canonical" href="https://www.arbazsiddiqui.me/slop-corner/lollipop/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.arbazsiddiqui.me/slop-corner/lollipop/">
+<meta property="og:title" content="Lollipop">
+<meta property="og:description" content="Get the children across eight at a time, right behind the last car, without a letter to the council. A term of handmade school runs.">
+<meta property="og:image" content="https://www.arbazsiddiqui.me/slop-corner/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Lollipop">
+<meta name="twitter:description" content="Hold to stop the traffic, let go to let it flow. A school crossing patrol game: the Autumn Term, plus a daily rota.">
+<meta name="twitter:image" content="https://www.arbazsiddiqui.me/slop-corner/og.png">
+<link rel="manifest" href="/slop-corner/site.webmanifest">
+<link rel="icon" href="/slop-corner/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/slop-corner/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/slop-corner/fonts/fraunces-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/slop-corner/fonts/fonts.css">
+  <script type="module" crossorigin src="/slop-corner/assets/lollipop-aQIgyFf7.js"></script>
+  <link rel="modulepreload" crossorigin href="/slop-corner/assets/physics-BZ0SGOSi.js">
+  <link rel="modulepreload" crossorigin href="/slop-corner/assets/modulepreload-polyfill-P2Xu9kJm.js">
+  <link rel="modulepreload" crossorigin href="/slop-corner/assets/three-8qIDdSVb.js">
+  <link rel="modulepreload" crossorigin href="/slop-corner/assets/scene-B5JvYVXr.js">
+  <link rel="modulepreload" crossorigin href="/slop-corner/assets/ads-vOqSkYFL.js">
+  <link rel="modulepreload" crossorigin href="/slop-corner/assets/coach-BG8syLzo.js">
+  <link rel="stylesheet" crossorigin href="/slop-corner/assets/coach-DKIG7lGz.css">
+  <link rel="stylesheet" crossorigin href="/slop-corner/assets/lollipop-MoUXLhI7.css">
+</head>
+<body class="lp">
+<canvas id="c" aria-label="A toy street outside a primary school, a lollipop lady at the kerb"></canvas>
+<div id="lp-tags" class="lp-tags"></div>
+<div id="lp-fx" class="lp-fx"></div>
+<div id="lp-touch" class="lp-touch"><span>STOP</span></div>
+
+<div id="lp-hud" class="lp-hud lp-hidden">
+  <div class="lp-top">
+    <div class="lp-brand"><span class="lp-mark">Lollipop</span><span id="lp-label" class="lp-label">Monday</span></div>
+    <div class="lp-tools">
+      <button id="lp-btn-pause" class="lp-tool" title="Pause (Esc)" aria-label="Pause"><svg viewBox="0 0 16 16" width="14" height="14"><rect x="3.5" y="2.5" width="3" height="11" rx="1" fill="currentColor"/><rect x="9.5" y="2.5" width="3" height="11" rx="1" fill="currentColor"/></svg></button>
+      <button id="lp-btn-build" class="lp-tool" title="Your build (B)" aria-label="Your build"><svg viewBox="0 0 16 16" width="15" height="15"><path d="M2.5 4h11M2.5 8h11M2.5 12h11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="5.5" cy="4" r="1.7" fill="#fbf6ec" stroke="currentColor" stroke-width="1.4"/><circle cx="10.5" cy="8" r="1.7" fill="#fbf6ec" stroke="currentColor" stroke-width="1.4"/><circle cx="7" cy="12" r="1.7" fill="#fbf6ec" stroke="currentColor" stroke-width="1.4"/></svg></button>
+      <button id="lp-btn-mute" class="lp-tool" title="Sound" aria-label="Toggle sound">♪</button>
+    </div>
+  </div>
+  <div class="lp-row">
+    <div class="lp-chip lp-chip-score" id="lp-chip-score"><b id="lp-score">0</b><span>points</span></div>
+    <div class="lp-chip lp-chip-streak" id="lp-chip-streak"><b id="lp-streak">×1</b><span>rhythm</span></div>
+    <div class="lp-chip lp-chip-clock" id="lp-chip-clock"><b id="lp-clock">8:40</b><span>bell at 8:55</span><i class="lp-thin"><i id="lp-clock-fill"></i></i></div>
+  </div>
+  <div class="lp-meters" id="lp-meters-box">
+    <div class="lp-letters" id="lp-letters" title="Letters to the council: three and you are off the crossing">
+      <span class="lp-lt">Letters</span>
+      <i class="lp-env"></i><i class="lp-env"></i><i class="lp-env"></i>
+      <span class="lp-lt-why" id="lp-letters-why"></span>
+    </div>
+  </div>
+  <div id="lp-say" class="lp-say"></div>
+  <div class="lp-bottom">
+    <div id="lp-holdcard" class="lp-holdcard lp-off" aria-live="polite">
+      <div class="lp-pips"><span class="lp-pip" data-pip="gap"><i></i>Tight gap</span><span class="lp-pip" data-pip="full"><i></i><b id="lp-pip-n">0/8</b></span><span class="lp-pip" data-pip="clean"><i></i>Clean release</span></div>
+      <div class="lp-holdline"><b id="lp-hold-across">0 across</b><span id="lp-hold-pts">+0</span></div>
+    </div>
+    <div class="lp-acts">
+      <button id="lp-btn-whistle" class="lp-act lp-hidden"><span class="lp-act-ic"><svg viewBox="0 0 24 24"><path d="M3 13a5 5 0 0 0 9.6 2H21v-5h-9.4A5 5 0 0 0 3 13z" fill="currentColor"/><circle cx="8" cy="13" r="1.8" fill="#fbf6ec"/><path d="M14 7l1.5-3M17.5 8l2.5-2.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span>Whistle</span><kbd>W</kbd><b id="lp-n-whistle">4</b></button>
+      <button id="lp-btn-tea" class="lp-act lp-hidden"><span class="lp-act-ic"><svg viewBox="0 0 24 24"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9z" fill="currentColor"/><path d="M16 11h1.5a2.5 2.5 0 0 1 0 5H15" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M8 3c0 2 2 2 2 4M12 3c0 2 2 2 2 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span><span>Tea break</span><kbd>T</kbd><b id="lp-n-tea">1</b></button>
+    </div>
+    <div id="lp-memos" class="lp-memos"></div>
+    <div id="lp-hint" class="lp-hint"><span class="lp-hint-dot"></span><span id="lp-hint-text">Hold anywhere to step out</span></div>
+  </div>
+</div>
+
+<div id="lp-title" class="lp-wrap">
+  <div class="lp-card lp-intro">
+    <div class="lp-lolly" aria-hidden="true"><i></i></div>
+    <p class="lp-kicker" id="lp-title-kicker">Bramley Primary</p>
+    <h1 class="lp-title">Lolli<em>pop</em></h1>
+    <p class="lp-lede">Hold to step out and stop the traffic. Let go to let it flow. Eight children at a time, right behind the last car, and no letters to the council.</p>
+    <div class="lp-facts"><div><b id="lp-title-days">15</b><span>school runs</span></div><div><b id="lp-title-stars">0</b><span>stars of 45</span></div><div><b id="lp-title-best">·</b><span>rota best</span></div></div>
+    <button id="lp-btn-term" class="lp-btn lp-primary">The Autumn Term</button>
+    <div class="lp-btnrow"><button id="lp-btn-daily" class="lp-btn lp-ghost">Today’s rota</button><button id="lp-btn-random" class="lp-btn lp-ghost">Random week</button></div>
+    <details class="lp-rota">
+      <summary class="lp-rota-h">The rota: officer and term</summary>
+      <div class="lp-offcs" id="lp-officers" role="radiogroup" aria-label="Patrol officer"></div>
+      <p class="lp-perk" id="lp-perk"></p>
+      <div class="lp-terms" id="lp-terms" role="radiogroup" aria-label="Term"></div>
+    </details>
+    <p class="lp-fine"><a href="#" id="lp-btn-howto">How to play</a> · <a href="#" id="lp-btn-log">Logbook</a> · <a href="#" id="lp-btn-settings">Settings</a></p>
+    <p class="lp-fine"><a href="/slop-corner/lollipop/how-to-play/">Handbook</a> · <a href="/slop-corner/lollipop/about/">About</a> · <a href="/slop-corner/tight-spot/">Tight Spot</a> · <a href="/slop-corner/double-yellow/">Double Yellow</a></p>
+  </div>
+</div>
+
+<div id="lp-map" class="lp-wrap lp-hidden">
+  <div class="lp-card lp-mapcard">
+    <p class="lp-kicker">Bramley Primary · Autumn term</p>
+    <h2 class="lp-road">The <em>Term</em></h2>
+    <p class="lp-sub" id="lp-map-sub">Three stars a day. Finish a Friday to open the next week.</p>
+    <div id="lp-weeks" class="lp-weeks"></div>
+    <button id="lp-btn-map-back" class="lp-btn lp-ghost">Back</button>
+  </div>
+</div>
+
+<div id="lp-day" class="lp-wrap lp-hidden">
+  <div class="lp-card lp-intro lp-daycard">
+    <p class="lp-kicker" id="lp-day-kicker">Day 1 of 5</p>
+    <h2 class="lp-road" id="lp-day-name">Monday</h2>
+    <p class="lp-idea lp-hidden" id="lp-day-idea"></p>
+    <div id="lp-day-stars" class="lp-starlist lp-hidden"></div>
+    <div class="lp-facts" id="lp-day-facts"><div><b id="lp-day-kids">22</b><span>pupils</span></div><div><b id="lp-day-traffic">Light</b><span id="lp-day-traffic-l">traffic</span></div><div><b>8:55</b><span>the bell</span></div></div>
+    <div id="lp-day-special" class="lp-special lp-hidden"></div>
+    <div id="lp-day-carry" class="lp-carry lp-hidden"></div>
+    <div id="lp-day-how" class="lp-legend lp-hidden">
+      <div><span class="lp-dot g"></span><b>Hold</b><small>stops easily</small></div>
+      <div><span class="lp-dot a"></span><b>Risky</b><small>hard stop</small></div>
+      <div><span class="lp-dot r"></span><b>Wait</b><small>too close</small></div>
+    </div>
+    <button id="lp-btn-go" class="lp-btn lp-primary">Gates are open</button>
+    <button id="lp-btn-day-map" class="lp-linkbtn lp-hidden" type="button">Back to the term</button>
+  </div>
+</div>
+
+<div id="lp-tally" class="lp-wrap lp-hidden">
+  <div class="lp-card lp-tallycard">
+    <p class="lp-kicker" id="lp-tally-kicker">Monday · the bell has gone</p>
+    <p class="lp-verdict" id="lp-tally-verdict"></p>
+    <div id="lp-tally-lines" class="lp-lines"></div>
+    <div class="lp-total"><span>Points today</span><b id="lp-tally-total">0</b></div>
+    <div id="lp-tally-stars" class="lp-starlist lp-hidden"></div>
+    <div id="lp-tally-meters" class="lp-over"></div>
+    <button id="lp-btn-tally" class="lp-btn lp-primary">Read the council memos</button>
+    <div class="lp-btnrow lp-hidden" id="lp-tally-row"><button id="lp-btn-retry" class="lp-btn lp-ghost">Try again</button><button id="lp-btn-map" class="lp-btn lp-ghost">The term</button></div>
+  </div>
+</div>
+
+<div id="lp-draft" class="lp-wrap lp-hidden">
+  <div class="lp-card lp-draftcard">
+    <p class="lp-kicker" id="lp-draft-kicker">From the council</p>
+    <h2 class="lp-road">Council <em>Memos</em></h2>
+    <p class="lp-sub" id="lp-draft-sub">Approve one. The rest go in the recycling.</p>
+    <div id="lp-offers" class="lp-offers"></div>
+    <div id="lp-draft-board" class="lp-board"></div>
+    <button id="lp-btn-draft-build" class="lp-linkbtn lp-hidden" type="button">See your build</button>
+    <button id="lp-btn-word" class="lp-btn lp-adbtn lp-hidden"><small><svg viewBox="0 0 16 12"><rect x="0.5" y="0.5" width="15" height="11" rx="2.5" fill="currentColor"/><path d="M6.3 3.4v5.2L10.6 6z" fill="#fbf6ec"/></svg> Watch an ad</small><span>Headteacher’s Word: tear up a letter</span></button>
+  </div>
+</div>
+
+<div id="lp-fail" class="lp-wrap lp-hidden">
+  <div class="lp-card lp-intro lp-failcard">
+    <p class="lp-kicker" id="lp-fail-kicker">Monday · 8:49</p>
+    <h2 class="lp-road" id="lp-fail-title">A letter from the <em>council</em></h2>
+    <p class="lp-verdict" id="lp-fail-verdict"></p>
+    <button id="lp-btn-revive" class="lp-btn lp-adbtn lp-hidden"><small><svg viewBox="0 0 16 12"><rect x="0.5" y="0.5" width="15" height="11" rx="2.5" fill="currentColor"/><path d="M6.3 3.4v5.2L10.6 6z" fill="#fbf6ec"/></svg> Watch an ad</small><span>Headteacher’s Word: tear up a letter and carry on</span></button>
+    <button id="lp-btn-giveup" class="lp-btn lp-primary">Hand in the lollipop</button>
+    <div class="lp-btnrow lp-hidden" id="lp-fail-row"><button id="lp-btn-fail-map" class="lp-btn lp-ghost">The term</button></div>
+  </div>
+</div>
+
+<div id="lp-end" class="lp-wrap lp-hidden">
+  <div class="lp-card lp-intro lp-endcard">
+    <p class="lp-kicker" id="lp-end-kicker">Rota No. 1</p>
+    <h2 class="lp-road" id="lp-end-title">Lollipop of the <em>Week</em></h2>
+    <p class="lp-verdict" id="lp-end-verdict"></p>
+    <div class="lp-week" id="lp-end-week"></div>
+    <div class="lp-facts"><div><b id="lp-end-score">0</b><span>points</span></div><div><b id="lp-end-crossed">0</b><span>crossed</span></div><div><b id="lp-end-nm">0</b><span>near misses</span></div></div>
+    <div id="lp-end-unlock" class="lp-unlock lp-hidden"></div>
+    <pre id="lp-end-share" class="lp-share"></pre>
+    <button id="lp-btn-share" class="lp-btn lp-primary">Share result</button>
+    <div class="lp-btnrow"><button id="lp-btn-again" class="lp-btn lp-ghost">Replay week</button><button id="lp-btn-new" class="lp-btn lp-ghost">Random week</button></div>
+  </div>
+</div>
+
+<div id="lp-help" class="lp-wrap lp-hidden">
+  <div class="lp-card lp-helpcard">
+    <p class="lp-kicker">School Crossing Patrol handbook</p>
+    <h2 class="lp-road">How to <em>play</em></h2>
+    <ul class="lp-how">
+      <li><b>Hold</b> anywhere on the screen, or the space bar, to step out and raise the sign. <b>Let go</b> to walk back to the kerb.</li>
+      <li>The ring under the next car in each lane says what happens if you step out now: <span class="lp-dot g"></span> stops easily, <span class="lp-dot a"></span> brakes hard, <span class="lp-dot r"></span> too close, a near miss. A blue ring is an ambulance: never stop it.</li>
+      <li>Each hold is scored on three pips. <b>Tight gap</b>: step out right behind a passing car, with every car able to stop gently. <b>Full wave</b>: the crossing takes eight at once; anyone else waits for your next hold. <b>Clean release</b>: let go as soon as the last walker is over.</li>
+      <li>Walkers pay as they reach the far kerb, more for each place further back in the wave. A hold's pips add a bonus when you let go, and holds with two or more pips in a row build your <b>rhythm</b>, which multiplies everything.</li>
+      <li>Every held driver burns a <b>fuse</b>, shown over the car. A burnt fuse, a near miss, a shunt or a child who gives up and jaywalks earns a <b>letter</b> to the council. Blocking an ambulance earns two. Three letters and you are off the crossing.</li>
+      <li>A school bus at the stop, or a parent double-parked on the zig-zags, holds its whole lane for you. On island days each hold takes walkers half way.</li>
+      <li><b>The Autumn Term</b> is a set of handmade days, three stars each. <b>The rota</b> is a random week with a council memo after each day and three letters for the whole week.</li>
+    </ul>
+    <button id="lp-btn-help-close" class="lp-btn lp-primary">Back to the kerb</button>
+  </div>
+</div>
+
+<div id="lp-pause" class="lp-wrap lp-hidden">
+  <div class="lp-card lp-pausecard">
+    <p class="lp-kicker" id="lp-pause-kicker">Monday · 8:44</p>
+    <h2 class="lp-road" id="lp-pause-title">Tea <em>break</em></h2>
+    <div id="lp-pause-play">
+      <button id="lp-btn-resume" class="lp-btn lp-primary">Back to the kerb</button>
+      <div class="lp-btnrow"><button id="lp-btn-restart" class="lp-btn lp-ghost">Restart the day</button><button id="lp-btn-quit" class="lp-btn lp-ghost">Leave the rota</button></div>
+    </div>
+    <div class="lp-set" role="group" aria-label="Settings">
+      <button class="lp-sw" id="lp-set-sound" role="switch" aria-checked="true"><span>Sound</span><i></i></button>
+      <button class="lp-sw" id="lp-set-motion" role="switch" aria-checked="false"><span>Reduced motion<small>No shake, no flying coins</small></span><i></i></button>
+      <button class="lp-sw" id="lp-set-cb" role="switch" aria-checked="false"><span>Colourblind-safe rings<small>Blue, yellow and pink, each with a shape</small></span><i></i></button>
+      <button class="lp-sw" id="lp-set-buzz" role="switch" aria-checked="true"><span>Vibration<small>A tick when you step out</small></span><i></i></button>
+    </div>
+    <div class="lp-btnrow"><button id="lp-btn-pause-build" class="lp-btn lp-ghost">Build</button><button id="lp-btn-pause-help" class="lp-btn lp-ghost">How to play</button><button id="lp-btn-pause-log" class="lp-btn lp-ghost">Logbook</button></div>
+    <button id="lp-btn-pause-close" class="lp-btn lp-primary lp-hidden">Done</button>
+    <p class="lp-fine lp-keys" id="lp-pause-keys">Esc to pause or resume · two-finger tap on a phone</p>
+  </div>
+</div>
+
+<div id="lp-log" class="lp-wrap lp-hidden">
+  <div class="lp-card lp-logcard">
+    <p class="lp-kicker">Kept in the staff room</p>
+    <h2 class="lp-road">The <em>Logbook</em></h2>
+    <p class="lp-sub" id="lp-log-sub">Best week for each officer in each term.</p>
+    <div id="lp-log-grid" class="lp-log"></div>
+    <button id="lp-btn-log-close" class="lp-btn lp-primary">Close the logbook</button>
+  </div>
+</div>
+
+<div id="lp-build" class="lp-wrap lp-hidden">
+  <div class="lp-card lp-buildcard">
+    <p class="lp-kicker" id="lp-build-kicker">Monday</p>
+    <h2 class="lp-road">Your <em>build</em></h2>
+    <div id="lp-build-powers" class="lp-powers"></div>
+    <div id="lp-build-rows" class="lp-rows"></div>
+    <button id="lp-btn-build-close" class="lp-btn lp-primary">Back</button>
+  </div>
+</div>
+
+<div id="lp-toast" class="lp-toast"></div>
+<div id="adbreak" class="lp-adbreak hidden"><span>Advertisement</span></div>
+<noscript>Lollipop needs JavaScript and a browser from the last few years.</noscript>
+</body>
+</html>

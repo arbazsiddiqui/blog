@@ -1,6 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
 import Work from '../components/Work.astro';
+import SlopWork from '../components/SlopWork.astro';
+import { SLOP, SLOP_TAGLINE } from '../data/slop';
 import { WORKS } from '../data/works';
 
 import ozanBanner from '../assets/ozan/ozan_banner.png';
@@ -87,6 +89,14 @@ const jsonLd = {"@context": "https://schema.org", "@type": "CollectionPage", "na
     </section>
 
     <section class="room">
+      <h2 class="room-label">Slop Corner</h2>
+      <p class="slop-line">{SLOP_TAGLINE} <a href="/slop-corner/">All of it</a></p>
+      <div class="works pair">
+        {SLOP.map((s) => <SlopWork {...s} />)}
+      </div>
+    </section>
+
+    <section class="room">
       <h2 class="room-label">Open source</h2>
       <ul class="rows oss">
         {oss.map((r) => (
@@ -101,6 +111,7 @@ const jsonLd = {"@context": "https://schema.org", "@type": "CollectionPage", "na
 
 <style>
   .lede { margin-top: 0.5rem; }
+  .slop-line { color: var(--soft); margin-top: -0.4rem; margin-bottom: 1.2rem; }
   .platform h3 { font-size: 1.35rem; font-weight: 680; }
   .medium-line { font-style: italic; color: var(--soft); margin-top: 0.15rem; }
   .platform-desc { margin-top: 0.55rem; }

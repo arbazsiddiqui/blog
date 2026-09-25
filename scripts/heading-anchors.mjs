@@ -10,6 +10,8 @@ async function htmlFiles(dir) {
   const out = [];
   for (const entry of await readdir(dir, { withFileTypes: true })) {
     const path = join(dir, entry.name);
+    // the Slop Corner games are self-contained apps with their own design; leave them alone
+    if (entry.isDirectory() && path === join(DIST, 'slop-corner')) continue;
     if (entry.isDirectory()) out.push(...(await htmlFiles(path)));
     else if (entry.name.endsWith('.html')) out.push(path);
   }

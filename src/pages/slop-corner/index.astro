@@ -1,0 +1,56 @@
+---
+import Base from '../../layouts/Base.astro';
+import SlopWork from '../../components/SlopWork.astro';
+import { SLOP, SLOP_TAGLINE } from '../../data/slop';
+import { SITE } from '../../data/site';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Slop Corner by Arbaz Siddiqui',
+  description: SLOP_TAGLINE,
+  url: `${SITE.url}/slop-corner/`,
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: SLOP.map((s, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': s.title === 'Kerb Appeal' ? 'CreativeWork' : 'VideoGame',
+        name: s.title,
+        description: s.sentence,
+        url: `${SITE.url}${s.href}`,
+        image: `${SITE.url}/slop-corner/previews/${s.preview}.webp`,
+        ...(s.title === 'Kerb Appeal' ? {} : { gamePlatform: 'Web browser', applicationCategory: 'Game', operatingSystem: 'Any', isAccessibleForFree: true }),
+        author: { '@type': 'Person', name: 'Arbaz Siddiqui', url: SITE.url },
+      },
+    })),
+  },
+};
+---
+
+<Base
+  title="Slop Corner"
+  description="Browser games and simulators by Arbaz Siddiqui, built in three.js on WebGPU: Tight Spot, Double Yellow and Lollipop, three free games on one toy British street."
+  ogImage="/slop-corner/previews/kerb-appeal.webp"
+  ogImageAlt="Kerb Appeal: three small browser games about one British street"
+  jsonLd={jsonLd}
+>
+  <div class="hall section">
+    <h1 class="page-title">Slop Corner</h1>
+    <p class="lede">{SLOP_TAGLINE}</p>
+    <p class="note">Free games and simulators that run in the browser. Hover a picture to see it move.</p>
+
+    <section class="room">
+      <h2 class="room-label">Kerb Appeal</h2>
+      <div class="works pair">
+        {SLOP.map((s, i) => <SlopWork {...s} eager={i < 2} />)}
+      </div>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .lede { margin-top: 0.5rem; }
+  .note { margin-top: 0.4rem; color: var(--soft); }
+</style>

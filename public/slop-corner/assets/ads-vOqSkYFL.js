@@ -1,0 +1,1 @@
+var e=new URLSearchParams(location.search).has(`adtest`);function t({type:t,name:r}){return e?n(t):Promise.resolve(!0)}function n(e){let t=document.getElementById(`adbreak`);return t.firstElementChild.textContent=e===`reward`?`Rewarded ad (test)`:`Advertisement (test)`,t.classList.remove(`hidden`),new Promise(e=>setTimeout(()=>{t.classList.add(`hidden`),e(!0)},900))}export{t};

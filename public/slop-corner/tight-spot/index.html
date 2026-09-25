@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Tight Spot · a driving-test puzzle game</title>
+<meta name="description" content="Handmade parking puzzles on a toy British street. Three stars each, par in moves, and an examiner who has seen worse.">
+<meta name="theme-color" content="#efe8da">
+<link rel="canonical" href="https://www.arbazsiddiqui.me/slop-corner/tight-spot/">
+<meta property="og:title" content="Tight Spot">
+<meta property="og:description" content="A new parallel park every day. How many shunts will it take you?">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.arbazsiddiqui.me/slop-corner/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.arbazsiddiqui.me/slop-corner/og.png">
+<link rel="icon" href="/slop-corner/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/slop-corner/site.webmanifest">
+<link rel="preload" href="/slop-corner/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/slop-corner/fonts/fraunces-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/slop-corner/fonts/fonts.css">
+  <script type="module" crossorigin src="/slop-corner/assets/main-oOV8pTPr.js"></script>
+  <link rel="modulepreload" crossorigin href="/slop-corner/assets/physics-BZ0SGOSi.js">
+  <link rel="modulepreload" crossorigin href="/slop-corner/assets/modulepreload-polyfill-P2Xu9kJm.js">
+  <link rel="modulepreload" crossorigin href="/slop-corner/assets/three-8qIDdSVb.js">
+  <link rel="modulepreload" crossorigin href="/slop-corner/assets/street-5D2L2B7P.js">
+  <link rel="modulepreload" crossorigin href="/slop-corner/assets/scene-B5JvYVXr.js">
+  <link rel="modulepreload" crossorigin href="/slop-corner/assets/ads-vOqSkYFL.js">
+  <link rel="modulepreload" crossorigin href="/slop-corner/assets/life-C72lzefA.js">
+  <link rel="stylesheet" crossorigin href="/slop-corner/assets/main-DuSgs779.css">
+<meta property="og:url" content="https://www.arbazsiddiqui.me/slop-corner/tight-spot/">
+</head>
+<body>
+<canvas id="c" aria-label="A street with a gap between two parked cars"></canvas>
+
+<div id="hud" class="hidden">
+  <div class="hud-top">
+    <div class="brand"><span class="mark">Tight Spot</span><span id="hud-label" class="label">No. 1</span></div>
+    <div class="chips">
+      <div class="chip moves"><b id="hud-shunts">0</b><span id="hud-shunts-label">shunts</span><small id="hud-par"></small></div>
+      <div class="chip"><b id="hud-dents">0</b><span>dents</span></div>
+      <div class="chip dim"><b id="hud-kerb">·</b><span>kerb</span></div>
+    </div>
+    <div class="tools">
+      <button id="btn-hint" class="tool" title="Examiner's hint" aria-label="Hint">?</button>
+      <button id="btn-mute" class="tool tucked" title="Sound" aria-label="Toggle sound">♪</button>
+      <button id="btn-guides" class="tool campaign-only" title="Guide lines (G)" aria-label="Toggle guide lines" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 15 C4 9 6 5 10 2 M12 15 C12 10 13 7 15 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="2 2.2"/></svg></button>
+      <button id="btn-hazards" class="tool ability-btn" hidden title="Hazard lights (H)" aria-label="Hazard lights" aria-pressed="false"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2 L14.5 13.5 H1.5 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 6 L11 11.3 H5 Z" fill="currentColor"/></svg></button>
+      <button id="btn-handbrake" class="tool ability-btn" hidden title="Handbrake (B)" aria-label="Handbrake" aria-pressed="false"><b style="font:700 14px var(--sans)">P</b></button>
+      <button id="btn-restart" class="tool tucked" title="Start again (R)" aria-label="Start again">↺</button>
+      <button id="btn-pause" class="tool" title="Pause (Esc)" aria-label="Pause"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="3.5" y="2.5" width="3" height="11" rx="1" fill="currentColor"/><rect x="9.5" y="2.5" width="3" height="11" rx="1" fill="currentColor"/></svg></button>
+    </div>
+  </div>
+  <div id="say" class="say"></div>
+  <div id="street-info" class="street-info" aria-live="polite"></div>
+  <div id="wedge" class="wedge" role="status"><p>You’re stuck on a bumper. Turn the wheel the other way and drive off it, or</p><button id="btn-unwedge" class="btn primary" type="button">Back me out <kbd>U</kbd></button></div>
+  <div class="keys desktop-only"><kbd>←</kbd><kbd>→</kbd> turn the wheel &nbsp; <kbd>↑</kbd> drive &nbsp; <kbd>↓</kbd> reverse &nbsp; <kbd>C</kbd> centre &nbsp; <span class="campaign-only"><kbd>G</kbd> guides &nbsp; <kbd>R</kbd> restart &nbsp; </span><span class="run-only"><kbd>B</kbd> build &nbsp; </span><kbd>Esc</kbd> pause</div>
+  <div id="controls" class="controls">
+    <div class="zone steer" aria-label="Drag sideways to turn the wheel, double-tap to straighten"><span class="cue">drag to steer</span></div>
+    <div class="zone drive" aria-label="Slide up to drive, down to reverse, lift to brake"><span class="cue">slide up to drive<br>down to reverse</span></div>
+    <div id="wheel" class="wheel straight">
+      <svg class="dial" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="47" fill="none" stroke="currentColor" stroke-opacity=".18" stroke-width="2"/><path d="M50 1 V8 M22.2 88.1 L26.3 82.4 M77.8 88.1 L73.7 82.4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>
+      <svg id="wheel-knob" class="knob" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" stroke-width="8"/><circle cx="50" cy="50" r="8" fill="currentColor"/><path d="M13 52 H42 M58 52 H87 M50 58 V87" stroke="currentColor" stroke-width="8" stroke-linecap="round"/><circle cx="50" cy="12" r="4.5" fill="#e5484d"/></svg>
+      <button class="autocentre" type="button" aria-pressed="false" title="Wheel straightens itself when you let go">auto-centre</button>
+    </div>
+    <div class="gauge" aria-hidden="true">
+      <span id="pedal-f" class="pedal f">D</span>
+      <div class="gauge-track"><div class="gauge-fill"></div></div>
+      <span id="pedal-r" class="pedal r">R</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="intro" class="card-wrap">
+  <div class="card intro campaign">
+    <p class="kicker" id="intro-kicker">A driving-test puzzle game</p>
+    <h1 class="title">Tight <em>Spot</em></h1>
+    <p class="lede">Handmade streets, one idea each. Three stars, par in moves, and an examiner who has seen worse.</p>
+    <div class="map-head"><button id="map-prev" class="map-arrow" type="button" aria-label="Previous district">‹</button><span id="map-title"><b>District 1</b> · Acacia Avenue</span><span class="map-total">★ <b id="map-stars">0 / 24</b></span><button id="map-next" class="map-arrow" type="button" aria-label="Next district">›</button></div>
+    <div id="map" class="map"></div>
+    <button id="btn-continue" class="btn primary">Play <small id="continue-label">1-1 Plenty of Room</small></button>
+    <div class="row secondary">
+      <button id="btn-shift" class="btn quiet">Shift <small>roguelite run</small></button>
+      <button id="btn-daily" class="btn quiet">Daily shift <small id="intro-daily">No. 1</small></button>
+      <div class="practice-pick">
+        <button id="btn-practice" class="btn quiet">Practice <small id="intro-practice">Street 1</small></button>
+        <label class="lvl" for="practice-level"><span class="sr">Practice street</span><select id="practice-level" aria-label="Practice street"></select></label>
+      </div>
+    </div>
+    <p class="best" id="intro-best" hidden></p>
+    <p class="fine"><a href="#" id="btn-tutorial">Shift tutorial</a> · <a href="/slop-corner/tight-spot/how-to-play/">How to play</a> · <a href="#" id="btn-logbook">Logbook</a> · <a href="/slop-corner/tight-spot/about/">About</a> · <a href="/slop-corner/kerb-appeal/privacy/">Privacy</a></p>
+  </div>
+</div>
+
+<div id="level" class="card-wrap side hidden" role="dialog" aria-modal="true" aria-labelledby="lv-title">
+  <div class="card levelcard">
+    <p class="kicker" id="lv-kicker">Street 1-1</p>
+    <h2 class="title" id="lv-title">Plenty of Room</h2>
+    <p class="idea" id="lv-idea"></p>
+    <p class="lv-intro" id="lv-intro"></p>
+    <ul class="lv-stars" id="lv-stars"></ul>
+    <p class="lv-meta" id="lv-meta"></p>
+    <button id="btn-lv-drive" class="btn primary">Drive <kbd>Enter</kbd></button>
+    <button id="btn-lv-back" class="btn quiet">Back to the map</button>
+  </div>
+</div>
+
+<div id="cres" class="card-wrap side hidden" role="dialog" aria-modal="true" aria-labelledby="cr-title">
+  <div class="card cresult">
+    <p class="kicker" id="cr-kicker">Street 1-1</p>
+    <h2 class="title" id="cr-title">Parked</h2>
+    <ul class="cr-stars" id="cr-stars"></ul>
+    <p class="verdict" id="cr-verdict"></p>
+    <div class="facts three"><div><b id="cr-moves">2</b><span>moves · <i id="cr-par">par 2</i></span></div><div><b id="cr-dents">0</b><span>dents</span></div><div><b id="cr-time">0s</b><span>time</span></div></div>
+    <button id="btn-cr-next" class="btn primary">Next street</button>
+    <div class="row">
+      <button id="btn-cr-retry" class="btn quiet">Try again <kbd>R</kbd></button>
+      <button id="btn-cr-map" class="btn quiet">Map</button>
+    </div>
+  </div>
+</div>
+
+<div id="result" class="card-wrap hidden">
+  <div class="card result">
+    <p class="kicker" id="res-kicker">Daily park No. 1</p>
+    <div class="stars" id="res-stars"></div>
+    <p class="verdict" id="res-verdict"></p>
+    <canvas id="res-track" width="640" height="300" aria-label="Top-down drawing of your tyre tracks"></canvas>
+    <div class="facts three"><div><b id="res-shunts">1</b><span>shunts</span></div><div><b id="res-dents">0</b><span>dents</span></div><div><b id="res-kerb">12 cm</b><span>from kerb</span></div></div>
+    <button id="btn-share" class="btn primary">Share result</button>
+    <div class="row">
+      <button id="btn-again" class="btn quiet">Try again</button>
+      <button id="btn-next" class="btn quiet">Next street</button>
+    </div>
+    <p class="fine"><span id="res-next"></span><a href="#" id="btn-picture">Save picture</a></p>
+  </div>
+</div>
+
+<div id="pause" class="card-wrap hidden" role="dialog" aria-modal="true" aria-labelledby="pause-title">
+  <div class="card pause">
+    <p class="kicker">Handbrake on</p>
+    <h2 class="title" id="pause-title">Paused</h2>
+    <div class="pause-main">
+      <button id="btn-resume" class="btn primary">Resume <kbd>Esc</kbd></button>
+      <button id="btn-restart-park" class="btn quiet">Start this park again</button>
+    </div>
+    <div class="pause-confirm" hidden>
+      <p>Give up this gap? It scores nothing, and the examiner moves you on.</p>
+      <div class="row"><button id="btn-giveup-yes" class="btn danger">Give up</button><button id="btn-giveup-no" class="btn quiet">Keep driving</button></div>
+    </div>
+    <div class="settings" role="group" aria-label="Settings">
+      <label class="set"><input type="checkbox" id="set-sound"><span>Sound effects</span></label>
+      <label class="set"><input type="checkbox" id="set-music"><span>Music</span></label>
+      <label class="set"><input type="checkbox" id="set-autocentre"><span>Wheel straightens itself</span></label>
+      <label class="set"><input type="checkbox" id="set-reduce"><span>Reduced motion</span></label>
+      <label class="set"><input type="checkbox" id="set-cb"><span>Colour-blind safe colours</span></label>
+    </div>
+    <p class="fine"><a href="/slop-corner/tight-spot/how-to-play/" target="_blank" rel="noopener">How to play</a> · <a href="#" id="btn-quit">Back to title</a></p>
+  </div>
+</div>
+
+<div id="logbook" class="card-wrap hidden" role="dialog" aria-modal="true" aria-labelledby="log-title">
+  <div class="card logbook">
+    <p class="kicker">Your driving record</p>
+    <h2 class="title" id="log-title">Log<em>book</em></h2>
+    <div id="log-body"></div>
+    <button id="btn-log-close" class="btn primary">Close</button>
+  </div>
+</div>
+
+<div id="boot" class="boot" role="status"><div class="boot-card"><p class="boot-title">Tight <em>Spot</em></p><p class="boot-msg" id="boot-msg">Setting up the street</p></div></div>
+
+<div id="run-root"></div>
+<div id="adbreak" class="adbreak hidden"><span>Advertisement</span></div>
+<div id="toast" class="toast"></div>
+<noscript>Tight Spot needs JavaScript and a browser from the last few years.</noscript>
+</body>
+</html>

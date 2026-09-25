@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Double Yellow · a traffic warden puzzle game</title>
+<meta name="description" content="Write your tickets before the drivers get back. A turn-based traffic warden puzzle on a toy British street: every countdown on show, every level handmade.">
+<meta name="theme-color" content="#efe8da">
+<link rel="canonical" href="https://www.arbazsiddiqui.me/slop-corner/double-yellow/">
+<meta property="og:site_name" content="Kerb Appeal">
+<meta property="og:title" content="Double Yellow · a traffic warden puzzle game">
+<meta property="og:description" content="Write your tickets before the drivers get back. A turn-based traffic warden puzzle on a toy British street.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.arbazsiddiqui.me/slop-corner/hub/double-yellow-desk.webp">
+<meta property="og:image:alt" content="Double Yellow: a toy British street of parked cars with countdown tags over them and a warden on the pavement">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Double Yellow">
+<meta name="twitter:description" content="A traffic warden puzzle game. Free in your browser.">
+<meta name="twitter:image" content="https://www.arbazsiddiqui.me/slop-corner/hub/double-yellow-desk.webp">
+<link rel="icon" href="/slop-corner/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/slop-corner/site.webmanifest">
+<link rel="preload" href="/slop-corner/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/slop-corner/fonts/fraunces-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/slop-corner/fonts/fonts.css">
+  <script type="module" crossorigin src="/slop-corner/assets/doubleYellow-Ca3MttrH.js"></script>
+  <link rel="modulepreload" crossorigin href="/slop-corner/assets/physics-BZ0SGOSi.js">
+  <link rel="modulepreload" crossorigin href="/slop-corner/assets/modulepreload-polyfill-P2Xu9kJm.js">
+  <link rel="modulepreload" crossorigin href="/slop-corner/assets/three-8qIDdSVb.js">
+  <link rel="modulepreload" crossorigin href="/slop-corner/assets/scene-B5JvYVXr.js">
+  <link rel="modulepreload" crossorigin href="/slop-corner/assets/life-C72lzefA.js">
+  <link rel="modulepreload" crossorigin href="/slop-corner/assets/coach-BG8syLzo.js">
+  <link rel="stylesheet" crossorigin href="/slop-corner/assets/coach-DKIG7lGz.css">
+  <link rel="stylesheet" crossorigin href="/slop-corner/assets/doubleYellow-CXuMui9I.css">
+<meta property="og:url" content="https://www.arbazsiddiqui.me/slop-corner/double-yellow/">
+</head>
+<body class="dy">
+<canvas id="c" aria-label="A toy street of parked cars, a traffic warden on the pavement"></canvas>
+<div id="people" class="people"></div>
+<div id="route" class="route"></div>
+<div id="tags" class="tags"></div>
+
+<div id="hud" class="hidden">
+  <div class="top">
+    <button id="btn-map" class="where" aria-label="Level select">
+      <span class="mark">Double Yellow</span>
+      <span class="lvl"><b id="hud-id">1-1</b> <span id="hud-name">First Ticket</span></span>
+    </button>
+    <div id="goal" class="goal" aria-live="polite">
+      <p class="goal-main">Write <b id="goal-n">1 ticket</b></p>
+      <div id="goal-boxes" class="boxes"></div>
+      <p class="goal-sub">before the drivers get back</p>
+    </div>
+    <div class="tools">
+      <div class="clock" id="clock" title="Minutes used, and par"><b id="clock-t">0</b><span>min · par <i id="clock-par">4</i></span></div>
+      <button id="btn-undo" class="tool" title="Undo (Z)" aria-label="Undo" disabled><svg viewBox="0 0 24 24"><path d="M9 7L4 12l5 5M4.5 12H15a5 5 0 0 1 0 10h-2" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button id="btn-restart" class="tool" title="Restart (R)" aria-label="Restart level"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v5h5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button id="btn-mute" class="tool" title="Sound" aria-label="Toggle sound">♪</button>
+    </div>
+  </div>
+  <div id="say" class="say sup"></div>
+  <div class="bottom">
+    <p id="hint" class="hint">Tap a red car</p>
+    <button id="btn-wait" class="wait" aria-label="Wait one minute (W)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span>Wait a minute</span></button>
+    <p class="keys desktop-only">tap a car or a pavement tile &nbsp; <kbd>←</kbd><kbd>→</kbd> step &nbsp; <kbd>↑</kbd><kbd>↓</kbd> cross &nbsp; <kbd>space</kbd> ticket &nbsp; <kbd>W</kbd> wait &nbsp; <kbd>Z</kbd> undo &nbsp; <kbd>R</kbd> restart</p>
+  </div>
+</div>
+
+<div id="result" class="card-wrap hidden">
+  <div class="card result">
+    <p class="kicker" id="res-kicker">1-1 · First Ticket</p>
+    <h2 class="road" id="res-title">Notebook full</h2>
+    <p class="verdict" id="res-verdict"></p>
+    <ul id="res-stars" class="stars-list"></ul>
+    <div class="row" id="res-win-row"><button id="btn-next" class="btn primary">Next street</button></div>
+    <div class="row" id="res-fail-row"><button id="btn-undo2" class="btn ghost">Undo last move</button><button id="btn-retry" class="btn primary">Try again</button></div>
+    <div class="row"><button id="btn-replay" class="btn ghost">Replay</button><button id="btn-tomap" class="btn ghost">Map</button></div>
+  </div>
+</div>
+
+<div id="map" class="map-wrap hidden">
+  <div class="map">
+    <header class="map-head">
+      <h1 class="title">Double <em>Yellow</em></h1>
+      <p class="lede">Write your tickets before the drivers get back.</p>
+      <p class="map-total"><span id="map-stars">0</span> of <span id="map-max">48</span> stars</p>
+    </header>
+    <div id="map-streets" class="streets"></div>
+    <p class="fine"><a href="/slop-corner/double-yellow/how-to-play/">How to play</a> · <a href="/slop-corner/double-yellow/about/">About</a> · <a href="/slop-corner/tight-spot/">More games</a></p>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+<noscript>Double Yellow needs JavaScript and a browser from the last few years.</noscript>
+</body>
+</html>

@@ -1,0 +1,83 @@
+---
+// A work whose frame shows a poster and plays a short silent preview on hover or focus,
+// like a video thumbnail. On touch screens it plays while most of it is on screen.
+import type { SlopItem } from '../data/slop';
+
+interface Props extends SlopItem { eager?: boolean }
+const { href, title, medium, sentence, preview, alt, links = [], eager = false } = Astro.props;
+const base = `/slop-corner/previews/${preview}`;
+---
+
+<article class="work slop-work">
+  <a class="frame slop-frame" href={href} aria-label={title}>
+    <img
+      src={`${base}-640.webp`}
+      srcset={`${base}-640.webp 640w, ${base}.webp 1280w`}
+      sizes="(max-width: 720px) 100vw, 30rem"
+      width="1280" height="800" alt={alt}
+      loading={eager ? 'eager' : 'lazy'} decoding="async"
+    />
+    <video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" data-slop-video>
+      <source src={`${base}.webm`} type="video/webm" />
+      <source src={`${base}.mp4`} type="video/mp4" />
+    </video>
+    <span class="play-hint" aria-hidden="true">Play</span>
+  </a>
+  <div class="placard">
+    <h2 class="w-title"><a href={href}>{title}</a></h2>
+    <p class="medium">{medium}</p>
+    <p class="sentence">{sentence}</p>
+    {links.length > 0 && (
+      <p class="onview">{links.map((l) => <a href={l.url}>{l.label}</a>)}</p>
+    )}
+  </div>
+</article>
+
+<style>
+  .slop-frame { position: relative; aspect-ratio: 16 / 10; }
+  .slop-frame img, .slop-frame video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .slop-frame video { opacity: 0; transition: opacity 220ms var(--ease); }
+  .slop-frame.playing video { opacity: 1; }
+  .play-hint {
+    position: absolute; right: 0.6rem; bottom: 0.6rem; font-family: var(--mono); font-size: 0.72rem;
+    padding: 0.2rem 0.5rem; border-radius: 3px; background: oklch(0 0 0 / 0.55); color: #fff;
+    opacity: 0; transition: opacity 200ms var(--ease);
+  }
+  .slop-frame:hover .play-hint, .slop-frame:focus-visible .play-hint { opacity: 1; }
+  .slop-frame.playing .play-hint { opacity: 0; }
+</style>
+
+<script>
+  // play on hover or keyboard focus; on touch devices, play the preview most in view
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const touch = matchMedia('(hover: none)').matches;
+  function setup() {
+    const frames = [...document.querySelectorAll<HTMLAnchorElement>('.slop-frame')];
+    const play = (f: HTMLElement) => {
+      const v = f.querySelector('video');
+      if (!v || reduce) return;
+      v.play().then(() => f.classList.add('playing')).catch(() => {});
+    };
+    const stop = (f: HTMLElement) => {
+      const v = f.querySelector('video');
+      f.classList.remove('playing');
+      if (v) { v.pause(); v.currentTime = 0; }
+    };
+    for (const f of frames) {
+      if (f.dataset.bound) continue;
+      f.dataset.bound = '1';
+      f.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') play(f); });
+      f.addEventListener('pointerleave', () => stop(f));
+      f.addEventListener('focus', () => play(f));
+      f.addEventListener('blur', () => stop(f));
+    }
+    if (touch && !reduce && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        for (const e of entries) (e.intersectionRatio > 0.75 ? play : stop)(e.target as HTMLElement);
+      }, { threshold: [0, 0.75, 1] });
+      frames.forEach((f) => io.observe(f));
+    }
+  }
+  setup();
+  document.addEventListener('astro:page-load', setup);
+</script>
