@@ -12,7 +12,7 @@ export const SITE = {
   resume: '/arbaz-siddiqui-resume.pdf',
   // GA4 measurement ID (G-XXXXXXXXXX). Empty means no analytics script is emitted.
   // The old UA-79508594-2 property stopped collecting on 2023-07-01 and cannot be used.
-  gaId: '',
+  gaId: 'G-NBMN5418E0',
 };
 
 export const PROJECTS = [
