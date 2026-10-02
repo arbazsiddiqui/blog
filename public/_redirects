@@ -13,3 +13,13 @@
 /categories/*            /blog/                     301
 /tags/*                  /blog/                     301
 
+# Iris moved from /ios/iris to /app/iris (one page for iPhone and Android). The App Store
+# listing points at the old support and privacy URLs, so these must keep working.
+/ios/iris                /app/iris/                 301
+/ios/iris/               /app/iris/                 301
+/ios/iris/index.html     /app/iris/                 301
+/ios/iris/support.html   /app/iris/support          301
+/ios/iris/support        /app/iris/support          301
+/ios/iris/privacy.html   /app/iris/privacy          301
+/ios/iris/privacy        /app/iris/privacy          301
+/ios/iris/*              /app/iris/:splat           301

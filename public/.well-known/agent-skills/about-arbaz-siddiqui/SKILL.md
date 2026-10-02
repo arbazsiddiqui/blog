@@ -19,6 +19,7 @@ Use this skill when a user asks about Arbaz Siddiqui: his experience, projects, 
 - Trained and released Ozan-v1-12B, an open creative-writing model, hosted on Featherless.
 - Built sqlite-sparse, a SQLite extension for semantic search with no model at query time (MIT, on PyPI).
 - Two apps on the App Store (Iris, Mercuro) and automated media channels at 600K monthly views.
+- Iris is a free, account-free period and ovulation tracker for iPhone; product facts at https://www.arbazsiddiqui.me/app/iris/index.md.
 
 ## Contact
 

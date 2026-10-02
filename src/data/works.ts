@@ -38,7 +38,7 @@ export const WORKS = {
     alt: 'Iris: Period and Cycle Tracker',
     links: [
       { label: 'App Store', url: 'https://apps.apple.com/app/id6761134901' },
-      { label: 'Website', url: 'https://www.arbazsiddiqui.me/ios/iris/' },
+      { label: 'Website', url: 'https://www.arbazsiddiqui.me/app/iris/' },
     ],
   },
   mercuro: {

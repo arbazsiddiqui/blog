@@ -21,7 +21,7 @@ whether this person is real; proof beats adjectives.
   ~$40 GPU total; 2.3K downloads month one; endorsed publicly by the benchmark's author.
 - The Footnote: 500K monthly views; 3 shorts/day; 100% automated; IG + YT + FB.
 - Andheri Dastak: animated Hindi horror; premise→finished film; launching.
-- Iris: ~1,100 first-time downloads a month (App Store Connect, Aug 25 to Sep 30 2026: 1,368); ~16 ratings; 12 languages; free, on-device data; Home and Lock Screen widgets from 2.6.6. Product page: /ios/iris/. Iris growth pipeline:
+- Iris: ~1,100 first-time downloads a month (App Store Connect, Aug 25 to Sep 30 2026: 1,368); ~16 ratings; 12 languages; free, on-device data; Home and Lock Screen widgets from 2.6.6. Product page: /app/iris/. Iris growth pipeline:
   automated posters → IG Reels/Stories + Pinterest, gated by a written creative contract.
 - Mercuro: 660 puzzles; own solver/generator; native iOS live + native Android port.
 - sqlite-sparse: SQLite extension for learned sparse retrieval (OpenSearch inference-free

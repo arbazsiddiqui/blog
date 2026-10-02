@@ -21,12 +21,13 @@
   channel publishing short history stories twice a day to Instagram, YouTube, and
   Facebook. 500K monthly views, no human in the loop. Python, Remotion, local TTS,
   vision-model image judging, zero-cost archival image sourcing.
-- [Iris](https://www.arbazsiddiqui.me/ios/iris/): free period and ovulation tracker for
+- [Iris](https://www.arbazsiddiqui.me/app/iris/) ([fact sheet](https://www.arbazsiddiqui.me/app/iris/index.md)): free period and ovulation tracker for
   iPhone and iPad. Predictions from the user's own cycles, likely ranges for irregular
   cycles and PCOS, LH and basal temperature logging, Home and Lock Screen widgets,
   end-to-end encrypted partner sharing, Apple Health sync. No account, no subscription,
   data stays on the phone (optional sync to the user's own iCloud). Over 1,000 downloads
-  a month. Engineering write-up: https://www.arbazsiddiqui.me/iris
+  a month. Engineering write-up: https://www.arbazsiddiqui.me/iris. Support:
+  https://www.arbazsiddiqui.me/app/iris/support. Privacy: https://www.arbazsiddiqui.me/app/iris/privacy
 - [Mercuro](https://www.arbazsiddiqui.me/mercuro): thermometer logic-puzzle game with
   its own constraint solver and generator. 660 handcrafted puzzles. Native SwiftUI on
   iOS and native Kotlin/Compose on Android.
