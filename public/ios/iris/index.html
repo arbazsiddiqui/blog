@@ -30,7 +30,7 @@
 <meta name="twitter:image" content="https://www.arbazsiddiqui.me/og/iris.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&display=swap" rel="stylesheet">
 
 <script type="application/ld+json">
 {
@@ -143,8 +143,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
-  font-optical-sizing: auto;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, system-ui, sans-serif;
   font-size: 18px;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
@@ -187,8 +186,10 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 /* Hero */
 .hero { padding: 64px 0 24px; }
 .hero .wrap { display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; }
+h1, h2, .ring-center .day { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", Inter, system-ui, sans-serif; }
+.ring-center .day { font-family: ui-rounded, "SF Pro Rounded", -apple-system, Inter, system-ui, sans-serif; }
 h1 {
-  font-size: clamp(42px, 6vw, 78px); line-height: 1; letter-spacing: -0.03em; font-weight: 640;
+  font-size: clamp(40px, 5.6vw, 72px); line-height: 1.04; letter-spacing: -0.025em; font-weight: 700;
   margin: 0 0 24px; text-wrap: balance;
 }
 .lede { font-size: 21px; color: var(--ink-soft); max-width: 34ch; margin: 0 0 32px; }
@@ -205,7 +206,7 @@ h1 {
 .ring-stage[data-focus="luteal"] .seg[data-p="luteal"],
 .ring-stage[data-focus="follicular"] .seg[data-p="follicular"] { opacity: 1; }
 .ring-center { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; pointer-events: none; }
-.ring-center .day { font-size: clamp(54px, 7.6vw, 92px); font-weight: 680; letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; }
+.ring-center .day { font-size: clamp(54px, 7.6vw, 92px); font-weight: 700; letter-spacing: -0.02em; line-height: 1; font-variant-numeric: tabular-nums; }
 .ring-center .phase { font-size: 19px; font-weight: 560; margin-top: 8px; }
 .ring-center .next { font-size: 15px; color: var(--ink-soft); margin-top: 4px; }
 .legend { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 18px; }
@@ -231,7 +232,7 @@ h1 {
 .tag { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 560; color: var(--ink-soft); margin-bottom: 14px; }
 .tag i { width: 9px; height: 9px; border-radius: 50%; background: var(--c, var(--rose)); }
 h2 {
-  font-size: clamp(32px, 4vw, 52px); line-height: 1.04; letter-spacing: -0.028em; font-weight: 630;
+  font-size: clamp(30px, 3.8vw, 48px); line-height: 1.08; letter-spacing: -0.022em; font-weight: 700;
   margin: 0 0 18px; text-wrap: balance;
 }
 .copy p { color: var(--ink-soft); font-size: 19px; margin: 0 0 14px; max-width: 46ch; }
