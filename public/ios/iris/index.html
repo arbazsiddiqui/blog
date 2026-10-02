@@ -10,10 +10,10 @@
 <link rel="canonical" href="https://www.arbazsiddiqui.me/ios/iris/">
 <link rel="author" href="/about">
 <meta name="apple-itunes-app" content="app-id=6761134901">
-<link rel="icon" href="assets/iris-icon.png" type="image/png">
-<link rel="apple-touch-icon" href="assets/iris-icon.png">
-<meta name="theme-color" content="#FAF6F7" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#1B1016" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="assets/favicon-64.png" sizes="64x64" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="theme-color" content="#FAF6F7">
 <meta property="og:title" content="Iris: Private Period and Ovulation Tracker">
 <meta property="og:description" content="Free period and ovulation tracker for iPhone. Learns from your cycles, works with irregular ones, keeps your data on your phone.">
 <meta property="og:type" content="website">
@@ -112,7 +112,7 @@
 
 <style>
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
   --bg: #FAF6F7;
   --bg-soft: #F3EAEE;
   --card: #FFFFFF;
@@ -135,22 +135,6 @@
   --shadow: 0 30px 60px -30px rgba(120, 50, 80, 0.35);
   --shadow-soft: 0 12px 30px -18px rgba(120, 50, 80, 0.35);
   --ease: cubic-bezier(.2, .8, .2, 1);
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #1B1016;
-    --bg-soft: #24161E;
-    --card: #2A1B23;
-    --ink: #F7EEF2;
-    --ink-soft: #B9A4AE;
-    --ink-faint: #8C7882;
-    --line: #3A2730;
-    --quiet: #33232B;
-    --luteal-soft: #CFA47C;
-    --phone-edge: #0E080B;
-    --shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.7);
-    --shadow-soft: 0 12px 30px -18px rgba(0, 0, 0, 0.8);
-  }
 }
 
 * { box-sizing: border-box; }
@@ -376,7 +360,7 @@ h2 {
 .lane { position: relative; flex: 1; height: 120px; margin: 0 14px 28px; }
 .lane::before, .lane::after { content: ""; position: absolute; left: 0; right: 0; height: 1px; background: var(--line); }
 .lane::before { top: 38%; } .lane::after { top: 62%; }
-.chipflow { position: absolute; left: 0; font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 100px; white-space: nowrap; opacity: 0; }
+.chipflow { position: absolute; z-index: 1; left: 0; font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 100px; white-space: nowrap; opacity: 0; }
 .in .chipflow.to { animation: toright 2.6s var(--ease) infinite; }
 .in .chipflow.from { animation: toleft 2.6s var(--ease) infinite; animation-delay: 1.3s; }
 .chipflow.to { top: calc(38% - 11px); }
@@ -402,7 +386,8 @@ h2 {
 
 /* Rest of the features */
 .rest { padding-top: 128px; }
-.rest h2 { max-width: 20ch; }
+.rest h2 { max-width: 22ch; }
+.rest-sub { color: var(--ink-soft); font-size: 19px; margin: 0; max-width: 46ch; }
 .rest-grid { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 48px; margin-top: 32px; }
 .item { padding: 22px 0; border-top: 1px solid var(--line); }
 .item h3 { margin: 0 0 4px; font-size: 19px; font-weight: 620; letter-spacing: -0.01em; }
@@ -420,20 +405,44 @@ h2 {
 .screen figcaption span { color: var(--ink-soft); font-size: 15px; }
 
 /* Privacy */
-.privacy { background: var(--ink); color: var(--bg); margin-top: 128px; padding: 104px 0; border-radius: 40px; width: min(1180px, 100% - 16px); margin-inline: auto; }
-.privacy h2 { color: var(--bg); max-width: 18ch; }
-.privacy .sub { color: color-mix(in srgb, var(--bg) 70%, transparent); font-size: 19px; max-width: 50ch; margin: 0; }
-.compare { width: 100%; border-collapse: collapse; margin-top: 44px; font-size: 17px; }
-.compare th, .compare td { text-align: left; padding: 18px 16px 18px 0; border-top: 1px solid color-mix(in srgb, var(--bg) 18%, transparent); vertical-align: top; }
-.compare thead th { border-top: 0; font-size: 15px; font-weight: 500; color: color-mix(in srgb, var(--bg) 60%, transparent); }
-.compare tbody th { font-weight: 500; color: color-mix(in srgb, var(--bg) 70%, transparent); width: 26%; }
-.compare td.iris { font-weight: 600; }
-.compare td.iris::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--fertile); margin-right: 10px; vertical-align: 2px; }
-.compare td.other { color: color-mix(in srgb, var(--bg) 62%, transparent); }
+.privacy { margin-top: 128px; }
+.privacy .panel {
+  border-radius: 40px; padding: 72px 64px;
+  background: linear-gradient(135deg, #FBEDF2 0%, #F2ECF8 55%, #E8F4F2 100%);
+}
+.privacy .top { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.privacy h2 { max-width: 14ch; }
+.privacy .sub { color: var(--ink-soft); font-size: 19px; max-width: 42ch; margin: 0; }
+.flow { position: relative; display: grid; grid-template-columns: 9.5em 1fr 9.5em; grid-template-rows: auto 64px auto; align-items: start; column-gap: 14px; }
+.flow .wire { margin-top: 31px; }
+.spot { display: grid; justify-items: center; gap: 8px; font-size: 14px; font-weight: 600; text-align: center; }
+.spot small { display: block; font-weight: 400; color: var(--ink-soft); font-size: 13px; max-width: 16ch; }
+.spot .ic { width: 64px; height: 64px; border-radius: 20px; background: #fff; display: grid; place-items: center; box-shadow: var(--shadow-soft); }
+.spot .ic svg { width: 30px; height: 30px; }
+.spot.none { grid-column: 3; grid-row: 3; opacity: .55; }
+.spot.none .ic { background: transparent; box-shadow: none; border: 1.5px dashed var(--ink-faint); }
+.wire { height: 2px; background: var(--rose); border-radius: 2px; position: relative; transform: scaleX(0); transform-origin: left; transition: transform 1s var(--ease) .3s; }
+.wire::after { content: ""; position: absolute; left: 50%; top: 50%; width: 22px; height: 22px; margin: -11px 0 0 -11px; border-radius: 50%; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23C46482' d='M17 10V8a5 5 0 0 0-10 0v2H5v12h14V10h-2zm-8 0V8a3 3 0 0 1 6 0v2H9z'/%3E%3C/svg%3E") center/12px no-repeat; box-shadow: 0 2px 6px rgba(120,50,80,.25); }
+.in .wire { transform: scaleX(1); }
+.nopath { grid-column: 1 / 4; grid-row: 2; justify-self: stretch; height: 64px; position: relative; }
+.nopath svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.nopath path { fill: none; stroke: var(--ink-faint); stroke-width: 1.5; stroke-dasharray: 4 6; opacity: 0; transition: opacity .6s 1.2s; }
+.in .nopath path { opacity: .7; }
+.vs { list-style: none; margin: 56px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+.vs li { border-top: 1px solid color-mix(in srgb, var(--ink) 12%, transparent); padding-top: 18px; }
+.vs .k { font-size: 14px; color: var(--ink-soft); }
+.vs .iris { font-size: 18px; font-weight: 620; margin: 4px 0 6px; line-height: 1.3; }
+.vs .other { font-size: 14px; color: var(--ink-faint); }
 
 /* FAQ */
 .faq-sec { padding-top: 120px; }
-.faq { margin-top: 36px; max-width: 760px; }
+.faq-sec .wrap { display: grid; grid-template-columns: 1fr 1.8fr; gap: 64px; align-items: start; }
+.faq-head { position: sticky; top: 96px; }
+.faq-sec .aside { color: var(--ink-soft); font-size: 17px; margin: 0; max-width: 28ch; }
+.faq-sec .aside a { color: var(--rose); }
+.faq { margin-top: 6px; }
+.faq summary:focus-visible { outline: none; color: var(--rose); }
+.faq summary:focus-visible::after { border-color: var(--rose); }
 .faq details { border-top: 1px solid var(--line); }
 .faq details:last-child { border-bottom: 1px solid var(--line); }
 .faq summary { list-style: none; cursor: pointer; padding: 22px 40px 22px 0; position: relative; font-size: 20px; font-weight: 580; letter-spacing: -0.01em; }
@@ -473,12 +482,12 @@ footer a:hover { color: var(--ink); }
   .screens::-webkit-scrollbar { display: none; }
   .screen { flex: 0 0 62%; scroll-snap-align: center; }
   .screen:nth-child(even) { margin-top: 0; }
-  .privacy { padding: 72px 0; border-radius: 28px; margin-top: 88px; }
-  .compare thead { display: none; }
-  .compare tr { display: block; padding: 16px 0; border-top: 1px solid color-mix(in srgb, var(--bg) 18%, transparent); }
-  .compare th, .compare td { display: block; border: 0; padding: 2px 0; width: auto; }
-  .compare tbody th { width: auto; font-size: 15px; margin-bottom: 4px; }
-  .compare td.other::before { content: "Many trackers: "; }
+  .privacy { margin-top: 88px; }
+  .privacy .panel { padding: 48px 22px; border-radius: 28px; }
+  .privacy .top { grid-template-columns: 1fr; gap: 36px; }
+  .vs { grid-template-columns: 1fr 1fr; gap: 22px; }
+  .faq-sec .wrap { grid-template-columns: 1fr; gap: 8px; }
+  .faq-head { position: static; }
 }
 @media (max-width: 560px) {
   body { font-size: 17px; }
@@ -489,6 +498,7 @@ footer a:hover { color: var(--ink); }
   .fact strong { font-size: 18px; }
   .fact span { font-size: 14px; }
   .rest-grid { grid-template-columns: 1fr; }
+  .vs { grid-template-columns: 1fr; }
   .widgets { grid-template-columns: 1fr; }
   .screen { flex-basis: 72%; }
   .lane { margin-inline: 8px; }
@@ -723,7 +733,8 @@ footer a:hover { color: var(--ink); }
 
   <section class="rest">
     <div class="wrap">
-      <h2>Everything else is in there too</h2>
+      <h2>Trying for a baby, on the pill, or just keeping track</h2>
+      <p class="rest-sub">Iris changes how it works to fit where you are, and everything below comes with it.</p>
       <div class="rest-grid">
         <div class="item"><h3>Daily log</h3><p>Flow, symptoms, mood, discharge, sleep, weight and notes. Hide what you don't track.</p></div>
         <div class="item"><h3>A mode for your goal</h3><p>Just tracking, trying to conceive or avoiding pregnancy. Colours and wording change to fit.</p></div>
@@ -749,23 +760,36 @@ footer a:hover { color: var(--ink); }
 
   <section class="privacy" id="privacy">
     <div class="wrap">
-      <h2>Where your data goes</h2>
-      <p class="sub">Nowhere we can see it. Iris has no servers and no accounts. If you turn on sync, your data goes to your own iCloud, which only you can open. Iris pays for itself with a few ads, which a one-time purchase removes.</p>
-      <table class="compare">
-        <thead><tr><th scope="col"></th><th scope="col">Iris</th><th scope="col">Many popular trackers</th></tr></thead>
-        <tbody>
-          <tr><th scope="row">Sign up</th><td class="iris">Not needed</td><td class="other">Email or account required</td></tr>
-          <tr><th scope="row">Where your data lives</th><td class="iris">Your phone and your own iCloud</td><td class="other">The company's servers</td></tr>
-          <tr><th scope="row">Price</th><td class="iris">Free, with a one-time option to remove ads</td><td class="other">Key features behind a monthly subscription</td></tr>
-          <tr><th scope="row">Partner sharing</th><td class="iris">A code, end-to-end encrypted</td><td class="other">Through the company's account system</td></tr>
-        </tbody>
-      </table>
+      <div class="panel">
+        <div class="top">
+          <div>
+            <div class="tag" style="--c:var(--fertile)"><i></i>Privacy</div>
+            <h2>Where your data goes</h2>
+            <p class="sub">Nowhere anyone else can see it. Iris keeps everything on your iPhone. Turn on sync and a copy goes to your own iCloud, which only you can open. There is no Iris server for it to go to.</p>
+          </div>
+          <div class="visual-bare" id="flowVis">
+            <div class="flow">
+              <div class="spot"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3" fill="none" stroke="#C46482" stroke-width="2"/><circle cx="12" cy="18" r="1.2" fill="#C46482"/></svg></div>Your iPhone<small>Everything you log</small></div>
+              <div class="wire" aria-hidden="true"></div>
+              <div class="spot"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 .6-7.96A6 6 0 0 0 6.2 9.1 4.5 4.5 0 0 0 7 18z" fill="none" stroke="#C46482" stroke-width="2" stroke-linejoin="round"/></svg></div>Your iCloud<small>Optional, only you can open it</small></div>
+              <div class="nopath" aria-hidden="true"><svg viewBox="0 0 100 64" preserveAspectRatio="none"><path vector-effect="non-scaling-stroke" d="M6 0 C 6 40, 70 30, 92 64"/></svg></div>
+              <div class="spot none"><div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="7" rx="2" fill="none" stroke="#9C8792" stroke-width="1.6"/><rect x="4" y="13" width="16" height="7" rx="2" fill="none" stroke="#9C8792" stroke-width="1.6"/><path d="M3 21 21 3" stroke="#9C8792" stroke-width="1.6"/></svg></div>Iris servers<small>There aren't any</small></div>
+            </div>
+          </div>
+        </div>
+        <ul class="vs">
+          <li><div class="k">Sign up</div><div class="iris">Not needed</div><div class="other">Many trackers want an email or account</div></li>
+          <li><div class="k">Your data</div><div class="iris">Your phone and your own iCloud</div><div class="other">Many keep it on their servers</div></li>
+          <li><div class="k">Price</div><div class="iris">Free, with a one-time option to remove ads</div><div class="other">Many put key features behind a subscription</div></li>
+          <li><div class="k">Partner sharing</div><div class="iris">A private code, end-to-end encrypted</div><div class="other">Many route it through their account system</div></li>
+        </ul>
+      </div>
     </div>
   </section>
 
   <section class="faq-sec" id="faq">
     <div class="wrap">
-      <h2>Questions</h2>
+      <div class="faq-head"><h2>Questions</h2><p class="aside">Something else? Ask on the <a href="support.html">support page</a>.</p></div>
       <div class="faq">
         <details><summary>Is Iris free?</summary><p>Yes. Every feature is free. Iris shows a few ads to pay for itself, and a single one-time purchase removes them. There is no subscription.</p></details>
         <details><summary>Do I need an account?</summary><p>No. There is no sign-up, email or login. You enter your last period date and start.</p></details>
@@ -968,7 +992,7 @@ footer a:hover { color: var(--ink); }
   }
 
   // Reveal each visual once, as it scrolls into view.
-  var targets = document.querySelectorAll('.visual');
+  var targets = document.querySelectorAll('.visual, .visual-bare');
   if (!('IntersectionObserver' in window) || reduce) {
     targets.forEach(function (t) { t.classList.add('in'); }); typeCode();
   } else {
