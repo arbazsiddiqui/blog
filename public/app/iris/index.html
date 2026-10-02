@@ -362,7 +362,8 @@ h2 {
 .node { display: grid; justify-items: center; gap: 10px; font-size: 14px; font-weight: 560; text-align: center; }
 .node .ic { width: 78px; height: 78px; border-radius: 20px; box-shadow: var(--shadow-soft); display: grid; place-items: center; background: #fff; }
 .node .ic img { width: 78px; height: 78px; border-radius: 20px; }
-.node .heart { width: 40px; height: 40px; }
+.node .ic.health { background: #fff; box-shadow: 0 1px 0 rgba(0,0,0,.04), var(--shadow-soft); }
+.node .ic.health svg { width: 100%; height: 100%; }
 .lane { position: relative; flex: 1; height: 120px; margin: 0 14px 28px; }
 .lane::before, .lane::after { content: ""; position: absolute; left: 0; right: 0; height: 1px; background: var(--line); }
 .lane::before { top: 38%; } .lane::after { top: 62%; }
@@ -460,11 +461,19 @@ h2 {
 .faq details[open] summary::after { transform: rotate(225deg); margin-top: -2px; }
 .faq details p { margin: 0 0 24px; color: var(--ink-soft); max-width: 60ch; }
 
-.closing { text-align: center; padding: 136px 0 96px; }
-.closing img.icon { width: 96px; height: 96px; border-radius: 22px; margin: 0 auto 28px; box-shadow: var(--shadow); }
-.closing h2 { margin-inline: auto; max-width: 16ch; }
-.closing p { color: var(--ink-soft); font-size: 19px; margin: 0 auto 30px; }
-.closing .badge { display: inline-block; }
+.closing { padding: 120px 0 72px; }
+.cta {
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: end;
+  border-radius: 40px; padding: 64px 64px 0; overflow: hidden;
+  background: linear-gradient(135deg, #FBEDF2 0%, #F2ECF8 55%, #E8F4F2 100%);
+}
+.cta-copy { padding-bottom: 64px; align-self: center; }
+.cta img.icon { width: 72px; height: 72px; border-radius: 17px; margin-bottom: 24px; box-shadow: var(--shadow-soft); }
+.cta h2 { max-width: 14ch; }
+.cta p { color: var(--ink-soft); font-size: 19px; margin: 0 0 28px; max-width: 34ch; }
+.cta .badge { display: inline-block; }
+.cta-phone { justify-self: center; width: min(300px, 100%); margin-bottom: -150px; }
+.cta-phone .phone { box-shadow: 0 30px 60px -20px rgba(120, 50, 80, .4); }
 
 footer { border-top: 1px solid var(--line); padding: 28px 0 40px; font-size: 15px; color: var(--ink-soft); }
 footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
@@ -482,6 +491,10 @@ footer a:hover { color: var(--ink); }
   .fact:nth-child(3) { padding-left: 0; border-left: 0; }
   .fact:nth-child(n+3) { border-top: 1px solid var(--line); }
   .chapter, .rest, .screens-sec { padding-top: 88px; }
+  .cta { grid-template-columns: 1fr; padding: 44px 24px 0; border-radius: 28px; gap: 8px; }
+  .cta-copy { padding-bottom: 8px; }
+  .cta-phone { width: min(240px, 80%); margin-bottom: -120px; }
+  .closing { padding: 88px 0 48px; }
   .visual { padding: 24px 18px; border-radius: 26px; min-height: 0; }
   .rest-grid { grid-template-columns: 1fr 1fr; }
   .screens { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 18px; margin-inline: -16px; padding: 8px 16px 32px; scrollbar-width: none; }
@@ -711,7 +724,7 @@ footer a:hover { color: var(--ink); }
               <span class="chipflow to" id="chipTo">Period flow</span>
               <span class="chipflow from" id="chipFrom">Weight</span>
             </div>
-            <div class="node"><div class="ic"><svg class="heart" viewBox="0 0 24 24" aria-hidden="true"><path fill="#F0436B" d="M12 21s-7.5-4.6-9.6-9.2C.9 8.5 3 5 6.4 5c2 0 3.4 1.1 4.1 2.3h3c.7-1.2 2.1-2.3 4.1-2.3C21 5 23.1 8.5 21.6 11.8 19.5 16.4 12 21 12 21z"/></svg></div>Apple Health</div>
+            <div class="node"><div class="ic health"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="hk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF6F91"/><stop offset="1" stop-color="#FF2D55"/></linearGradient></defs><path fill="url(#hk)" d="M44.5 9.5c-3.9 0-7.2 2.1-9 5.2-1.8-3.1-5.1-5.2-9-5.2-5.8 0-10.5 4.8-10.5 10.7 0 9.6 13.6 17.9 18.1 20.4.9.5 1.9.5 2.8 0C41.4 38.1 55 29.8 55 20.2 55 14.3 50.3 9.5 44.5 9.5z"/></svg></div>Apple Health</div>
           </div>
           <div class="types anim"><span>Period flow</span><span>Basal temperature</span><span>Ovulation tests</span><span>Cervical mucus</span><span>Weight</span><span>Sleep</span></div>
         </div>
@@ -813,10 +826,15 @@ footer a:hover { color: var(--ink); }
 
   <section class="closing">
     <div class="wrap">
-      <img class="icon" src="assets/iris-icon.webp" alt="" width="96" height="96">
-      <h2>Set up takes about a minute</h2>
-      <p>All Iris needs to start is the date your last period began.</p>
-      <a class="badge" href="https://apps.apple.com/app/id6761134901"><img src="assets/app-store-badge.svg" alt="Download on the App Store" width="156" height="52"></a>
+      <div class="cta">
+        <div class="cta-copy">
+          <img class="icon" src="assets/iris-icon.webp" alt="" width="72" height="72">
+          <h2>Set up takes about a minute</h2>
+          <p>All Iris needs to start is the date your last period began.</p>
+          <a class="badge" href="https://apps.apple.com/app/id6761134901"><img src="assets/app-store-badge.svg" alt="Download on the App Store" width="156" height="52"></a>
+        </div>
+        <div class="cta-phone" aria-hidden="true"><div class="phone"><img src="assets/screen-today.webp" alt="" width="760" height="1652" loading="lazy"></div></div>
+      </div>
     </div>
   </section>
 </main>
