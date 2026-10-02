@@ -1,72 +1,988 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iris: Period &amp; Cycle Tracker | Arbaz Siddiqui</title>
-  <meta name="description" content="Iris is a period and cycle tracker for iPhone. Your data stays on your device.">
-  <link rel="canonical" href="https://www.arbazsiddiqui.me/ios/iris/">
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <meta name="theme-color" content="#ffffff">
-  <meta property="og:title" content="Iris: Period &amp; Cycle Tracker | Arbaz Siddiqui">
-  <meta property="og:description" content="Iris is a period and cycle tracker for iPhone. Your data stays on your device.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.arbazsiddiqui.me/ios/iris/">
-  <meta property="og:image" content="https://www.arbazsiddiqui.me/og/arbaz-siddiqui.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Illustrated portrait of Arbaz Siddiqui with abstract signal lines resolving into engineered systems.">
-  <meta property="og:site_name" content="Arbaz Siddiqui">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Iris: Period &amp; Cycle Tracker | Arbaz Siddiqui">
-  <meta name="twitter:description" content="Iris is a period and cycle tracker for iPhone. Your data stays on your device.">
-  <meta name="twitter:image" content="https://www.arbazsiddiqui.me/og/arbaz-siddiqui.jpg">
-  <link rel="stylesheet" href="../style.css">
-  <style> :root { --accent: #C46480; --accent-bg: #FBF1F5; } </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iris: Private Period and Ovulation Tracker for iPhone</title>
+<meta name="description" content="Iris is a free period and ovulation tracker for iPhone and iPad. It learns from your own cycles, handles irregular cycles and PCOS, confirms ovulation from LH tests and temperature, and keeps your data on your phone. No account, no subscription.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Arbaz Siddiqui">
+<link rel="canonical" href="https://www.arbazsiddiqui.me/ios/iris/">
+<link rel="author" href="/about">
+<meta name="apple-itunes-app" content="app-id=6761134901">
+<link rel="icon" href="assets/iris-icon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/iris-icon.png">
+<meta name="theme-color" content="#FAF6F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1B1016" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Iris: Private Period and Ovulation Tracker">
+<meta property="og:description" content="Free period and ovulation tracker for iPhone. Learns from your cycles, works with irregular ones, keeps your data on your phone.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.arbazsiddiqui.me/ios/iris/">
+<meta property="og:image" content="https://www.arbazsiddiqui.me/og/iris.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Iris period tracker app icon and cycle screens">
+<meta property="og:site_name" content="Arbaz Siddiqui">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Iris: Private Period and Ovulation Tracker">
+<meta name="twitter:description" content="Free period and ovulation tracker for iPhone. Learns from your cycles, works with irregular ones, keeps your data on your phone.">
+<meta name="twitter:image" content="https://www.arbazsiddiqui.me/og/iris.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.arbazsiddiqui.me/ios/iris/#page",
+      "url": "https://www.arbazsiddiqui.me/ios/iris/",
+      "name": "Iris: Private Period and Ovulation Tracker for iPhone",
+      "about": { "@id": "https://www.arbazsiddiqui.me/ios/iris/#app" },
+      "author": { "@id": "https://www.arbazsiddiqui.me/#person" },
+      "inLanguage": "en",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.arbazsiddiqui.me/" },
+          { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://www.arbazsiddiqui.me/projects/" },
+          { "@type": "ListItem", "position": 3, "name": "Iris", "item": "https://www.arbazsiddiqui.me/ios/iris/" }
+        ]
+      }
+    },
+    {
+      "@type": "MobileApplication",
+      "@id": "https://www.arbazsiddiqui.me/ios/iris/#app",
+      "name": "Iris: Period & Cycle Tracker",
+      "alternateName": "Iris Period Tracker",
+      "operatingSystem": "iOS, iPadOS",
+      "applicationCategory": "HealthApplication",
+      "url": "https://www.arbazsiddiqui.me/ios/iris/",
+      "downloadUrl": "https://apps.apple.com/app/id6761134901",
+      "installUrl": "https://apps.apple.com/app/id6761134901",
+      "sameAs": ["https://apps.apple.com/app/id6761134901", "https://www.arbazsiddiqui.me/iris"],
+      "image": "https://www.arbazsiddiqui.me/ios/iris/assets/iris-icon.png",
+      "screenshot": [
+        "https://www.arbazsiddiqui.me/ios/iris/assets/screen-today.webp",
+        "https://www.arbazsiddiqui.me/ios/iris/assets/screen-calendar.webp",
+        "https://www.arbazsiddiqui.me/ios/iris/assets/screen-log.webp",
+        "https://www.arbazsiddiqui.me/ios/iris/assets/screen-insights.webp"
+      ],
+      "description": "A period and ovulation tracker for iPhone and iPad. Predictions come from the user's own cycles, irregular cycles get a likely range instead of a single date, and ovulation can be confirmed with LH tests and basal temperature. Data stays on the device, with optional sync to the user's own iCloud. No account and no subscription.",
+      "featureList": [
+        "Period predictions from your own cycle history",
+        "Ovulation from LH tests and basal body temperature",
+        "Likely ranges for irregular cycles and PCOS",
+        "Home Screen and Lock Screen widgets",
+        "End-to-end encrypted partner sharing",
+        "Apple Health sync for flow, temperature, LH tests, cervical mucus, weight and sleep",
+        "Period, fertile window, PMS, pill and medication reminders",
+        "Modes for tracking, trying to conceive and avoiding pregnancy",
+        "Pregnancy, postpartum and hormonal contraception modes",
+        "PDF health report for your doctor",
+        "No account; optional sync through your own iCloud"
+      ],
+      "inLanguage": ["en", "de", "es", "fil", "id", "ja", "pl", "pt", "ru", "th"],
+      "isAccessibleForFree": true,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "author": { "@id": "https://www.arbazsiddiqui.me/#person" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.arbazsiddiqui.me/ios/iris/#faq",
+      "mainEntity": [
+        { "@type": "Question", "name": "Is Iris free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every feature is free. Iris shows a few ads to pay for itself, and a single one-time purchase removes them. There is no subscription." } },
+        { "@type": "Question", "name": "Do I need an account?", "acceptedAnswer": { "@type": "Answer", "text": "No. There is no sign-up, email or login. You enter your last period date and start." } },
+        { "@type": "Question", "name": "Where is my data stored?", "acceptedAnswer": { "@type": "Answer", "text": "On your iPhone. If you turn on sync, a copy goes to your own private iCloud so you can move to a new phone or use your iPad. Iris has no servers of its own." } },
+        { "@type": "Question", "name": "Does Iris work with irregular cycles or PCOS?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. When your cycles vary a lot, Iris shows a likely window based on your history instead of a single date, and tells you plainly when a period is later than that window." } },
+        { "@type": "Question", "name": "How does Iris predict ovulation?", "acceptedAnswer": { "@type": "Answer", "text": "It estimates ovulation from your cycle history and counts your next period forward from it. If you log LH tests, a positive surge marks ovulation on the calendar and the period prediction moves to match. Basal temperatures are charted with a coverline." } },
+        { "@type": "Question", "name": "Can I use Iris as birth control?", "acceptedAnswer": { "@type": "Answer", "text": "No. Iris is not a contraceptive and its predictions are estimates. The avoiding pregnancy mode highlights the days with a higher chance of pregnancy, but it never tells you a day is safe." } },
+        { "@type": "Question", "name": "Does Iris have widgets?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. There are Home Screen widgets in two sizes and Lock Screen widgets showing your cycle day, phase and the days until your next period. They move to the next day on their own." } },
+        { "@type": "Question", "name": "Can my partner see my cycle?", "acceptedAnswer": { "@type": "Answer", "text": "Only if you share a code with them. They see your phase, cycle day and predictions in Iris, view only and end-to-end encrypted, and you can stop sharing at any time." } },
+        { "@type": "Question", "name": "Does Iris work with Apple Health?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Iris syncs period flow, basal body temperature, ovulation tests, cervical mucus, weight and sleep with Apple Health." } },
+        { "@type": "Question", "name": "Which languages does Iris support?", "acceptedAnswer": { "@type": "Answer", "text": "English, German, Spanish, Filipino, Indonesian, Japanese, Polish, Portuguese, Russian and Thai." } }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #FAF6F7;
+  --bg-soft: #F3EAEE;
+  --card: #FFFFFF;
+  --ink: #24131C;
+  --ink-soft: #6E5964;
+  --ink-faint: #9C8792;
+  --line: #E8DCE2;
+  --rose: #C46482;
+  --period: #D26E87;
+  --expected: #F5C8D7;
+  --fertile: #9BD7D2;
+  --fertile-ink: #40ACA4;
+  --ovulation: #AF94D2;
+  --ovulation-ink: #9272C4;
+  --luteal: #F5C89B;
+  --luteal-soft: #F9E0C8;
+  --luteal-ink: #E4944C;
+  --quiet: #EDE3E8;
+  --phone-edge: #2A1A22;
+  --shadow: 0 30px 60px -30px rgba(120, 50, 80, 0.35);
+  --shadow-soft: 0 12px 30px -18px rgba(120, 50, 80, 0.35);
+  --ease: cubic-bezier(.2, .8, .2, 1);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1B1016;
+    --bg-soft: #24161E;
+    --card: #2A1B23;
+    --ink: #F7EEF2;
+    --ink-soft: #B9A4AE;
+    --ink-faint: #8C7882;
+    --line: #3A2730;
+    --quiet: #33232B;
+    --luteal-soft: #CFA47C;
+    --phone-edge: #0E080B;
+    --shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.7);
+    --shadow-soft: 0 12px 30px -18px rgba(0, 0, 0, 0.8);
+  }
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  font-optical-sizing: auto;
+  font-size: 18px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--rose); outline-offset: 3px; border-radius: 6px;
+}
+.wrap { width: min(1120px, 100% - 32px); margin-inline: auto; }
+
+/* Nav: the page reads as one cycle; the ring fills from day 1 to day 28 as you scroll. */
+.nav {
+  position: sticky; top: 0; z-index: 20;
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: saturate(1.4) blur(14px);
+  -webkit-backdrop-filter: saturate(1.4) blur(14px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .3s;
+}
+.nav.scrolled { border-bottom-color: var(--line); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 650; font-size: 20px; }
+.brand img { width: 32px; height: 32px; border-radius: 8px; }
+.nav ul { list-style: none; display: flex; gap: 26px; margin: 0; padding: 0; font-size: 16px; }
+.nav ul a { text-decoration: none; color: var(--ink-soft); }
+.nav ul a:hover { color: var(--ink); }
+.nav-right { display: flex; align-items: center; gap: 14px; }
+.daychip { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--ink-soft); font-variant-numeric: tabular-nums; min-width: 78px; }
+.daychip svg { width: 22px; height: 22px; transform: rotate(-90deg); }
+.daychip circle { fill: none; stroke-width: 3.5; }
+.daychip .track { stroke: var(--quiet); }
+.daychip .fill { stroke: var(--period); stroke-linecap: round; transition: stroke .4s; }
+.get {
+  text-decoration: none; font-size: 15px; font-weight: 600;
+  background: var(--ink); color: var(--bg); padding: 8px 16px; border-radius: 100px; white-space: nowrap;
+}
+
+/* Hero */
+.hero { padding: 64px 0 24px; }
+.hero .wrap { display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; }
+h1 {
+  font-size: clamp(42px, 6vw, 78px); line-height: 1; letter-spacing: -0.03em; font-weight: 640;
+  margin: 0 0 24px; text-wrap: balance;
+}
+.lede { font-size: 21px; color: var(--ink-soft); max-width: 34ch; margin: 0 0 32px; }
+.badge-row { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.badge img { height: 52px; width: auto; }
+.badge-row small { color: var(--ink-soft); font-size: 15px; }
+.ring-stage { position: relative; aspect-ratio: 1; width: 100%; max-width: 500px; justify-self: center; }
+.ring-stage svg { width: 100%; height: 100%; overflow: visible; }
+.seg { transition: opacity .35s ease; }
+.ring-stage[data-focus] .seg { opacity: .16; }
+.ring-stage[data-focus="period"] .seg[data-p="period"],
+.ring-stage[data-focus="fertile"] .seg[data-p="fertile"],
+.ring-stage[data-focus="fertile"] .seg[data-p="ovulation"],
+.ring-stage[data-focus="luteal"] .seg[data-p="luteal"],
+.ring-stage[data-focus="follicular"] .seg[data-p="follicular"] { opacity: 1; }
+.ring-center { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; pointer-events: none; }
+.ring-center .day { font-size: clamp(54px, 7.6vw, 92px); font-weight: 680; letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; }
+.ring-center .phase { font-size: 19px; font-weight: 560; margin-top: 8px; }
+.ring-center .next { font-size: 15px; color: var(--ink-soft); margin-top: 4px; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 18px; }
+.legend button {
+  font: inherit; font-size: 15px; color: var(--ink); background: transparent;
+  border: 1px solid var(--line); border-radius: 100px; padding: 6px 14px 6px 10px;
+  display: inline-flex; align-items: center; gap: 8px; cursor: pointer; transition: background .2s, border-color .2s;
+}
+.legend button:hover, .legend button[aria-pressed="true"] { background: var(--bg-soft); border-color: var(--ink-soft); }
+.legend i { width: 10px; height: 10px; border-radius: 50%; display: block; }
+
+.facts { border-block: 1px solid var(--line); margin-top: 40px; }
+.facts .wrap { display: grid; grid-template-columns: repeat(4, 1fr); }
+.fact { padding: 26px 20px 26px 0; }
+.fact + .fact { padding-left: 24px; border-left: 1px solid var(--line); }
+.fact strong { display: block; font-size: 21px; font-weight: 620; letter-spacing: -0.015em; }
+.fact span { color: var(--ink-soft); font-size: 16px; }
+
+/* Feature chapters */
+.chapter { padding: 128px 0 0; }
+.chapter .wrap { display: grid; grid-template-columns: 1fr 1.1fr; gap: 72px; align-items: center; }
+.chapter.flip .copy { order: 2; }
+.tag { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 560; color: var(--ink-soft); margin-bottom: 14px; }
+.tag i { width: 9px; height: 9px; border-radius: 50%; background: var(--c, var(--rose)); }
+h2 {
+  font-size: clamp(32px, 4vw, 52px); line-height: 1.04; letter-spacing: -0.028em; font-weight: 630;
+  margin: 0 0 18px; text-wrap: balance;
+}
+.copy p { color: var(--ink-soft); font-size: 19px; margin: 0 0 14px; max-width: 46ch; }
+.visual {
+  position: relative; background: var(--card); border-radius: 32px; padding: 32px;
+  box-shadow: var(--shadow-soft); border: 1px solid var(--line); min-height: 360px;
+  display: grid; place-items: center; overflow: hidden;
+}
+.new { display: inline-block; font-size: 13px; font-weight: 650; color: #fff; background: var(--rose); border-radius: 100px; padding: 2px 10px; margin-left: 4px; }
+
+/* Reveal: everything inside a visual waits for .in, then plays once. */
+.anim { opacity: 0; transform: translateY(14px); transition: opacity .7s var(--ease), transform .7s var(--ease); transition-delay: calc(var(--i, 0) * 70ms); }
+.in .anim { opacity: 1; transform: none; }
+
+/* Calendar */
+.cal { width: 100%; max-width: 420px; }
+.cal-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; }
+.cal-head b { font-size: 20px; font-weight: 620; }
+.cal-head span { font-size: 14px; color: var(--ink-soft); }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+.cal-grid .dow { font-size: 12px; color: var(--ink-faint); text-align: center; padding-bottom: 4px; }
+.cell {
+  aspect-ratio: 1; border-radius: 12px; display: grid; place-items: center;
+  font-size: 15px; font-weight: 560; font-variant-numeric: tabular-nums;
+  background: transparent; color: var(--ink);
+  transition: background-color .5s var(--ease), color .5s var(--ease);
+  transition-delay: calc(var(--i, 0) * 28ms);
+}
+.in .cell[data-k="period"] { background: var(--period); color: #fff; }
+.in .cell[data-k="fertile"] { background: var(--fertile); color: #fff; }
+.in .cell[data-k="ovulation"] { background: var(--ovulation); color: #fff; }
+.in .cell[data-k="lsoft"] { background: var(--luteal-soft); color: #8F5A2C; }
+.in .cell[data-k="luteal"] { background: var(--luteal); color: #8F5A2C; }
+.in .cell[data-k="expected"] { background: var(--expected); color: #B4506E; }
+.cell.today { box-shadow: inset 0 0 0 2px var(--ink); }
+.cal-key { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 16px; font-size: 13px; color: var(--ink-soft); }
+.cal-key span { display: inline-flex; align-items: center; gap: 6px; }
+.cal-key i { width: 9px; height: 9px; border-radius: 50%; }
+
+/* Temperature chart */
+.chart { width: 100%; max-width: 480px; }
+.chart svg { width: 100%; height: auto; overflow: visible; }
+.chart .grid line { stroke: var(--line); stroke-width: 1; }
+.chart .axis text { fill: var(--ink-faint); font-size: 11px; font-family: inherit; }
+.chart .temp { fill: none; stroke: var(--ovulation-ink); stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; stroke-dasharray: 1200; stroke-dashoffset: 1200; transition: stroke-dashoffset 2.2s var(--ease) .2s; }
+.in .chart .temp { stroke-dashoffset: 0; }
+.chart .dot { fill: var(--card); stroke: var(--ovulation-ink); stroke-width: 2; opacity: 0; transition: opacity .3s; }
+.in .chart .dot { opacity: 1; transition-delay: calc(.2s + var(--i) * 70ms); }
+.chart .cover { stroke: var(--rose); stroke-width: 1.5; stroke-dasharray: 5 5; opacity: 0; transition: opacity .6s 2.1s; }
+.in .chart .cover { opacity: 1; }
+.chart .lh, .chart .ov { opacity: 0; transform: translateY(6px); transition: opacity .5s 1.5s, transform .5s 1.5s var(--ease); }
+.in .chart .lh, .in .chart .ov { opacity: 1; transform: none; }
+.chart .ov { transition-delay: 1.8s; }
+.chart .label { font-size: 12px; font-weight: 600; font-family: inherit; }
+.chart-key { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 10px; font-size: 13px; color: var(--ink-soft); }
+
+/* Irregular range */
+.range { width: 100%; max-width: 480px; }
+.range-track { position: relative; height: 150px; }
+.range-axis { position: absolute; left: 0; right: 0; bottom: 26px; height: 1px; background: var(--line); }
+.range-ticks { position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: space-between; font-size: 12px; color: var(--ink-faint); }
+.past { position: absolute; bottom: 26px; transform: translate(-50%, 0); display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 12px; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.past i { width: 12px; height: 12px; border-radius: 50%; background: var(--period); opacity: 0; transform: translateY(-40px); transition: opacity .4s, transform .7s cubic-bezier(.3, 1.4, .5, 1); transition-delay: calc(var(--i) * 160ms); margin-bottom: -6px; }
+.past span { opacity: 0; transition: opacity .4s; transition-delay: calc(var(--i) * 160ms + .3s); }
+.past.hi span { margin-bottom: 16px; }
+.in .past i { opacity: 1; transform: none; }
+.in .past span { opacity: 1; }
+.band { position: absolute; bottom: 20px; height: 13px; border-radius: 100px; background: var(--expected); transform: scaleX(0); transform-origin: center; transition: transform 1s var(--ease) 1.2s; }
+.in .band { transform: scaleX(1); }
+.range-label { margin-top: 18px; font-size: 18px; font-weight: 600; opacity: 0; transition: opacity .6s 1.9s; }
+.range-label span { color: var(--ink-soft); font-weight: 400; font-size: 15px; display: block; }
+.in .range-label { opacity: 1; }
+
+/* Widgets */
+.widgets { display: grid; grid-template-columns: 1.5fr 1fr; gap: 18px; width: 100%; align-items: end; }
+.home {
+  border-radius: 28px; padding: 18px; background: linear-gradient(160deg, #F7D9E2, #E9E2F5 55%, #D9EEEC);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+}
+.home img { border-radius: 20px; box-shadow: 0 10px 24px -14px rgba(80, 30, 50, .5); }
+.home .medium { grid-column: 1 / -1; }
+.lock {
+  border-radius: 28px; padding: 22px 16px; background: linear-gradient(170deg, #2B1D3A, #4A2440 60%, #6B3350);
+  color: #fff; text-align: center; display: grid; gap: 12px; justify-items: center;
+}
+.lock .date { font-size: 13px; opacity: .8; }
+.lock .time { font-size: 54px; font-weight: 600; line-height: 1; letter-spacing: -0.02em; }
+.lock .acc { display: flex; gap: 8px; align-items: center; justify-content: center; max-width: 100%; }
+.lock .acc img { height: 46px; width: auto; min-width: 0; mix-blend-mode: screen; }
+.lock .acc img:not(.circ) { flex: 1 1 auto; height: auto; max-height: 46px; object-fit: contain; }
+.lock .acc img.circ { border-radius: 50%; }
+.float { animation: float 6s ease-in-out infinite; }
+.float.b { animation-delay: -3s; }
+@keyframes float { 50% { transform: translateY(-6px); } }
+
+/* Partner */
+.partner { width: 100%; max-width: 440px; display: grid; gap: 16px; }
+.code {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  border: 1px dashed var(--line); border-radius: 18px; padding: 14px 18px;
+}
+.code small { display: block; font-size: 12px; color: var(--ink-faint); }
+.code b { font-size: 22px; font-weight: 650; letter-spacing: .06em; color: var(--rose); font-variant-numeric: tabular-nums; min-height: 1.4em; display: block; }
+.code b::after { content: ""; display: inline-block; width: 2px; height: .9em; background: var(--rose); margin-left: 2px; vertical-align: -2px; animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.lockline { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--ink-soft); justify-content: center; }
+.lockline::before, .lockline::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.pcard { border-radius: 22px; padding: 18px 20px; background: var(--bg-soft); }
+.pcard .who { font-size: 13px; color: var(--ink-faint); }
+.pcard .big { font-size: 22px; font-weight: 640; margin: 2px 0 8px; }
+.pill { display: inline-block; font-size: 13px; font-weight: 600; padding: 3px 10px; border-radius: 100px; background: var(--luteal); color: #8F5A2C; }
+.pstats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+.pstats div { background: var(--card); border-radius: 14px; padding: 10px 12px; }
+.pstats b { display: block; font-size: 20px; }
+.pstats span { font-size: 13px; color: var(--ink-soft); }
+.tip { margin-top: 12px; font-size: 15px; color: var(--ink-soft); }
+.tip b { color: var(--ink); font-weight: 600; display: block; font-size: 14px; }
+
+/* Apple Health */
+.sync { width: 100%; max-width: 460px; }
+.sync-row { display: flex; align-items: center; justify-content: space-between; }
+.node { display: grid; justify-items: center; gap: 10px; font-size: 14px; font-weight: 560; text-align: center; }
+.node .ic { width: 78px; height: 78px; border-radius: 20px; box-shadow: var(--shadow-soft); display: grid; place-items: center; background: #fff; }
+.node .ic img { width: 78px; height: 78px; border-radius: 20px; }
+.node .heart { width: 40px; height: 40px; }
+.lane { position: relative; flex: 1; height: 120px; margin: 0 14px 28px; }
+.lane::before, .lane::after { content: ""; position: absolute; left: 0; right: 0; height: 1px; background: var(--line); }
+.lane::before { top: 38%; } .lane::after { top: 62%; }
+.chipflow { position: absolute; left: 0; font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 100px; white-space: nowrap; opacity: 0; }
+.in .chipflow.to { animation: toright 2.6s var(--ease) infinite; }
+.in .chipflow.from { animation: toleft 2.6s var(--ease) infinite; animation-delay: 1.3s; }
+.chipflow.to { top: calc(38% - 11px); }
+.chipflow.from { top: calc(62% - 11px); }
+@keyframes toright { 0% { transform: translateX(0); opacity: 0; } 10%, 85% { opacity: 1; } 100% { transform: translateX(var(--w, 200px)); opacity: 0; } }
+@keyframes toleft { 0% { transform: translateX(var(--w, 200px)); opacity: 0; } 10%, 85% { opacity: 1; } 100% { transform: translateX(0); opacity: 0; } }
+.types { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 8px; }
+.types span { font-size: 13px; padding: 4px 11px; border-radius: 100px; border: 1px solid var(--line); color: var(--ink-soft); }
+
+/* Reminders */
+.notes { width: 100%; max-width: 420px; display: grid; gap: 10px; }
+.note {
+  display: grid; grid-template-columns: 38px 1fr auto; gap: 12px; align-items: start;
+  background: color-mix(in srgb, var(--bg-soft) 70%, var(--card)); border-radius: 22px; padding: 12px 14px;
+  opacity: 0; transform: translateY(-24px) scale(.97);
+  transition: opacity .55s var(--ease), transform .7s var(--ease); transition-delay: calc(var(--i) * 450ms);
+}
+.in .note { opacity: 1; transform: none; }
+.note img { width: 38px; height: 38px; border-radius: 9px; }
+.note b { display: block; font-size: 15px; font-weight: 620; }
+.note span { font-size: 14px; color: var(--ink-soft); line-height: 1.35; display: block; }
+.note time { font-size: 12px; color: var(--ink-faint); }
+
+/* Rest of the features */
+.rest { padding-top: 128px; }
+.rest h2 { max-width: 20ch; }
+.rest-grid { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 48px; margin-top: 32px; }
+.item { padding: 22px 0; border-top: 1px solid var(--line); }
+.item h3 { margin: 0 0 4px; font-size: 19px; font-weight: 620; letter-spacing: -0.01em; }
+.item p { margin: 0; color: var(--ink-soft); font-size: 16px; }
+
+/* Screens */
+.screens-sec { padding-top: 128px; }
+.screens { margin-top: 40px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; align-items: start; }
+.screen { margin: 0; }
+.screen:nth-child(even) { margin-top: 48px; }
+.phone { border-radius: 38px; padding: 7px; background: var(--phone-edge); box-shadow: var(--shadow); }
+.phone img { border-radius: 31px; aspect-ratio: 1206 / 2622; width: 100%; height: auto; background: var(--bg-soft); }
+.screen figcaption { margin-top: 16px; font-size: 16px; }
+.screen figcaption b { display: block; font-weight: 620; }
+.screen figcaption span { color: var(--ink-soft); font-size: 15px; }
+
+/* Privacy */
+.privacy { background: var(--ink); color: var(--bg); margin-top: 128px; padding: 104px 0; border-radius: 40px; width: min(1180px, 100% - 16px); margin-inline: auto; }
+.privacy h2 { color: var(--bg); max-width: 18ch; }
+.privacy .sub { color: color-mix(in srgb, var(--bg) 70%, transparent); font-size: 19px; max-width: 50ch; margin: 0; }
+.compare { width: 100%; border-collapse: collapse; margin-top: 44px; font-size: 17px; }
+.compare th, .compare td { text-align: left; padding: 18px 16px 18px 0; border-top: 1px solid color-mix(in srgb, var(--bg) 18%, transparent); vertical-align: top; }
+.compare thead th { border-top: 0; font-size: 15px; font-weight: 500; color: color-mix(in srgb, var(--bg) 60%, transparent); }
+.compare tbody th { font-weight: 500; color: color-mix(in srgb, var(--bg) 70%, transparent); width: 26%; }
+.compare td.iris { font-weight: 600; }
+.compare td.iris::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--fertile); margin-right: 10px; vertical-align: 2px; }
+.compare td.other { color: color-mix(in srgb, var(--bg) 62%, transparent); }
+
+/* FAQ */
+.faq-sec { padding-top: 120px; }
+.faq { margin-top: 36px; max-width: 760px; }
+.faq details { border-top: 1px solid var(--line); }
+.faq details:last-child { border-bottom: 1px solid var(--line); }
+.faq summary { list-style: none; cursor: pointer; padding: 22px 40px 22px 0; position: relative; font-size: 20px; font-weight: 580; letter-spacing: -0.01em; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: ""; position: absolute; right: 6px; top: 50%; width: 12px; height: 12px; margin-top: -8px;
+  border-right: 2px solid var(--ink-soft); border-bottom: 2px solid var(--ink-soft); transform: rotate(45deg); transition: transform .25s ease;
+}
+.faq details[open] summary::after { transform: rotate(225deg); margin-top: -2px; }
+.faq details p { margin: 0 0 24px; color: var(--ink-soft); max-width: 60ch; }
+
+.closing { text-align: center; padding: 136px 0 96px; }
+.closing img.icon { width: 96px; height: 96px; border-radius: 22px; margin: 0 auto 28px; box-shadow: var(--shadow); }
+.closing h2 { margin-inline: auto; max-width: 16ch; }
+.closing p { color: var(--ink-soft); font-size: 19px; margin: 0 auto 30px; }
+.closing .badge { display: inline-block; }
+
+footer { border-top: 1px solid var(--line); padding: 28px 0 40px; font-size: 15px; color: var(--ink-soft); }
+footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+footer nav { display: flex; gap: 22px; flex-wrap: wrap; }
+footer a { text-decoration: none; }
+footer a:hover { color: var(--ink); }
+
+@media (max-width: 960px) {
+  .nav ul { display: none; }
+  .hero { padding-top: 32px; }
+  .hero .wrap, .chapter .wrap { grid-template-columns: 1fr; gap: 36px; }
+  .chapter.flip .copy { order: 0; }
+  .ring-stage { max-width: 360px; }
+  .facts .wrap { grid-template-columns: 1fr 1fr; }
+  .fact:nth-child(3) { padding-left: 0; border-left: 0; }
+  .fact:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .chapter, .rest, .screens-sec { padding-top: 88px; }
+  .visual { padding: 24px 18px; border-radius: 26px; min-height: 0; }
+  .rest-grid { grid-template-columns: 1fr 1fr; }
+  .screens { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 18px; margin-inline: -16px; padding: 8px 16px 32px; scrollbar-width: none; }
+  .screens::-webkit-scrollbar { display: none; }
+  .screen { flex: 0 0 62%; scroll-snap-align: center; }
+  .screen:nth-child(even) { margin-top: 0; }
+  .privacy { padding: 72px 0; border-radius: 28px; margin-top: 88px; }
+  .compare thead { display: none; }
+  .compare tr { display: block; padding: 16px 0; border-top: 1px solid color-mix(in srgb, var(--bg) 18%, transparent); }
+  .compare th, .compare td { display: block; border: 0; padding: 2px 0; width: auto; }
+  .compare tbody th { width: auto; font-size: 15px; margin-bottom: 4px; }
+  .compare td.other::before { content: "Many trackers: "; }
+}
+@media (max-width: 560px) {
+  body { font-size: 17px; }
+  .lede, .copy p { font-size: 18px; }
+  .daychip { display: none; }
+  .fact, .fact + .fact { padding: 18px 10px 18px 0; }
+  .fact:nth-child(even) { padding-left: 14px; }
+  .fact strong { font-size: 18px; }
+  .fact span { font-size: 14px; }
+  .rest-grid { grid-template-columns: 1fr; }
+  .widgets { grid-template-columns: 1fr; }
+  .screen { flex-basis: 72%; }
+  .lane { margin-inline: 8px; }
+  .node .ic, .node .ic img { width: 60px; height: 60px; border-radius: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .anim, .note, .past i, .past span, .range-label, .chart .dot, .chart .cover, .chart .lh, .chart .ov { opacity: 1 !important; transform: none !important; }
+  .band { transform: none !important; }
+  .chart .temp { stroke-dashoffset: 0 !important; }
+  .chipflow { opacity: 1; }
+  .chipflow.from { display: none; }
+}
+</style>
 </head>
 <body>
-  <header>
-    <a class="app-wordmark" href="./">Iris</a>
-    <p class="app-tagline">Period &amp; Cycle Tracker</p>
-  </header>
 
-  <nav>
-    <a href="../" class="nav-home">← iOS Apps</a>
-    <a href="./" class="active">Home</a>
-    <a href="privacy.html">Privacy</a>
-    <a href="support.html">Support</a>
-  </nav>
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Iris home"><img src="assets/iris-icon.webp" alt="" width="32" height="32">Iris</a>
+    <ul>
+      <li><a href="#predictions">Predictions</a></li>
+      <li><a href="#widgets">Widgets</a></li>
+      <li><a href="#partner">Partner sharing</a></li>
+      <li><a href="#privacy">Privacy</a></li>
+      <li><a href="#faq">Questions</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="daychip" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><circle class="track" cx="12" cy="12" r="9"/><circle class="fill" id="navRing" cx="12" cy="12" r="9" stroke-dasharray="56.5" stroke-dashoffset="54"/></svg>
+        <span id="navDay">Day 1</span>
+      </div>
+      <a class="get" href="https://apps.apple.com/app/id6761134901">Download</a>
+    </div>
+  </div>
+</header>
 
-  <main>
-    <div class="hero">
-      <p style="font-size:1.15rem; color:#3A3A3A; max-width:520px; margin-bottom:0;">
-        Track your cycle with complete privacy. Your data stays on your device — no accounts, no servers, no surprises.
-      </p>
-      <div class="hero-links">
-        <a href="https://apps.apple.com/app/id6761134901?platform=iphone">Download on the App Store →</a>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="support.html">Support</a>
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>A period tracker that stays on your phone</h1>
+        <p class="lede">Iris predicts your period and fertile days from your own cycles, copes with irregular ones, and works without an account. Every feature is free.</p>
+        <div class="badge-row">
+          <a class="badge" href="https://apps.apple.com/app/id6761134901"><img src="assets/app-store-badge.svg" alt="Download on the App Store" width="156" height="52"></a>
+          <small>iPhone and iPad</small>
+        </div>
+      </div>
+      <div>
+        <div class="ring-stage" id="ring" aria-label="A 28 day cycle ring. Today is day 12, in the fertile window, with the next period in 17 days.">
+          <svg viewBox="0 0 520 520" aria-hidden="true" id="ringSvg"></svg>
+          <div class="ring-center">
+            <div class="day" id="ringDay">Day 12</div>
+            <div class="phase" id="ringPhase">Fertile window</div>
+            <div class="next">Next period in 17 days</div>
+          </div>
+        </div>
+        <div class="legend" role="group" aria-label="Highlight a phase">
+          <button type="button" data-f="period" aria-pressed="false"><i style="background:var(--period)"></i>Period</button>
+          <button type="button" data-f="follicular" aria-pressed="false"><i style="background:var(--quiet);box-shadow:inset 0 0 0 1px var(--ink-soft)"></i>Follicular</button>
+          <button type="button" data-f="fertile" aria-pressed="false"><i style="background:var(--fertile)"></i>Fertile</button>
+          <button type="button" data-f="luteal" aria-pressed="false"><i style="background:var(--luteal)"></i>Luteal</button>
+        </div>
       </div>
     </div>
+  </section>
 
-    <h2>Your data, your rules</h2>
-    <p>Iris stores everything on your device using iOS's secure local storage. Period dates, symptoms, mood, and notes never leave your phone unless you choose to sync via your own iCloud account.</p>
-
-    <h2>No tracking, no ads (paid)</h2>
-    <p>The free version shows non-targeted ads via Google AdMob. Upgrade once to remove all ads permanently — no subscription, no ongoing charges.</p>
-
-    <h2>Sign in with Apple</h2>
-    <p>Optionally use Sign in with Apple to link your data to iCloud for multi-device sync. Iris only stores an anonymous identifier — we never receive your email or personal information.</p>
-  </main>
-
-  <footer>
-    <p>© 2026 Arbaz Siddiqui</p>
-    <div class="footer-links">
-      <a href="privacy.html">Privacy</a>
-      <a href="support.html">Support</a>
-      <a href="../">All Apps</a>
+  <div class="facts">
+    <div class="wrap">
+      <div class="fact"><strong>No account</strong><span>No email, no login</span></div>
+      <div class="fact"><strong>No Iris servers</strong><span>Data stays on your phone</span></div>
+      <div class="fact"><strong>No subscription</strong><span>Every feature is free</span></div>
+      <div class="fact"><strong>10 languages</strong><span>iPhone and iPad</span></div>
     </div>
-  </footer>
+  </div>
+
+  <section class="chapter" id="predictions">
+    <div class="wrap">
+      <div class="copy">
+        <div class="tag" style="--c:var(--period)"><i></i>Predictions</div>
+        <h2>Predictions from your cycles, not a textbook average</h2>
+        <p>Iris starts with the dates you give it and gets sharper every time you log a period. It estimates when you ovulate and counts your next period forward from there.</p>
+        <p>So when ovulation comes late, the forecast moves with it instead of insisting you are late.</p>
+      </div>
+      <div class="visual">
+        <div class="cal" id="cal">
+          <div class="cal-head"><b>October</b><span>Today is day 12</span></div>
+          <div class="cal-grid" id="calGrid"></div>
+          <div class="cal-key">
+            <span><i style="background:var(--period)"></i>Period</span>
+            <span><i style="background:var(--fertile)"></i>Fertile</span>
+            <span><i style="background:var(--ovulation)"></i>Ovulation</span>
+            <span><i style="background:var(--luteal)"></i>Luteal</span>
+            <span><i style="background:var(--expected)"></i>Expected period</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter flip" id="ovulation">
+    <div class="wrap">
+      <div class="copy">
+        <div class="tag" style="--c:var(--ovulation)"><i></i>Ovulation</div>
+        <h2>See ovulation in your own data</h2>
+        <p>Log LH test strips and your morning temperature. A positive LH test marks ovulation on your calendar and resets the countdown to your next period.</p>
+        <p>Temperatures are charted against a coverline, so the rise after ovulation is easy to spot.</p>
+      </div>
+      <div class="visual">
+        <div class="chart">
+          <svg viewBox="0 0 480 250" id="bbt" role="img" aria-label="Basal temperature chart: low readings before ovulation, a positive LH test on day 13, ovulation on day 14, then a sustained rise above the coverline."></svg>
+          <div class="chart-key"><span>Basal temperature, °C</span><span>Dashed line: coverline</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="irregular">
+    <div class="wrap">
+      <div class="copy">
+        <div class="tag" style="--c:var(--expected)"><i></i>Irregular cycles and PCOS</div>
+        <h2>Honest about cycles that don't keep time</h2>
+        <p>If your cycles swing by a week or more, or you have PCOS, a single date would just be a guess. Iris looks at your history and gives you the window your period is likely to fall in.</p>
+        <p>If it runs past that window, Iris tells you plainly and waits for you to log.</p>
+      </div>
+      <div class="visual">
+        <div class="range" id="range">
+          <div class="range-track" id="rangeTrack">
+            <div class="band" id="band"></div>
+            <div class="range-axis"></div>
+            <div class="range-ticks"><span>Day 25</span><span>35</span><span>45</span><span>Day 55</span></div>
+          </div>
+          <div class="range-label">Next period likely between day 33 and 43<span>From your last six cycles: 31, 44, 36, 52, 39 and 35 days</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter flip" id="widgets">
+    <div class="wrap">
+      <div class="copy">
+        <div class="tag" style="--c:var(--fertile)"><i></i>Widgets <span class="new">New</span></div>
+        <h2>Your cycle on your Home Screen</h2>
+        <p>See your cycle day, your phase and the days until your next period without opening the app. The medium widget adds your week ahead in calendar colours.</p>
+        <p>Add one to your Lock Screen too. They move to the next day on their own at midnight.</p>
+      </div>
+      <div class="visual">
+        <div class="widgets">
+          <div class="home anim">
+            <img class="medium float" src="assets/widget-fertile-medium-light.webp" alt="Medium Iris widget: day 12, fertile window, 17 days to next period, and a coloured strip for the week ahead" width="1092" height="510" loading="lazy">
+            <img class="float b" src="assets/widget-fertile-small-light.webp" alt="Small Iris widget in the fertile window" width="510" height="510" loading="lazy">
+            <img class="float" src="assets/widget-luteal-small-light.webp" alt="Small Iris widget in the luteal phase, 11 days to next period" width="510" height="510" loading="lazy">
+          </div>
+          <div class="lock anim" style="--i:2">
+            <div class="date">Friday 2 October</div>
+            <div class="time">9:41</div>
+            <div class="acc">
+              <img class="circ" src="assets/widget-fertile-circular-dark.webp" alt="Circular Lock Screen widget showing cycle day 12" width="228" height="228" loading="lazy">
+              <img src="assets/widget-fertile-rectangular-dark.webp" alt="Rectangular Lock Screen widget: day 12, fertile window, 17 days to next period" width="516" height="228" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="partner">
+    <div class="wrap">
+      <div class="copy">
+        <div class="tag" style="--c:var(--luteal)"><i></i>Partner sharing</div>
+        <h2>Let someone you trust follow along</h2>
+        <p>Send your partner a code. In Iris they see your phase, cycle day and predictions, a short tip on how to help, and a heads-up the day before your period.</p>
+        <p>It's view only and end-to-end encrypted. Mood and symptoms stay private unless you choose to share them, and you can stop sharing whenever you like.</p>
+      </div>
+      <div class="visual">
+        <div class="partner" id="partnerVis">
+          <div class="code anim"><div><small>Your share code</small><b id="code" aria-label="IRIS-7K2MQ-9XH4P"></b></div></div>
+          <div class="lockline anim" style="--i:3">End-to-end encrypted</div>
+          <div class="pcard anim" style="--i:5">
+            <div class="who">What your partner sees</div>
+            <div class="big">Ava, cycle day 22</div>
+            <span class="pill">Luteal phase</span>
+            <div class="pstats"><div><b>6d</b><span>Next period</span></div><div><b>Low</b><span>Fertility</span></div></div>
+            <div class="tip"><b>How to support today</b>Energy can dip this week. A quiet evening goes a long way.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter flip" id="health">
+    <div class="wrap">
+      <div class="copy">
+        <div class="tag" style="--c:#E0607E"><i></i>Apple Health</div>
+        <h2>Works with Apple Health</h2>
+        <p>Iris syncs with Apple Health in both directions, so your history isn't locked inside one app and nothing has to be entered twice.</p>
+      </div>
+      <div class="visual">
+        <div class="sync" id="sync">
+          <div class="sync-row">
+            <div class="node"><div class="ic"><img src="assets/iris-icon.webp" alt="" width="78" height="78"></div>Iris</div>
+            <div class="lane" id="lane">
+              <span class="chipflow to" id="chipTo">Period flow</span>
+              <span class="chipflow from" id="chipFrom">Weight</span>
+            </div>
+            <div class="node"><div class="ic"><svg class="heart" viewBox="0 0 24 24" aria-hidden="true"><path fill="#F0436B" d="M12 21s-7.5-4.6-9.6-9.2C.9 8.5 3 5 6.4 5c2 0 3.4 1.1 4.1 2.3h3c.7-1.2 2.1-2.3 4.1-2.3C21 5 23.1 8.5 21.6 11.8 19.5 16.4 12 21 12 21z"/></svg></div>Apple Health</div>
+          </div>
+          <div class="types anim"><span>Period flow</span><span>Basal temperature</span><span>Ovulation tests</span><span>Cervical mucus</span><span>Weight</span><span>Sleep</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapter" id="reminders">
+    <div class="wrap">
+      <div class="copy">
+        <div class="tag" style="--c:var(--rose)"><i></i>Reminders</div>
+        <h2>Reminders that know where you are in your cycle</h2>
+        <p>A heads-up before your period, your fertile window and your PMS week, plus pill and medication reminders at the time you pick. Turn each one on or off.</p>
+      </div>
+      <div class="visual">
+        <div class="notes" id="notes">
+          <div class="note" style="--i:0"><img src="assets/iris-icon.webp" alt="" width="38" height="38"><div><b>Period coming soon</b><span>Your period is expected tomorrow.</span></div><time>now</time></div>
+          <div class="note" style="--i:1"><img src="assets/iris-icon.webp" alt="" width="38" height="38"><div><b>Pill reminder</b><span>Time to take your pill.</span></div><time>9:00</time></div>
+          <div class="note" style="--i:2"><img src="assets/iris-icon.webp" alt="" width="38" height="38"><div><b>Fertile window starting</b><span>Your fertile window begins tomorrow.</span></div><time>Mon</time></div>
+          <div class="note" style="--i:3"><img src="assets/iris-icon.webp" alt="" width="38" height="38"><div><b>PMS window starting</b><span>Cravings, bloating or mood shifts are common this week.</span></div><time>Thu</time></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="rest">
+    <div class="wrap">
+      <h2>Everything else is in there too</h2>
+      <div class="rest-grid">
+        <div class="item"><h3>Daily log</h3><p>Flow, symptoms, mood, discharge, sleep, weight and notes. Hide what you don't track.</p></div>
+        <div class="item"><h3>A mode for your goal</h3><p>Just tracking, trying to conceive or avoiding pregnancy. Colours and wording change to fit.</p></div>
+        <div class="item"><h3>Pregnancy and postpartum</h3><p>Pause predictions while pregnant and pick back up when your cycle returns.</p></div>
+        <div class="item"><h3>Hormonal contraception</h3><p>On the pill or a hormonal IUD, Iris stops guessing at ovulation and tracks bleeding and pills instead.</p></div>
+        <div class="item"><h3>A report for your doctor</h3><p>Export a PDF of your cycles and symptoms to take to an appointment.</p></div>
+        <div class="item"><h3>Hormones, explained</h3><p>How estrogen, progesterone, LH and FSH change across your cycle, in plain words.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="screens-sec">
+    <div class="wrap">
+      <h2>Inside the app</h2>
+      <div class="screens">
+        <figure class="screen"><div class="phone"><img src="assets/screen-today.webp" alt="Iris Today screen showing cycle day, phase and next period" width="760" height="1652" loading="lazy"></div><figcaption><b>Today</b><span>Where you are and what's next</span></figcaption></figure>
+        <figure class="screen"><div class="phone"><img src="assets/screen-calendar.webp" alt="Iris calendar with each phase coloured" width="760" height="1652" loading="lazy"></div><figcaption><b>Calendar</b><span>Past and predicted, in colour</span></figcaption></figure>
+        <figure class="screen"><div class="phone"><img src="assets/screen-log.webp" alt="Iris daily log with flow, symptoms and mood" width="760" height="1652" loading="lazy"></div><figcaption><b>Log</b><span>A couple of taps a day</span></figcaption></figure>
+        <figure class="screen"><div class="phone"><img src="assets/screen-insights.webp" alt="Iris insights with cycle length history" width="760" height="1652" loading="lazy"></div><figcaption><b>Insights</b><span>Patterns across months</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="privacy" id="privacy">
+    <div class="wrap">
+      <h2>Where your data goes</h2>
+      <p class="sub">Nowhere we can see it. Iris has no servers and no accounts. If you turn on sync, your data goes to your own iCloud, which only you can open. Iris pays for itself with a few ads, which a one-time purchase removes.</p>
+      <table class="compare">
+        <thead><tr><th scope="col"></th><th scope="col">Iris</th><th scope="col">Many popular trackers</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Sign up</th><td class="iris">Not needed</td><td class="other">Email or account required</td></tr>
+          <tr><th scope="row">Where your data lives</th><td class="iris">Your phone and your own iCloud</td><td class="other">The company's servers</td></tr>
+          <tr><th scope="row">Price</th><td class="iris">Free, with a one-time option to remove ads</td><td class="other">Key features behind a monthly subscription</td></tr>
+          <tr><th scope="row">Partner sharing</th><td class="iris">A code, end-to-end encrypted</td><td class="other">Through the company's account system</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="faq-sec" id="faq">
+    <div class="wrap">
+      <h2>Questions</h2>
+      <div class="faq">
+        <details><summary>Is Iris free?</summary><p>Yes. Every feature is free. Iris shows a few ads to pay for itself, and a single one-time purchase removes them. There is no subscription.</p></details>
+        <details><summary>Do I need an account?</summary><p>No. There is no sign-up, email or login. You enter your last period date and start.</p></details>
+        <details><summary>Where is my data stored?</summary><p>On your iPhone. If you turn on sync, a copy goes to your own private iCloud so you can move to a new phone or use your iPad. Iris has no servers of its own.</p></details>
+        <details><summary>Does Iris work with irregular cycles or PCOS?</summary><p>Yes. When your cycles vary a lot, Iris shows a likely window based on your history instead of a single date, and tells you plainly when a period is later than that window.</p></details>
+        <details><summary>How does Iris predict ovulation?</summary><p>It estimates ovulation from your cycle history and counts your next period forward from it. If you log LH tests, a positive surge marks ovulation on the calendar and the period prediction moves to match. Basal temperatures are charted with a coverline.</p></details>
+        <details><summary>Can I use Iris as birth control?</summary><p>No. Iris is not a contraceptive and its predictions are estimates. The avoiding pregnancy mode highlights the days with a higher chance of pregnancy, but it never tells you a day is safe.</p></details>
+        <details><summary>Does Iris have widgets?</summary><p>Yes. There are Home Screen widgets in two sizes and Lock Screen widgets showing your cycle day, phase and the days until your next period. They move to the next day on their own.</p></details>
+        <details><summary>Can my partner see my cycle?</summary><p>Only if you share a code with them. They see your phase, cycle day and predictions in Iris, view only and end-to-end encrypted, and you can stop sharing at any time.</p></details>
+        <details><summary>Does Iris work with Apple Health?</summary><p>Yes. Iris syncs period flow, basal body temperature, ovulation tests, cervical mucus, weight and sleep with Apple Health.</p></details>
+        <details><summary>Which languages does Iris support?</summary><p>English, German, Spanish, Filipino, Indonesian, Japanese, Polish, Portuguese, Russian and Thai.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="wrap">
+      <img class="icon" src="assets/iris-icon.webp" alt="" width="96" height="96">
+      <h2>Set up takes about a minute</h2>
+      <p>All Iris needs to start is the date your last period began.</p>
+      <a class="badge" href="https://apps.apple.com/app/id6761134901"><img src="assets/app-store-badge.svg" alt="Download on the App Store" width="156" height="52"></a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Made by <a href="/about">Arbaz Siddiqui</a>.</span>
+    <nav>
+      <a href="/iris">How Iris is built</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy policy</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var NS = 'http://www.w3.org/2000/svg';
+  function el(tag, attrs, parent) {
+    var n = document.createElementNS(NS, tag);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(n);
+    return n;
+  }
+  function phaseOf(d) {
+    if (d <= 5) return 'period';
+    if (d === 14) return 'ovulation';
+    if (d >= 10 && d <= 15) return 'fertile';
+    if (d >= 16) return 'luteal';
+    return 'follicular';
+  }
+  var ringColour = { period: 'var(--period)', follicular: 'var(--quiet)', fertile: 'var(--fertile)', ovulation: 'var(--ovulation)', luteal: 'var(--luteal)' };
+  var phaseLabel = { period: 'Period', follicular: 'Follicular phase', fertile: 'Fertile window', ovulation: 'Ovulation', luteal: 'Luteal phase' };
+
+  // Nav: scroll position as a cycle day.
+  var nav = document.getElementById('nav');
+  var navRing = document.getElementById('navRing');
+  var navDay = document.getElementById('navDay');
+  var C = 2 * Math.PI * 9, lastDay = 0;
+  function onScroll() {
+    nav.classList.toggle('scrolled', scrollY > 8);
+    var max = document.documentElement.scrollHeight - innerHeight;
+    var p = max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0;
+    var day = 1 + Math.round(p * 27);
+    navRing.setAttribute('stroke-dashoffset', String(C * (1 - day / 28)));
+    if (day !== lastDay) {
+      lastDay = day;
+      navDay.textContent = 'Day ' + day;
+      var ph = phaseOf(day);
+      navRing.style.stroke = ph === 'follicular' ? 'var(--rose)' : ringColour[ph];
+    }
+  }
+  addEventListener('scroll', function () { requestAnimationFrame(onScroll); }, { passive: true });
+  onScroll();
+
+  // Hero ring
+  var svg = document.getElementById('ringSvg'), stage = document.getElementById('ring');
+  var R = 214, W = 46, CX = 260, DAYS = 28, TODAY = 12, step = 2 * Math.PI / DAYS;
+  function pt(r, a) { return [CX + r * Math.cos(a), CX + r * Math.sin(a)]; }
+  function arc(i) {
+    var g = 1.6 * Math.PI / 180, a0 = -Math.PI / 2 + i * step + g / 2, a1 = a0 + step - g;
+    var ro = R + W / 2, ri = R - W / 2, p1 = pt(ro, a0), p2 = pt(ro, a1), p3 = pt(ri, a1), p4 = pt(ri, a0);
+    return 'M' + p1 + 'A' + ro + ',' + ro + ' 0 0 1 ' + p2 + 'L' + p3 + 'A' + ri + ',' + ri + ' 0 0 0 ' + p4 + 'Z';
+  }
+  var segs = [];
+  for (var i = 0; i < DAYS; i++) {
+    var ph = phaseOf(i + 1);
+    var s = el('path', { d: arc(i), fill: ph === 'luteal' && i + 1 < 22 ? 'var(--luteal-soft)' : ringColour[ph], 'class': 'seg', 'data-p': ph }, svg);
+    if (!reduce) { s.style.opacity = 0; s.style.transform = 'scale(.94)'; s.style.transformOrigin = '260px 260px'; }
+    segs.push(s);
+  }
+  var marker = el('g', {}, svg);
+  el('circle', { r: 30, fill: 'var(--bg)' }, marker);
+  el('circle', { r: 20, fill: 'none', stroke: 'var(--ink)', 'stroke-width': 4 }, marker);
+  var dayEl = document.getElementById('ringDay'), phaseEl = document.getElementById('ringPhase');
+  function place(d) { var q = pt(R, -Math.PI / 2 + (d - 0.5) * step); marker.setAttribute('transform', 'translate(' + q[0] + ',' + q[1] + ')'); }
+  function show(d) { dayEl.textContent = 'Day ' + d; phaseEl.textContent = phaseLabel[phaseOf(d)]; }
+  if (reduce) { place(TODAY); show(TODAY); }
+  else {
+    place(1); show(1); marker.style.opacity = 0;
+    segs.forEach(function (s, i) {
+      setTimeout(function () { s.style.transition = 'opacity .5s ease, transform .6s cubic-bezier(.2,.8,.2,1)'; s.style.opacity = ''; s.style.transform = ''; }, 120 + i * 30);
+    });
+    setTimeout(function () {
+      marker.style.transition = 'opacity .4s'; marker.style.opacity = 1;
+      var t0 = null;
+      (function tick(t) {
+        if (!t0) t0 = t;
+        var k = Math.min(1, (t - t0) / 1500), e = 1 - Math.pow(1 - k, 3), d = 1 + e * (TODAY - 1);
+        place(d); show(Math.round(d));
+        if (k < 1) requestAnimationFrame(tick); else segs.forEach(function (s) { s.style.transition = ''; });
+      })(performance.now());
+    }, 120 + DAYS * 30 + 200);
+  }
+  var buttons = document.querySelectorAll('.legend button');
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var on = b.getAttribute('aria-pressed') !== 'true';
+      buttons.forEach(function (o) { o.setAttribute('aria-pressed', 'false'); });
+      if (on) { b.setAttribute('aria-pressed', 'true'); stage.setAttribute('data-focus', b.dataset.f); } else stage.removeAttribute('data-focus');
+    });
+  });
+
+  // Calendar: a period starting on the 1st (a Thursday), the next one expected on the 29th.
+  var grid = document.getElementById('calGrid');
+  ['M', 'T', 'W', 'T', 'F', 'S', 'S'].forEach(function (d) { var x = document.createElement('div'); x.className = 'dow'; x.textContent = d; grid.appendChild(x); });
+  for (var b = 0; b < 3; b++) grid.appendChild(document.createElement('div'));
+  for (var day = 1; day <= 31; day++) {
+    var c = document.createElement('div');
+    var k = day <= 5 ? 'period' : day === 14 ? 'ovulation' : (day >= 10 && day <= 15) ? 'fertile'
+      : (day >= 16 && day <= 21) ? 'lsoft' : (day >= 22 && day <= 28) ? 'luteal' : day >= 29 ? 'expected' : 'none';
+    c.className = 'cell' + (day === 12 ? ' today' : '');
+    c.dataset.k = k;
+    c.style.setProperty('--i', day);
+    c.textContent = day;
+    grid.appendChild(c);
+  }
+
+  // Temperature chart
+  var bbt = document.getElementById('bbt');
+  var temps = [36.42, 36.38, 36.45, 36.40, 36.36, 36.41, 36.44, 36.39, 36.43, 36.37, 36.40, 36.35, 36.33, 36.42,
+               36.66, 36.71, 36.74, 36.70, 36.76, 36.73, 36.78, 36.72, 36.75, 36.71, 36.69, 36.62, 36.50, 36.44];
+  var x0 = 34, x1 = 470, y0 = 210, y1 = 40, tMin = 36.2, tMax = 36.9;
+  function X(i) { return x0 + i * (x1 - x0) / 27; }
+  function Y(t) { return y0 - (t - tMin) / (tMax - tMin) * (y0 - y1); }
+  var g = el('g', { 'class': 'grid' }, bbt), ax = el('g', { 'class': 'axis' }, bbt);
+  [36.3, 36.5, 36.7, 36.9].forEach(function (t) {
+    el('line', { x1: x0, x2: x1, y1: Y(t), y2: Y(t) }, g);
+    var tx = el('text', { x: 0, y: Y(t) + 4 }, ax); tx.textContent = t.toFixed(1);
+  });
+  [1, 7, 14, 21, 28].forEach(function (d) { var tx = el('text', { x: X(d - 1) - 6, y: 236 }, ax); tx.textContent = 'Day ' + d; });
+  el('line', { 'class': 'cover', x1: x0, x2: x1, y1: Y(36.55), y2: Y(36.55) }, bbt);
+  el('polyline', { 'class': 'temp', points: temps.map(function (t, i) { return X(i) + ',' + Y(t); }).join(' ') }, bbt);
+  temps.forEach(function (t, i) { var d = el('circle', { 'class': 'dot', cx: X(i), cy: Y(t), r: 3.2 }, bbt); d.style.setProperty('--i', i); });
+  var lh = el('g', { 'class': 'lh' }, bbt);
+  el('rect', { x: X(12) - 22, y: 0, width: 44, height: 20, rx: 10, fill: 'var(--luteal)' }, lh);
+  var lt = el('text', { x: X(12), y: 14, 'text-anchor': 'middle', 'class': 'label', fill: '#8F5A2C' }, lh); lt.textContent = 'LH +';
+  el('line', { x1: X(12), x2: X(12), y1: 20, y2: Y(temps[12]) - 6, stroke: 'var(--luteal-ink)', 'stroke-width': 1.5 }, lh);
+  var ov = el('g', { 'class': 'ov' }, bbt);
+  el('circle', { cx: X(13), cy: Y(temps[13]), r: 7, fill: 'var(--ovulation)' }, ov);
+  var ot = el('text', { x: X(13) + 12, y: Y(temps[13]) + 22, 'class': 'label', fill: 'var(--ovulation-ink)' }, ov); ot.textContent = 'Ovulation';
+
+  // Irregular range: day 25 to 55 across the track.
+  var track = document.getElementById('rangeTrack');
+  function pct(d) { return (d - 25) / 30 * 100; }
+  [31, 44, 36, 52, 39, 35].forEach(function (d, i) {
+    var p = document.createElement('div');
+    p.className = 'past' + (d === 36 ? ' hi' : ''); p.style.left = pct(d) + '%'; p.style.setProperty('--i', i);
+    p.innerHTML = '<span>' + d + '</span><i></i>';
+    track.appendChild(p);
+  });
+  var band = document.getElementById('band');
+  band.style.left = pct(33) + '%'; band.style.width = (pct(43) - pct(33)) + '%';
+
+  // Health lanes: chips travel the full width of the lane.
+  var lane = document.getElementById('lane');
+  function sizeLane() {
+    lane.querySelectorAll('.chipflow').forEach(function (c) { c.style.setProperty('--w', Math.max(0, lane.clientWidth - c.offsetWidth) + 'px'); });
+  }
+  sizeLane(); addEventListener('resize', sizeLane);
+  var toTypes = [['Period flow', 'var(--expected)', '#B4506E'], ['Temperature', '#E6DDF3', '#6B4FA0'], ['LH test', '#D7EFED', '#2E8079'], ['Cervical mucus', '#FBE6D3', '#8F5A2C']];
+  var fromTypes = [['Weight', 'var(--bg-soft)', 'var(--ink-soft)'], ['Sleep', 'var(--bg-soft)', 'var(--ink-soft)'], ['Period flow', 'var(--expected)', '#B4506E']];
+  function cycleChip(chip, types) {
+    var n = 0;
+    function paint() { var t = types[n % types.length]; chip.textContent = t[0]; chip.style.background = t[1]; chip.style.color = t[2]; sizeLane(); }
+    paint();
+    chip.addEventListener('animationiteration', function () { n++; paint(); });
+  }
+  cycleChip(document.getElementById('chipTo'), toTypes);
+  cycleChip(document.getElementById('chipFrom'), fromTypes);
+
+  // The share code types itself out once the partner section is visible.
+  var code = document.getElementById('code'), codeText = 'IRIS-7K2MQ-9XH4P', typed = false;
+  function typeCode() {
+    if (typed) return; typed = true;
+    if (reduce) { code.textContent = codeText; return; }
+    var n = 0; (function next() { code.textContent = codeText.slice(0, ++n); if (n < codeText.length) setTimeout(next, 70); })();
+  }
+
+  // Reveal each visual once, as it scrolls into view.
+  var targets = document.querySelectorAll('.visual');
+  if (!('IntersectionObserver' in window) || reduce) {
+    targets.forEach(function (t) { t.classList.add('in'); }); typeCode();
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in');
+        if (e.target.querySelector('#partnerVis')) setTimeout(typeCode, 250);
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.35 });
+    targets.forEach(function (t) { io.observe(t); });
+  }
+})();
+</script>
 </body>
 </html>

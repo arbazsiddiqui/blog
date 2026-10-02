@@ -37,7 +37,7 @@ export const PROJECTS = [
     index: '03',
     name: 'Iris',
     tagline: 'A period tracker where every feature is free and the data never leaves the phone.',
-    stat: '4.9★ on the App Store',
+    stat: '1,000+ downloads a month',
     kind: 'iOS app',
   },
   {

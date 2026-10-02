@@ -14,13 +14,14 @@ const shots = [
 
 const jsonLdApp = {
   '@context': 'https://schema.org',
-  '@type': 'SoftwareApplication',
+  '@type': 'MobileApplication',
+  '@id': 'https://www.arbazsiddiqui.me/ios/iris/#app',
   name: 'Iris: Period & Cycle Tracker',
   operatingSystem: 'iOS',
   applicationCategory: 'HealthApplication',
-  aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', ratingCount: '30' },
   author: PERSON_REF,
-  url: 'https://www.arbazsiddiqui.me/iris',
+  url: 'https://www.arbazsiddiqui.me/ios/iris/',
+  sameAs: ['https://apps.apple.com/app/id6761134901'],
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
 };
 const jsonLd = [jsonLdApp, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.arbazsiddiqui.me/"}, {"@type": "ListItem", "position": 2, "name": "Projects", "item": "https://www.arbazsiddiqui.me/projects/"}, {"@type": "ListItem", "position": 3, "name": "Iris", "item": "https://www.arbazsiddiqui.me/iris/"}]}];
@@ -28,13 +29,13 @@ const jsonLd = [jsonLdApp, {"@context": "https://schema.org", "@type": "Breadcru
 
 <Base
   title="Iris: Privacy-First Period Tracker"
-  description="A privacy-first period tracker with every feature free, including fertility tracking, partner sharing, Apple Health sync, 12 languages, and a 4.9-star App Store rating."
+  description="A privacy-first period tracker with every feature free, including fertility tracking, partner sharing, Apple Health sync, and 12 languages."
   ogImage="/og/iris.jpg"
   ogImageAlt="Iris, a privacy-first period and cycle tracker for iOS."
   jsonLd={jsonLd}
 >
   <article class="narrow section">
-    <p class="kicker">iOS app · live · 4.9★</p>
+    <p class="kicker">iOS app · live</p>
     <h1 class="page-title">Iris</h1>
     <p class="lede">
       A complete cycle-tracking suite built on a refusal. No subscription,
@@ -45,7 +46,6 @@ const jsonLd = [jsonLdApp, {"@context": "https://schema.org", "@type": "Breadcru
 
     <dl class="facts">
       <dt>Platform</dt><dd>iPhone, iPad, Mac, Vision · <a href="https://apps.apple.com/app/id6761134901" target="_blank" rel="noopener">App Store</a></dd>
-      <dt>Rating</dt><dd>4.9★ worldwide · 4,000+ downloads</dd>
       <dt>Languages</dt><dd>12, from Japanese to Polish, 820 localized strings each</dd>
       <dt>Model</dt><dd>Free forever · optional $2.99 one-time to remove ads</dd>
       <dt>Data</dt><dd>On device; optional sync to the user's own iCloud. No servers, no accounts, no analytics SDKs</dd>
@@ -97,6 +97,7 @@ const jsonLd = [jsonLdApp, {"@context": "https://schema.org", "@type": "Breadcru
       <h2>Links</h2>
       <p>
         <a href="https://apps.apple.com/app/id6761134901" target="_blank" rel="noopener">App Store</a>
+        · <a href="/ios/iris/">Product page</a>
       </p>
     </div>
   </article>

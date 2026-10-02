@@ -34,9 +34,12 @@ export const WORKS = {
     medium: 'iOS app',
     sentence:
       'A complete cycle-tracking suite. Predictions confirmed from BBT and LH tests the way a clinic would, a PCOS-friendly irregular mode, partner sharing, and two-way Apple Health sync. Every feature is free, in twelve languages, and health data never leaves the phone.',
-    stat: '4.9★ · 12 languages · 4,000+ downloads',
+    stat: '12 languages · 1,000+ downloads a month',
     alt: 'Iris: Period and Cycle Tracker',
-    links: [{ label: 'App Store', url: 'https://apps.apple.com/app/id6761134901' }],
+    links: [
+      { label: 'App Store', url: 'https://apps.apple.com/app/id6761134901' },
+      { label: 'Website', url: 'https://www.arbazsiddiqui.me/ios/iris/' },
+    ],
   },
   mercuro: {
     href: '/mercuro',
