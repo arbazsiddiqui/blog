@@ -152,8 +152,9 @@ body {
   font-size: 18px;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
+html { overflow-x: clip; }
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; }
 a:focus-visible, button:focus-visible, summary:focus-visible {
@@ -420,7 +421,7 @@ h2 {
 .privacy .top { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
 .privacy h2 { max-width: 14ch; }
 .privacy .sub { color: var(--ink-soft); font-size: 19px; max-width: 42ch; margin: 0; }
-.flow { position: relative; display: grid; grid-template-columns: 9.5em 1fr 9.5em; grid-template-rows: auto 64px auto; align-items: start; column-gap: 14px; }
+.flow { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(40px, 1.2fr) minmax(0, 1fr); grid-template-rows: auto 64px auto; align-items: start; column-gap: 14px; }
 .flow .wire { margin-top: 31px; }
 .spot { display: grid; justify-items: center; gap: 8px; font-size: 14px; font-weight: 600; text-align: center; }
 .spot small { display: block; font-weight: 400; color: var(--ink-soft); font-size: 13px; max-width: 16ch; }
@@ -504,6 +505,16 @@ footer a:hover { color: var(--ink); }
   .privacy { margin-top: 88px; }
   .privacy .panel { padding: 48px 22px; border-radius: 28px; }
   .privacy .top { grid-template-columns: 1fr; gap: 36px; }
+  .privacy .top > div { min-width: 0; }
+  .flow { column-gap: 8px; }
+  .flow .wire { margin-top: 27px; }
+  .spot { font-size: 13px; }
+  .spot small { font-size: 12px; max-width: none; }
+  .spot .ic { width: 56px; height: 56px; border-radius: 17px; }
+  .spot .ic svg { width: 26px; height: 26px; }
+  .spot.none { grid-column: 1 / 4; justify-self: center; }
+  .nopath { display: none; }
+  .flow { grid-template-rows: auto 28px auto; }
   .vs { grid-template-columns: 1fr 1fr; gap: 22px; }
   .faq-sec .wrap { grid-template-columns: 1fr; gap: 8px; }
   .faq-head { position: static; }
