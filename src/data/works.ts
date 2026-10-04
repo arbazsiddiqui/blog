@@ -28,6 +28,34 @@ export const WORKS = {
       { label: 'PyPI', url: 'https://pypi.org/project/sqlite-sparse/' },
     ],
   },
+  kev: {
+    href: '/kev',
+    title: 'kev-0.6b-browser-use',
+    medium: 'Browser-agent decision model',
+    sentence:
+      'A 0.6B model that picks which element on a page to act on, and whether to click, type or select, as probabilities in one forward pass. Fine-tuned from Kev on Mind2Web and WebChain, it is the best open-weights model that runs in a browser, and it plays A Dark Room live on WebGPU.',
+    stat: '32.2% Mind2Web step success · runs in the browser',
+    alt: 'kev-0.6b-browser-use playing A Dark Room in the browser, with every button it weighed and its confidence',
+    links: [
+      { label: 'Demo', url: '/kev-browser-use/#demo' },
+      { label: 'Hugging Face', url: 'https://huggingface.co/arbazsiddiqui/kev-0.6b-browser-use' },
+      { label: 'GitHub', url: 'https://github.com/arbazsiddiqui/kev-browser-use' },
+    ],
+  },
+  garden: {
+    href: '/glass-jar-garden',
+    title: 'Glass Jar Garden',
+    medium: 'Web app, 3D simulation',
+    sentence:
+      'A terrarium simulator in the browser. Pour the layers, plant real species, add springtails and isopods, seal the jar and watch it live day by day: a water cycle, moss creeping, plants growing, mould when it goes wrong. Built on three.js with a simulation checked against real jars.',
+    stat: '90 real species · 26 starter jars · free',
+    alt: 'A glass globe terrarium of ferns, moss and a stone, rendered in Glass Jar Garden',
+    links: [
+      { label: 'Open it', url: 'https://glassjar.garden/' },
+      { label: 'Starter jars', url: 'https://glassjar.garden/starter-jars/' },
+      { label: 'Guide', url: 'https://glassjar.garden/guide/' },
+    ],
+  },
   iris: {
     href: '/iris',
     title: 'Iris',

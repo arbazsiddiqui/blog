@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Work from '../components/Work.astro';
+import Rail from '../components/Rail.astro';
 import SlopWork from '../components/SlopWork.astro';
 import { SLOP, SLOP_TAGLINE } from '../data/slop';
 import { WORKS } from '../data/works';
@@ -12,6 +13,8 @@ import irisCard from '../assets/iris-card.png';
 import mercuroCard from '../assets/mercuro-card.png';
 import horrorCard from '../assets/horror-card.png';
 import irisPipelineCard from '../assets/iris-pipeline-card.png';
+import kevBanner from '../assets/kev/banner.jpg';
+import gardenCard from '../assets/garden/card.jpg';
 
 const oss = [
   { url: 'https://github.com/arbazsiddiqui/lru-cache-node', name: 'lru-cache-node', desc: 'an O(1) LRU cache for Node with expiry and stale reads, on npm', meta: '119★' },
@@ -27,7 +30,7 @@ const oss = [
   { url: 'https://www.npmjs.com/package/mock-jay', name: 'mock-jay', desc: 'a mock data generator for real-world shapes, on npm', meta: 'npm' },
 ];
 
-const jsonLd = {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Projects by Arbaz Siddiqui", "url": "https://www.arbazsiddiqui.me/projects/", "mainEntity": {"@type": "ItemList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Ozan-12B", "url": "https://www.arbazsiddiqui.me/ozan/"}, {"@type": "ListItem", "position": 2, "name": "Iris", "url": "https://www.arbazsiddiqui.me/iris/"}, {"@type": "ListItem", "position": 3, "name": "Mercuro", "url": "https://www.arbazsiddiqui.me/mercuro/"}, {"@type": "ListItem", "position": 4, "name": "The Footnote", "url": "https://www.arbazsiddiqui.me/footnote/"}, {"@type": "ListItem", "position": 5, "name": "Iris growth pipeline", "url": "https://www.arbazsiddiqui.me/iris-pipeline/"}, {"@type": "ListItem", "position": 6, "name": "Animated Horror", "url": "https://www.arbazsiddiqui.me/horror/"}, {"@type": "ListItem", "position": 7, "name": "sqlite-sparse", "url": "https://www.arbazsiddiqui.me/sparse/"}]}};
+const jsonLd = {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Projects by Arbaz Siddiqui", "url": "https://www.arbazsiddiqui.me/projects/", "mainEntity": {"@type": "ItemList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Ozan-12B", "url": "https://www.arbazsiddiqui.me/ozan/"}, {"@type": "ListItem", "position": 2, "name": "Iris", "url": "https://www.arbazsiddiqui.me/iris/"}, {"@type": "ListItem", "position": 3, "name": "Mercuro", "url": "https://www.arbazsiddiqui.me/mercuro/"}, {"@type": "ListItem", "position": 4, "name": "The Footnote", "url": "https://www.arbazsiddiqui.me/footnote/"}, {"@type": "ListItem", "position": 5, "name": "Iris growth pipeline", "url": "https://www.arbazsiddiqui.me/iris-pipeline/"}, {"@type": "ListItem", "position": 6, "name": "Animated Horror", "url": "https://www.arbazsiddiqui.me/horror/"}, {"@type": "ListItem", "position": 7, "name": "sqlite-sparse", "url": "https://www.arbazsiddiqui.me/sparse/"}, {"@type": "ListItem", "position": 8, "name": "kev-0.6b-browser-use", "url": "https://www.arbazsiddiqui.me/kev/"}, {"@type": "ListItem", "position": 9, "name": "Glass Jar Garden", "url": "https://www.arbazsiddiqui.me/glass-jar-garden/"}]}};
 ---
 
 <Base
@@ -41,30 +44,23 @@ const jsonLd = {"@context": "https://schema.org", "@type": "CollectionPage", "na
       Everything here is shipped and live.
     </p>
 
-    <section class="room">
-      <h2 class="room-label">Models and retrieval</h2>
-      <div class="works pair">
-        <Work eager {...WORKS.ozan} img={ozanBanner} />
-        <Work eager {...WORKS.sparse} img={sparseDiagram} />
-      </div>
-    </section>
+    <Rail label="Models and retrieval">
+      <Work eager {...WORKS.ozan} img={ozanBanner} />
+      <Work eager {...WORKS.kev} img={kevBanner} />
+      <Work {...WORKS.sparse} img={sparseDiagram} />
+    </Rail>
 
-    <section class="room">
-      <h2 class="room-label">Apps</h2>
-      <div class="works pair">
-        <Work {...WORKS.iris} img={irisCard} />
-        <Work {...WORKS.mercuro} img={mercuroCard} />
-      </div>
-    </section>
+    <Rail label="Apps">
+      <Work {...WORKS.garden} img={gardenCard} />
+      <Work {...WORKS.iris} img={irisCard} />
+      <Work {...WORKS.mercuro} img={mercuroCard} />
+    </Rail>
 
-    <section class="room">
-      <h2 class="room-label">Content creation automations</h2>
-      <div class="works trio">
-        <Work {...WORKS.footnote} img={footnoteBanner} />
-        <Work {...WORKS.irisPipeline} img={irisPipelineCard} />
-        <Work {...WORKS.horror} img={horrorCard} />
-      </div>
-    </section>
+    <Rail label="Content creation automations">
+      <Work {...WORKS.footnote} img={footnoteBanner} />
+      <Work {...WORKS.irisPipeline} img={irisPipelineCard} />
+      <Work {...WORKS.horror} img={horrorCard} />
+    </Rail>
 
     <section class="room">
       <h2 class="room-label">Engineering platforms</h2>

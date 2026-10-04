@@ -1,0 +1,109 @@
+---
+import Base from '../layouts/Base.astro';
+import { PERSON_REF } from '../data/person';
+import { Image } from 'astro:assets';
+import card from '../assets/garden/card.jpg';
+import tank from '../assets/garden/tank.jpg';
+import cross from '../assets/garden/cross.jpg';
+import shelf from '../assets/garden/shelf.jpg';
+
+const shots = [
+  { img: tank, alt: 'A rainforest tank a year after sealing, moss spread across the soil' },
+  { img: cross, alt: 'The jar cut open: drainage, soil, moss and roots in cross-section' },
+  { img: shelf, alt: 'My terrariums: every saved jar on a lit shelf, each still growing' },
+];
+
+const jsonLdApp = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Glass Jar Garden',
+  url: 'https://glassjar.garden/',
+  applicationCategory: 'SimulationApplication',
+  operatingSystem: 'Any (web browser)',
+  browserRequirements: 'Requires a browser with WebGL',
+  description: 'A terrarium simulator in the browser: build a jar layer by layer, plant real species, seal it and watch it live day by day.',
+  author: PERSON_REF,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+};
+const jsonLd = [jsonLdApp, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.arbazsiddiqui.me/"}, {"@type": "ListItem", "position": 2, "name": "Projects", "item": "https://www.arbazsiddiqui.me/projects/"}, {"@type": "ListItem", "position": 3, "name": "Glass Jar Garden", "item": "https://www.arbazsiddiqui.me/glass-jar-garden/"}]}];
+---
+
+<Base
+  title="Glass Jar Garden: a terrarium simulator"
+  description="A terrarium simulator in the browser. Build a jar layer by layer, plant real species, seal it and watch it live: a water cycle, moss, growth and mould, day by day."
+  ogImage="/og/glass-jar-garden.png"
+  ogImageAlt="Glass Jar Garden, a terrarium simulator."
+  jsonLd={jsonLd}
+>
+  <article class="narrow section">
+    <p class="kicker">Free, in the browser</p>
+    <h1 class="page-title">Glass Jar Garden</h1>
+    <p class="lede">
+      Build a terrarium, seal it, and watch it live. Pour the layers, plant
+      real species, add a cleanup crew, then let the days run: the water
+      cycles, moss creeps, plants grow, leaves fall, and mould blooms when
+      something is off.
+    </p>
+
+    <dl class="facts">
+      <dt>Open it</dt><dd><a href="https://glassjar.garden/" target="_blank" rel="noopener">glassjar.garden</a> · <a href="https://glassjar.garden/starter-jars/" target="_blank" rel="noopener">26 starter jars</a> · <a href="https://glassjar.garden/guide/" target="_blank" rel="noopener">the guide</a></dd>
+      <dt>Catalogue</dt><dd>49 plants · 31 mosses · 10 critters · 41 soils and layers · 32 stones and woods · 10 moulds</dd>
+      <dt>Simulation</dt><dd>Day by day: water, light, humidity, temperature, nutrients, growth, mould and colonies of springtails and isopods</dd>
+      <dt>Checked</dt><dd>14 of 14 real jars match · every starter jar alive at 2 years on 8 seeds</dd>
+      <dt>Stack</dt><dd>three.js with custom shaders, Vite, no framework · Cloudflare Pages with share links on R2</dd>
+    </dl>
+
+    <a class="banner" href="https://glassjar.garden/" target="_blank" rel="noopener">
+      <Image src={card} alt="A glass globe terrarium of ferns, moss and a stone, in Glass Jar Garden" widths={[640, 960, 1280]} sizes="(max-width: 720px) 100vw, 44rem" loading="eager" />
+    </a>
+
+    <div class="shots">
+      {shots.map((s) => (
+        <Image src={s.img} alt={s.alt} width={640} widths={[320, 480, 640]} sizes="(max-width: 640px) 80vw, 280px" loading="lazy" />
+      ))}
+    </div>
+
+    <div class="prose">
+      <h2>Building</h2>
+      <p>
+        Every tool works like the real one. Soil pours from a scoop and piles
+        up, the ground is shaped with a brush, moss is pressed down in pieces,
+        and water goes in by the millilitre. Round jars, bottles and cloches
+        fill along their curved glass, and stones settle onto whatever is
+        under them.
+      </p>
+      <h2>The simulation</h2>
+      <p>
+        Each day the jar works out where the water is, layer by layer, how
+        humid the air is under the lid, how much light each plant gets, and
+        what that does to its health. Rot, grey mould, drought and heat stress
+        all come out of the same numbers. Before a jar is sealed it shows a
+        one-year forecast, and the guide explains every mechanism with the
+        numbers it runs on.
+      </p>
+      <h2>Living on</h2>
+      <p>
+        Jars keep living while you are away and catch up when you return.
+        Share one as a link that always shows it as it is now, record a
+        timelapse of its whole life as a video, or take photos.
+      </p>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .page-title { margin-block: 0.35rem 0.8rem; }
+  .lede { margin-bottom: 1.6rem; }
+  .banner { display: block; margin-bottom: 1rem; border-radius: 6px; overflow: hidden; outline: 1px solid oklch(0 0 0 / 0.08); outline-offset: -1px; }
+  .banner img { width: 100%; height: auto; display: block; aspect-ratio: 16 / 9; object-fit: cover; }
+  .shots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-bottom: 2.4rem; }
+  .shots img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 6px; }
+  @media (max-width: 640px) {
+    .shots {
+      display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+      margin-inline: calc(-1 * clamp(1.2rem, 3.5vw, 2.5rem)); padding-inline: clamp(1.2rem, 3.5vw, 2.5rem);
+    }
+    .shots::-webkit-scrollbar { display: none; }
+    .shots img { flex: 0 0 82%; scroll-snap-align: center; }
+  }
+</style>

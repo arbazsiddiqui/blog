@@ -1,0 +1,80 @@
+---
+// A room whose works sit in a sideways row: two full-size cards in view on wide screens, one on
+// phones, with arrow buttons for mice that cannot scroll sideways.
+interface Props { label: string }
+const { label } = Astro.props;
+---
+
+<section class="room rail-room">
+  <div class="rail-head">
+    <h2 class="room-label">{label}</h2>
+    <div class="rail-nav">
+      <button type="button" class="rail-btn" data-dir="-1" aria-label={`Previous in ${label}`}>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+      </button>
+      <button type="button" class="rail-btn" data-dir="1" aria-label={`Next in ${label}`}>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+      </button>
+    </div>
+  </div>
+  <div class="works rail" tabindex="0" aria-label={label}>
+    <slot />
+  </div>
+</section>
+
+<script>
+  function wire() {
+    for (const room of document.querySelectorAll<HTMLElement>('.rail-room')) {
+      const rail = room.querySelector<HTMLElement>('.rail');
+      const btns = room.querySelectorAll<HTMLButtonElement>('.rail-btn');
+      if (!rail || room.dataset.wired) continue;
+      room.dataset.wired = '1';
+      const step = () => (rail.querySelector<HTMLElement>('.work')?.offsetWidth ?? rail.clientWidth) + parseFloat(getComputedStyle(rail).columnGap || '0');
+      const sync = () => {
+        const max = rail.scrollWidth - rail.clientWidth - 2;
+        btns[0].disabled = rail.scrollLeft <= 2;
+        btns[1].disabled = rail.scrollLeft >= max;
+        room.classList.toggle('rail-fits', max <= 0);
+      };
+      btns.forEach((b) => b.addEventListener('click', () => rail.scrollBy({ left: Number(b.dataset.dir) * step(), behavior: 'smooth' })));
+      rail.addEventListener('scroll', sync, { passive: true });
+      new ResizeObserver(sync).observe(rail);
+      sync();
+    }
+  }
+  wire();
+  document.addEventListener('astro:page-load', wire);
+</script>
+
+<style>
+  .rail-head { display: flex; align-items: center; gap: 1rem; margin-bottom: clamp(1.2rem, 2vw, 1.7rem); }
+  .rail-head .room-label { flex: 1; margin-bottom: 0; }
+  .rail-nav { display: flex; gap: 0.5rem; flex-shrink: 0; }
+  .rail-fits .rail-nav { visibility: hidden; }
+  .rail-btn {
+    width: 2.4rem; height: 2.4rem; border-radius: 50%; display: grid; place-items: center;
+    border: 1px solid var(--line); background: var(--bg); color: var(--fg); cursor: pointer;
+    transition: background 160ms, opacity 160ms;
+  }
+  .rail-btn:hover:not(:disabled) { background: var(--code-bg); }
+  .rail-btn:disabled { opacity: 0.32; cursor: default; }
+  .rail-btn svg { width: 1.1rem; height: 1.1rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+  .rail {
+    display: grid; grid-auto-flow: column; grid-template-columns: none;
+    grid-auto-columns: calc((100% - 2rem) / 2); column-gap: 2rem;
+    overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory;
+    scrollbar-width: none; padding-bottom: 0.25rem;
+  }
+  .rail::-webkit-scrollbar { display: none; }
+  .rail :global(.work) { scroll-snap-align: start; animation: none; }
+  @media (max-width: 719px) {
+    .rail {
+      grid-auto-columns: 86%; column-gap: 1.1rem;
+      margin-inline: calc(-1 * clamp(1.2rem, 3.5vw, 2.5rem));
+      padding-inline: clamp(1.2rem, 3.5vw, 2.5rem);
+      scroll-padding-inline: clamp(1.2rem, 3.5vw, 2.5rem);
+    }
+    .rail-nav { display: none; }
+  }
+</style>

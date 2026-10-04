@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Work from '../components/Work.astro';
+import Rail from '../components/Rail.astro';
 import { WORKS } from '../data/works';
 import { SITE } from '../data/site';
 import { PERSON_FULL } from '../data/person';
@@ -13,6 +14,8 @@ import irisCard from '../assets/iris-card.png';
 import mercuroCard from '../assets/mercuro-card.png';
 import horrorCard from '../assets/horror-card.png';
 import irisPipelineCard from '../assets/iris-pipeline-card.png';
+import kevBanner from '../assets/kev/banner.jpg';
+import gardenCard from '../assets/garden/card.jpg';
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
@@ -43,30 +46,23 @@ const jsonLd = { '@context': 'https://schema.org', ...PERSON_FULL };
       </p>
     </header>
 
-    <section class="room">
-      <h2 class="room-label">Models and retrieval</h2>
-      <div class="works pair">
-        <Work eager {...WORKS.ozan} img={ozanBanner} />
-        <Work eager {...WORKS.sparse} img={sparseDiagram} />
-      </div>
-    </section>
+    <Rail label="Models and retrieval">
+      <Work eager {...WORKS.ozan} img={ozanBanner} />
+      <Work eager {...WORKS.kev} img={kevBanner} />
+      <Work {...WORKS.sparse} img={sparseDiagram} />
+    </Rail>
 
-    <section class="room">
-      <h2 class="room-label">Apps</h2>
-      <div class="works pair">
-        <Work {...WORKS.iris} img={irisCard} />
-        <Work {...WORKS.mercuro} img={mercuroCard} />
-      </div>
-    </section>
+    <Rail label="Apps">
+      <Work {...WORKS.garden} img={gardenCard} />
+      <Work {...WORKS.iris} img={irisCard} />
+      <Work {...WORKS.mercuro} img={mercuroCard} />
+    </Rail>
 
-    <section class="room">
-      <h2 class="room-label">Content creation automations</h2>
-      <div class="works trio">
-        <Work {...WORKS.footnote} img={footnoteBanner} />
-        <Work {...WORKS.irisPipeline} img={irisPipelineCard} />
-        <Work {...WORKS.horror} img={horrorCard} />
-      </div>
-    </section>
+    <Rail label="Content creation automations">
+      <Work {...WORKS.footnote} img={footnoteBanner} />
+      <Work {...WORKS.irisPipeline} img={irisPipelineCard} />
+      <Work {...WORKS.horror} img={horrorCard} />
+    </Rail>
 
     <section class="room">
       <h2 class="room-label">Writing</h2>

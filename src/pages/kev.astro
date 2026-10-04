@@ -1,0 +1,81 @@
+---
+import Base from '../layouts/Base.astro';
+import { PERSON_REF } from '../data/person';
+import { Image } from 'astro:assets';
+import banner from '../assets/kev/banner.jpg';
+
+const jsonLdModel = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareSourceCode',
+  name: 'kev-0.6b-browser-use',
+  description: 'A 0.6B decision model for browser agents: picks the element and the action on a web page in one forward pass, and runs in the browser on WebGPU.',
+  codeRepository: 'https://github.com/arbazsiddiqui/kev-browser-use',
+  programmingLanguage: ['Python', 'JavaScript'],
+  license: 'https://www.apache.org/licenses/LICENSE-2.0',
+  author: PERSON_REF,
+  url: 'https://www.arbazsiddiqui.me/kev/',
+  sameAs: ['https://huggingface.co/arbazsiddiqui/kev-0.6b-browser-use'],
+};
+const jsonLd = [jsonLdModel, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.arbazsiddiqui.me/"}, {"@type": "ListItem", "position": 2, "name": "Projects", "item": "https://www.arbazsiddiqui.me/projects/"}, {"@type": "ListItem", "position": 3, "name": "kev-0.6b-browser-use", "item": "https://www.arbazsiddiqui.me/kev/"}]}];
+---
+
+<Base
+  title="kev-0.6b-browser-use: a browser-agent model that runs in the browser"
+  description="A 0.6B decision model for browser agents, fine-tuned from Kev on Mind2Web and WebChain: 32.2% step success, the best open-weights model that runs in a browser."
+  ogImage="/og/kev-browser-use.jpg"
+  ogImageAlt="kev-0.6b-browser-use playing A Dark Room in the browser, with every button it weighed and its confidence."
+  jsonLd={jsonLd}
+>
+  <article class="narrow section">
+    <p class="kicker">Best open-weights model that runs in a browser</p>
+    <h1 class="page-title">kev-0.6b-browser-use</h1>
+    <p class="lede">
+      A decision model for browser agents. It reads a goal and the page's
+      candidate elements, then returns which element to act on and whether
+      to click, type or select, as probabilities, in one forward pass. It
+      never writes text, so every answer is an element already on the page.
+    </p>
+
+    <dl class="facts">
+      <dt>Result</dt><dd>32.2% step success on 1,000 Mind2Web test steps, from 14.1% for Kev-0.6B as released</dd>
+      <dt>Size</dt><dd>0.6B parameters · 348 MB as a 4-bit build · 80 ms a decision on an NVIDIA L4</dd>
+      <dt>Training</dt><dd>Mind2Web's training split (13.8K steps), then WebChain for four times the rows</dd>
+      <dt>Runs on</dt><dd>WebGPU in the browser through <a href="https://www.npmjs.com/package/open-jev" target="_blank" rel="noopener">open-jev</a>, or Kev's own server with the LoRA adapter</dd>
+      <dt>Links</dt><dd><a href="/kev-browser-use/#demo">Live demo</a> · <a href="https://huggingface.co/arbazsiddiqui/kev-0.6b-browser-use" target="_blank" rel="noopener">Hugging Face</a> · <a href="https://github.com/arbazsiddiqui/kev-browser-use" target="_blank" rel="noopener">GitHub</a></dd>
+    </dl>
+
+    <a class="banner" href="/kev-browser-use/#demo">
+      <Image src={banner} alt="kev-0.6b-browser-use playing A Dark Room in the browser, with every button it weighed and its confidence" widths={[640, 960, 1200]} sizes="(max-width: 720px) 100vw, 44rem" />
+    </a>
+
+    <div class="prose">
+      <h2>The demo</h2>
+      <p>
+        The model plays <a href="https://github.com/doublespeakgames/adarkroom" target="_blank" rel="noopener">A Dark Room</a>,
+        the text adventure, running unmodified on the page. Give it a goal
+        like "craft a rucksack" and it picks the button out of everything the
+        game shows. When the game says there is not enough leather, the page
+        asks it how to get more, and it puts villagers on the tannery. Nothing
+        is scripted per goal.
+      </p>
+      <h2>How it compares</h2>
+      <p>
+        On the same 1,000 steps it matches Kev-9B (32.5) at a fifteenth of
+        the size, and beats every other open model tested, including 2B to 9B
+        decision models. The hosted Jev API still leads at 43.5, and
+        Mind2Web's own results for bigger fine-tuned models suggest the gap is size.
+      </p>
+      <p>
+        <a href="/kev-browser-use/">The full write-up</a> has the results table,
+        the training data and the code to use it.
+      </p>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .page-title { margin-block: 0.35rem 0.8rem; }
+  .lede { margin-bottom: 1.6rem; }
+  .banner { display: block; margin-bottom: 2.4rem; border-radius: 6px; overflow: hidden; outline: 1px solid oklch(0 0 0 / 0.08); outline-offset: -1px; }
+  .banner img { width: 100%; height: auto; display: block; }
+</style>
