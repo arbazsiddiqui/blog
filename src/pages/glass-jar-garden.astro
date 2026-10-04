@@ -2,7 +2,6 @@
 import Base from '../layouts/Base.astro';
 import { PERSON_REF } from '../data/person';
 import { Image } from 'astro:assets';
-import card from '../assets/garden/card.jpg';
 import tank from '../assets/garden/tank.jpg';
 import cross from '../assets/garden/cross.jpg';
 import shelf from '../assets/garden/shelf.jpg';
@@ -53,9 +52,7 @@ const jsonLd = [jsonLdApp, {"@context": "https://schema.org", "@type": "Breadcru
       <dt>Stack</dt><dd>three.js with custom shaders, Vite, no framework · Cloudflare Pages with share links on R2</dd>
     </dl>
 
-    <a class="banner" href="https://glassjar.garden/" target="_blank" rel="noopener">
-      <Image src={card} alt="A glass globe terrarium of ferns, moss and a stone, in Glass Jar Garden" widths={[640, 960, 1280]} sizes="(max-width: 720px) 100vw, 44rem" loading="eager" />
-    </a>
+    <video class="banner" src="/video/glass-jar-garden.mp4" poster="/video/glass-jar-garden-poster.jpg" width="1920" height="1080" autoplay muted loop playsinline controls preload="metadata" aria-label="Glass Jar Garden launch video: building a jar, a year of growth, the simulation, care, sharing and the shelf"></video>
 
     <div class="shots">
       {shots.map((s) => (
@@ -95,7 +92,7 @@ const jsonLd = [jsonLdApp, {"@context": "https://schema.org", "@type": "Breadcru
   .page-title { margin-block: 0.35rem 0.8rem; }
   .lede { margin-bottom: 1.6rem; }
   .banner { display: block; margin-bottom: 1rem; border-radius: 6px; overflow: hidden; outline: 1px solid oklch(0 0 0 / 0.08); outline-offset: -1px; }
-  .banner img { width: 100%; height: auto; display: block; aspect-ratio: 16 / 9; object-fit: cover; }
+  video.banner { width: 100%; height: auto; aspect-ratio: 16 / 9; background: #17261d; }
   .shots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-bottom: 2.4rem; }
   .shots img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 6px; }
   @media (max-width: 640px) {

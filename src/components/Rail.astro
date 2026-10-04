@@ -1,40 +1,41 @@
 ---
 // A room whose works sit in a sideways row: two full-size cards in view on wide screens, one on
-// phones, with arrow buttons for mice that cannot scroll sideways.
+// phones. Arrows sit over the row's edges, level with the pictures, and show on hover.
 interface Props { label: string }
 const { label } = Astro.props;
 ---
 
 <section class="room rail-room">
-  <div class="rail-head">
-    <h2 class="room-label">{label}</h2>
-    <div class="rail-nav">
-      <button type="button" class="rail-btn" data-dir="-1" aria-label={`Previous in ${label}`}>
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
-      </button>
-      <button type="button" class="rail-btn" data-dir="1" aria-label={`Next in ${label}`}>
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
-      </button>
+  <h2 class="room-label">{label}</h2>
+  <div class="rail-wrap">
+    <div class="works rail" tabindex="0" aria-label={label}>
+      <slot />
     </div>
-  </div>
-  <div class="works rail" tabindex="0" aria-label={label}>
-    <slot />
+    <button type="button" class="rail-btn rail-prev" data-dir="-1" aria-label={`Previous in ${label}`}>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+    </button>
+    <button type="button" class="rail-btn rail-next" data-dir="1" aria-label={`Next in ${label}`}>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+    </button>
   </div>
 </section>
 
 <script>
   function wire() {
     for (const room of document.querySelectorAll<HTMLElement>('.rail-room')) {
+      const wrap = room.querySelector<HTMLElement>('.rail-wrap');
       const rail = room.querySelector<HTMLElement>('.rail');
       const btns = room.querySelectorAll<HTMLButtonElement>('.rail-btn');
-      if (!rail || room.dataset.wired) continue;
+      if (!wrap || !rail || room.dataset.wired) continue;
       room.dataset.wired = '1';
       const step = () => (rail.querySelector<HTMLElement>('.work')?.offsetWidth ?? rail.clientWidth) + parseFloat(getComputedStyle(rail).columnGap || '0');
       const sync = () => {
         const max = rail.scrollWidth - rail.clientWidth - 2;
         btns[0].disabled = rail.scrollLeft <= 2;
         btns[1].disabled = rail.scrollLeft >= max;
-        room.classList.toggle('rail-fits', max <= 0);
+        // Level with the middle of the pictures, not the whole card.
+        const frame = rail.querySelector<HTMLElement>('.frame');
+        if (frame) wrap.style.setProperty('--rail-mid', `${frame.offsetTop + frame.offsetHeight / 2}px`);
       };
       btns.forEach((b) => b.addEventListener('click', () => rail.scrollBy({ left: Number(b.dataset.dir) * step(), behavior: 'smooth' })));
       rail.addEventListener('scroll', sync, { passive: true });
@@ -47,18 +48,21 @@ const { label } = Astro.props;
 </script>
 
 <style>
-  .rail-head { display: flex; align-items: center; gap: 1rem; margin-bottom: clamp(1.2rem, 2vw, 1.7rem); }
-  .rail-head .room-label { flex: 1; margin-bottom: 0; }
-  .rail-nav { display: flex; gap: 0.5rem; flex-shrink: 0; }
-  .rail-fits .rail-nav { visibility: hidden; }
+  .rail-wrap { position: relative; }
   .rail-btn {
-    width: 2.4rem; height: 2.4rem; border-radius: 50%; display: grid; place-items: center;
-    border: 1px solid var(--line); background: var(--bg); color: var(--fg); cursor: pointer;
-    transition: background 160ms, opacity 160ms;
+    position: absolute; top: var(--rail-mid, 30%); translate: 0 -50%; z-index: 2;
+    width: 3.1rem; height: 3.1rem; border-radius: 50%; display: grid; place-items: center;
+    border: 0; background: oklch(0.16 0 0 / 0.72); color: #fff; cursor: pointer;
+    box-shadow: 0 6px 20px oklch(0 0 0 / 0.28);
+    backdrop-filter: blur(6px);
+    opacity: 0; transition: opacity 200ms, scale 200ms, background 160ms;
   }
-  .rail-btn:hover:not(:disabled) { background: var(--code-bg); }
-  .rail-btn:disabled { opacity: 0.32; cursor: default; }
-  .rail-btn svg { width: 1.1rem; height: 1.1rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .rail-prev { left: -1.55rem; }
+  .rail-next { right: -1.55rem; }
+  .rail-wrap:hover .rail-btn:not(:disabled), .rail-btn:focus-visible:not(:disabled) { opacity: 1; }
+  .rail-btn:hover { background: oklch(0.1 0 0 / 0.88); scale: 1.08; }
+  .rail-btn:disabled { pointer-events: none; }
+  .rail-btn svg { width: 1.35rem; height: 1.35rem; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 
   .rail {
     display: grid; grid-auto-flow: column; grid-template-columns: none;
@@ -68,6 +72,9 @@ const { label } = Astro.props;
   }
   .rail::-webkit-scrollbar { display: none; }
   .rail :global(.work) { scroll-snap-align: start; animation: none; }
+  @media (hover: none), (max-width: 719px) {
+    .rail-btn { display: none; }
+  }
   @media (max-width: 719px) {
     .rail {
       grid-auto-columns: 86%; column-gap: 1.1rem;
@@ -75,6 +82,5 @@ const { label } = Astro.props;
       padding-inline: clamp(1.2rem, 3.5vw, 2.5rem);
       scroll-padding-inline: clamp(1.2rem, 3.5vw, 2.5rem);
     }
-    .rail-nav { display: none; }
   }
 </style>
