@@ -49,7 +49,7 @@ export const WORKS = {
     sentence:
       'A terrarium simulator in the browser. Pour the layers, plant real species, add springtails and isopods, seal the jar and watch it live day by day: a water cycle, moss creeping, plants growing, mould when it goes wrong. Built on three.js with a simulation checked against real jars.',
     stat: '90 real species · 26 starter jars · free',
-    alt: 'A glass globe terrarium of ferns, moss and a stone, rendered in Glass Jar Garden',
+    alt: 'A glass cloche terrarium of nerve plants, moss and a stone, rendered in Glass Jar Garden',
     links: [
       { label: 'Open it', url: 'https://glassjar.garden/' },
       { label: 'Starter jars', url: 'https://glassjar.garden/starter-jars/' },
