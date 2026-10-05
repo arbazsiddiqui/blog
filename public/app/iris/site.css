@@ -102,3 +102,13 @@ footer a:hover { color: var(--ink); }
   .get { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Comparison table and notes on the search pages. */
+.cmp-wrap { overflow-x: auto; margin: 8px 0 12px; }
+.cmp { width: 100%; min-width: 520px; border-collapse: collapse; font-size: 16px; }
+.cmp th, .cmp td { padding: 12px 14px; border-top: 1px solid var(--line); text-align: left; vertical-align: top; color: var(--ink-soft); }
+.cmp thead th { border-top: 0; color: var(--ink); font-weight: 600; }
+.cmp tbody th { color: var(--ink); font-weight: 600; width: 26%; }
+.cmp td:nth-child(2) { color: var(--ink); }
+.prose .note { font-size: 15px; color: var(--ink-faint); }
+.prose .row { margin-top: 12px; }

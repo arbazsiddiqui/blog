@@ -28,6 +28,7 @@
   data stays on the phone (optional sync to the user's own iCloud). Over 1,000 downloads
   a month. Engineering write-up: https://www.arbazsiddiqui.me/iris. Support:
   https://www.arbazsiddiqui.me/app/iris/support. Privacy: https://www.arbazsiddiqui.me/app/iris/privacy
+  Topics: A private period tracker (https://www.arbazsiddiqui.me/app/iris/private-period-tracker/), A period tracker for PCOS and irregular cycles (https://www.arbazsiddiqui.me/app/iris/pcos-period-tracker/), A BBT and ovulation tracker (https://www.arbazsiddiqui.me/app/iris/bbt-ovulation-tracker/), A period tracker that works with Apple Health (https://www.arbazsiddiqui.me/app/iris/period-tracker-apple-health/), A private Flo alternative (https://www.arbazsiddiqui.me/app/iris/flo-alternative/), A Clue alternative with no account (https://www.arbazsiddiqui.me/app/iris/clue-alternative/).
 - [Mercuro](https://www.arbazsiddiqui.me/mercuro): thermometer logic-puzzle game with
   its own constraint solver and generator. 660 handcrafted puzzles. Native SwiftUI on
   iOS and native Kotlin/Compose on Android.

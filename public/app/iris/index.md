@@ -54,3 +54,12 @@ Iris predictions are estimates. The avoiding pregnancy mode highlights days with
 **Can my partner see my cycle?** Only if you share a code. View only and end-to-end encrypted.
 
 **Does Iris work with Apple Health?** Yes, in both directions.
+
+## More about Iris
+
+- [A private period tracker](https://www.arbazsiddiqui.me/app/iris/private-period-tracker/)
+- [A period tracker for PCOS and irregular cycles](https://www.arbazsiddiqui.me/app/iris/pcos-period-tracker/)
+- [A BBT and ovulation tracker](https://www.arbazsiddiqui.me/app/iris/bbt-ovulation-tracker/)
+- [A period tracker that works with Apple Health](https://www.arbazsiddiqui.me/app/iris/period-tracker-apple-health/)
+- [A private Flo alternative](https://www.arbazsiddiqui.me/app/iris/flo-alternative/)
+- [A Clue alternative with no account](https://www.arbazsiddiqui.me/app/iris/clue-alternative/)
