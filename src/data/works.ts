@@ -77,7 +77,10 @@ export const WORKS = {
       'Calm thermometer logic puzzles. 660 handcrafted levels across eight board sizes, three daily games, and a hint system, all on its own constraint solver and generator. Built natively twice, SwiftUI on iOS and Kotlin with Compose on Android.',
     stat: '5★ · 660 puzzles · featured in gaming newsletters',
     alt: 'Mercuro: fill the heat',
-    links: [{ label: 'App Store', url: 'https://apps.apple.com/app/id6762402072' }],
+    links: [
+      { label: 'App Store', url: 'https://apps.apple.com/app/id6762402072' },
+      { label: 'Website', url: 'https://www.arbazsiddiqui.me/app/mercuro/' },
+    ],
   },
   footnote: {
     href: '/footnote',

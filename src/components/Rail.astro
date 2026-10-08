@@ -17,6 +17,7 @@ const { label } = Astro.props;
       </button>
     </div>
   </div>
+  <slot name="intro" />
   <div class="rail-wrap">
     <div class="works rail" tabindex="0" aria-label={label}>
       <slot />
