@@ -21,9 +21,10 @@ const APP = `${BASE}/app/mercuro/`;
 const STORE = 'https://apps.apple.com/app/id6762402072';
 const OG = `${BASE}/og/mercuro.jpg`;
 const OG_ALT = 'Mercuro logo: a red thermometer beside the words Mercuro, fill the heat';
-const SUPPORT = '/ios/mercuro/support';
-const PRIVACY = '/ios/mercuro/privacy';
-const TERMS = '/ios/mercuro/terms';
+const SUPPORT = '/app/mercuro/support/';
+const PRIVACY = '/app/mercuro/privacy/';
+const TERMS = '/app/mercuro/terms/';
+const MAIL = 'support@mercuro.app';
 // Bump UPDATED when page copy changes and CHECKED when the competitor listings are re-read.
 const UPDATED = '2026-10-08';
 const CHECKED = '2026-10-08';
@@ -195,7 +196,7 @@ function head({ title, description, url, md, ld, landing }) {
       <li><a href="${landing ? '' : '/app/mercuro/'}#how">How to play</a></li>
       <li><a href="${landing ? '' : '/app/mercuro/'}#daily">Daily puzzles</a></li>
       <li><a href="${landing ? '' : '/app/mercuro/'}#pricing">Pricing</a></li>
-      <li><a href="${SUPPORT}">Support</a></li>
+      <li><a href="${SUPPORT}"${url.endsWith('/support/') ? ' aria-current="page"' : ''}>Support</a></li>
     </ul>
     <div class="nav-right">
       <div class="gauge" data-m="gauge" aria-hidden="true"><svg viewBox="0 0 500 100"></svg></div>
@@ -916,6 +917,114 @@ ${PAGES.map((p) => `- [${p.h1}](${APP}${p.slug}/)`).join('\n')}
 `;
 }
 
+// ── Support, privacy and terms ──
+// The policy text is the published iOS policy, kept word for word in mercuro-legal.json. The old
+// /ios/mercuro/ URLs that the App Store listing links 301 here (public/_redirects).
+
+const LEGAL = JSON.parse(readFileSync(new URL('./mercuro-legal.json', import.meta.url), 'utf8'));
+const slugify = (t) => t.toLowerCase().replace(/&[a-z]+;/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+const SUPPORT_FAQ = [
+  ['My progress disappeared', 'The puzzle you are in the middle of is stored only on your device. Solved puzzles, streaks, purchases and unlocks can sync through iCloud if you connect your Apple ID in Settings. After a reinstall, sign in again with the same Apple ID to get them back. A half-finished grid is not restored after the app is deleted.'],
+  ['How do I sync with my Apple ID?', 'Go to Settings, then Save Progress, then Continue with Apple. Mercuro uses your Apple ID only to recover solves, streaks, purchases and unlocks through your iCloud account.'],
+  ['How do I restore a purchase?', 'Go to Settings, then Restore Purchases. Purchases come back through the App Store, using the Apple ID you bought them with.'],
+  ['How do hints work?', 'Tap the lightbulb in the puzzle toolbar. A hint points at the next cell or group of cells that logic forces, without filling it for you. You get two free hints a day; after that, a short ad buys another. Remove Ads and Mercuro Pro include unlimited hints with no ads.'],
+  ['Where do ads appear?', `${FREE_ADS} Either purchase removes all of them.`],
+  ['How do chapters unlock?', 'The 660 puzzles sit in chapters of ten across eight board sizes, 5x5 to 12x12. Solve 7 of the 10 in a chapter and the next one opens. 330 are free and 330 come with Mercuro Pro.'],
+  ['Do the daily puzzles need the internet?', 'No. Warm-Up, Daily and Challenge are built from the date on your device, so they work offline. Solve all three to grow your streak.'],
+];
+
+function infoShell({ slug, title, description, tag, h1, lede, panel, body, ld }) {
+  const url = `${APP}${slug}/`;
+  return `${head({ title, description, url, md: `/app/mercuro/${slug}/index.md`, ld: [
+    { '@type': 'WebPage', '@id': `${url}#page`, url, name: title, description, inLanguage: 'en', about: { '@id': `${APP}#app` }, author: { '@id': `${BASE}/#person` }, breadcrumb: crumbs(url, h1) },
+    ...ld,
+  ] })}
+<main id="main" class="info">
+  <section class="page-hero">
+    <div class="wrap">
+      <div>
+        <div class="tag"><i></i>${esc(tag)}</div>
+        <h1>${nb(esc(h1))}<span class="dot">.</span></h1>
+        <p class="lede">${lede}</p>
+      </div>
+      ${panel}
+    </div>
+  </section>
+
+  <div class="wrap prose">
+${body}
+  </div>
+</main>
+${FOOT}`;
+}
+
+function supportPage() {
+  const url = `${APP}support/`;
+  const learn = ['how-to-play-thermometers', 'daily-logic-puzzle'].map((k) => PAGES.find((p) => p.slug === k));
+  const body = `      <section class="group" id="problems">
+        <h2><i></i>Common problems</h2>
+        <div class="qa">
+${SUPPORT_FAQ.map(([q, a], i) => `          <details${i ? '' : ' open'}><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('\n')}
+        </div>
+      </section>
+      <section class="group" id="learn">
+        <h2><i></i>Learn the game</h2>
+        <ul class="guides">${learn.map((o) => `<li><a href="/app/mercuro/${o.slug}/">${GUIDE[o.slug][0]}<b>${nb(esc(o.h1))}</b><span>${esc(GUIDE[o.slug][1])}</span><em class="g-arrow" aria-hidden="true">${ICON.arrow}</em></a></li>`).join('')}</ul>
+      </section>
+      <section class="group" id="policies">
+        <h2><i></i>Policies</h2>
+        <ul class="links">
+          <li><a href="${PRIVACY}">Privacy policy</a>: what stays on your phone, and what ads, analytics and Game Center receive.</li>
+          <li><a href="${TERMS}">Terms of service</a>: purchases, ads and fair play.</li>
+        </ul>
+      </section>`;
+  const panel = `<aside class="panel contact" aria-label="Contact">
+        <div class="panel-copy">
+          <span class="sec-label">Email us</span>
+          <a class="mail" href="mailto:${MAIL}">${MAIL}</a>
+          <p>Bug, idea, or a purchase that did not arrive. Tell us your device model and iOS version and what you were doing, and we will get back to you.</p>
+          <a class="btn" href="mailto:${MAIL}?subject=Mercuro%20support">Write to support</a>
+        </div>
+      </aside>`;
+  return infoShell({
+    slug: 'support', title: 'Mercuro Support: Help, Sync and Purchases',
+    description: 'Help for Mercuro, the Thermometers logic puzzle: lost progress, Apple ID sync, restoring purchases, hints, ads and daily puzzles, plus how to reach support.',
+    tag: 'Support', h1: 'Mercuro support', lede: 'Lost progress, a purchase to restore or a hint that confuses you? The common fixes are below. For anything else, email us.',
+    panel, body, ld: [faqLd(url, SUPPORT_FAQ)],
+  });
+}
+
+function policyPage(kind) {
+  const d = LEGAL[kind];
+  const privacy = kind === 'privacy';
+  const toc = d.sections.map(([h]) => `<li><a href="#${slugify(h)}">${h}</a></li>`).join('');
+  const panel = `<aside class="panel toc" aria-label="On this page">
+        <div class="panel-copy">
+          <span class="sec-label">On this page</span>
+          <ol>${toc}</ol>
+          <p>Last updated ${d.updated}. Questions: <a href="mailto:${MAIL}">${MAIL}</a></p>
+        </div>
+      </aside>`;
+  const body = d.sections.map(([h, html]) => `      <section class="group" id="${slugify(h)}">
+        <h2><i></i>${h}</h2>
+        ${html}
+      </section>`).join('\n');
+  return infoShell({
+    slug: kind,
+    title: privacy ? 'Mercuro Privacy Policy' : 'Mercuro Terms of Service',
+    description: privacy
+      ? 'How Mercuro, the Thermometers logic puzzle, handles your data: progress stays on your device, optional iCloud sync, ads, purchases, Game Center and anonymous analytics.'
+      : 'The terms for using Mercuro, the Thermometers logic puzzle: game content, sync, one-time purchases, ads, Game Center and acceptable use.',
+    tag: privacy ? 'Privacy' : 'Terms',
+    h1: privacy ? 'Privacy policy' : 'Terms of service',
+    lede: privacy ? `<strong>The short version:</strong> ${d.short}` : 'Mercuro: Thermometer Logic Puzzles. By using the app you agree to these terms.',
+    panel, body, ld: [],
+  });
+}
+
+const infoMd = (slug, title, lede, sections) => `---\ntitle: ${title}\nurl: ${APP}${slug}/\n---\n\n# ${title}\n\n${strip(lede)}\n\n${sections.map(([h, b]) => `## ${strip(h)}\n\n${strip(b)}`).join('\n\n')}\n`;
+
 // ── Write ──
 
 const root = new URL('../public/app/mercuro/', import.meta.url);
@@ -932,6 +1041,16 @@ for (const p of PAGES) {
   mkdirSync(dir, { recursive: true });
   writeFileSync(new URL('index.html', dir), page(p));
   writeFileSync(new URL('index.md', dir), pageMd(p));
+}
+for (const [slug, html, md] of [
+  ['support', supportPage(), infoMd('support', 'Mercuro support', `Email ${MAIL} with your device model and iOS version.`, SUPPORT_FAQ.map(([q, a]) => [q, esc(a)]))],
+  ['privacy', policyPage('privacy'), infoMd('privacy', 'Mercuro privacy policy', `Last updated ${LEGAL.privacy.updated}. The short version: ${LEGAL.privacy.short}`, LEGAL.privacy.sections)],
+  ['terms', policyPage('terms'), infoMd('terms', 'Mercuro terms of service', `Last updated ${LEGAL.terms.updated}.`, LEGAL.terms.sections)],
+]) {
+  const dir = new URL(`${slug}/`, root);
+  mkdirSync(dir, { recursive: true });
+  writeFileSync(new URL('index.html', dir), html);
+  writeFileSync(new URL('index.md', dir), md);
 }
 writeFileSync(new URL('pages.json', root), `${JSON.stringify(PAGES.map((p) => ({ slug: p.slug, title: p.h1 })))}\n`);
 console.log(`mercuro pages: index, ${PAGES.map((p) => p.slug).join(', ')}; every puzzle has one solution`);

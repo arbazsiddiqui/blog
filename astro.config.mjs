@@ -10,7 +10,7 @@ export default defineConfig({
       'lollipop/', 'lollipop/how-to-play/', 'lollipop/about/', 'kerb-appeal/', 'kerb-appeal/privacy/']
       .map((p) => `https://www.arbazsiddiqui.me/slop-corner/${p}`)
       .concat(['app/iris/', 'app/iris/support', 'app/iris/privacy', 'app/iris/private-period-tracker/', 'app/iris/pcos-period-tracker/', 'app/iris/bbt-ovulation-tracker/', 'app/iris/period-tracker-apple-health/', 'app/iris/flo-alternative/', 'app/iris/clue-alternative/',
-        'app/mercuro/', 'app/mercuro/how-to-play-thermometers/', 'app/mercuro/daily-logic-puzzle/', 'app/mercuro/puzzle-game-no-subscription/', 'app/mercuro/games-like-sudoku-and-nonograms/', 'app/mercuro/grids-of-thermometers-alternative/', 'app/mercuro/thermometers-logic-puzzles-alternative/'].map((p) => `https://www.arbazsiddiqui.me/${p}`)),
+        'app/mercuro/', 'app/mercuro/support/', 'app/mercuro/privacy/', 'app/mercuro/terms/', 'app/mercuro/how-to-play-thermometers/', 'app/mercuro/daily-logic-puzzle/', 'app/mercuro/puzzle-game-no-subscription/', 'app/mercuro/games-like-sudoku-and-nonograms/', 'app/mercuro/grids-of-thermometers-alternative/', 'app/mercuro/thermometers-logic-puzzles-alternative/'].map((p) => `https://www.arbazsiddiqui.me/${p}`)),
   })],
   build: { inlineStylesheets: 'always' },
   compressHTML: true,

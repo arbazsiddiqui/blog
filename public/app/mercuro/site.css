@@ -571,6 +571,25 @@ button.sq:active { transform: scale(.94); }
 .prose a.btn { color: var(--bg); }
 .prose .note { font-size: 15px; color: var(--muted); }
 .prose .row { margin-top: 16px; }
+.info .page-hero .wrap { align-items: start; }
+.contact .mail { font: 700 clamp(20px, 2.4vw, 26px) var(--display); color: var(--ink); text-decoration: none; overflow-wrap: anywhere; }
+.contact .mail:hover { color: var(--red-ink); }
+.contact .btn { margin-top: 6px; }
+.toc ol { margin: 0; padding: 0; list-style: none; counter-reset: toc; display: grid; gap: 2px; width: 100%; }
+.toc li { counter-increment: toc; }
+.toc li a { display: flex; gap: 12px; align-items: baseline; padding: 7px 0; color: var(--ink); text-decoration: none; font-size: 15px; border-bottom: 1px solid var(--line); }
+.toc li a::before { content: counter(toc, decimal-leading-zero); font: 600 12px var(--display); letter-spacing: .08em; color: var(--muted); min-width: 2ch; }
+.toc li a:hover { color: var(--red-ink); }
+.toc p { font-size: 14px; }
+.toc p a, .info .prose p a { color: var(--red-ink); }
+.info .prose .group { scroll-margin-top: 80px; }
+.info .prose h2 { font-size: clamp(22px, 2.4vw, 28px); }
+.info .guides { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 0; }
+.info .links { list-style: none; }
+.info .links li { padding: 12px 0; border-bottom: 1px solid var(--line); margin: 0; }
+.info .links li:first-child { border-top: 1px solid var(--line); }
+.info .links a { font-weight: 650; }
+.info .qa + * { margin-top: 0; }
 .widget { margin-top: 22px; background: var(--surface); border: 1px solid var(--line); border-radius: 28px; padding: 24px; box-shadow: var(--shadow-soft); }
 .widget .tiers-w { border: 0; box-shadow: none; padding: 0; }
 .play-card { position: relative; max-width: 420px; margin-inline: auto; padding-bottom: 4px; }
@@ -593,7 +612,12 @@ footer a:hover { color: var(--ink); }
 .landing footer { margin-top: 0; }
 
 @media (max-width: 960px) {
-  .nav ul { display: none; }
+  html { scroll-padding-top: 120px; }
+  .nav .wrap { flex-wrap: wrap; height: auto; row-gap: 0; padding-top: 8px; }
+  .nav ul { order: 3; flex: 0 0 calc(100% + 20px); margin: 0 -10px; overflow-x: auto; scrollbar-width: none; font-size: 15px; }
+  .nav ul::-webkit-scrollbar { display: none; }
+  .nav ul a { white-space: nowrap; }
+  .info .prose .group { scroll-margin-top: 120px; }
   .hero { padding-top: 28px; }
   .hero .wrap { grid-template-columns: 1fr; grid-template-areas: "copy" "cta" "phone"; gap: 24px; }
   .hero .try { margin-top: 18px; }

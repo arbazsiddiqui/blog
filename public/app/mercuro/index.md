@@ -10,8 +10,8 @@
 - Price: free to play. Remove Ads $2.99 once. Mercuro Pro $4.99 once. No subscription.
 - Made by: Arbaz Siddiqui, an independent developer (https://www.arbazsiddiqui.me/about)
 - How it is built: https://www.arbazsiddiqui.me/mercuro
-- Support: https://www.arbazsiddiqui.me/ios/mercuro/support
-- Privacy policy: https://www.arbazsiddiqui.me/ios/mercuro/privacy
+- Support: https://www.arbazsiddiqui.me/app/mercuro/support/
+- Privacy policy: https://www.arbazsiddiqui.me/app/mercuro/privacy/
 - Last updated: 2026-10-08
 
 ## Rules

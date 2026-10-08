@@ -24,8 +24,14 @@
 /ios/iris/privacy        /app/iris/privacy          301
 /ios/iris/*              /app/iris/:splat           301
 
-# Mercuro's overview moved from /ios/mercuro/ to /app/mercuro/. Only the index moves: the
-# App Store listing links the support, privacy and terms pages, which stay at /ios/mercuro/.
-/ios/mercuro             /app/mercuro/              301
-/ios/mercuro/            /app/mercuro/              301
-/ios/mercuro/index.html  /app/mercuro/              301
+# Mercuro moved from /ios/mercuro/ to /app/mercuro/. The App Store listing links the old
+# support, privacy and terms URLs, so these must keep working.
+/ios/mercuro               /app/mercuro/              301
+/ios/mercuro/              /app/mercuro/              301
+/ios/mercuro/index.html    /app/mercuro/              301
+/ios/mercuro/support       /app/mercuro/support/      301
+/ios/mercuro/support.html  /app/mercuro/support/      301
+/ios/mercuro/privacy       /app/mercuro/privacy/      301
+/ios/mercuro/privacy.html  /app/mercuro/privacy/      301
+/ios/mercuro/terms         /app/mercuro/terms/        301
+/ios/mercuro/terms.html    /app/mercuro/terms/        301
