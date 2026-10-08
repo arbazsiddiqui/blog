@@ -465,7 +465,7 @@ const PAGES = [
     sections: [
       ['Free, and properly playable', `<p>330 puzzles across eight board sizes, plus three fresh dailies every day.</p><p>${FREE_ADS}</p>`],
       ['Two purchases, both one-time', `<ul><li><strong>Remove Ads, $2.99 once.</strong> No ads at all, unlimited hints and every day in the archive open.</li><li><strong>Mercuro Pro, $4.99 once.</strong> Everything Remove Ads does, plus 330 more puzzles and all nine themes unlocked.</li></ul><p class="note">US App Store prices. Your App Store shows the price in your own currency.</p>`, () => tiersWidget('pro')],
-      ['What the other Thermometers apps charge', `<p>Every other Thermometers app I checked on the US App Store sells a subscription, though two also sell one-time options. Grids of Thermometers sells $0.99 to remove ads, $0.99 level packs and $5.99 for all packs, next to a $4.49 Premium Subscription (${cite('got')}). Thermometers - Logic Puzzles sells a one-time $3.99 remove-ads pack and a $3.99 monthly or $1.99 weekly membership (${cite('fx')}). Logic Puzzles - Thermometers sells Premium at $0.49 a week, $1.39 a month or $13.90 a year (${cite('lpt')}).</p><p>All three also list far more puzzles than Mercuro, which matters if quantity is what you want.</p>`],
+      ['What the other Thermometers apps charge', `<p>Every other Thermometers app I checked on the US App Store sells a subscription, though two also sell one-time options. Grids of Thermometers sells $0.99 to remove ads, $0.99 level packs and $5.99 for all packs, next to a $4.49 Premium Subscription (${cite('got')}). Thermometers - Logic Puzzles sells a one-time $3.99 remove-ads pack and a $3.99 monthly or $1.99 weekly membership (${cite('fx')}). Logic Puzzles - Thermometers sells Premium at $0.49 a week, $1.39 a month or $13.90 a year (${cite('lpt')}).</p>`],
       ['Why once', `<p>I build Mercuro on my own, and charging once was a deliberate choice. You pay for the puzzles, and then they are yours to keep playing.</p>`],
     ],
     faq: [
@@ -825,7 +825,6 @@ level, playable by touch, demoing itself until touched.
       <div class="cmp-wrap"><table class="cmp market"><thead><tr><th scope="col">App</th><th scope="col">One-time purchases</th><th scope="col">Subscription</th><th scope="col">Puzzles</th></tr></thead><tbody>
 ${MARKET.map(([name, once, sub, n, src]) => `        <tr${src === true ? ' class="us"' : ''}><th scope="row">${esc(name)}</th><td data-label="One-time">${esc(once)}</td><td data-label="Subscription">${esc(sub)}</td><td data-label="Puzzles">${esc(n)}</td></tr>`).join('\n')}
       </tbody></table></div>
-      <p class="fine">Checked ${CHECKED} on the US App Store: ${cite('got')}, ${cite('fx')}, ${cite('lpt')}. All three list far more puzzles than Mercuro, which matters if quantity is what you want. <a href="/app/mercuro/puzzle-game-no-subscription/">Why Mercuro has no subscription</a>.</p>
     </div>
   </section>
 

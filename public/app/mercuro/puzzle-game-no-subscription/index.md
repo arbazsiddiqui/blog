@@ -27,8 +27,6 @@ US App Store prices. Your App Store shows the price in your own currency.
 
 Every other Thermometers app I checked on the US App Store sells a subscription, though two also sell one-time options. Grids of Thermometers sells $0.99 to remove ads, $0.99 level packs and $5.99 for all packs, next to a $4.49 Premium Subscription ([Grids of Thermometers on the App Store](https://apps.apple.com/us/app/grids-of-thermometers/id1071003654)). Thermometers - Logic Puzzles sells a one-time $3.99 remove-ads pack and a $3.99 monthly or $1.99 weekly membership ([Thermometers - Logic Puzzles on the App Store](https://apps.apple.com/us/app/thermometers-logic-puzzles/id6739959033)). Logic Puzzles - Thermometers sells Premium at $0.49 a week, $1.39 a month or $13.90 a year ([Logic Puzzles - Thermometers on the App Store](https://apps.apple.com/us/app/logic-puzzles-thermometers/id6748007989)).
 
-All three also list far more puzzles than Mercuro, which matters if quantity is what you want.
-
 ## Why once
 
 I build Mercuro on my own, and charging once was a deliberate choice. You pay for the puzzles, and then they are yours to keep playing.
