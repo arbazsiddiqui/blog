@@ -192,9 +192,9 @@ function head({ title, description, url, md, ld, landing }) {
   <div class="wrap">
     <a class="brand" href="/app/mercuro/"><img src="/app/mercuro/assets/mercuro-icon.webp" alt="" width="32" height="32"><span>Mercuro<b>.</b></span></a>
     <ul>
-      <li><a href="/app/mercuro/how-to-play-thermometers/"${url.endsWith('how-to-play-thermometers/') ? ' aria-current="page"' : ''}>How to play</a></li>
-      <li><a href="/app/mercuro/daily-logic-puzzle/"${url.endsWith('daily-logic-puzzle/') ? ' aria-current="page"' : ''}>Daily puzzles</a></li>
-      <li><a href="/app/mercuro/puzzle-game-no-subscription/"${url.endsWith('no-subscription/') ? ' aria-current="page"' : ''}>Pricing</a></li>
+      <li><a href="${landing ? '' : '/app/mercuro/'}#how">How to play</a></li>
+      <li><a href="${landing ? '' : '/app/mercuro/'}#daily">Daily puzzles</a></li>
+      <li><a href="${landing ? '' : '/app/mercuro/'}#pricing">Pricing</a></li>
       <li><a href="${SUPPORT}">Support</a></li>
     </ul>
     <div class="nav-right">
