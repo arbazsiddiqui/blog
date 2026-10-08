@@ -35,3 +35,11 @@
 # Files agents read: an hour.
 /llms.txt
   Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+# Demo data and library files are fetched by the demo pages, not meant as search results.
+/sqlite-sparse-demo/*.gz
+  X-Robots-Tag: noindex
+/sqlite-sparse-demo/*.mjs
+  X-Robots-Tag: noindex
+/sqlite-sparse-demo/*.wasm
+  X-Robots-Tag: noindex
