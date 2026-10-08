@@ -732,10 +732,14 @@ level, playable by touch, demoing itself until touched.
   <section class="chapter wide" id="daily">
     <div class="wrap">
       <div class="copy">
+        <div class="head">
         <div class="app-label">Daily</div>
         <h2>A fresh trio every day</h2>
+        </div>
+        <div class="body">
         <p>A Warm-Up on 6${X}6 or 7${X}7. A Daily on 8${X}8 or 9${X}9. A Challenge anywhere from 10${X}10 to 12${X}12. Everyone gets the same three on the same date, so today’s Challenge is something to argue about.</p>
         <p>Missed one? The last two weeks wait in the archive. <a class="inline" href="/app/mercuro/daily-logic-puzzle/">More on the daily puzzles</a>.</p>
+        </div>
       </div>
       <div class="visual">${dailyWidget()}</div>
     </div>
@@ -779,10 +783,14 @@ level, playable by touch, demoing itself until touched.
   <section class="chapter wide" id="progress">
     <div class="wrap">
       <div class="copy">
+        <div class="head">
         <div class="app-label">Progress</div>
         <h2>From Novice to Virtuoso</h2>
+        </div>
+        <div class="body">
         <p>Eight ranks, and every step past Novice hands you a new theme. Virtuoso sits at 330 solves, the whole free set, so the summit is open without paying a cent.</p>
         <p>Stats keeps your streak and your week of dailies in one glance. Game Center leaderboards rank weekly solves, all-time solves and streaks, for anyone who likes a scoreboard.</p>
+        </div>
       </div>
       <div class="visual two">${ranksWidget()}${statsWidget()}</div>
     </div>
@@ -791,9 +799,13 @@ level, playable by touch, demoing itself until touched.
   <section class="chapter wide" id="achievements">
     <div class="wrap">
       <div class="copy">
+        <div class="head">
         <div class="app-label">Achievements</div>
         <h2>40 achievements. ${DATA.achievementPoints.toLocaleString('en-US')} points.</h2>
+        </div>
+        <div class="body">
         <p>First Heat for your first solve. Full Forecast for all three dailies in one day. Year of Heat for a 365-day streak. Tap any badge to see what it takes.</p>
+        </div>
       </div>
       <div class="visual">${badgesWidget()}</div>
     </div>
