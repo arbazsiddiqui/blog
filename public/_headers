@@ -29,6 +29,8 @@
 # Demos change with their posts: a day.
 /kev-browser-use-demo/*
   Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+/voxlock-demo/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
 /sqlite-sparse-demo/*
   Cache-Control: public, max-age=86400, stale-while-revalidate=604800
 
@@ -43,3 +45,11 @@
   X-Robots-Tag: noindex
 /sqlite-sparse-demo/*.wasm
   X-Robots-Tag: noindex
+
+# VoxLock: cross-origin isolation lets onnxruntime-web use threads (credentialless keeps third-party scripts working).
+/voxlock
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Embedder-Policy: credentialless
+/voxlock/
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Embedder-Policy: credentialless
