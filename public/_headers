@@ -31,6 +31,7 @@
   Cache-Control: public, max-age=86400, stale-while-revalidate=604800
 /voxlock-demo/*
   Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+  Cross-Origin-Embedder-Policy: credentialless
 /sqlite-sparse-demo/*
   Cache-Control: public, max-age=86400, stale-while-revalidate=604800
 
