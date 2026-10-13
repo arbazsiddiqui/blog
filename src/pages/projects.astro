@@ -14,6 +14,7 @@ import mercuroCard from '../assets/mercuro-card.png';
 import horrorCard from '../assets/horror-card.png';
 import irisPipelineCard from '../assets/iris-pipeline-card.png';
 import kevBanner from '../assets/kev/banner.jpg';
+import voxBanner from '../assets/voxlock/banner.jpg';
 import gardenCard from '../assets/garden/card.jpg';
 
 const oss = [
@@ -30,7 +31,7 @@ const oss = [
   { url: 'https://www.npmjs.com/package/mock-jay', name: 'mock-jay', desc: 'a mock data generator for real-world shapes, on npm', meta: 'npm' },
 ];
 
-const jsonLd = {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Projects by Arbaz Siddiqui", "url": "https://www.arbazsiddiqui.me/projects/", "mainEntity": {"@type": "ItemList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Ozan-12B", "url": "https://www.arbazsiddiqui.me/ozan/"}, {"@type": "ListItem", "position": 2, "name": "Iris", "url": "https://www.arbazsiddiqui.me/iris/"}, {"@type": "ListItem", "position": 3, "name": "Mercuro", "url": "https://www.arbazsiddiqui.me/mercuro/"}, {"@type": "ListItem", "position": 4, "name": "The Footnote", "url": "https://www.arbazsiddiqui.me/footnote/"}, {"@type": "ListItem", "position": 5, "name": "Iris growth pipeline", "url": "https://www.arbazsiddiqui.me/iris-pipeline/"}, {"@type": "ListItem", "position": 6, "name": "Animated Horror", "url": "https://www.arbazsiddiqui.me/horror/"}, {"@type": "ListItem", "position": 7, "name": "sqlite-sparse", "url": "https://www.arbazsiddiqui.me/sparse/"}, {"@type": "ListItem", "position": 8, "name": "kev-0.6b-browser-use", "url": "https://www.arbazsiddiqui.me/kev/"}, {"@type": "ListItem", "position": 9, "name": "Glass Jar Garden", "url": "https://www.arbazsiddiqui.me/glass-jar-garden/"}]}};
+const jsonLd = {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Projects by Arbaz Siddiqui", "url": "https://www.arbazsiddiqui.me/projects/", "mainEntity": {"@type": "ItemList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Ozan-12B", "url": "https://www.arbazsiddiqui.me/ozan/"}, {"@type": "ListItem", "position": 2, "name": "Iris", "url": "https://www.arbazsiddiqui.me/iris/"}, {"@type": "ListItem", "position": 3, "name": "Mercuro", "url": "https://www.arbazsiddiqui.me/mercuro/"}, {"@type": "ListItem", "position": 4, "name": "The Footnote", "url": "https://www.arbazsiddiqui.me/footnote/"}, {"@type": "ListItem", "position": 5, "name": "Iris growth pipeline", "url": "https://www.arbazsiddiqui.me/iris-pipeline/"}, {"@type": "ListItem", "position": 6, "name": "Animated Horror", "url": "https://www.arbazsiddiqui.me/horror/"}, {"@type": "ListItem", "position": 7, "name": "sqlite-sparse", "url": "https://www.arbazsiddiqui.me/sparse/"}, {"@type": "ListItem", "position": 8, "name": "kev-0.6b-browser-use", "url": "https://www.arbazsiddiqui.me/kev/"}, {"@type": "ListItem", "position": 9, "name": "Glass Jar Garden", "url": "https://www.arbazsiddiqui.me/glass-jar-garden/"}, {"@type": "ListItem", "position": 10, "name": "VoxLock", "url": "https://www.arbazsiddiqui.me/vox/"}]}};
 ---
 
 <Base
@@ -46,7 +47,8 @@ const jsonLd = {"@context": "https://schema.org", "@type": "CollectionPage", "na
 
     <Rail label="Models and retrieval">
       <Work eager {...WORKS.ozan} img={ozanBanner} />
-      <Work eager {...WORKS.kev} img={kevBanner} />
+      <Work eager {...WORKS.vox} img={voxBanner} />
+      <Work {...WORKS.kev} img={kevBanner} />
       <Work {...WORKS.sparse} img={sparseDiagram} />
     </Rail>
 

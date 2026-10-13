@@ -14,6 +14,20 @@ export const WORKS = {
       { label: 'Training recipe', url: 'https://github.com/arbazsiddiqui/Ozan' },
     ],
   },
+  vox: {
+    href: '/vox',
+    title: 'VoxLock',
+    medium: 'Voice isolation model',
+    sentence:
+      'Keeps the caller\'s voice and removes the other voices in the room before speech-to-text hears them. Fine-tuned from the REAL-TSE baseline on real meeting crosstalk, it has the lowest word error rate on the Krisp Voice Isolation Benchmark of every model tested, paid or open. It streams on CPU and plugs into Pipecat as an audio filter.',
+    stat: '4.95% WER on the Krisp benchmark · 27M parameters',
+    alt: 'The same held-out call with VoxLock off and on: the background voice disappears from the waveform and from the transcript',
+    links: [
+      { label: 'Demo', url: '/voxlock/#demo' },
+      { label: 'Hugging Face', url: 'https://huggingface.co/arbazsiddiqui/voxlock' },
+      { label: 'GitHub', url: 'https://github.com/arbazsiddiqui/voxlock' },
+    ],
+  },
   sparse: {
     href: '/sparse',
     title: 'sqlite-sparse',

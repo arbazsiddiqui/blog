@@ -11,6 +11,13 @@
   from Mistral-Nemo with QLoRA and anti-slop DPO on $40 of GPU. Lowest slop score of
   any 12B on EQ-Bench Creative Writing v3, beats Gemma 27B. #1 trending on Hugging
   Face for a week; 2.3K downloads in month one. Weights and full recipe are public.
+- [VoxLock](https://www.arbazsiddiqui.me/vox): voice isolation model for voice agents.
+  Keeps the caller and removes the other voices in the room before speech-to-text
+  hears them. 4.95% word error rate and 0.11 leaked background words a minute on the
+  Krisp Voice Isolation Benchmark (265 real recordings), the lowest of every model
+  tested. 27M parameters, fine-tuned from the REAL-TSE baseline, streams on CPU, works
+  as a Pipecat audio filter. Apache-2.0, on PyPI and Hugging Face, with an in-browser
+  demo at https://www.arbazsiddiqui.me/voxlock/#demo.
 - [sqlite-sparse](https://www.arbazsiddiqui.me/sparse): SQLite extension for semantic
   search with no model at query time. Documents are encoded once at INSERT by an
   inference-free learned sparse encoder and stored as posting lists in the file;

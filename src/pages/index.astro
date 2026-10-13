@@ -15,6 +15,7 @@ import mercuroCard from '../assets/mercuro-card.png';
 import horrorCard from '../assets/horror-card.png';
 import irisPipelineCard from '../assets/iris-pipeline-card.png';
 import kevBanner from '../assets/kev/banner.jpg';
+import voxBanner from '../assets/voxlock/banner.jpg';
 import gardenCard from '../assets/garden/card.jpg';
 
 const posts = (await getCollection('blog')).sort(
@@ -48,7 +49,8 @@ const jsonLd = { '@context': 'https://schema.org', ...PERSON_FULL };
 
     <Rail label="Models and retrieval">
       <Work eager {...WORKS.ozan} img={ozanBanner} />
-      <Work eager {...WORKS.kev} img={kevBanner} />
+      <Work eager {...WORKS.vox} img={voxBanner} />
+      <Work {...WORKS.kev} img={kevBanner} />
       <Work {...WORKS.sparse} img={sparseDiagram} />
     </Rail>
 

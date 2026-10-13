@@ -1,0 +1,82 @@
+---
+import Base from '../layouts/Base.astro';
+import { PERSON_REF } from '../data/person';
+import { Image } from 'astro:assets';
+import banner from '../assets/voxlock/banner.jpg';
+
+const jsonLdModel = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareSourceCode',
+  name: 'VoxLock',
+  description: 'A voice isolation model for voice agents: keeps the caller and removes the other voices in the room before speech-to-text hears them. Streams on CPU and runs in the browser.',
+  codeRepository: 'https://github.com/arbazsiddiqui/voxlock',
+  programmingLanguage: ['Python', 'JavaScript'],
+  license: 'https://www.apache.org/licenses/LICENSE-2.0',
+  author: PERSON_REF,
+  url: 'https://www.arbazsiddiqui.me/vox/',
+  sameAs: ['https://huggingface.co/arbazsiddiqui/voxlock', 'https://pypi.org/project/voxlock/'],
+};
+const jsonLd = [jsonLdModel, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.arbazsiddiqui.me/"}, {"@type": "ListItem", "position": 2, "name": "Projects", "item": "https://www.arbazsiddiqui.me/projects/"}, {"@type": "ListItem", "position": 3, "name": "VoxLock", "item": "https://www.arbazsiddiqui.me/vox/"}]}];
+---
+
+<Base
+  title="VoxLock: voice isolation for voice agents"
+  description="VoxLock keeps the caller and removes the other voices in the room before speech-to-text hears them: 4.95% word error rate on the Krisp Voice Isolation Benchmark, the lowest of every model tested, paid or open."
+  ogImage="/og/voxlock.jpg"
+  ogImageAlt="VoxLock, the best performing voice isolator: word error rate and leaked background words for every model on the Krisp Voice Isolation Benchmark."
+  jsonLd={jsonLd}
+>
+  <article class="narrow section">
+    <p class="kicker">Lowest word error rate on the Krisp Voice Isolation Benchmark</p>
+    <h1 class="page-title">VoxLock</h1>
+    <p class="lede">
+      A voice isolation model for voice agents. It keeps the caller's voice
+      and removes the other voices in the room before speech-to-text hears
+      them. It takes one input, the call audio, and picks out the caller by
+      itself from the first seconds of the call.
+    </p>
+
+    <dl class="facts">
+      <dt>Result</dt><dd>4.95% word error rate on 265 real recordings, with 0.11 background words leaked a minute. Krisp VI 2.5 scores 5.30% and leaks 1.52.</dd>
+      <dt>Size</dt><dd>27M parameters · 75 MB as the 8-bit build · real time from 40 ms chunks on 4 CPU threads</dd>
+      <dt>Training</dt><dd>Fine-tuned from the REAL-TSE baseline on about 100 hours of simulated calls and 87 hours of real meeting crosstalk from AMI</dd>
+      <dt>Runs on</dt><dd>CPU with onnxruntime, as a <a href="https://www.pipecat.ai/" target="_blank" rel="noopener">Pipecat</a> audio filter, or in the browser with onnxruntime-web</dd>
+      <dt>Links</dt><dd><a href="/voxlock/#demo">Live demo</a> · <a href="https://huggingface.co/arbazsiddiqui/voxlock" target="_blank" rel="noopener">Hugging Face</a> · <a href="https://github.com/arbazsiddiqui/voxlock" target="_blank" rel="noopener">GitHub</a> · <a href="https://pypi.org/project/voxlock/" target="_blank" rel="noopener">PyPI</a></dd>
+    </dl>
+
+    <a class="banner" href="/voxlock/#demo">
+      <Image src={banner} alt="The same held-out call with VoxLock off and on: the background voice disappears from the waveform and from the transcript" widths={[640, 960, 1280]} sizes="(max-width: 720px) 100vw, 44rem" />
+    </a>
+
+    <div class="prose">
+      <h2>The demo</h2>
+      <p>
+        Pick a call with someone talking over the caller and flip the switch
+        while it plays: off is the call as recorded, on is VoxLock, with what
+        speech-to-text hears under each. Or record up to 15 seconds of your
+        own voice and mix in a second talker. It runs through the same model
+        in the tab, a 50 MB download the first time.
+      </p>
+      <h2>How it compares</h2>
+      <p>
+        On the Krisp benchmark the word error rate is level with Krisp's
+        best model; the gap is within noise. The difference is what leaks
+        through: Krisp passes 1.52 background words a minute to the
+        transcript and VoxLock 0.11. On 134 windows of real AMI meetings that
+        are not in the training data, it scores 10.12% against 11.85% for the
+        best ai-coustics model.
+      </p>
+      <p>
+        <a href="/voxlock/">The full write-up</a> has every model's results,
+        how the model works, the training stages and the code to use it.
+      </p>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .page-title { margin-block: 0.35rem 0.8rem; }
+  .lede { margin-bottom: 1.6rem; }
+  .banner { display: block; margin-bottom: 2.4rem; border-radius: 6px; overflow: hidden; outline: 1px solid oklch(0 0 0 / 0.08); outline-offset: -1px; }
+  .banner img { width: 100%; height: auto; display: block; }
+</style>
