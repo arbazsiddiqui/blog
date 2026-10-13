@@ -1,8 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
 import { PERSON_REF } from '../data/person';
-import { Image } from 'astro:assets';
-import banner from '../assets/voxlock/banner.jpg';
 
 const jsonLdModel = {
   '@context': 'https://schema.org',
@@ -44,18 +42,18 @@ const jsonLd = [jsonLdModel, {"@context": "https://schema.org", "@type": "Breadc
       <dt>Links</dt><dd><a href="/voxlock/#demo">Live demo</a> · <a href="https://huggingface.co/arbazsiddiqui/voxlock" target="_blank" rel="noopener">Hugging Face</a> · <a href="https://github.com/arbazsiddiqui/voxlock" target="_blank" rel="noopener">GitHub</a> · <a href="https://pypi.org/project/voxlock/" target="_blank" rel="noopener">PyPI</a></dd>
     </dl>
 
-    <a class="banner" href="/voxlock/#demo">
-      <Image src={banner} alt="The same held-out call with VoxLock off and on: the background voice disappears from the waveform and from the transcript" widths={[640, 960, 1280]} sizes="(max-width: 720px) 100vw, 44rem" />
-    </a>
+    <video class="banner" src="/voxlock-demo/demo.mp4" poster="/voxlock-demo/demo-poster.jpg" controls playsinline preload="none" aria-label="The same 6.5 seconds of a held-out call with VoxLock off and then on"></video>
 
     <div class="prose">
       <h2>The demo</h2>
       <p>
-        Pick a call with someone talking over the caller and flip the switch
-        while it plays: off is the call as recorded, on is VoxLock, with what
+        The video above is a recording. The <a href="/voxlock/#demo">live demo</a>
+        is on the write-up page. Pick a call with someone talking over the
+        caller and flip the switch while it plays: off is the call as
+        recorded, on is VoxLock, with what
         speech-to-text hears under each. Or record up to 15 seconds of your
         own voice and mix in a second talker. It runs through the same model
-        in the tab, a 50 MB download the first time.
+        in your tab, a 50 MB download the first time.
       </p>
       <h2>How it compares</h2>
       <p>
@@ -78,5 +76,5 @@ const jsonLd = [jsonLdModel, {"@context": "https://schema.org", "@type": "Breadc
   .page-title { margin-block: 0.35rem 0.8rem; }
   .lede { margin-bottom: 1.6rem; }
   .banner { display: block; margin-bottom: 2.4rem; border-radius: 6px; overflow: hidden; outline: 1px solid oklch(0 0 0 / 0.08); outline-offset: -1px; }
-  .banner img { width: 100%; height: auto; display: block; }
+  .banner { width: 100%; height: auto; aspect-ratio: 16 / 9; background: #0d1114; }
 </style>
