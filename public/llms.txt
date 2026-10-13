@@ -18,6 +18,10 @@
   tested. 27M parameters, fine-tuned from the REAL-TSE baseline, streams on CPU, works
   as a Pipecat audio filter. Apache-2.0, on PyPI and Hugging Face, with an in-browser
   demo at https://www.arbazsiddiqui.me/voxlock/#demo.
+- [kev-0.6b-browser-use](https://www.arbazsiddiqui.me/kev): 0.6B decision model for
+  browser agents. Picks the element and the action on a page in one forward pass.
+  32.2% step success on 1,000 Mind2Web test steps, level with Kev-9B, and runs in the
+  browser on WebGPU. Demo at https://www.arbazsiddiqui.me/kev-browser-use/#demo.
 - [sqlite-sparse](https://www.arbazsiddiqui.me/sparse): SQLite extension for semantic
   search with no model at query time. Documents are encoded once at INSERT by an
   inference-free learned sparse encoder and stored as posting lists in the file;

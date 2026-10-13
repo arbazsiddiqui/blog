@@ -35,7 +35,8 @@ export const PERSON_FULL = {
   ],
   knowsAbout: [
     'AI infrastructure', 'distributed systems', 'LLM fine-tuning', 'RAG',
-    'learned sparse retrieval', 'SQLite', 'Kubernetes', 'Go', 'Node.js', 'Kafka',
+    'learned sparse retrieval', 'voice isolation', 'target speaker extraction',
+    'speech recognition', 'voice agents', 'ONNX', 'browser agents', 'SQLite', 'Kubernetes', 'Go', 'Node.js', 'Kafka',
     'MQTT', 'WebSockets', 'RTMP', 'FFmpeg', 'live streaming', 'real-time systems',
     'Redis', 'Postgres', 'Neo4j', 'Elasticsearch', 'Docker', 'content automation',
     'cryptocurrency exchanges', 'blockchain', 'trading engines', 'DeFi',
