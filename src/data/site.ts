@@ -7,7 +7,7 @@ export const SITE = {
   github: 'https://github.com/arbazsiddiqui',
   huggingface: 'https://huggingface.co/arbazsiddiqui',
   linkedin: 'https://www.linkedin.com/in/arbazsiddiqui',
-  twitter: 'https://twitter.com/arbazsiddiqui_',
+  twitter: 'https://x.com/ArbazSiddiqui_',
   substack: 'https://arbazsiddiqui.substack.com',
   resume: '/arbaz-siddiqui-resume.pdf',
   // GA4 measurement ID (G-XXXXXXXXXX). Empty means no analytics script is emitted.

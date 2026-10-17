@@ -30,6 +30,7 @@ export const PERSON_FULL = {
     SITE.github,
     SITE.huggingface,
     SITE.linkedin,
+    SITE.twitter,
     SITE.substack,
     'https://stackoverflow.com/users/5182824/arbaz-siddiqui',
   ],
