@@ -8,7 +8,7 @@
 - App Store: https://apps.apple.com/app/id6761134901
 - Platforms: iPhone and iPad (iOS 17 or later)
 - Price: free. Every feature is free. A few ads pay for the app; a one-time purchase removes them. No subscription.
-- Languages: English, German, Spanish, Filipino, Indonesian, Japanese, Polish, Portuguese, Russian, Thai
+- Languages: English, French, German, Italian, Spanish, Portuguese, Polish, Russian, Turkish, Japanese, Korean, Chinese (Simplified and Traditional), Vietnamese, Thai, Indonesian, Filipino
 - Made by: Arbaz Siddiqui, an independent developer (https://www.arbazsiddiqui.me/about)
 - Support: https://www.arbazsiddiqui.me/app/iris/support
 - Privacy policy: https://www.arbazsiddiqui.me/app/iris/privacy
