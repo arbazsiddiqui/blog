@@ -64,6 +64,40 @@ const jsonLd = [jsonLdModel, {"@context": "https://schema.org", "@type": "Breadc
         are not in the training data, it scores 10.12% against 11.85% for the
         best ai-coustics model.
       </p>
+      <h2>Performance</h2>
+      <p>
+        One live call with the default 8-bit model on one CPU thread:
+        onnxruntime 1.31.1 on a Google Cloud Intel Xeon @ 2.20 GHz, 60 seconds
+        of AMI meeting audio. A real-time factor below 1 keeps up with the call.
+      </p>
+      <table>
+        <thead><tr><th>Chunk</th><th>CPU per call</th><th>Real-time factor</th></tr></thead>
+        <tbody>
+          <tr><td>20 ms</td><td>110% of a core</td><td>1.10</td></tr>
+          <tr><td>40 ms</td><td>77% of a core</td><td>0.77</td></tr>
+          <tr><td>80 ms</td><td>61% of a core</td><td>0.61</td></tr>
+        </tbody>
+      </table>
+      <p>
+        20 ms chunks keep up on two threads (0.86). The delay is 24 ms of
+        algorithmic latency plus the chunk. On an NVIDIA L4 GPU, a whole
+        recording runs 40 times faster than real time.
+      </p>
+      <h2>Precisions</h2>
+      <table>
+        <thead><tr><th>Precision</th><th>Download</th><th>Word error rate %</th><th>Background words leaked / min</th><th>CPU per call, 20 ms chunks</th></tr></thead>
+        <tbody>
+          <tr><td>int8 (default)</td><td>74 MB</td><td>5.11</td><td>0.12</td><td>110%</td></tr>
+          <tr><td>int8-full</td><td>71 MB</td><td>5.85</td><td>0.04</td><td>110%</td></tr>
+          <tr><td>fp16</td><td>47 MB</td><td>4.95*</td><td>0.11*</td><td>163%</td></tr>
+          <tr><td>fp32</td><td>94 MB</td><td>4.95</td><td>0.11</td><td>165%</td></tr>
+        </tbody>
+      </table>
+      <p>
+        * fp16 is the float32 model with its weights rounded to float16. Its
+        output matches float32 to over 70 dB, so it carries the float32
+        scores. The browser demo uses it.
+      </p>
       <p>
         <a href="/voxlock/">The full write-up</a> has every model's results,
         how the model works, the training stages and the code to use it.
