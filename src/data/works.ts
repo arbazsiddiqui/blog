@@ -75,8 +75,8 @@ export const WORKS = {
     title: 'Iris',
     medium: 'iOS app',
     sentence:
-      'A complete cycle-tracking suite. Predictions confirmed from BBT and LH tests the way a clinic would, a PCOS-friendly irregular mode, partner sharing, and two-way Apple Health sync. Every feature is free, in twelve languages, and health data never leaves the phone.',
-    stat: '12 languages · 1,000+ downloads a month',
+      'A complete cycle-tracking suite. Predictions confirmed from BBT and LH tests the way a clinic would, a PCOS-friendly irregular mode, partner sharing, and two-way Apple Health sync. Every feature is free, in seventeen languages, and health data never leaves the phone.',
+    stat: '17 languages · 1,000+ downloads a month',
     alt: 'Iris: Period and Cycle Tracker',
     links: [
       { label: 'App Store', url: 'https://apps.apple.com/app/id6761134901' },
@@ -125,7 +125,7 @@ export const WORKS = {
     title: 'Iris growth pipeline',
     medium: 'Automated distribution',
     sentence:
-      'Iris markets itself. The pipeline designs infographic posters, checks each one against a written creative contract, and publishes daily to Instagram and Pinterest. Its App Store listing runs ASO in eleven languages.',
+      'Iris markets itself. The pipeline designs infographic posters, checks each one against a written creative contract, and publishes daily to Instagram and Pinterest. Its App Store listing runs ASO in sixteen languages.',
     stat: '100K+ views driving installs',
     alt: "iris: women's health, clearly explained",
     links: [
