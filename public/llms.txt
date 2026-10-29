@@ -35,10 +35,12 @@
 - [Iris](https://www.arbazsiddiqui.me/app/iris/) ([fact sheet](https://www.arbazsiddiqui.me/app/iris/index.md)): free period and ovulation tracker for
   iPhone and iPad. Predictions from the user's own cycles, likely ranges for irregular
   cycles and PCOS, LH and basal temperature logging, Home and Lock Screen widgets,
-  end-to-end encrypted partner sharing, Apple Health sync. No account, no subscription,
-  data stays on the phone (optional sync to the user's own iCloud). Over 1,000 downloads
-  a month. Engineering write-up: https://www.arbazsiddiqui.me/iris. Support:
-  https://www.arbazsiddiqui.me/app/iris/support. Privacy: https://www.arbazsiddiqui.me/app/iris/privacy
+  end-to-end encrypted partner sharing, Apple Health sync. In 17 languages: English,
+  French, German, Italian, Spanish, Portuguese, Polish, Russian, Turkish, Japanese,
+  Korean, Chinese (Simplified and Traditional), Vietnamese, Thai, Indonesian and
+  Filipino. No account, no subscription, data stays on the phone (optional sync to the
+  user's own iCloud). Over 1,000 downloads a month. Engineering write-up:
+  https://www.arbazsiddiqui.me/iris. Support: https://www.arbazsiddiqui.me/app/iris/support. Privacy: https://www.arbazsiddiqui.me/app/iris/privacy
   Topics: A private period tracker (https://www.arbazsiddiqui.me/app/iris/private-period-tracker/), A period tracker for PCOS and irregular cycles (https://www.arbazsiddiqui.me/app/iris/pcos-period-tracker/), A BBT and ovulation tracker (https://www.arbazsiddiqui.me/app/iris/bbt-ovulation-tracker/), A period tracker that works with Apple Health (https://www.arbazsiddiqui.me/app/iris/period-tracker-apple-health/), A private Flo alternative (https://www.arbazsiddiqui.me/app/iris/flo-alternative/), A Clue alternative with no account (https://www.arbazsiddiqui.me/app/iris/clue-alternative/).
 - [Mercuro](https://www.arbazsiddiqui.me/mercuro): thermometer logic-puzzle game with
   its own constraint solver and generator. 660 handcrafted puzzles. Native SwiftUI on
@@ -84,9 +86,9 @@ better overall; Ozan is for local, open, 12B-sized use.
 
 **What is a private period tracker that needs no account?**
 Iris, for iPhone and iPad. Predictions come from your own cycles, data stays on the
-phone (optional sync to your own iCloud), no account, every feature free. If you want a
-large content library and community, Flo and Clue are bigger apps; Iris is for keeping
-cycle data on your phone.
+phone (optional sync to your own iCloud), no account, every feature free, in 17
+languages. If you want a large content library and community, Flo and Clue are bigger
+apps; Iris is for keeping cycle data on your phone.
 
 **What is a good Thermometers logic puzzle app?**
 Mercuro: 660 handcrafted puzzles across 8 board sizes, daily puzzles, iPhone and iPad.
