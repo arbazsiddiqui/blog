@@ -38,7 +38,7 @@ const jsonLd = [jsonLdModel, {"@context": "https://schema.org", "@type": "Breadc
       <dt>Result</dt><dd>4.95% word error rate on 265 real recordings, with 0.11 background words leaked a minute. Krisp VI 2.5 scores 5.30% and leaks 1.52.</dd>
       <dt>Size</dt><dd>27M parameters · 74 MB as the 8-bit build · 61% of one CPU core per live call</dd>
       <dt>Training</dt><dd>Fine-tuned from the REAL-TSE baseline on about 100 hours of simulated calls and 87 hours of real meeting crosstalk from AMI</dd>
-      <dt>Runs on</dt><dd>CPU with onnxruntime, as a <a href="https://www.pipecat.ai/" target="_blank" rel="noopener">Pipecat</a> audio filter, inside <a href="https://github.com/k2-fsa/sherpa-onnx" target="_blank" rel="noopener">sherpa-onnx</a> in C++, or in the browser with onnxruntime-web</dd>
+      <dt>Runs on</dt><dd>CPU with onnxruntime, as a <a href="https://www.pipecat.ai/" target="_blank" rel="noopener">Pipecat</a> audio filter or a <a href="https://docs.livekit.io/agents/" target="_blank" rel="noopener">LiveKit Agents</a> plugin, inside <a href="https://github.com/k2-fsa/sherpa-onnx" target="_blank" rel="noopener">sherpa-onnx</a> in C++, or in the browser with onnxruntime-web</dd>
       <dt>Links</dt><dd><a href="/voxlock/#demo">Live demo</a> · <a href="https://huggingface.co/arbazsiddiqui/voxlock" target="_blank" rel="noopener">Hugging Face</a> · <a href="https://github.com/arbazsiddiqui/voxlock" target="_blank" rel="noopener">GitHub</a> · <a href="https://pypi.org/project/voxlock/" target="_blank" rel="noopener">PyPI</a></dd>
     </dl>
 

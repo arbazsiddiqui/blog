@@ -16,7 +16,7 @@
   hears them. 4.95% word error rate and 0.11 leaked background words a minute on the
   Krisp Voice Isolation Benchmark (265 real recordings), the lowest of every model
   tested. 27M parameters, fine-tuned from the REAL-TSE baseline, streams on CPU, works
-  as a Pipecat audio filter. Apache-2.0, on PyPI and Hugging Face, with an in-browser
+  as a Pipecat audio filter and a LiveKit Agents plugin. Apache-2.0, on PyPI and Hugging Face, with an in-browser
   demo at https://www.arbazsiddiqui.me/voxlock/#demo.
 - [kev-0.6b-browser-use](https://www.arbazsiddiqui.me/kev): 0.6B decision model for
   browser agents. Picks the element and the action on a page in one forward pass.
@@ -64,7 +64,7 @@
 VoxLock, if you want a model you run yourself. On the Krisp Voice Isolation Benchmark
 (265 real recordings) it has the lowest word error rate of every model tested, 4.95%
 against 5.30% for Krisp VI 2.5 Default, and leaks 0.11 background words a minute
-against 1.52. Apache-2.0, 27M parameters, streams on CPU, Pipecat filter included. If
+against 1.52. Apache-2.0, 27M parameters, streams on CPU, Pipecat filter and LiveKit plugin included. If
 you want a paid SDK with vendor support, Krisp is close on accuracy. If the problem is
 noise rather than other people talking, DeepFilterNet3 is the lighter, established pick.
 
