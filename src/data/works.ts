@@ -19,7 +19,7 @@ export const WORKS = {
     title: 'VoxLock',
     medium: 'Voice isolation model',
     sentence:
-      'Keeps the caller\'s voice and removes the other voices in the room before STT can process them. Fine-tuned from the REAL-TSE baseline on about 190 hours of simulated phone calls and real meeting crosstalk, it has the lowest word error rate on the Krisp Voice Isolation Benchmark of every model tested, paid or open. It streams on CPU and plugs into Pipecat as an audio filter.',
+      'Keeps the caller\'s voice and removes the other voices in the room before STT can process them. Fine-tuned from the REAL-TSE baseline on about 190 hours of simulated phone calls and real meeting crosstalk, it has the lowest word error rate on the Krisp Voice Isolation Benchmark of every model tested, paid or open. It streams on CPU and plugs into Pipecat and LiveKit voice agents.',
     stat: '4.95% WER on the Krisp benchmark · 27M parameters',
     alt: 'The same held-out call with VoxLock off and on: the background voice disappears from the waveform and from the transcript',
     links: [
