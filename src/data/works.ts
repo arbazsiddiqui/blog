@@ -23,8 +23,8 @@ export const WORKS = {
     stat: '4.95% WER on the Krisp benchmark · 27M parameters',
     alt: 'The same held-out call with VoxLock off and on: the background voice disappears from the waveform and from the transcript',
     links: [
-      { label: 'Demo', url: '/voxlock/#demo' },
       { label: 'Paper', url: 'https://arxiv.org/abs/2610.40727' },
+      { label: 'Demo', url: '/voxlock/#demo' },
       { label: 'Hugging Face', url: 'https://huggingface.co/arbazsiddiqui/voxlock' },
       { label: 'GitHub', url: 'https://github.com/arbazsiddiqui/voxlock' },
     ],
