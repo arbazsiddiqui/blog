@@ -24,6 +24,7 @@ export const WORKS = {
     alt: 'The same held-out call with VoxLock off and on: the background voice disappears from the waveform and from the transcript',
     links: [
       { label: 'Demo', url: '/voxlock/#demo' },
+      { label: 'Paper', url: 'https://arxiv.org/abs/2610.40727' },
       { label: 'Hugging Face', url: 'https://huggingface.co/arbazsiddiqui/voxlock' },
       { label: 'GitHub', url: 'https://github.com/arbazsiddiqui/voxlock' },
     ],

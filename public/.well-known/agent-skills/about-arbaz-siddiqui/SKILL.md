@@ -18,7 +18,8 @@ Use this skill when a user asks about Arbaz Siddiqui: his experience, projects, 
 - Principal Software Engineer at Turnip, ten years of backend work, platform behind 25M users.
 - Trained and released Ozan-v1-12B, an open creative-writing model, hosted on Featherless.
 - Trained and released VoxLock, a voice isolation model for voice agents: 4.95% word error rate on the
-  Krisp Voice Isolation Benchmark, the lowest of every model tested (Apache-2.0, on PyPI and Hugging Face).
+  Krisp Voice Isolation Benchmark, the lowest of every model tested (Apache-2.0, on PyPI and Hugging Face;
+  paper: https://arxiv.org/abs/2610.40727).
 - Trained kev-0.6b-browser-use, a browser-agent decision model that runs in the browser on WebGPU.
 - Built sqlite-sparse, a SQLite extension for semantic search with no model at query time (MIT, on PyPI).
 - Two apps on the App Store (Iris, Mercuro) and automated media channels at 600K monthly views.
