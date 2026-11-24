@@ -106,5 +106,8 @@ const { label } = Astro.props;
       padding-inline: clamp(1.2rem, 3.5vw, 2.5rem);
       scroll-padding-inline: clamp(1.2rem, 3.5vw, 2.5rem);
     }
+    /* Cards side by side wrap their stat and links differently; reserve two lines of each so the rows line up. */
+    .rail :global(.work .placard .stat) { min-height: calc(0.65rem + 2lh); }
+    .rail :global(.work .placard .onview) { min-height: calc(2lh + 0.9rem); }
   }
 </style>
